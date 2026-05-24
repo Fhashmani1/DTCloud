@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Services — DTCloudOn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* ── HERO ── */
+  .cloud-hero {
+    position: relative;
+    min-height: 62vh;
+    display: flex;
+    align-items: center;
+    background: var(--navy);
+    overflow: hidden;
+    padding: 100px 24px 80px;
+  }
+  .cloud-hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('../images/datacenter-2.png');
+    background-size: cover; background-position: center;
+    filter: brightness(0.2) saturate(1.2);
+  }
+  .cloud-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(10,22,40,0.94) 0%, rgba(14,42,90,0.52) 55%, rgba(10,22,40,0.88) 100%);
+  }
+  .cloud-hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(42,125,225,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42,125,225,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .cloud-hero .container { position: relative; z-index: 2; text-align: center; }
+  .cloud-hero .section-label { color: var(--sky-light); justify-content: center; display: flex; }
+  .cloud-hero h1 {
+    color: var(--white);
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    max-width: 820px; margin: 16px auto 20px;
+    line-height: 1.1; letter-spacing: -1px;
+  }
+  .cloud-hero p {
+    color: rgba(255,255,255,0.72);
+    max-width: 640px; margin: 0 auto 36px;
+    font-size: 1.1rem; line-height: 1.75;
+  }
+  .cloud-hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── STATS BAR ── */
+  .stats-bar { background: var(--accent); padding: 28px 24px; }
+  .stats-row {
+    max-width: 1000px; margin: 0 auto;
+    display: flex; justify-content: space-around; flex-wrap: wrap; gap: 24px;
+  }
+  .stats-bar .stat { text-align: center; color: var(--white); }
+  .stats-bar .stat-num { font-family:'Sora',sans-serif; font-size:2.2rem; font-weight:800; display:block; }
+  .stats-bar .stat-label { font-size:0.82rem; opacity:0.9; }
+
+  /* ── CONTENT SECTIONS ── */
+  .content-section { padding: 80px 24px; }
+  .content-section.alt { background: var(--off-white); }
+  .content-section.dark { background: var(--navy); }
+
+  .split-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: center;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .split-layout.reverse { direction: rtl; }
+  .split-layout.reverse > * { direction: ltr; }
+
+  .content-text h2 { font-size: clamp(1.6rem,2.8vw,2.4rem); color: var(--navy); margin-bottom: 16px; letter-spacing:-0.5px; line-height:1.2; }
+  .content-text.dark-text h2 { color: var(--white); }
+  .content-text p { color: var(--text-mid); line-height: 1.78; margin-bottom: 16px; }
+  .content-text.dark-text p { color: rgba(255,255,255,0.7); }
+  .content-text ul { list-style: none; margin: 20px 0; }
+  .content-text li {
+    padding: 10px 0; border-bottom: 1px solid rgba(10,22,40,0.07);
+    font-size: 0.92rem; color: var(--text-mid);
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .content-text.dark-text li { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.08); }
+  .content-text li::before { content:'✓'; color:var(--sky); font-weight:700; flex-shrink:0; margin-top:1px; }
+  .content-text .inline-link {
+    color: var(--sky); font-size: 0.9rem; font-weight: 600;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 8px; transition: gap 0.2s;
+  }
+  .content-text .inline-link:hover { gap: 10px; }
+
+  .visual-panel {
+    background: var(--navy-mid); border-radius: 20px;
+    overflow: hidden; aspect-ratio: 4/3;
+    position: relative; display: flex;
+    align-items: center; justify-content: center;
+  }
+  .visual-panel img { width:100%;height:100%;object-fit:cover;opacity:0.75;display:block; }
+  .visual-panel .panel-icon { position:absolute; font-size:5rem; opacity:0.15; }
+
+  /* ── CLOUD PROVIDERS CARD ── */
+  .providers-card {
+    background: var(--off-white);
+    border-radius: 20px;
+    padding: 40px 36px;
+    border: 1px solid rgba(10,22,40,0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+  .provider-badges {
+    display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
+  }
+  .provider-badge {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 20px 28px;
+    border: 1px solid rgba(10,22,40,0.07);
+    text-align: center;
+    min-width: 140px;
+  }
+  .provider-badge .p-icon { font-size: 2.4rem; margin-bottom: 8px; }
+  .provider-badge .p-name { font-family:'Sora',sans-serif; font-weight:700; font-size:0.95rem; color:var(--navy); }
+  .provider-badge .p-sub { font-size:0.75rem; color:var(--gray); margin-top:2px; }
+
+  /* ── STORAGE VISUAL ── */
+  .storage-visual {
+    background: var(--off-white);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    border: 1px solid rgba(10,22,40,0.07);
+  }
+  .storage-icon { font-size: 4rem; margin-bottom: 20px; }
+  .storage-tiers {
+    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px;
+  }
+  .storage-tier {
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-family: 'Sora',sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--navy);
+  }
+  .storage-tier.highlight { background: var(--sky); color: var(--white); border-color: var(--sky); }
+  .storage-tier.unlimited { background: var(--navy); color: var(--white); border-color: var(--navy); font-size: 1.3rem; }
+
+  /* ── PERMISSIONS VISUAL ── */
+  .permissions-visual {
+    background: var(--off-white);
+    border-radius: 20px;
+    padding: 36px;
+    border: 1px solid rgba(10,22,40,0.07);
+  }
+  .permissions-visual h4 {
+    font-size: 0.78rem; text-align: center;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: var(--gray); margin-bottom: 24px;
+  }
+  .perm-row {
+    display: flex; align-items: center; gap: 16px;
+    padding: 12px 0; border-bottom: 1px solid rgba(10,22,40,0.06);
+  }
+  .perm-avatar {
+    width: 44px; height: 44px;
+    background: var(--navy-mid); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+  }
+  .perm-info { flex: 1; }
+  .perm-info .perm-name { font-size:0.85rem; font-weight:600; color:var(--navy); }
+  .perm-info .perm-role { font-size:0.75rem; color:var(--gray); }
+  .perm-badge {
+    padding: 4px 12px; border-radius: 50px;
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  }
+  .perm-badge.admin { background:rgba(234,179,8,0.15);color:#ca8a04; }
+  .perm-badge.low { background:rgba(239,68,68,0.12);color:#dc2626; }
+  .perm-badge.high { background:rgba(22,163,74,0.12);color:#16a34a; }
+
+  /* ── BENEFITS GRID (replaces carousel) ── */
+  .cloud-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .cloud-benefit {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px 24px;
+    border: 1px solid rgba(10,22,40,0.07);
+    transition: all 0.25s;
+  }
+  .cloud-benefit:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(10,22,40,0.1);
+    border-color: rgba(42,125,225,0.2);
+  }
+  .cloud-benefit h3 { font-size: 1rem; color: var(--navy); margin-bottom: 10px; font-weight: 700; }
+  .cloud-benefit p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.65; }
+
+  /* ── PROCESS STEPS ── */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .step-card {
+    background: var(--white); border-radius: 16px;
+    padding: 32px 24px; border: 1px solid rgba(10,22,40,0.08);
+    transition: all 0.3s;
+  }
+  .step-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,22,40,0.1); }
+  .step-num {
+    width: 40px; height: 40px; background: var(--accent); color: var(--white);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: 'Sora',sans-serif; font-weight: 800; font-size: 1rem; margin-bottom: 16px;
+  }
+  .step-card h3 { font-size: 1rem; color: var(--navy); margin-bottom: 10px; }
+  .step-card p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── CLOUD TYPES ── */
+  .cloud-types-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .cloud-type-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .cloud-type-card .ct-icon { font-size: 2.4rem; margin-bottom: 16px; }
+  .cloud-type-card h3 { color: var(--white); font-size: 1.1rem; margin-bottom: 10px; }
+  .cloud-type-card p { color: rgba(255,255,255,0.6); font-size: 0.85rem; line-height: 1.6; }
+
+  @media(max-width:900px){
+    .split-layout { grid-template-columns:1fr; gap:32px; }
+    .split-layout.reverse { direction:ltr; }
+    .cloud-types-grid { grid-template-columns:1fr; }
+    .stats-row { justify-content:center; }
+  }
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="container" style="max-width:1300px;margin:0 auto;">
+    <a href="../index.html">Home</a>
+    <span>›</span>
+    <a href="#">IT Services</a>
+    <span>›</span>
+    Cloud Services
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="cloud-hero">
+  <div class="cloud-hero-bg"></div>
+  <div class="cloud-hero-overlay"></div>
+  <div class="cloud-hero-grid"></div>
+  <div class="container">
+    <div class="section-label">CLOUD SERVICES</div>
+    <h1>Cloud Ease-of-Use with Security</h1>
+    <p>Our cloud services are built on business-specific experience and cybersecurity expertise to bring you the benefits of the cloud without added risk or complexity.</p>
+    <div class="cloud-hero-btns">
+      <a class="btn-primary" href="../contact.html">Request Cloud Services →</a>
+      <a class="btn-outline" href="../contact.html">Speak with a cloud expert &rsaquo;</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">AWS</span><span class="stat-label">Certified partner</span></div>
+    <div class="stat"><span class="stat-num">Azure</span><span class="stat-label">Microsoft certified partner</span></div>
+    <div class="stat"><span class="stat-num">GCP</span><span class="stat-label">Google Cloud partner</span></div>
+    <div class="stat"><span class="stat-num">99.9%</span><span class="stat-label">Cloud uptime SLA</span></div>
+  </div>
+</div>
+
+<!-- SECURITY IS #1 PRIORITY -->
+<div class="content-section">
+  <div class="split-layout reveal">
+    <div class="content-text">
+      <div class="section-label">Security First</div>
+      <h2>Security is Our #1 Priority</h2>
+      <p>We're focused on ensuring the convenience the cloud offers doesn't come at the expense of security. As businesses make the shift to the cloud, they face new cybersecurity challenges.</p>
+      <p>That's why security is at the core of every decision we make at DTCloudOn. We stay informed of continuously emerging threats to provide IT solutions with proactive defenses that optimize productivity while keeping your business secure.</p>
+      <ul>
+        <li>End-to-end encryption for data in transit and at rest</li>
+        <li>Multi-factor authentication and zero-trust access</li>
+        <li>Continuous cloud security posture monitoring</li>
+        <li>Compliance-aligned cloud configurations (HIPAA, SOC 2, PCI-DSS)</li>
+        <li>Threat detection and automated incident response</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Learn more about cloud security →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">🔐</div>
+      <img src="../images/datacenter-3.png" alt="Cloud Security" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- SIMPLIFYING CLOUD COMPUTING -->
+<div class="content-section alt">
+  <div class="split-layout reverse reveal">
+    <div class="content-text">
+      <div class="section-label">Cloud Made Simple</div>
+      <h2>Simplifying the Process of Cloud Computing</h2>
+      <p>DTCloudOn breaks complex cloud concepts down into digestible, actionable solutions. Think of the cloud as a virtual set of servers located off-site where you can host and store your company's documents and data — while giving your employees easy access to business-critical applications.</p>
+      <p>The cloud enables reliable accessibility for day-to-day work, no matter where it's done. Your users just need an internet connection and a secure login.</p>
+      <ul>
+        <li>No more costly on-premises hardware to maintain</li>
+        <li>Automatic software updates and security patches</li>
+        <li>Access any file from any device, anywhere</li>
+        <li>Pay only for what you use — scale up or down instantly</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Find your cloud solution today →</a>
+    </div>
+    <div class="storage-visual">
+      <div class="storage-icon">☁️</div>
+      <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:8px;">Flexible storage for every business size</p>
+      <div class="storage-tiers">
+        <div class="storage-tier">500 GB</div>
+        <div class="storage-tier highlight">1 TB</div>
+        <div class="storage-tier">2 TB</div>
+        <div class="storage-tier unlimited">∞</div>
+      </div>
+      <p style="font-size:0.78rem;color:var(--gray);margin-top:16px;">Scale storage up or down as your needs change</p>
+    </div>
+  </div>
+</div>
+
+<!-- IN-DEPTH ANALYSIS -->
+<div class="content-section">
+  <div class="split-layout reveal">
+    <div class="content-text">
+      <div class="section-label">Our Approach</div>
+      <h2>In-Depth Analysis of Your Business Needs</h2>
+      <p>DTCloudOn works with clients to pinpoint their specific goals and business objectives before moving to the cloud. The most common include improving document access and collaboration, optimizing remote or hybrid work, and reducing overall hardware costs.</p>
+      <ul>
+        <li>Cloud readiness assessment of your current environment</li>
+        <li>Identify workloads best suited for cloud migration</li>
+        <li>Map compliance and security requirements to cloud architecture</li>
+        <li>Build a phased migration roadmap with clear milestones</li>
+        <li>Define success metrics before migration begins</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Make your plan →</a>
+    </div>
+    <div style="background:var(--off-white);border-radius:20px;padding:36px;border:1px solid rgba(10,22,40,0.07);">
+      <h4 style="font-size:0.78rem;text-align:center;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin-bottom:28px;">Cloud Migration Process</h4>
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <div style="display:flex;gap:16px;align-items:flex-start;padding-bottom:24px;position:relative;">
+          <div style="width:36px;height:36px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:0.85rem;font-weight:800;flex-shrink:0;">▼</div>
+          <div><div style="font-weight:700;color:var(--navy);font-size:0.9rem;margin-bottom:4px;">Let's chat about your security goals</div><div style="font-size:0.82rem;color:var(--text-mid);">Understand your business objectives and compliance requirements</div></div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start;padding-bottom:24px;">
+          <div style="width:36px;height:36px;background:var(--sky);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:0.85rem;font-weight:800;flex-shrink:0;">▼</div>
+          <div><div style="font-weight:700;color:var(--navy);font-size:0.9rem;margin-bottom:4px;">Analyze the current environment</div><div style="font-size:0.82rem;color:var(--text-mid);">Audit infrastructure, applications, and data to plan migration</div></div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="width:36px;height:36px;background:#16a34a;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:0.85rem;font-weight:800;flex-shrink:0;">✓</div>
+          <div><div style="font-weight:700;color:var(--navy);font-size:0.9rem;margin-bottom:4px;">Create a plan moving forward</div><div style="font-size:0.82rem;color:var(--text-mid);">Phased migration roadmap with timelines, costs, and success metrics</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PARTNERING WITH THE BEST -->
+<div class="content-section alt">
+  <div class="split-layout reverse reveal">
+    <div class="content-text">
+      <div class="section-label">Cloud Partners</div>
+      <h2>Partnering with the Best</h2>
+      <p>Cloud platforms from major providers like Microsoft, Amazon, and Google make regular improvements to their data protection, document security, and remote access protocols.</p>
+      <p>As cyberthreats become more common, web-based platforms ramp up their defenses — leaving on-premises systems more vulnerable to attacks. DTCloudOn is a certified partner across all major cloud platforms.</p>
+      <ul>
+        <li>Microsoft Azure — enterprise cloud and hybrid solutions</li>
+        <li>Amazon Web Services (AWS) — scalable infrastructure and services</li>
+        <li>Google Cloud Platform (GCP) — data analytics and collaboration</li>
+        <li>Microsoft 365 — productivity and communication in the cloud</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Secure your data now →</a>
+    </div>
+    <div class="providers-card">
+      <p style="font-size:0.78rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;font-weight:700;">Our Cloud Platform Partners</p>
+      <div class="provider-badges">
+        <div class="provider-badge"><div class="p-icon">🔷</div><div class="p-name">Microsoft Azure</div><div class="p-sub">Certified Partner</div></div>
+        <div class="provider-badge"><div class="p-icon">🟠</div><div class="p-name">AWS</div><div class="p-sub">Certified Partner</div></div>
+        <div class="provider-badge"><div class="p-icon">🔴</div><div class="p-name">Google Cloud</div><div class="p-sub">Certified Partner</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLOUD SOLUTIONS FOR TODAY & TOMORROW -->
+<div class="content-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:52px;">
+      <div class="section-label">Cloud Benefits</div>
+      <h2 class="section-title">Cloud Solutions for Today's Business —<br>and Tomorrow's Office</h2>
+      <p class="section-sub" style="margin:0 auto;">Once a confusing concept, today the benefits of the cloud are crystal clear. If you host virtual meetings for remote employees, collaborate on shared files, or check email on your phone — you're already using the cloud.</p>
+    </div>
+    <div class="cloud-benefits-grid reveal">
+      <div class="cloud-benefit">
+        <h3>📁 Document Management</h3>
+        <p>Gone are the days when file management meant locking material behind a physical office door. DTCloudOn can help with smart permission controls to monitor user access to data from anywhere.</p>
+      </div>
+      <div class="cloud-benefit">
+        <h3>📈 Scalability</h3>
+        <p>Selecting the right cloud solution is challenging. DTCloudOn can help with design-and-build services that are right-sized for your business, and easy to scale up or down depending on usage and budget.</p>
+      </div>
+      <div class="cloud-benefit">
+        <h3>⚡ Productivity &amp; Efficiency</h3>
+        <p>With the cloud, collaboration is streamlined: employees in the office and in the field can join a presentation together and work off the same document in real-time, while distributed teams fulfill their responsibilities.</p>
+      </div>
+      <div class="cloud-benefit">
+        <h3>💰 Cost-Effective Computing</h3>
+        <p>Save money by moving away from expensive on-premises server hardware — no more costly lifecycle replacements, less disruption from software licensing and upgrading problems, and more flexible spending.</p>
+      </div>
+      <div class="cloud-benefit">
+        <h3>📱 Increased Mobility</h3>
+        <p>With cloud-based computing, information is always available on every device, in every time zone, no matter the schedule — supporting hybrid, mobile, and remote work environments.</p>
+      </div>
+      <div class="cloud-benefit">
+        <h3>🛡️ Better Prepared for Disaster</h3>
+        <p>Cloud computing relies on offsite data storage and redundant backup, making it easier to recover after manmade or natural disasters — minimizing the negative impacts that affect your physical location.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAY FOR EXACTLY WHAT YOU NEED -->
+<div class="content-section alt">
+  <div class="split-layout reveal">
+    <div class="content-text">
+      <div class="section-label">Cloud Pricing</div>
+      <h2>Pay for Exactly the Amount You Need</h2>
+      <p>Purchasing cloud solutions can be a complex process. Which cloud servers perform the best? How much storage is necessary? Should I pay by user or by consumption?</p>
+      <p>DTCloudOn can find the solution that's right for your business so you avoid the high cost of cloud complications — right-sizing your cloud investment from day one.</p>
+      <ul>
+        <li>Per-user licensing that scales with your headcount</li>
+        <li>Consumption-based pricing for variable workloads</li>
+        <li>Reserved capacity discounts for predictable usage</li>
+        <li>Cloud cost optimization reviews — eliminate waste</li>
+        <li>Transparent monthly billing with no surprise charges</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Get cloud pricing info →</a>
+    </div>
+    <div class="storage-visual">
+      <div class="storage-icon">☁️</div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px;">
+        <div style="background:var(--white);border-radius:12px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(10,22,40,0.07);">
+          <span style="font-weight:600;color:var(--navy);font-size:0.9rem;">Starter</span>
+          <span style="color:var(--sky);font-weight:700;font-size:0.85rem;">500 GB / user</span>
+        </div>
+        <div style="background:var(--sky);border-radius:12px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-weight:700;color:var(--white);font-size:0.9rem;">Business ★</span>
+          <span style="color:rgba(255,255,255,0.9);font-weight:700;font-size:0.85rem;">1 TB / user</span>
+        </div>
+        <div style="background:var(--white);border-radius:12px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(10,22,40,0.07);">
+          <span style="font-weight:600;color:var(--navy);font-size:0.9rem;">Enterprise</span>
+          <span style="color:var(--sky);font-weight:700;font-size:0.85rem;">2 TB / user</span>
+        </div>
+        <div style="background:var(--navy);border-radius:12px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-weight:700;color:var(--white);font-size:0.9rem;">Unlimited</span>
+          <span style="color:var(--sky-light);font-weight:800;font-size:1.1rem;">∞</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROVISIONING / PERMISSIONS -->
+<div class="content-section">
+  <div class="split-layout reverse reveal">
+    <div class="content-text">
+      <div class="section-label">Access Control</div>
+      <h2>Provisioning Your Team with Customized Permissions</h2>
+      <p>Whether you choose public cloud storage, a dedicated private cloud, or a hybrid cloud that mixes the two, DTCloudOn can help you decide where to store your applications, documents, and data — and who has permission to access them on the appropriate devices.</p>
+      <ul>
+        <li>Role-based access control (RBAC) across all cloud resources</li>
+        <li>Granular file and folder permission management</li>
+        <li>Device-level access policies for BYOD and corporate devices</li>
+        <li>Guest and external user access with security guardrails</li>
+        <li>Audit logs for all access and permission changes</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Build your cloud architecture →</a>
+    </div>
+    <div class="permissions-visual">
+      <h4>Team Access Management</h4>
+      <div class="perm-row">
+        <div class="perm-avatar">👩</div>
+        <div class="perm-info"><div class="perm-name">Team Member</div><div class="perm-role">Security Level</div></div>
+        <div class="perm-badge admin">Admin</div>
+      </div>
+      <div class="perm-row">
+        <div class="perm-avatar">👨</div>
+        <div class="perm-info"><div class="perm-name">Team Member</div><div class="perm-role">Security Level</div></div>
+        <div class="perm-badge low">Low</div>
+      </div>
+      <div class="perm-row" style="border-bottom:none;">
+        <div class="perm-avatar">🧑</div>
+        <div class="perm-info"><div class="perm-name">Team Member</div><div class="perm-role">Security Level</div></div>
+        <div class="perm-badge high">High</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLOUD TYPES: DARK SECTION -->
+<div class="content-section dark">
+  <div class="container">
+    <div class="section-label" style="color:var(--sky-light);text-align:center;">Deployment Options</div>
+    <h2 class="section-title" style="color:var(--white);text-align:center;margin-bottom:12px;">Choose Your Cloud Model</h2>
+    <p style="color:rgba(255,255,255,0.6);text-align:center;max-width:600px;margin:0 auto 48px;line-height:1.7;">Every business has different needs. DTCloudOn helps you choose the right cloud model — or a combination — to meet your goals.</p>
+    <div class="cloud-types-grid reveal">
+      <div class="cloud-type-card">
+        <div class="ct-icon">🌐</div>
+        <h3>Public Cloud</h3>
+        <p>Hosted by providers like AWS, Azure, and Google Cloud — scalable, cost-effective, and ideal for businesses that need flexibility without managing hardware.</p>
+      </div>
+      <div class="cloud-type-card">
+        <div class="ct-icon">🏢</div>
+        <h3>Private Cloud</h3>
+        <p>Dedicated infrastructure exclusively for your organization — maximum control, customization, and security for businesses with strict compliance requirements.</p>
+      </div>
+      <div class="cloud-type-card">
+        <div class="ct-icon">🔀</div>
+        <h3>Hybrid Cloud</h3>
+        <p>The best of both worlds — keep sensitive workloads on private infrastructure while leveraging public cloud for scalability, cost savings, and flexibility.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW WE MIGRATE -->
+<div class="content-section alt">
+  <div class="container">
+    <div class="section-label">Our Process</div>
+    <h2 class="section-title">How DTCloudOn Migrates Your Business to the Cloud</h2>
+    <p class="section-sub">A structured, low-risk migration approach — from assessment to optimization, with your business running smoothly at every stage.</p>
+    <div class="steps-grid reveal">
+      <div class="step-card"><div class="step-num">1</div><h3>Cloud Readiness Assessment</h3><p>We evaluate your current infrastructure, applications, and data to identify what moves to the cloud, what stays on-premises, and what gets modernized.</p></div>
+      <div class="step-card"><div class="step-num">2</div><h3>Architecture Design</h3><p>We design a cloud architecture tailored to your security, compliance, performance, and budget requirements — with a platform recommendation and cost estimate.</p></div>
+      <div class="step-card"><div class="step-num">3</div><h3>Migration Planning</h3><p>A detailed migration plan with phasing, timelines, rollback procedures, and communication plans — so your team knows exactly what to expect.</p></div>
+      <div class="step-card"><div class="step-num">4</div><h3>Secure Migration</h3><p>We execute the migration with minimal disruption — typically outside business hours — and validate everything before cutting over to the cloud environment.</p></div>
+      <div class="step-card"><div class="step-num">5</div><h3>Security Hardening</h3><p>Post-migration, we configure security controls, access policies, monitoring, and backup — ensuring your cloud environment is as secure as it is accessible.</p></div>
+      <div class="step-card"><div class="step-num">6</div><h3>Ongoing Optimization</h3><p>We continuously monitor your cloud environment, optimize costs, and keep your infrastructure current — so you always get maximum value from your cloud investment.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div class="container">
+    <h2>Ready to Move Your Business to the Cloud?</h2>
+    <p>Talk to a DTCloudOn cloud specialist — free assessment, no commitment. We'll find the right cloud solution for your business.</p>
+    <a class="btn-white" href="../contact.html">Request a Free Cloud Assessment →</a>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="../nav.js"></script>
+<script src="../utils.js"></script>
+<script>renderNav('services', '../'); renderFooter(1);</script>
+</body>
+</html>
