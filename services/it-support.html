@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Support & Helpdesk — DTCloudOn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* ── HERO ── */
+  .support-hero {
+    position: relative;
+    min-height: 62vh;
+    display: flex;
+    align-items: center;
+    background: var(--navy);
+    overflow: hidden;
+    padding: 100px 24px 80px;
+  }
+  .support-hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('../images/datacenter-1.png');
+    background-size: cover; background-position: center;
+    filter: brightness(0.22) saturate(1.1);
+  }
+  .support-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(10,22,40,0.95) 0%, rgba(14,42,90,0.5) 55%, rgba(10,22,40,0.88) 100%);
+  }
+  .support-hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(42,125,225,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42,125,225,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .support-hero .container { position: relative; z-index: 2; text-align: center; }
+  .support-hero .section-label { color: var(--sky-light); justify-content: center; display: flex; }
+  .support-hero h1 {
+    color: var(--white);
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    max-width: 760px; margin: 16px auto 20px;
+    line-height: 1.1; letter-spacing: -1px;
+  }
+  .support-hero p {
+    color: rgba(255,255,255,0.72);
+    max-width: 600px; margin: 0 auto 36px;
+    font-size: 1.1rem; line-height: 1.75;
+  }
+  .support-hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── STATS BAR ── */
+  .stats-bar { background: var(--accent); padding: 28px 24px; }
+  .stats-row {
+    max-width: 1000px; margin: 0 auto;
+    display: flex; justify-content: space-around; flex-wrap: wrap; gap: 24px;
+  }
+  .stats-bar .stat { text-align: center; color: var(--white); }
+  .stats-bar .stat-num { font-family:'Sora',sans-serif; font-size:2.2rem; font-weight:800; display:block; }
+  .stats-bar .stat-label { font-size:0.82rem; opacity:0.9; }
+
+  /* ── CONTENT SECTIONS ── */
+  .content-section { padding: 80px 24px; }
+  .content-section.alt { background: var(--off-white); }
+  .content-section.dark { background: var(--navy); }
+
+  .split-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: center;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .split-layout.reverse { direction: rtl; }
+  .split-layout.reverse > * { direction: ltr; }
+
+  .content-text h2 { font-size: clamp(1.6rem,2.5vw,2.2rem); color: var(--navy); margin-bottom: 16px; letter-spacing:-0.5px; }
+  .content-text.dark-text h2 { color: var(--white); }
+  .content-text p { color: var(--text-mid); line-height: 1.78; margin-bottom: 16px; }
+  .content-text.dark-text p { color: rgba(255,255,255,0.7); }
+  .content-text ul { list-style: none; margin: 20px 0; }
+  .content-text li {
+    padding: 10px 0; border-bottom: 1px solid rgba(10,22,40,0.07);
+    font-size: 0.92rem; color: var(--text-mid);
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .content-text.dark-text li { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.08); }
+  .content-text li::before { content:'✓'; color:var(--sky); font-weight:700; flex-shrink:0; margin-top:1px; }
+
+  .visual-panel {
+    background: var(--navy-mid); border-radius: 20px;
+    overflow: hidden; aspect-ratio: 4/3;
+    position: relative; display: flex;
+    align-items: center; justify-content: center;
+  }
+  .visual-panel img { width:100%;height:100%;object-fit:cover;opacity:0.75;display:block; }
+  .visual-panel .panel-icon { position:absolute; font-size:5rem; opacity:0.15; }
+
+  /* ── "WE WON'T LEAVE YOU HANGING" BANNER ── */
+  .promise-banner {
+    background: var(--off-white);
+    padding: 72px 24px;
+    text-align: center;
+  }
+  .promise-banner h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    color: var(--navy); margin-bottom: 16px; letter-spacing: -0.5px;
+  }
+  .promise-banner p {
+    color: var(--text-mid); max-width: 580px;
+    margin: 0 auto 32px; line-height: 1.75; font-size: 1.05rem;
+  }
+
+  /* ── SUPPORT TYPES GRID (replaces carousel) ── */
+  .support-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .support-item {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px 24px;
+    border: 1px solid rgba(10,22,40,0.07);
+    display: flex; gap: 16px; align-items: flex-start;
+    transition: all 0.25s;
+  }
+  .support-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(10,22,40,0.1);
+    border-color: rgba(42,125,225,0.2);
+  }
+  .support-item .item-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(42,125,225,0.12), rgba(42,125,225,0.04));
+    border: 1px solid rgba(42,125,225,0.15);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  .support-item h3 { font-size: 0.95rem; color: var(--navy); margin-bottom: 6px; font-weight: 700; }
+  .support-item p { font-size: 0.83rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── RESPONSE TIME CARDS ── */
+  .response-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .response-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 28px 20px;
+    text-align: center;
+  }
+  .response-card .r-icon { font-size: 2rem; margin-bottom: 12px; }
+  .response-card h3 { color: var(--white); font-size: 1rem; margin-bottom: 8px; }
+  .response-card p { font-size: 0.83rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+  .response-card .r-time {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.6rem; font-weight: 800;
+    color: var(--sky-light); display: block; margin-bottom: 8px;
+  }
+
+  /* ── PROCESS STEPS ── */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .step-card {
+    background: var(--white); border-radius: 16px;
+    padding: 32px 24px; border: 1px solid rgba(10,22,40,0.08);
+    transition: all 0.3s;
+  }
+  .step-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,22,40,0.1); }
+  .step-num {
+    width: 40px; height: 40px; background: var(--accent); color: var(--white);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: 'Sora',sans-serif; font-weight: 800; font-size: 1rem; margin-bottom: 16px;
+  }
+  .step-card h3 { font-size: 1rem; color: var(--navy); margin-bottom: 10px; }
+  .step-card p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
+
+  @media(max-width:900px){
+    .split-layout { grid-template-columns:1fr; gap:32px; }
+    .split-layout.reverse { direction:ltr; }
+    .stats-row { justify-content:center; }
+  }
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="container" style="max-width:1300px;margin:0 auto;">
+    <a href="../index.html">Home</a>
+    <span>›</span>
+    <a href="#">IT Services</a>
+    <span>›</span>
+    IT Support &amp; Helpdesk
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="support-hero">
+  <div class="support-hero-bg"></div>
+  <div class="support-hero-overlay"></div>
+  <div class="support-hero-grid"></div>
+  <div class="container">
+    <div class="section-label">IT SUPPORT</div>
+    <h1>We Won't Leave You Hanging</h1>
+    <p>Real-time IT fixes are a call or click away. DTCloudOn delivers responsive, expert helpdesk support that keeps your team productive — no matter the issue, no matter the hour.</p>
+    <div class="support-hero-btns">
+      <a class="btn-primary" href="../contact.html">Request IT Support →</a>
+      <a class="btn-outline" href="../contact.html">Speak with an IT specialist &rsaquo;</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">&lt;1 hr</span><span class="stat-label">Average first response time</span></div>
+    <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Emergency support availability</span></div>
+    <div class="stat"><span class="stat-num">95%</span><span class="stat-label">First-call resolution rate</span></div>
+    <div class="stat"><span class="stat-num">Remote &amp; Onsite</span><span class="stat-label">Support delivery options</span></div>
+  </div>
+</div>
+
+<!-- PROMISE BANNER -->
+<div class="promise-banner">
+  <h2>IT Problems Solved. Fast.</h2>
+  <p>Whether it's a password reset at 7am or a server crash at midnight, DTCloudOn is ready. Our helpdesk team handles everything from routine maintenance to complex system issues — so your people can stay focused on what matters.</p>
+  <a class="btn-primary" href="../contact.html">Get IT Support Today →</a>
+</div>
+
+<!-- WHAT WE SUPPORT -->
+<div class="content-section">
+  <div class="split-layout reveal">
+    <div class="content-text">
+      <div class="section-label">Full-Spectrum Support</div>
+      <h2>IT Support That Scales With Your Business</h2>
+      <p>From a single user with a broken laptop to an organization-wide outage, DTCloudOn has the depth and breadth to handle it. Our support tiers ensure the right expert is always on your issue.</p>
+      <p>We don't just fix problems — we document them, analyze patterns, and proactively prevent recurrence. Every ticket drives improvement.</p>
+      <ul>
+        <li>Remote support via phone, email, chat, and screen share</li>
+        <li>On-site dispatch for issues requiring physical presence</li>
+        <li>Hardware and software troubleshooting</li>
+        <li>Network connectivity and VPN issues</li>
+        <li>Email and collaboration tool support (M365, Google Workspace)</li>
+        <li>Printer, peripheral, and device configuration</li>
+        <li>New employee onboarding and device setup</li>
+        <li>User account management and password resets</li>
+      </ul>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">🖥️</div>
+      <img src="../images/datacenter-2.png" alt="IT Support" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- SUPPORT TYPES GRID -->
+<div class="content-section alt">
+  <div class="container">
+    <div class="section-label">What We Cover</div>
+    <h2 class="section-title">Every Type of IT Support, Under One Roof</h2>
+    <p class="section-sub">No more calling three different vendors for three different problems. DTCloudOn handles it all.</p>
+    <div class="support-grid reveal">
+      <div class="support-item">
+        <div class="item-icon">🔧</div>
+        <div><h3>Routine Maintenance</h3><p>Daily IT tasks made easier — password resets, software updates, new employee onboarding, common login issues, and basic troubleshooting handled fast.</p></div>
+      </div>
+      <div class="support-item">
+        <div class="item-icon">🚀</div>
+        <div><h3>High-Level Assistance</h3><p>Scales up to advanced support for larger system issues — cyberattack prevention, ransomware mitigation, system failures, and complex infrastructure problems.</p></div>
+      </div>
+      <div class="support-item">
+        <div class="item-icon">🌐</div>
+        <div><h3>Remote Access Support</h3><p>No matter where your employees work, we make it easy to access business applications and data — anticipating access needs and answering requests even during unconventional hours.</p></div>
+      </div>
+      <div class="support-item">
+        <div class="item-icon">🏢</div>
+        <div><h3>Nationwide Scale</h3><p>Our network of technicians and network operations center staff across North America provides on-call desktop support, system troubleshooting, and incident response wherever you need it.</p></div>
+      </div>
+      <div class="support-item">
+        <div class="item-icon">🎯</div>
+        <div><h3>Customized Support</h3><p>If your employees routinely submit quick requests, we route them to the best technician for the job. Complex issues go to senior specialists — the right expert, every time.</p></div>
+      </div>
+      <div class="support-item">
+        <div class="item-icon">🔮</div>
+        <div><h3>Proactive Approach</h3><p>DTCloudOn doesn't wait for problems to occur. We use proactive IT monitoring and maintenance to anticipate issues and resolve them before they disrupt your business.</p></div>
+      </div>
+      <div class="support-item">
+        <div class="item-icon">💻</div>
+        <div><h3>Device &amp; Endpoint Management</h3><p>Full lifecycle management for laptops, desktops, mobile devices, and servers — from procurement and setup to patching, monitoring, and retirement.</p></div>
+      </div>
+      <div class="support-item">
+        <div class="item-icon">🔄</div>
+        <div><h3>Software &amp; Application Support</h3><p>Troubleshooting and support for your business applications — Microsoft 365, Google Workspace, line-of-business apps, ERP systems, and more.</p></div>
+      </div>
+      <div class="support-item">
+        <div class="item-icon">👤</div>
+        <div><h3>User Onboarding &amp; Offboarding</h3><p>Streamlined IT setup for new hires and secure account deprovisioning for departing employees — protecting your data at every transition.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESPONSE TIME: DARK SECTION -->
+<div class="content-section dark">
+  <div class="container">
+    <div class="section-label" style="color:var(--sky-light); text-align:center;">Our Response Commitment</div>
+    <h2 class="section-title" style="color:var(--white); text-align:center; margin-bottom:48px;">Fast. Reliable. Accountable.</h2>
+    <div class="response-grid reveal">
+      <div class="response-card">
+        <div class="r-icon">🔴</div>
+        <span class="r-time">&lt;15 min</span>
+        <h3>Critical Issues</h3>
+        <p>System outages, security incidents, and complete service failures — immediate response guaranteed</p>
+      </div>
+      <div class="response-card">
+        <div class="r-icon">🟠</div>
+        <span class="r-time">&lt;1 hour</span>
+        <h3>High Priority</h3>
+        <p>Major functionality impaired, multiple users affected, business operations significantly disrupted</p>
+      </div>
+      <div class="response-card">
+        <div class="r-icon">🟡</div>
+        <span class="r-time">&lt;4 hours</span>
+        <h3>Standard Issues</h3>
+        <p>Single user impacted, workaround available, non-urgent software or hardware problems</p>
+      </div>
+      <div class="response-card">
+        <div class="r-icon">🟢</div>
+        <span class="r-time">Next Day</span>
+        <h3>Low Priority</h3>
+        <p>General questions, minor cosmetic issues, non-urgent requests and how-to inquiries</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="content-section alt">
+  <div class="container">
+    <div class="section-label">Our Process</div>
+    <h2 class="section-title">How DTCloudOn IT Support Works</h2>
+    <p class="section-sub">Simple to engage, fast to resolve — here's what happens from the moment you reach out.</p>
+    <div class="steps-grid reveal">
+      <div class="step-card"><div class="step-num">1</div><h3>Submit a Ticket</h3><p>Call, email, chat, or use our self-service portal — whatever works for you. We make it easy to reach us the way you prefer.</p></div>
+      <div class="step-card"><div class="step-num">2</div><h3>Instant Triage</h3><p>Your issue is immediately categorized by severity and routed to the right technician for the job — no bouncing around between teams.</p></div>
+      <div class="step-card"><div class="step-num">3</div><h3>Remote Resolution</h3><p>Most issues are resolved remotely within minutes. Our technicians use secure screen sharing and remote access tools to fix problems fast.</p></div>
+      <div class="step-card"><div class="step-num">4</div><h3>On-Site Dispatch (if needed)</h3><p>When remote resolution isn't possible, we dispatch a technician to your location — quickly and without the runaround.</p></div>
+      <div class="step-card"><div class="step-num">5</div><h3>Resolution &amp; Documentation</h3><p>Every ticket is fully documented — what happened, what was done, and how to prevent it. Knowledge builds over time.</p></div>
+      <div class="step-card"><div class="step-num">6</div><h3>Follow-Up &amp; Prevention</h3><p>We follow up to confirm you're satisfied and analyze ticket patterns to proactively prevent the same issue from happening again.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY DTCLOUDON SUPPORT -->
+<div class="content-section">
+  <div class="split-layout reverse reveal">
+    <div class="content-text">
+      <div class="section-label">Why DTCloudOn</div>
+      <h2>IT Support That Actually Feels Like Support</h2>
+      <p>Too many IT support experiences feel like dead ends — long hold times, scripted responses, and tickets that disappear into a void. DTCloudOn is different.</p>
+      <p>We assign a dedicated support team that knows your environment, your users, and your business. No starting from scratch every time you call.</p>
+      <ul>
+        <li>Named support team — familiar faces, not random agents</li>
+        <li>No ticket black holes — real-time status updates</li>
+        <li>Plain-English communication — no jargon, no confusion</li>
+        <li>Proactive monitoring catches issues before you do</li>
+        <li>Transparent SLAs — we're accountable to response times</li>
+        <li>Satisfaction follow-up on every resolved ticket</li>
+      </ul>
+      <a class="btn-primary" href="../contact.html" style="margin-top:8px;">Get IT Support →</a>
+    </div>
+    <div class="visual-panel" style="background:var(--navy-mid);">
+      <div class="panel-icon">🤝</div>
+      <img src="../images/datacenter-3.png" alt="IT Support Team" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div class="container">
+    <h2>IT Problems Shouldn't Slow Your Business Down.</h2>
+    <p>Get responsive, expert IT support from DTCloudOn — remote and on-site, available when you need it.</p>
+    <a class="btn-white" href="../contact.html">Request IT Support Today →</a>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="../nav.js"></script>
+<script src="../utils.js"></script>
+<script>renderNav('services', '../'); renderFooter(1);</script>
+</body>
+</html>
