@@ -3,1628 +3,259 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DataCloudOn — Enterprise IT & Cybersecurity Solutions</title>
+<title>DTCloudOn — Enterprise IT & Cybersecurity Solutions</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <style>
-  :root {
-    --navy: #0a1628;
-    --navy-mid: #0d1f3c;
-    --blue-deep: #0e2a5a;
-    --accent: #e84a2f;
-    --accent-hover: #c93d24;
-    --sky: #2a7de1;
-    --sky-light: #4a9af5;
-    --white: #ffffff;
-    --off-white: #f0f4fb;
-    --gray: #8a9ab5;
-    --text-dark: #1a2640;
-    --text-mid: #3d5275;
-    --border: rgba(42, 125, 225, 0.2);
-    --glass: rgba(10, 22, 40, 0.7);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--white);
-    color: var(--text-dark);
-    overflow-x: hidden;
-  }
-
-  h1, h2, h3, h4, h5 { font-family: 'Sora', sans-serif; }
-
-  /* ── TOP BAR ── */
-  .topbar {
-    background: var(--navy);
-    color: var(--gray);
-    font-size: 0.8rem;
-    text-align: center;
-    padding: 8px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .topbar a { color: var(--sky-light); text-decoration: none; }
-  .topbar .location { display: flex; align-items: center; gap: 6px; }
-
-  /* ── NAV ── */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: var(--navy-mid);
-    border-bottom: 1px solid var(--border);
-    backdrop-filter: blur(12px);
-  }
-  .nav-inner {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 68px;
-  }
-  .logo {
-    font-family: 'Sora', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--white);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    letter-spacing: -0.5px;
-  }
-  .logo span { color: var(--accent); }
-  .logo-dot { width: 8px; height: 8px; background: var(--sky); border-radius: 50%; display: inline-block; margin: 0 2px; }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    list-style: none;
-  }
-  .nav-links > li { position: relative; }
-  .nav-links > li > a {
-    color: rgba(255,255,255,0.85);
-    text-decoration: none;
-    font-size: 0.88rem;
-    font-weight: 500;
-    padding: 8px 14px;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: all 0.2s;
-    cursor: pointer;
-  }
-  .nav-links > li > a:hover, .nav-links > li > a.active {
-    color: var(--white);
-    background: rgba(42,125,225,0.15);
-  }
-  .nav-links .chevron {
-    font-size: 0.7rem;
-    transition: transform 0.2s;
-  }
-  .nav-links > li:hover .chevron { transform: rotate(180deg); }
-
-  /* Dropdown */
-  .dropdown {
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
-    background: var(--accent);
-    border-radius: 8px;
-    min-width: 260px;
-    padding: 8px 0;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-8px);
-    transition: all 0.2s;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-    z-index: 100;
-  }
-  .nav-links > li:hover .dropdown {
-    opacity: 1;
-    pointer-events: all;
-    transform: translateY(0);
-  }
-  .dropdown a {
-    display: block;
-    color: var(--white) !important;
-    padding: 9px 20px !important;
-    font-size: 0.88rem !important;
-    background: transparent !important;
-    border-radius: 0 !important;
-    transition: background 0.15s !important;
-  }
-  .dropdown a:hover { background: rgba(0,0,0,0.2) !important; }
-
-  .nav-cta {
-    background: var(--accent);
-    color: var(--white) !important;
-    padding: 10px 22px !important;
-    border-radius: 50px !important;
-    font-weight: 600 !important;
-    font-size: 0.88rem;
-    transition: background 0.2s !important;
-  }
-  .nav-cta:hover { background: var(--accent-hover) !important; }
-
-  /* ── PAGES ── */
-  .page { display: none; }
-  .page.active { display: block; }
-
-  /* ── HERO ── */
+  /* ── HOME HERO ── */
   .hero {
     position: relative;
-    min-height: 88vh;
+    min-height: 90vh;
     display: flex;
     align-items: center;
     overflow: hidden;
     background: var(--navy);
   }
   .hero-video-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
     object-fit: cover;
     filter: brightness(0.32) saturate(1.3);
     z-index: 0;
   }
-
   .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(10,22,40,0.88) 0%, rgba(14,42,90,0.55) 50%, rgba(10,22,40,0.78) 100%);
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(10,22,40,0.88) 0%, rgba(14,42,90,0.5) 50%, rgba(10,22,40,0.78) 100%);
     z-index: 1;
   }
   .hero-grid {
-    position: absolute;
-    inset: 0;
-    background-image: 
-      linear-gradient(rgba(42,125,225,0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(42,125,225,0.08) 1px, transparent 1px);
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(42,125,225,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42,125,225,0.07) 1px, transparent 1px);
     background-size: 60px 60px;
     animation: gridPulse 4s ease-in-out infinite;
     z-index: 2;
   }
-  @keyframes gridPulse { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
-
+  @keyframes gridPulse { 0%,100%{opacity:.5} 50%{opacity:1} }
   .hero-content {
-    position: relative;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 24px;
-    width: 100%;
-    z-index: 3;
+    position: relative; z-index: 3;
+    max-width: 1300px; margin: 0 auto;
+    padding: 0 24px; width: 100%;
   }
   .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    display: inline-flex; align-items: center; gap: 8px;
     background: rgba(42,125,225,0.2);
     border: 1px solid rgba(42,125,225,0.4);
     color: var(--sky-light);
-    padding: 6px 16px;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    padding: 6px 16px; border-radius: 50px;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
     margin-bottom: 24px;
     animation: fadeUp 0.6s ease both;
   }
-  .hero-badge .dot { width: 6px; height: 6px; background: var(--sky-light); border-radius: 50%; animation: blink 1.5s infinite; }
-  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
-
+  .hero-badge .dot { width:6px;height:6px;background:var(--sky-light);border-radius:50%;animation:blink 1.5s infinite; }
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
   .hero h1 {
-    font-size: clamp(2.4rem, 5vw, 4rem);
-    font-weight: 800;
-    color: var(--white);
-    line-height: 1.1;
-    max-width: 750px;
-    margin-bottom: 20px;
+    font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800;
+    color: var(--white); line-height: 1.1; max-width: 750px;
+    margin-bottom: 20px; letter-spacing: -1px;
     animation: fadeUp 0.6s 0.1s ease both;
-    letter-spacing: -1px;
   }
-  .hero h1 em {
-    font-style: normal;
-    color: var(--sky-light);
-    position: relative;
-  }
-  .hero p {
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.7);
-    max-width: 560px;
-    line-height: 1.7;
-    margin-bottom: 36px;
+  .hero h1 em { font-style: normal; color: var(--sky-light); }
+  .hero > .hero-content > p {
+    font-size: 1.1rem; color: rgba(255,255,255,0.7);
+    max-width: 560px; line-height: 1.7; margin-bottom: 36px;
     animation: fadeUp 0.6s 0.2s ease both;
   }
-  .hero-btns {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    animation: fadeUp 0.6s 0.3s ease both;
-  }
-  .btn-primary {
-    background: var(--accent);
-    color: var(--white);
-    padding: 14px 32px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(232,74,47,0.4); }
-  .btn-outline {
-    background: transparent;
-    color: var(--white);
-    padding: 14px 32px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.35);
-    cursor: pointer;
-    transition: all 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .btn-outline:hover { border-color: var(--sky-light); color: var(--sky-light); transform: translateY(-2px); }
-
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
   .hero-stats {
-    position: absolute;
-    bottom: 40px;
-    right: 24px;
-    display: flex;
-    gap: 32px;
+    position: absolute; bottom: 40px; right: 24px;
+    display: flex; gap: 32px; z-index: 3;
     animation: fadeUp 0.6s 0.5s ease both;
-    z-index: 3;
   }
-  .stat {
-    text-align: center;
-    color: var(--white);
-  }
-  .stat-num { font-family: 'Sora', sans-serif; font-size: 2rem; font-weight: 800; color: var(--sky-light); display: block; }
-  .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.6); }
+  .stat { text-align: center; }
+  .stat-num { font-family:'Sora',sans-serif; font-size:2rem; font-weight:800; color:var(--sky-light); display:block; }
+  .stat-label { font-size:0.78rem; color:rgba(255,255,255,0.6); }
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-
-  /* ── SECTION STYLES ── */
-  section { padding: 80px 24px; }
-  .container { max-width: 1300px; margin: 0 auto; }
-  .section-label {
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--sky);
-    margin-bottom: 12px;
-  }
-  .section-title {
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    font-weight: 800;
-    color: var(--navy);
-    line-height: 1.2;
-    margin-bottom: 16px;
-    letter-spacing: -0.5px;
-  }
-  .section-sub {
-    color: var(--text-mid);
-    font-size: 1.05rem;
-    line-height: 1.7;
-    max-width: 620px;
-    margin-bottom: 52px;
-  }
-
-  /* ── SERVICES GRID ── */
-  .services-bg { background: var(--off-white); }
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px;
-  }
-  .service-card {
-    background: var(--white);
-    border: 1px solid rgba(10,22,40,0.08);
-    border-radius: 16px;
-    padding: 32px 28px;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .service-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--sky), var(--accent));
-    transform: scaleX(0);
-    transition: transform 0.3s;
-    transform-origin: left;
-  }
-  .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(10,22,40,0.12); border-color: transparent; }
-  .service-card:hover::before { transform: scaleX(1); }
-  .service-icon {
-    width: 52px; height: 52px;
-    background: linear-gradient(135deg, rgba(42,125,225,0.12), rgba(42,125,225,0.05));
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-    border: 1px solid rgba(42,125,225,0.15);
-  }
-  .service-card h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 10px;
-  }
-  .service-card p {
-    font-size: 0.88rem;
-    color: var(--text-mid);
-    line-height: 1.65;
-  }
-  .service-card .card-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--sky);
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-top: 16px;
-    text-decoration: none;
-    transition: gap 0.2s;
-  }
-  .service-card:hover .card-link { gap: 10px; }
-
-  /* ── INDUSTRIES ── */
+  /* ── INDUSTRIES CHIPS ── */
   .industries-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 16px;
   }
   .industry-chip {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px 16px;
-    text-align: center;
-    transition: all 0.2s;
-    cursor: pointer;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    transition: all 0.2s; cursor: pointer; text-decoration: none;
+    display: block;
   }
   .industry-chip:hover {
-    background: var(--navy);
-    color: var(--white);
-    border-color: var(--navy);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(10,22,40,0.15);
+    background: var(--navy); border-color: var(--navy);
+    transform: translateY(-3px); box-shadow: 0 10px 30px rgba(10,22,40,0.15);
   }
   .industry-chip .icon { font-size: 1.8rem; margin-bottom: 10px; }
   .industry-chip p { font-size: 0.82rem; font-weight: 600; color: var(--text-mid); transition: color 0.2s; }
-  .industry-chip:hover p { color: rgba(255,255,255,0.8); }
+  .industry-chip:hover p { color: rgba(255,255,255,0.85); }
 
   /* ── WHY US ── */
   .why-bg { background: var(--navy); position: relative; overflow: hidden; }
-  .why-bg::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('/mnt/user-data/uploads/Gen-4_-_Create_a_modern_professional_website_hero_background_for_a_network_engineering_and_IT_servic.png');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.08;
-  }
-  .why-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
-    position: relative;
-  }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; }
   .why-left .section-title { color: var(--white); }
   .why-left .section-sub { color: rgba(255,255,255,0.65); margin-bottom: 36px; }
   .why-points { display: flex; flex-direction: column; gap: 20px; }
-  .why-point {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-  }
+  .why-point { display: flex; gap: 16px; align-items: flex-start; }
   .why-icon {
-    width: 44px; height: 44px;
-    background: rgba(42,125,225,0.2);
-    border: 1px solid rgba(42,125,225,0.3);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    flex-shrink: 0;
+    width:44px;height:44px;background:rgba(42,125,225,0.2);border:1px solid rgba(42,125,225,0.3);
+    border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;
   }
-  .why-point h4 { color: var(--white); font-size: 0.95rem; margin-bottom: 4px; }
-  .why-point p { color: rgba(255,255,255,0.6); font-size: 0.85rem; line-height: 1.6; }
+  .why-point h4 { color:var(--white);font-size:0.95rem;margin-bottom:4px; }
+  .why-point p { color:rgba(255,255,255,0.6);font-size:0.85rem;line-height:1.6; }
+  .why-right { background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:20px;overflow:hidden; }
+  .why-right img { width:100%;height:420px;object-fit:cover;display:block;opacity:0.85; }
 
-  .why-right {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 20px;
-    overflow: hidden;
+  @media(max-width:900px) {
+    .why-grid { grid-template-columns: 1fr; }
+    .hero-stats { position: static; margin-top: 40px; }
   }
-  .why-right img {
-    width: 100%;
-    height: 420px;
-    object-fit: cover;
-    display: block;
-    opacity: 0.85;
-  }
-
-  /* ── CONTACT PAGE ── */
-  .contact-hero {
-    background: var(--navy-mid);
-    padding: 80px 24px 60px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .contact-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('/mnt/user-data/uploads/Gen-4_-_Create_a_modern_professional_website_hero_background_for_a_network_engineering_and_IT_servic__1_.png');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.1;
-  }
-  .contact-hero h1 { color: var(--white); font-size: clamp(2rem, 4vw, 3rem); position: relative; }
-  .contact-hero p { color: rgba(255,255,255,0.65); max-width: 540px; margin: 16px auto 0; line-height: 1.7; position: relative; }
-
-  .contact-layout {
-    display: grid;
-    grid-template-columns: 1fr 1.6fr;
-    gap: 48px;
-    max-width: 1100px;
-    margin: -40px auto 0;
-    padding: 0 24px 80px;
-    position: relative;
-    z-index: 2;
-  }
-  .contact-info-card {
-    background: var(--navy);
-    border-radius: 20px;
-    padding: 40px 32px;
-    color: var(--white);
-    align-self: start;
-  }
-  .contact-info-card h3 { font-size: 1.2rem; margin-bottom: 24px; }
-  .contact-item {
-    display: flex;
-    gap: 14px;
-    margin-bottom: 24px;
-    align-items: flex-start;
-  }
-  .contact-item-icon {
-    width: 40px; height: 40px;
-    background: rgba(42,125,225,0.2);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 1rem;
-  }
-  .contact-item h5 { font-size: 0.78rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-  .contact-item p { font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.5; }
-
-  .services-checklist {
-    margin-top: 32px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 24px;
-  }
-  .services-checklist h4 { font-size: 0.85rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
-
-  .contact-form-card {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 48px 44px;
-    box-shadow: 0 30px 80px rgba(10,22,40,0.12);
-    border: 1px solid rgba(10,22,40,0.06);
-  }
-  .contact-form-card h2 { font-size: 1.6rem; color: var(--navy); margin-bottom: 6px; }
-  .contact-form-card > p { color: var(--text-mid); font-size: 0.9rem; margin-bottom: 32px; }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .form-group { margin-bottom: 20px; }
-  .form-group label {
-    display: block;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1.5px solid rgba(10,22,40,0.12);
-    border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.92rem;
-    color: var(--text-dark);
-    transition: border-color 0.2s, box-shadow 0.2s;
-    background: var(--off-white);
-    outline: none;
-  }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    border-color: var(--sky);
-    box-shadow: 0 0 0 3px rgba(42,125,225,0.12);
-    background: var(--white);
-  }
-  .form-group textarea { height: 130px; resize: vertical; }
-
-  .checkbox-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .checkbox-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 14px;
-    border: 1.5px solid rgba(10,22,40,0.1);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s;
-    background: var(--off-white);
-  }
-  .checkbox-item:hover { border-color: var(--sky); background: rgba(42,125,225,0.05); }
-  .checkbox-item input[type="checkbox"] { accent-color: var(--sky); width: 16px; height: 16px; }
-  .checkbox-item span { font-size: 0.83rem; font-weight: 500; color: var(--text-dark); }
-  .checkbox-item.checked { border-color: var(--sky); background: rgba(42,125,225,0.08); }
-
-  .form-submit {
-    background: var(--accent);
-    color: var(--white);
-    width: 100%;
-    padding: 16px;
-    border: none;
-    border-radius: 50px;
-    font-family: 'Sora', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-    margin-top: 12px;
-    letter-spacing: 0.3px;
-  }
-  .form-submit:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 14px 36px rgba(232,74,47,0.35); }
-
-  .success-msg {
-    display: none;
-    text-align: center;
-    padding: 40px;
-  }
-  .success-msg .check { font-size: 3rem; margin-bottom: 16px; }
-  .success-msg h3 { color: var(--navy); margin-bottom: 8px; }
-  .success-msg p { color: var(--text-mid); }
-
-  /* ── ABOUT PAGE ── */
-  .about-hero {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--blue-deep) 100%);
-    padding: 100px 24px 80px;
-    position: relative;
-    overflow: hidden;
-  }
-  .about-hero::after {
-    content: '';
-    position: absolute;
-    right: -100px;
-    top: -100px;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(42,125,225,0.15) 0%, transparent 70%);
-  }
-  .about-hero-inner { max-width: 1300px; margin: 0 auto; position: relative; z-index: 1; }
-  .about-hero h1 { color: var(--white); font-size: clamp(2rem, 4vw, 3.2rem); max-width: 700px; line-height: 1.15; margin-bottom: 20px; }
-  .about-hero p { color: rgba(255,255,255,0.7); max-width: 560px; line-height: 1.75; font-size: 1.05rem; }
-
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 64px;
-    align-items: center;
-    padding: 80px 24px;
-    max-width: 1300px;
-    margin: 0 auto;
-  }
-  .about-text h2 { font-size: 2rem; color: var(--navy); margin-bottom: 20px; letter-spacing: -0.5px; }
-  .about-text p { color: var(--text-mid); line-height: 1.75; margin-bottom: 16px; }
-  .about-img {
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 30px 80px rgba(10,22,40,0.15);
-  }
-  .about-img img { width: 100%; height: 480px; object-fit: cover; display: block; }
-
-  .values-section { background: var(--off-white); }
-  .values-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 0;
-  }
-  .value-card {
-    background: var(--white);
-    border-radius: 16px;
-    padding: 32px 28px;
-    border: 1px solid rgba(10,22,40,0.07);
-    transition: all 0.3s;
-  }
-  .value-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,22,40,0.1); }
-  .value-card .val-icon { font-size: 2rem; margin-bottom: 16px; }
-  .value-card h3 { font-size: 1.1rem; color: var(--navy); margin-bottom: 10px; }
-  .value-card p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.65; }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--navy);
-    color: rgba(255,255,255,0.6);
-    padding: 64px 24px 32px;
-  }
-  .footer-grid {
-    max-width: 1300px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 48px;
-    margin-bottom: 48px;
-  }
-  .footer-brand .logo { margin-bottom: 16px; display: flex; }
-  .footer-brand p { font-size: 0.85rem; line-height: 1.7; max-width: 280px; }
-  .footer-col h4 { color: var(--white); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
-  .footer-col ul { list-style: none; }
-  .footer-col li { margin-bottom: 10px; }
-  .footer-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; cursor: pointer; }
-  .footer-col a:hover { color: var(--sky-light); }
-  .footer-bottom {
-    max-width: 1300px;
-    margin: 0 auto;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding-top: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.82rem;
-  }
-
-  /* ── SERVICES PAGE ── */
-  .services-page-hero {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--blue-deep) 60%, var(--navy-mid) 100%);
-    padding: 90px 24px 70px;
-    position: relative;
-    overflow: hidden;
-  }
-  .services-page-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('/mnt/user-data/uploads/Gen-4_-_Create_a_modern_professional_website_hero_background_for_a_network_engineering_and_IT_servic__1_.png');
-    background-size: cover;
-    opacity: 0.07;
-  }
-  .services-page-hero h1 { color: var(--white); font-size: clamp(2rem, 4vw, 3rem); position: relative; }
-  .services-page-hero p { color: rgba(255,255,255,0.65); max-width: 580px; margin-top: 16px; line-height: 1.7; position: relative; }
-
-  .service-detail {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    padding: 72px 24px;
-    max-width: 1300px;
-    margin: 0 auto;
-  }
-  .service-detail.reverse { direction: rtl; }
-  .service-detail.reverse > * { direction: ltr; }
-  .service-detail-alt { background: var(--off-white); }
-  .service-detail-content h2 { font-size: 1.8rem; color: var(--navy); margin-bottom: 16px; letter-spacing: -0.5px; }
-  .service-detail-content p { color: var(--text-mid); line-height: 1.75; margin-bottom: 20px; }
-  .service-detail-content ul { list-style: none; }
-  .service-detail-content li {
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(10,22,40,0.06);
-    font-size: 0.9rem;
-    color: var(--text-mid);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .service-detail-content li::before { content: '✓'; color: var(--sky); font-weight: 700; }
-  .service-visual {
-    background: var(--navy);
-    border-radius: 20px;
-    overflow: hidden;
-    aspect-ratio: 4/3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-  .service-visual img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
-  .service-visual-icon {
-    position: absolute;
-    font-size: 4rem;
-    opacity: 0.3;
-  }
-
-  /* ── INDUSTRIES PAGE ── */
-  .industries-page .industry-card {
-    background: var(--white);
-    border: 1px solid rgba(10,22,40,0.08);
-    border-radius: 16px;
-    padding: 36px 28px;
-    transition: all 0.3s;
-  }
-  .industries-page .industry-card:hover {
-    background: var(--navy);
-    border-color: var(--navy);
-    transform: translateY(-5px);
-    box-shadow: 0 20px 50px rgba(10,22,40,0.2);
-  }
-  .industries-page .industry-card:hover h3,
-  .industries-page .industry-card:hover p { color: rgba(255,255,255,0.85); }
-  .industries-page .industry-card .ind-icon { font-size: 2rem; margin-bottom: 16px; }
-  .industries-page .industry-card h3 { font-size: 1rem; color: var(--navy); margin-bottom: 10px; transition: color 0.3s; }
-  .industries-page .industry-card p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; transition: color 0.3s; }
-  .industries-big-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 20px;
-  }
-
-  /* ── SCROLL ANIMATIONS ── */
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* ── CTA STRIP ── */
-  .cta-strip {
-    background: linear-gradient(135deg, var(--accent) 0%, #c0392b 100%);
-    padding: 64px 24px;
-    text-align: center;
-  }
-  .cta-strip h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--white); margin-bottom: 16px; }
-  .cta-strip p { color: rgba(255,255,255,0.8); margin-bottom: 32px; font-size: 1rem; }
-  .cta-strip .btn-white {
-    background: var(--white);
-    color: var(--accent);
-    padding: 14px 36px;
-    border-radius: 50px;
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 0.95rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.2s;
-    cursor: pointer;
-    border: none;
-  }
-  .cta-strip .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
 </style>
 </head>
 <body>
+<div id="nav-placeholder"></div>
 
-<!-- TOP BAR -->
-<div class="topbar">
-  <div class="location">📍 Serving Businesses Nationwide &amp; Globally</div>
-  <div>
-    <span>📞 <a href="tel:+18005550000">(800) 555-0000</a></span>
-    &nbsp;&nbsp;|&nbsp;&nbsp;
-    <span>✉ <a href="mailto:info@datacloudon.com">info@datacloudon.com</a></span>
+<!-- HERO -->
+<div class="hero">
+  <video class="hero-video-bg" autoplay muted loop playsinline preload="auto">
+    <source src="hero-bg.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span> Enterprise-Grade IT Solutions</div>
+    <h1>Secure, Connected &amp; <em>Cloud-Ready</em> Infrastructure</h1>
+    <p>DTCloudOn delivers end-to-end network engineering, cybersecurity, managed detection, cloud services, and data protection — tailored for your business at any scale.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="contact.html">Get a Free Assessment →</a>
+      <a class="btn-outline" href="services/mdr.html">Explore Services</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">99.9%</span><span class="stat-label">Uptime SLA</span></div>
+    <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">SOC Monitoring</span></div>
+    <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Industries Served</span></div>
   </div>
 </div>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a class="logo" onclick="showPage('home')">
-      Data<span>Cloud</span><div class="logo-dot"></div>On
-    </a>
-    <ul class="nav-links">
-      <li>
-        <a onclick="showPage('services')">IT Services <span class="chevron">▾</span></a>
-        <div class="dropdown">
-          <a onclick="showPage('services')">Managed Detection &amp; Response (MDR)</a>
-          <a onclick="showPage('services')">Cybersecurity</a>
-          <a onclick="showPage('services')">IT Support</a>
-          <a onclick="showPage('services')">Managed Services</a>
-          <a onclick="showPage('services')">Productivity Applications</a>
-          <a onclick="showPage('services')">Cloud Services</a>
-          <a onclick="showPage('services')">IT Network Support</a>
-          <a onclick="showPage('services')">Data Backup &amp; Recovery</a>
-          <a onclick="showPage('services')">Compliance</a>
-          <a onclick="showPage('services')">CMMC Compliance</a>
-          <a onclick="showPage('services')">Unified Communications</a>
-          <a onclick="showPage('services')">IT Guidance</a>
-          <a onclick="showPage('services')">IT Procurement</a>
-          <a onclick="showPage('services')">Packages</a>
-        </div>
-      </li>
-      <li>
-        <a onclick="showPage('industries')">Industries <span class="chevron">▾</span></a>
-        <div class="dropdown">
-          <a onclick="showPage('industries')">Accounting</a>
-          <a onclick="showPage('industries')">Architects</a>
-          <a onclick="showPage('industries')">Construction</a>
-          <a onclick="showPage('industries')">Education</a>
-          <a onclick="showPage('industries')">Engineering</a>
-          <a onclick="showPage('industries')">Finance</a>
-          <a onclick="showPage('industries')">Franchises</a>
-          <a onclick="showPage('industries')">Government</a>
-          <a onclick="showPage('industries')">Healthcare</a>
-          <a onclick="showPage('industries')">Hospitality</a>
-          <a onclick="showPage('industries')">Insurance</a>
-          <a onclick="showPage('industries')">Legal</a>
-          <a onclick="showPage('industries')">Logistics</a>
-          <a onclick="showPage('industries')">Manufacturing</a>
-          <a onclick="showPage('industries')">Non-Profit</a>
-          <a onclick="showPage('industries')">Professional Services</a>
-          <a onclick="showPage('industries')">Real Estate</a>
-          <a onclick="showPage('industries')">Retail</a>
-        </div>
-      </li>
-      <li><a onclick="showPage('about')">About</a></li>
-      <li><a onclick="showPage('contact')" class="nav-cta">Contact Us</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- ════════════════════════════════════
-     HOME PAGE
-════════════════════════════════════ -->
-<div id="page-home" class="page active">
-
-  <!-- HERO -->
-  <div class="hero">
-    <video class="hero-video-bg" autoplay muted loop playsinline preload="auto">
-      <source src="hero-bg.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-content">
-      <div class="hero-badge"><span class="dot"></span> Enterprise-Grade IT Solutions</div>
-      <h1>Secure, Connected &amp; <em>Cloud-Ready</em> Infrastructure</h1>
-      <p>DataCloudOn delivers end-to-end network engineering, cybersecurity, managed detection, cloud services, and data protection — tailored for your business at any scale.</p>
-      <div class="hero-btns">
-        <button class="btn-primary" onclick="showPage('contact')">Get a Free Assessment →</button>
-        <button class="btn-outline" onclick="showPage('services')">Explore Services</button>
-      </div>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><span class="stat-num">99.9%</span><span class="stat-label">Uptime SLA</span></div>
-      <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">SOC Monitoring</span></div>
-      <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Industries Served</span></div>
+<!-- SERVICES SNAPSHOT -->
+<section class="services-bg">
+  <div class="container">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Comprehensive IT Services<br>Under One Roof</h2>
+    <p class="section-sub">From securing your network perimeter to backing up your last byte of data — DTCloudOn has every layer of your IT covered.</p>
+    <div class="services-grid reveal">
+      <a class="service-card" href="services/mdr.html">
+        <div class="service-icon">🛡️</div>
+        <h3>Managed Detection &amp; Response</h3>
+        <p>24/7 threat hunting, real-time incident response, and continuous monitoring to neutralize threats before they impact your business.</p>
+        <span class="card-link">Learn more →</span>
+      </a>
+      <a class="service-card" href="services/cybersecurity.html">
+        <div class="service-icon">🔒</div>
+        <h3>Cybersecurity</h3>
+        <p>Multi-layered defense strategies including endpoint protection, vulnerability assessments, SIEM, and zero-trust architecture.</p>
+        <span class="card-link">Learn more →</span>
+      </a>
+      <a class="service-card" href="services/network.html">
+        <div class="service-icon">🌐</div>
+        <h3>IT Network Support</h3>
+        <p>Expert network design, implementation, monitoring, and management — wired, wireless, and SD-WAN solutions for any environment.</p>
+        <span class="card-link">Learn more →</span>
+      </a>
+      <a class="service-card" href="services/cloud.html">
+        <div class="service-icon">☁️</div>
+        <h3>Cloud Services</h3>
+        <p>Seamless migration, optimization, and management across AWS, Azure, and Google Cloud. Hybrid and multi-cloud strategies that scale.</p>
+        <span class="card-link">Learn more →</span>
+      </a>
+      <a class="service-card" href="services/productivity.html">
+        <div class="service-icon">💻</div>
+        <h3>Productivity Applications</h3>
+        <p>Microsoft 365, Google Workspace, and collaboration tools — deployed, secured, and optimized to keep your team productive.</p>
+        <span class="card-link">Learn more →</span>
+      </a>
+      <a class="service-card" href="services/backup.html">
+        <div class="service-icon">💾</div>
+        <h3>Data Backup &amp; Recovery</h3>
+        <p>Automated backups, offsite replication, and rapid disaster recovery ensuring your critical data is always protected and restorable.</p>
+        <span class="card-link">Learn more →</span>
+      </a>
     </div>
   </div>
+</section>
 
-  <!-- SERVICES SNAPSHOT -->
-  <section class="services-bg">
-    <div class="container">
-      <div class="section-label">What We Do</div>
-      <h2 class="section-title">Comprehensive IT Services<br>Under One Roof</h2>
-      <p class="section-sub">From securing your network perimeter to backing up your last byte of data — DataCloudOn has every layer of your IT covered.</p>
-      <div class="services-grid reveal">
-        <div class="service-card" onclick="showPage('services')">
-          <div class="service-icon">🛡️</div>
-          <h3>Managed Detection &amp; Response</h3>
-          <p>24/7 threat hunting, real-time incident response, and continuous monitoring to neutralize threats before they impact your business.</p>
-          <a class="card-link">Learn more →</a>
-        </div>
-        <div class="service-card" onclick="showPage('services')">
-          <div class="service-icon">🔒</div>
-          <h3>Cybersecurity</h3>
-          <p>Multi-layered defense strategies including endpoint protection, vulnerability assessments, SIEM, and zero-trust architecture.</p>
-          <a class="card-link">Learn more →</a>
-        </div>
-        <div class="service-card" onclick="showPage('services')">
-          <div class="service-icon">🌐</div>
-          <h3>IT Network Support</h3>
-          <p>Expert network design, implementation, monitoring, and management — wired, wireless, and SD-WAN solutions for any environment.</p>
-          <a class="card-link">Learn more →</a>
-        </div>
-        <div class="service-card" onclick="showPage('services')">
-          <div class="service-icon">☁️</div>
-          <h3>Cloud Services</h3>
-          <p>Seamless migration, optimization, and management across AWS, Azure, and Google Cloud. Hybrid and multi-cloud strategies that scale.</p>
-          <a class="card-link">Learn more →</a>
-        </div>
-        <div class="service-card" onclick="showPage('services')">
-          <div class="service-icon">💻</div>
-          <h3>Productivity Applications</h3>
-          <p>Microsoft 365, Google Workspace, and collaboration tools — deployed, secured, and optimized to keep your team productive.</p>
-          <a class="card-link">Learn more →</a>
-        </div>
-        <div class="service-card" onclick="showPage('services')">
-          <div class="service-icon">💾</div>
-          <h3>Data Backup &amp; Recovery</h3>
-          <p>Automated backups, offsite replication, and rapid disaster recovery ensuring your critical data is always protected and restorable.</p>
-          <a class="card-link">Learn more →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INDUSTRIES SNAPSHOT -->
-  <section>
-    <div class="container">
-      <div class="section-label">Industries We Serve</div>
-      <h2 class="section-title">Expertise Across Every Sector</h2>
-      <p class="section-sub">No matter your industry — we understand your compliance requirements, risk profile, and operational needs.</p>
-      <div class="industries-grid reveal">
-        <div class="industry-chip" onclick="showPage('industries')"><div class="icon">🏥</div><p>Healthcare</p></div>
-        <div class="industry-chip" onclick="showPage('industries')"><div class="icon">⚖️</div><p>Legal</p></div>
-        <div class="industry-chip" onclick="showPage('industries')"><div class="icon">🏦</div><p>Finance</p></div>
-        <div class="industry-chip" onclick="showPage('industries')"><div class="icon">🏛️</div><p>Government</p></div>
-        <div class="industry-chip" onclick="showPage('industries')"><div class="icon">🎓</div><p>Education</p></div>
-        <div class="industry-chip" onclick="showPage('industries')"><div class="icon">🏗️</div><p>Construction</p></div>
-        <div class="industry-chip" onclick="showPage('industries')"><div class="icon">🏭</div><p>Manufacturing</p></div>
-        <div class="industry-chip" onclick="showPage('industries')"><div class="icon">🛒</div><p>Retail</p></div>
-        <div class="industry-chip" onclick="showPage('industries')"><div class="icon">🚚</div><p>Logistics</p></div>
-        <div class="industry-chip" onclick="showPage('industries')"><div class="icon">🤝</div><p>Non-Profit</p></div>
-        <div class="industry-chip" onclick="showPage('industries')"><div class="icon">🏨</div><p>Hospitality</p></div>
-        <div class="industry-chip" onclick="showPage('industries')"><div class="icon">📐</div><p>Engineering</p></div>
-        <div class="industry-chip" onclick="showPage('industries')"><div class="icon">🏢</div><p>Real Estate</p></div>
-        <div class="industry-chip" onclick="showPage('industries')"><div class="icon">📊</div><p>Accounting</p></div>
-        <div class="industry-chip" onclick="showPage('industries')"><div class="icon">🔖</div><p>Insurance</p></div>
-        <div class="industry-chip" onclick="showPage('industries')"><div class="icon">➕</div><p>More...</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY US -->
-  <section class="why-bg">
-    <div class="container">
-      <div class="why-grid reveal">
-        <div class="why-left">
-          <div class="section-label" style="color: var(--sky-light);">Why DataCloudOn</div>
-          <h2 class="section-title">Enterprise Protection.<br>SMB Accessibility.</h2>
-          <p class="section-sub">We deliver the caliber of IT and security services typically reserved for large enterprises — packaged for businesses of all sizes, without the complexity or overhead.</p>
-          <div class="why-points">
-            <div class="why-point">
-              <div class="why-icon">🔐</div>
-              <div>
-                <h4>Proactive Security Posture</h4>
-                <p>We don't wait for breaches. Continuous monitoring, threat intelligence, and automated response keep you ahead of attackers.</p>
-              </div>
-            </div>
-            <div class="why-point">
-              <div class="why-icon">⚡</div>
-              <div>
-                <h4>Rapid Response & Resolution</h4>
-                <p>Our SOC team responds to critical incidents in minutes, not hours — minimizing downtime and business disruption.</p>
-              </div>
-            </div>
-            <div class="why-point">
-              <div class="why-icon">📋</div>
-              <div>
-                <h4>Compliance-Ready</h4>
-                <p>HIPAA, CMMC, SOC 2, PCI-DSS — we align your IT infrastructure to meet the regulatory standards your industry demands.</p>
-              </div>
-            </div>
-            <div class="why-point">
-              <div class="why-icon">🤝</div>
-              <div>
-                <h4>Dedicated Partnership</h4>
-                <p>A named account team that understands your business — not a ticket queue. Real relationships, real accountability.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="why-right">
-          <img src="/mnt/user-data/uploads/Gen-4_-_Create_a_modern_professional_website_hero_background_for_a_network_engineering_and_IT_servic__1_.png" alt="Data Center">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <div class="cta-strip">
-    <div class="container">
-      <h2>Ready to Secure &amp; Modernize Your Infrastructure?</h2>
-      <p>Talk to a DataCloudOn specialist — no commitment, no pressure. Just answers.</p>
-      <button class="btn-white" onclick="showPage('contact')">Schedule a Free Consultation →</button>
+<!-- INDUSTRIES -->
+<section>
+  <div class="container">
+    <div class="section-label">Industries We Serve</div>
+    <h2 class="section-title">Expertise Across Every Sector</h2>
+    <p class="section-sub">No matter your industry — we understand your compliance requirements, risk profile, and operational needs.</p>
+    <div class="industries-grid reveal">
+      <a class="industry-chip" href="industries/healthcare.html"><div class="icon">🏥</div><p>Healthcare</p></a>
+      <a class="industry-chip" href="industries/legal.html"><div class="icon">⚖️</div><p>Legal</p></a>
+      <a class="industry-chip" href="industries/finance.html"><div class="icon">🏦</div><p>Finance</p></a>
+      <a class="industry-chip" href="industries/government.html"><div class="icon">🏛️</div><p>Government</p></a>
+      <a class="industry-chip" href="industries/education.html"><div class="icon">🎓</div><p>Education</p></a>
+      <a class="industry-chip" href="industries/construction.html"><div class="icon">🏗️</div><p>Construction</p></a>
+      <a class="industry-chip" href="industries/manufacturing.html"><div class="icon">🏭</div><p>Manufacturing</p></a>
+      <a class="industry-chip" href="industries/retail.html"><div class="icon">🛒</div><p>Retail</p></a>
+      <a class="industry-chip" href="industries/logistics.html"><div class="icon">🚚</div><p>Logistics</p></a>
+      <a class="industry-chip" href="industries/nonprofit.html"><div class="icon">🤝</div><p>Non-Profit</p></a>
+      <a class="industry-chip" href="industries/hospitality.html"><div class="icon">🏨</div><p>Hospitality</p></a>
+      <a class="industry-chip" href="industries/engineering.html"><div class="icon">📐</div><p>Engineering</p></a>
+      <a class="industry-chip" href="industries/real-estate.html"><div class="icon">🏢</div><p>Real Estate</p></a>
+      <a class="industry-chip" href="industries/accounting.html"><div class="icon">📊</div><p>Accounting</p></a>
+      <a class="industry-chip" href="industries/insurance.html"><div class="icon">🔖</div><p>Insurance</p></a>
+      <a class="industry-chip" href="industries.html"><div class="icon">➕</div><p>More...</p></a>
     </div>
   </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="logo" style="font-size:1.2rem; margin-bottom:12px;">Data<span>Cloud</span><div class="logo-dot"></div>On</div>
-        <p>Enterprise-grade network engineering, cybersecurity, and managed IT services — delivered with clarity, speed, and accountability.</p>
+<!-- WHY US -->
+<section class="why-bg">
+  <div class="container">
+    <div class="why-grid reveal">
+      <div class="why-left">
+        <div class="section-label" style="color:var(--sky-light);">Why DTCloudOn</div>
+        <h2 class="section-title">Enterprise Protection.<br>SMB Accessibility.</h2>
+        <p class="section-sub">We deliver the caliber of IT and security services typically reserved for large enterprises — packaged for businesses of all sizes, without the complexity or overhead.</p>
+        <div class="why-points">
+          <div class="why-point"><div class="why-icon">🔐</div><div><h4>Proactive Security Posture</h4><p>We don't wait for breaches. Continuous monitoring, threat intelligence, and automated response keep you ahead of attackers.</p></div></div>
+          <div class="why-point"><div class="why-icon">⚡</div><div><h4>Rapid Response &amp; Resolution</h4><p>Our SOC team responds to critical incidents in minutes, not hours — minimizing downtime and business disruption.</p></div></div>
+          <div class="why-point"><div class="why-icon">📋</div><div><h4>Compliance-Ready</h4><p>HIPAA, CMMC, SOC 2, PCI-DSS — we align your IT infrastructure to meet the regulatory standards your industry demands.</p></div></div>
+          <div class="why-point"><div class="why-icon">🤝</div><div><h4>Dedicated Partnership</h4><p>A named account team that understands your business — not a ticket queue. Real relationships, real accountability.</p></div></div>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>IT Services</h4>
-        <ul>
-          <li><a onclick="showPage('services')">Cybersecurity</a></li>
-          <li><a onclick="showPage('services')">Managed Detection &amp; Response</a></li>
-          <li><a onclick="showPage('services')">Cloud Services</a></li>
-          <li><a onclick="showPage('services')">Data Backup &amp; Recovery</a></li>
-          <li><a onclick="showPage('services')">IT Network Support</a></li>
-          <li><a onclick="showPage('services')">Productivity Apps</a></li>
-          <li><a onclick="showPage('services')">Compliance</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Industries</h4>
-        <ul>
-          <li><a onclick="showPage('industries')">Healthcare</a></li>
-          <li><a onclick="showPage('industries')">Legal</a></li>
-          <li><a onclick="showPage('industries')">Finance</a></li>
-          <li><a onclick="showPage('industries')">Government</a></li>
-          <li><a onclick="showPage('industries')">Education</a></li>
-          <li><a onclick="showPage('industries')">Manufacturing</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a onclick="showPage('about')">About Us</a></li>
-          <li><a onclick="showPage('contact')">Contact Us</a></li>
-          <li><a>Blog</a></li>
-          <li><a>Careers</a></li>
-          <li><a>Privacy Policy</a></li>
-          <li><a>Terms of Service</a></li>
-        </ul>
+      <div class="why-right">
+        <img src="images/datacenter-2.png" alt="Data Center" onerror="this.parentElement.style.background='var(--blue-deep)'">
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2025 DataCloudOn. All rights reserved.</span>
-      <span>Houston, TX | Serving Businesses Nationwide</span>
-    </div>
-  </footer>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div class="container">
+    <h2>Ready to Secure &amp; Modernize Your Infrastructure?</h2>
+    <p>Talk to a DTCloudOn specialist — no commitment, no pressure. Just answers.</p>
+    <a class="btn-white" href="contact.html">Schedule a Free Consultation →</a>
+  </div>
 </div>
 
-<!-- ════════════════════════════════════
-     SERVICES PAGE
-════════════════════════════════════ -->
-<div id="page-services" class="page">
-  <div class="services-page-hero">
-    <div class="container">
-      <div class="section-label" style="color: var(--sky-light);">Our Services</div>
-      <h1>End-to-End IT Solutions<br>for the Modern Enterprise</h1>
-      <p>From proactive threat detection to seamless cloud migration — DataCloudOn covers every layer of your technology stack.</p>
-    </div>
-  </div>
+<div id="footer-placeholder"></div>
 
-  <div>
-    <div class="service-detail">
-      <div class="service-detail-content">
-        <div class="section-label">MDR</div>
-        <h2>Managed Detection &amp; Response</h2>
-        <p>Our 24/7 Security Operations Center monitors your environment around the clock. We combine AI-powered threat intelligence with human expertise to detect, investigate, and respond to threats in real time.</p>
-        <ul>
-          <li>24/7 SOC monitoring and alerting</li>
-          <li>Automated threat containment</li>
-          <li>Incident response &amp; forensics</li>
-          <li>Threat intelligence feeds</li>
-          <li>Monthly security reporting</li>
-          <li>SIEM integration and management</li>
-        </ul>
-        <button class="btn-primary" style="margin-top:24px;" onclick="showPage('contact')">Get MDR Assessment →</button>
-      </div>
-      <div class="service-visual">
-        <img src="/mnt/user-data/uploads/Gen-4_-_Create_a_modern_professional_website_hero_background_for_a_network_engineering_and_IT_servic__2_.png" alt="Security Operations">
-      </div>
-    </div>
-
-    <div class="service-detail service-detail-alt">
-      <div class="service-visual" style="background: var(--navy-mid);">
-        <img src="/mnt/user-data/uploads/Gen-4_-_Create_a_modern_professional_website_hero_background_for_a_network_engineering_and_IT_servic.png" alt="Cybersecurity">
-      </div>
-      <div class="service-detail-content">
-        <div class="section-label">Cybersecurity</div>
-        <h2>Comprehensive Cybersecurity</h2>
-        <p>Protect your organization from evolving threats with a layered security approach — from perimeter defense to endpoint protection and employee awareness training.</p>
-        <ul>
-          <li>Vulnerability assessments &amp; pen testing</li>
-          <li>Endpoint detection &amp; response (EDR)</li>
-          <li>Zero-trust network architecture</li>
-          <li>Email security &amp; anti-phishing</li>
-          <li>Security awareness training</li>
-          <li>Dark web monitoring</li>
-        </ul>
-        <button class="btn-primary" style="margin-top:24px;" onclick="showPage('contact')">Assess Your Security →</button>
-      </div>
-    </div>
-
-    <div class="service-detail">
-      <div class="service-detail-content">
-        <div class="section-label">Networking</div>
-        <h2>IT Network Support Services</h2>
-        <p>From LAN/WAN design to wireless optimization and SD-WAN deployment — we build and manage networks that are fast, resilient, and secure.</p>
-        <ul>
-          <li>Network design &amp; implementation</li>
-          <li>SD-WAN &amp; WAN optimization</li>
-          <li>Wireless network management</li>
-          <li>Firewall &amp; perimeter management</li>
-          <li>VPN &amp; remote access solutions</li>
-          <li>Network performance monitoring</li>
-        </ul>
-        <button class="btn-primary" style="margin-top:24px;" onclick="showPage('contact')">Upgrade Your Network →</button>
-      </div>
-      <div class="service-visual">
-        <img src="/mnt/user-data/uploads/Gen-4_-_Create_a_modern_professional_website_hero_background_for_a_network_engineering_and_IT_servic__1_.png" alt="Network Engineering">
-      </div>
-    </div>
-
-    <div class="service-detail service-detail-alt">
-      <div class="service-visual" style="background: var(--navy-mid);">
-        <img src="/mnt/user-data/uploads/Gen-4_-_Create_a_modern_professional_website_hero_background_for_a_network_engineering_and_IT_servic__2_.png" alt="Cloud Services">
-      </div>
-      <div class="service-detail-content">
-        <div class="section-label">Cloud</div>
-        <h2>Cloud Services &amp; Migration</h2>
-        <p>We design, migrate, and manage cloud environments across AWS, Azure, and Google Cloud — enabling agility, reducing costs, and improving performance.</p>
-        <ul>
-          <li>Cloud readiness assessments</li>
-          <li>Lift-and-shift &amp; re-platform migrations</li>
-          <li>Hybrid &amp; multi-cloud architecture</li>
-          <li>Cloud cost optimization</li>
-          <li>Infrastructure as Code (IaC)</li>
-          <li>Ongoing cloud management</li>
-        </ul>
-        <button class="btn-primary" style="margin-top:24px;" onclick="showPage('contact')">Plan Your Cloud Journey →</button>
-      </div>
-    </div>
-
-    <div class="service-detail">
-      <div class="service-detail-content">
-        <div class="section-label">Productivity</div>
-        <h2>Productivity Applications</h2>
-        <p>Deploy, secure, and optimize Microsoft 365, Google Workspace, and collaboration platforms to maximize team efficiency and communication.</p>
-        <ul>
-          <li>Microsoft 365 deployment &amp; licensing</li>
-          <li>Google Workspace administration</li>
-          <li>Teams &amp; Slack configuration</li>
-          <li>SharePoint &amp; OneDrive management</li>
-          <li>Application security hardening</li>
-          <li>User training &amp; adoption support</li>
-        </ul>
-        <button class="btn-primary" style="margin-top:24px;" onclick="showPage('contact')">Boost Productivity →</button>
-      </div>
-      <div class="service-visual">
-        <div class="service-visual-icon">💻</div>
-        <img src="/mnt/user-data/uploads/Gen-4_-_Create_a_modern_professional_website_hero_background_for_a_network_engineering_and_IT_servic.png" alt="Productivity" style="position:absolute;inset:0;">
-      </div>
-    </div>
-
-    <div class="service-detail service-detail-alt">
-      <div class="service-visual" style="background: var(--navy-mid);">
-        <img src="/mnt/user-data/uploads/Gen-4_-_Create_a_modern_professional_website_hero_background_for_a_network_engineering_and_IT_servic__1_.png" alt="Data Backup">
-      </div>
-      <div class="service-detail-content">
-        <div class="section-label">Data Protection</div>
-        <h2>Data Backup &amp; Recovery</h2>
-        <p>Protect your critical data with automated backups, encrypted offsite replication, and battle-tested disaster recovery plans that minimize downtime.</p>
-        <ul>
-          <li>Automated daily &amp; incremental backups</li>
-          <li>Offsite &amp; cloud replication</li>
-          <li>Ransomware-resistant backup vaults</li>
-          <li>Disaster recovery planning (DRP)</li>
-          <li>RTO/RPO-driven architecture</li>
-          <li>Regular DR testing &amp; validation</li>
-        </ul>
-        <button class="btn-primary" style="margin-top:24px;" onclick="showPage('contact')">Protect Your Data →</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Additional Services Grid -->
-  <section class="services-bg">
-    <div class="container">
-      <div class="section-label">More Services</div>
-      <h2 class="section-title">Additional IT Solutions</h2>
-      <div class="services-grid reveal" style="margin-top:0;">
-        <div class="service-card"><div class="service-icon">📋</div><h3>IT Support &amp; Helpdesk</h3><p>Responsive helpdesk support for day-to-day IT issues — remote and on-site options available with rapid response SLAs.</p></div>
-        <div class="service-card"><div class="service-icon">🏅</div><h3>Compliance &amp; CMMC</h3><p>Navigate HIPAA, CMMC, SOC 2, PCI-DSS, and NIST frameworks with expert guidance and implementation support.</p></div>
-        <div class="service-card"><div class="service-icon">📞</div><h3>Unified Communications</h3><p>VoIP, video conferencing, and unified communication platforms that keep your teams connected everywhere.</p></div>
-        <div class="service-card"><div class="service-icon">🔧</div><h3>IT Procurement</h3><p>Hardware and software procurement at competitive rates — we source, configure, and deploy the right tools for your environment.</p></div>
-        <div class="service-card"><div class="service-icon">🗺️</div><h3>IT Guidance &amp; Strategy</h3><p>Virtual CIO services to align your IT investments with business objectives, roadmaps, and budget planning.</p></div>
-        <div class="service-card"><div class="service-icon">📦</div><h3>Managed Services Packages</h3><p>Bundled managed IT packages designed for SMBs — predictable monthly costs with comprehensive coverage.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="cta-strip">
-    <div class="container">
-      <h2>Not Sure Which Service You Need?</h2>
-      <p>Our specialists will assess your environment and recommend the right solution — free of charge.</p>
-      <button class="btn-white" onclick="showPage('contact')">Talk to a Specialist →</button>
-    </div>
-  </div>
-
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="logo" style="font-size:1.2rem; margin-bottom:12px;">Data<span>Cloud</span><div class="logo-dot"></div>On</div>
-        <p>Enterprise-grade network engineering, cybersecurity, and managed IT services — delivered with clarity, speed, and accountability.</p>
-      </div>
-      <div class="footer-col"><h4>IT Services</h4><ul><li><a onclick="showPage('services')">Cybersecurity</a></li><li><a onclick="showPage('services')">MDR</a></li><li><a onclick="showPage('services')">Cloud Services</a></li><li><a onclick="showPage('services')">Data Backup</a></li></ul></div>
-      <div class="footer-col"><h4>Industries</h4><ul><li><a onclick="showPage('industries')">Healthcare</a></li><li><a onclick="showPage('industries')">Legal</a></li><li><a onclick="showPage('industries')">Finance</a></li></ul></div>
-      <div class="footer-col"><h4>Company</h4><ul><li><a onclick="showPage('about')">About Us</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><span>© 2025 DataCloudOn. All rights reserved.</span><span>Houston, TX | Serving Businesses Nationwide</span></div>
-  </footer>
-</div>
-
-<!-- ════════════════════════════════════
-     INDUSTRIES PAGE
-════════════════════════════════════ -->
-<div id="page-industries" class="page">
-  <div class="services-page-hero">
-    <div class="container">
-      <div class="section-label" style="color: var(--sky-light);">Industries</div>
-      <h1>IT Solutions Built for<br>Your Industry's Reality</h1>
-      <p>Every sector faces unique compliance requirements, risk profiles, and operational challenges. DataCloudOn brings deep industry knowledge to every engagement.</p>
-    </div>
-  </div>
-
-  <section class="industries-page">
-    <div class="container">
-      <div class="industries-big-grid reveal">
-        <div class="industry-card"><div class="ind-icon">🏥</div><h3>Healthcare</h3><p>HIPAA-compliant IT infrastructure, EHR security, and telehealth enablement for hospitals, clinics, and medical practices.</p></div>
-        <div class="industry-card"><div class="ind-icon">⚖️</div><h3>Legal</h3><p>Data confidentiality, secure client portals, and compliance-ready infrastructure for law firms of all sizes.</p></div>
-        <div class="industry-card"><div class="ind-icon">🏦</div><h3>Finance</h3><p>SOC 2 and PCI-DSS compliance, encrypted transactions, and robust disaster recovery for financial institutions.</p></div>
-        <div class="industry-card"><div class="ind-icon">🏛️</div><h3>Government</h3><p>CMMC, FedRAMP, and FISMA-aligned IT services for local, state, and federal agencies and contractors.</p></div>
-        <div class="industry-card"><div class="ind-icon">🎓</div><h3>Education</h3><p>Secure learning environments, student data protection, and scalable IT for K–12 districts and higher education.</p></div>
-        <div class="industry-card"><div class="ind-icon">🏗️</div><h3>Construction</h3><p>Field-to-office connectivity, project management tools, and mobile device management for construction firms.</p></div>
-        <div class="industry-card"><div class="ind-icon">🏭</div><h3>Manufacturing</h3><p>OT/IT convergence, industrial network security, and operational continuity for production environments.</p></div>
-        <div class="industry-card"><div class="ind-icon">🛒</div><h3>Retail</h3><p>PCI-DSS compliance, POS system management, and omnichannel IT infrastructure for retail operations.</p></div>
-        <div class="industry-card"><div class="ind-icon">🚚</div><h3>Logistics</h3><p>Fleet tracking integration, warehouse connectivity, and supply chain IT resilience for logistics providers.</p></div>
-        <div class="industry-card"><div class="ind-icon">🤝</div><h3>Non-Profit</h3><p>Budget-conscious IT solutions, donor data protection, and Microsoft nonprofit licensing for mission-driven organizations.</p></div>
-        <div class="industry-card"><div class="ind-icon">🏨</div><h3>Hospitality</h3><p>Guest network management, PMS integration, and PCI-compliant payment systems for hotels and restaurants.</p></div>
-        <div class="industry-card"><div class="ind-icon">📐</div><h3>Engineering</h3><p>CAD/BIM infrastructure, high-performance computing, and secure collaboration tools for engineering firms.</p></div>
-        <div class="industry-card"><div class="ind-icon">🏢</div><h3>Real Estate</h3><p>Secure document management, CRM integration, and mobile-first IT for real estate brokerages and agencies.</p></div>
-        <div class="industry-card"><div class="ind-icon">📊</div><h3>Accounting</h3><p>Secure financial data handling, tax software management, and compliance-aligned IT for accounting firms.</p></div>
-        <div class="industry-card"><div class="ind-icon">🔖</div><h3>Insurance</h3><p>Claims data security, regulatory compliance, and secure agent mobility solutions for insurance carriers and brokers.</p></div>
-        <div class="industry-card"><div class="ind-icon">🍔</div><h3>Franchises</h3><p>Standardized IT deployment, centralized management, and consistent security across all franchise locations.</p></div>
-        <div class="industry-card"><div class="ind-icon">🏗️</div><h3>Architects</h3><p>Large-file transfer, CAD collaboration environments, and secure cloud storage for architecture and design firms.</p></div>
-        <div class="industry-card"><div class="ind-icon">🌐</div><h3>Professional Services</h3><p>Scalable IT infrastructure, remote collaboration tools, and cybersecurity for consulting and services organizations.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="cta-strip">
-    <div class="container">
-      <h2>Don't See Your Industry?</h2>
-      <p>We serve businesses across all sectors. Contact us and we'll tailor a solution for your specific needs.</p>
-      <button class="btn-white" onclick="showPage('contact')">Tell Us About Your Business →</button>
-    </div>
-  </div>
-
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-brand"><div class="logo" style="font-size:1.2rem; margin-bottom:12px;">Data<span>Cloud</span><div class="logo-dot"></div>On</div><p>Enterprise-grade IT services for every industry.</p></div>
-      <div class="footer-col"><h4>IT Services</h4><ul><li><a onclick="showPage('services')">Cybersecurity</a></li><li><a onclick="showPage('services')">Cloud Services</a></li><li><a onclick="showPage('services')">MDR</a></li></ul></div>
-      <div class="footer-col"><h4>Company</h4><ul><li><a onclick="showPage('about')">About Us</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:+18005550000">(800) 555-0000</a></li><li><a href="mailto:info@datacloudon.com">info@datacloudon.com</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><span>© 2025 DataCloudOn.</span><span>Houston, TX</span></div>
-  </footer>
-</div>
-
-<!-- ════════════════════════════════════
-     ABOUT PAGE
-════════════════════════════════════ -->
-<div id="page-about" class="page">
-  <div class="about-hero">
-    <div class="about-hero-inner">
-      <div class="section-label" style="color: var(--sky-light);">About DataCloudOn</div>
-      <h1>Built by IT Professionals.<br>Driven by Your Success.</h1>
-      <p>We believe every business — regardless of size — deserves enterprise-grade technology protection and support. That's the foundation DataCloudOn was built on.</p>
-    </div>
-  </div>
-
-  <div class="about-grid">
-    <div class="about-text reveal">
-      <h2>Who We Are</h2>
-      <p>DataCloudOn is a full-service managed IT and cybersecurity provider committed to delivering enterprise-quality solutions to businesses of all sizes. Our team brings decades of combined experience across network engineering, cloud architecture, security operations, and IT management.</p>
-      <p>We partner with our clients as a trusted technology advisor — not just a vendor. Our goal is to understand your business objectives and align your technology infrastructure to accelerate them, not hinder them.</p>
-      <p>From our roots in Houston, TX, we serve clients across the nation, providing scalable, reliable, and secure IT services that grow alongside your business.</p>
-      <button class="btn-primary" onclick="showPage('contact')" style="margin-top:8px;">Start a Conversation →</button>
-    </div>
-    <div class="about-img reveal">
-      <img src="/mnt/user-data/uploads/Gen-4_-_Create_a_modern_professional_website_hero_background_for_a_network_engineering_and_IT_servic__2_.png" alt="DataCloudOn Team">
-    </div>
-  </div>
-
-  <section class="values-section">
-    <div class="container">
-      <div class="section-label">Our Values</div>
-      <h2 class="section-title">What Drives Everything We Do</h2>
-      <p class="section-sub">Our values aren't wall decorations — they're the operating principles behind every decision, every service, every interaction.</p>
-      <div class="values-grid reveal">
-        <div class="value-card"><div class="val-icon">🎯</div><h3>Accountability</h3><p>We own outcomes, not just outputs. When something isn't right, we make it right — without excuses or finger-pointing.</p></div>
-        <div class="value-card"><div class="val-icon">⚡</div><h3>Speed &amp; Urgency</h3><p>In IT, every minute of downtime costs real money. We operate with a sense of urgency that matches the stakes your business faces.</p></div>
-        <div class="value-card"><div class="val-icon">🔒</div><h3>Security-First Mindset</h3><p>Security is never an afterthought in what we design. It's baked into every recommendation, architecture, and deployment.</p></div>
-        <div class="value-card"><div class="val-icon">🤝</div><h3>True Partnership</h3><p>We succeed when you succeed. Our business model is built on long-term relationships, not one-time transactions.</p></div>
-        <div class="value-card"><div class="val-icon">🧠</div><h3>Continuous Learning</h3><p>The threat landscape evolves daily. Our team stays at the cutting edge through certifications, training, and hands-on research.</p></div>
-        <div class="value-card"><div class="val-icon">💡</div><h3>Clarity &amp; Transparency</h3><p>No jargon traps. No hidden fees. We explain what we're doing, why we're doing it, and what it costs — plainly and honestly.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="cta-strip">
-    <div class="container">
-      <h2>Ready to Partner With DataCloudOn?</h2>
-      <p>Let's have a conversation about where your technology is today — and where it needs to be.</p>
-      <button class="btn-white" onclick="showPage('contact')">Get In Touch →</button>
-    </div>
-  </div>
-
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-brand"><div class="logo" style="font-size:1.2rem; margin-bottom:12px;">Data<span>Cloud</span><div class="logo-dot"></div>On</div><p>Your trusted technology partner for network engineering, cybersecurity, and managed IT.</p></div>
-      <div class="footer-col"><h4>IT Services</h4><ul><li><a onclick="showPage('services')">All Services</a></li><li><a onclick="showPage('services')">Cybersecurity</a></li><li><a onclick="showPage('services')">Cloud Services</a></li></ul></div>
-      <div class="footer-col"><h4>Industries</h4><ul><li><a onclick="showPage('industries')">All Industries</a></li><li><a onclick="showPage('industries')">Healthcare</a></li><li><a onclick="showPage('industries')">Finance</a></li></ul></div>
-      <div class="footer-col"><h4>Company</h4><ul><li><a onclick="showPage('about')">About Us</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><span>© 2025 DataCloudOn.</span><span>Houston, TX | Nationwide</span></div>
-  </footer>
-</div>
-
-<!-- ════════════════════════════════════
-     CONTACT PAGE
-════════════════════════════════════ -->
-<div id="page-contact" class="page">
-  <div class="contact-hero">
-    <div class="section-label" style="color: var(--sky-light);">Get In Touch</div>
-    <h1>Let's Talk About Your IT Needs</h1>
-    <p>Tell us about your organization and requirements. A DataCloudOn specialist will respond within one business day.</p>
-  </div>
-
-  <div class="contact-layout">
-    <!-- LEFT: Info Card -->
-    <div class="contact-info-card">
-      <h3>Contact Information</h3>
-      <div class="contact-item">
-        <div class="contact-item-icon">📞</div>
-        <div><h5>Phone</h5><p>(800) 555-0000</p></div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-icon">✉️</div>
-        <div><h5>Email</h5><p>info@datacloudon.com</p></div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-icon">📍</div>
-        <div><h5>Location</h5><p>Houston, TX<br>Serving Clients Nationwide</p></div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-icon">🕐</div>
-        <div><h5>Business Hours</h5><p>Mon–Fri: 8AM – 6PM CST<br>Emergency: 24/7 SOC Support</p></div>
-      </div>
-      <div class="services-checklist">
-        <h4>Services We Offer</h4>
-        <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
-          <li style="font-size:0.83rem; color:rgba(255,255,255,0.7); display:flex; gap:8px;"><span style="color:var(--sky-light);">✓</span> Managed Detection &amp; Response</li>
-          <li style="font-size:0.83rem; color:rgba(255,255,255,0.7); display:flex; gap:8px;"><span style="color:var(--sky-light);">✓</span> Cybersecurity</li>
-          <li style="font-size:0.83rem; color:rgba(255,255,255,0.7); display:flex; gap:8px;"><span style="color:var(--sky-light);">✓</span> Cloud Services</li>
-          <li style="font-size:0.83rem; color:rgba(255,255,255,0.7); display:flex; gap:8px;"><span style="color:var(--sky-light);">✓</span> Network Engineering</li>
-          <li style="font-size:0.83rem; color:rgba(255,255,255,0.7); display:flex; gap:8px;"><span style="color:var(--sky-light);">✓</span> Data Backup &amp; Recovery</li>
-          <li style="font-size:0.83rem; color:rgba(255,255,255,0.7); display:flex; gap:8px;"><span style="color:var(--sky-light);">✓</span> Productivity Applications</li>
-          <li style="font-size:0.83rem; color:rgba(255,255,255,0.7); display:flex; gap:8px;"><span style="color:var(--sky-light);">✓</span> Compliance &amp; CMMC</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- RIGHT: Form -->
-    <div class="contact-form-card">
-      <h2>Share Your Requirements</h2>
-      <p>Fill out the form below and we'll prepare a tailored proposal for your organization.</p>
-
-      <div id="contact-form-body">
-        <div class="form-row">
-          <div class="form-group">
-            <label>First Name *</label>
-            <input type="text" id="fname" placeholder="John">
-          </div>
-          <div class="form-group">
-            <label>Last Name *</label>
-            <input type="text" id="lname" placeholder="Smith">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>Business Email *</label>
-            <input type="email" id="email" placeholder="john@company.com">
-          </div>
-          <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" id="phone" placeholder="(555) 000-0000">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>Company Name *</label>
-            <input type="text" id="company" placeholder="Acme Corp">
-          </div>
-          <div class="form-group">
-            <label>Company Size</label>
-            <select id="size">
-              <option value="">Select...</option>
-              <option>1–10 employees</option>
-              <option>11–50 employees</option>
-              <option>51–200 employees</option>
-              <option>201–500 employees</option>
-              <option>500+ employees</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Industry</label>
-          <select id="industry">
-            <option value="">Select your industry...</option>
-            <option>Accounting</option><option>Architecture</option><option>Construction</option>
-            <option>Education</option><option>Engineering</option><option>Finance</option>
-            <option>Franchise</option><option>Government</option><option>Healthcare</option>
-            <option>Hospitality</option><option>Insurance</option><option>Legal</option>
-            <option>Logistics</option><option>Manufacturing</option><option>Non-Profit</option>
-            <option>Professional Services</option><option>Real Estate</option><option>Retail</option>
-            <option>Technology</option><option>Other</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Services Interested In (select all that apply)</label>
-          <div class="checkbox-grid" id="services-checks">
-            <label class="checkbox-item"><input type="checkbox" value="MDR"><span>Managed Detection &amp; Response</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="Cybersecurity"><span>Cybersecurity</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="Network"><span>Network Engineering</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="Cloud"><span>Cloud Services</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="Backup"><span>Data Backup &amp; Recovery</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="Productivity"><span>Productivity Applications</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="Compliance"><span>Compliance / CMMC</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="IT Support"><span>IT Support / Helpdesk</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="UC"><span>Unified Communications</span></label>
-            <label class="checkbox-item"><input type="checkbox" value="Managed"><span>Managed Services Package</span></label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Current Challenges / Requirements *</label>
-          <textarea id="requirements" placeholder="Tell us about your current IT environment, pain points, goals, or specific requirements. The more detail you share, the better we can tailor our response..."></textarea>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>Preferred Contact Method</label>
-            <select id="contact-pref">
-              <option>Email</option>
-              <option>Phone Call</option>
-              <option>Video Call</option>
-              <option>In-Person Meeting</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>How Did You Hear About Us?</label>
-            <select id="referral">
-              <option value="">Select...</option>
-              <option>Google Search</option>
-              <option>LinkedIn</option>
-              <option>Referral / Word of Mouth</option>
-              <option>Social Media</option>
-              <option>Industry Event</option>
-              <option>Other</option>
-            </select>
-          </div>
-        </div>
-
-        <button class="form-submit" onclick="submitForm()">Submit My Requirements →</button>
-        <p style="font-size:0.78rem; color:var(--gray); margin-top:12px; text-align:center;">🔒 Your information is encrypted and will never be sold or shared with third parties.</p>
-      </div>
-
-      <div class="success-msg" id="success-msg">
-        <div class="check">✅</div>
-        <h3>Thank You! We've Received Your Request.</h3>
-        <p>A DataCloudOn specialist will review your requirements and reach out within one business day. Keep an eye on your inbox!</p>
-        <button class="btn-primary" style="margin-top:24px;" onclick="resetForm()">Submit Another Inquiry</button>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-brand"><div class="logo" style="font-size:1.2rem; margin-bottom:12px;">Data<span>Cloud</span><div class="logo-dot"></div>On</div><p>Ready to help secure and modernize your business technology.</p></div>
-      <div class="footer-col"><h4>IT Services</h4><ul><li><a onclick="showPage('services')">All Services</a></li><li><a onclick="showPage('services')">Cybersecurity</a></li></ul></div>
-      <div class="footer-col"><h4>Industries</h4><ul><li><a onclick="showPage('industries')">All Industries</a></li></ul></div>
-      <div class="footer-col"><h4>Company</h4><ul><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('home')">Home</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><span>© 2025 DataCloudOn.</span><span>Houston, TX | Nationwide</span></div>
-  </footer>
-</div>
-
-<script>
-  function showPage(name) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('page-' + name).classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    observeReveal();
-  }
-
-  function submitForm() {
-    const fname = document.getElementById('fname').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const company = document.getElementById('company').value.trim();
-    const requirements = document.getElementById('requirements').value.trim();
-
-    if (!fname || !email || !company || !requirements) {
-      alert('Please fill in all required fields (marked with *).');
-      return;
-    }
-    if (!email.includes('@') || !email.includes('.')) {
-      alert('Please enter a valid email address.');
-      return;
-    }
-
-    document.getElementById('contact-form-body').style.display = 'none';
-    document.getElementById('success-msg').style.display = 'block';
-  }
-
-  function resetForm() {
-    document.getElementById('contact-form-body').style.display = 'block';
-    document.getElementById('success-msg').style.display = 'none';
-    document.querySelectorAll('#contact-form-body input, #contact-form-body select, #contact-form-body textarea').forEach(el => {
-      if (el.type === 'checkbox') el.checked = false;
-      else el.value = '';
-    });
-  }
-
-  // Checkbox visual highlight
-  document.querySelectorAll('.checkbox-item').forEach(item => {
-    const cb = item.querySelector('input[type=checkbox]');
-    cb.addEventListener('change', () => {
-      item.classList.toggle('checked', cb.checked);
-    });
-  });
-
-  // Scroll reveal
-  function observeReveal() {
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); }
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(r => { r.classList.remove('visible'); observer.observe(r); });
-  }
-
-  observeReveal();
-</script>
+<script src="nav.js"></script>
+<script src="utils.js"></script>
+<script>renderNav('home'); renderFooter(0);</script>
 </body>
 </html>

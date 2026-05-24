@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — DTCloudOn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .contact-page-hero {
+    background: var(--navy-mid);
+    padding: 90px 24px 120px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-page-hero::before {
+    content:''; position:absolute; inset:0;
+    background: url('images/datacenter-1.png') center/cover;
+    opacity: 0.08;
+  }
+  .contact-page-hero .section-label { color:var(--sky-light); justify-content:center; display:flex; }
+  .contact-page-hero h1 { color:var(--white); font-size:clamp(2rem,4vw,3rem); position:relative; margin:12px 0 16px; }
+  .contact-page-hero p { color:rgba(255,255,255,0.65); max-width:540px; margin:0 auto; line-height:1.7; position:relative; }
+
+  .contact-outer {
+    max-width: 1100px;
+    margin: -60px auto 0;
+    padding: 0 24px 80px;
+    position: relative;
+    z-index: 2;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.65fr;
+    gap: 32px;
+  }
+  .contact-info-card h3 { font-size:1.15rem; margin-bottom:28px; }
+  .services-checklist { margin-top:28px; border-top:1px solid rgba(255,255,255,0.1); padding-top:24px; }
+  .services-checklist h4 { font-size:0.78rem; color:var(--gray); text-transform:uppercase; letter-spacing:1px; margin-bottom:14px; }
+  .services-checklist li {
+    font-size:0.83rem; color:rgba(255,255,255,0.7);
+    display:flex; gap:8px; margin-bottom:8px; list-style:none;
+  }
+  .services-checklist li span { color:var(--sky-light); }
+  .contact-form-card h2 { font-size:1.6rem; color:var(--navy); margin-bottom:6px; }
+  .contact-form-card > p { color:var(--text-mid); font-size:0.9rem; margin-bottom:32px; }
+  @media(max-width:900px){
+    .contact-grid { grid-template-columns:1fr; }
+    .contact-outer { margin-top: 0; padding-top: 32px; }
+  }
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="contact-page-hero">
+  <div class="section-label">Get In Touch</div>
+  <h1>Let's Talk About Your IT Needs</h1>
+  <p>Tell us about your organization and requirements. A DTCloudOn specialist will respond within one business day.</p>
+</div>
+
+<div class="contact-outer">
+  <div class="contact-grid">
+    <!-- Info Card -->
+    <div class="contact-info-card">
+      <h3>Contact Information</h3>
+      <div class="contact-item">
+        <div class="contact-item-icon">📞</div>
+        <div><h5>Phone</h5><p>(800) 555-0000</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">✉️</div>
+        <div><h5>Email</h5><p>info@dtcloudon.com</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">📍</div>
+        <div><h5>Location</h5><p>Sugar Land, TX<br>Serving Clients Nationwide</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">🕐</div>
+        <div><h5>Business Hours</h5><p>Mon–Fri: 8AM – 6PM CST<br>Emergency: 24/7 SOC Support</p></div>
+      </div>
+      <div class="services-checklist">
+        <h4>Services We Offer</h4>
+        <ul>
+          <li><span>✓</span> Managed Detection &amp; Response</li>
+          <li><span>✓</span> Cybersecurity</li>
+          <li><span>✓</span> Cloud Services</li>
+          <li><span>✓</span> Network Engineering</li>
+          <li><span>✓</span> Data Backup &amp; Recovery</li>
+          <li><span>✓</span> Productivity Applications</li>
+          <li><span>✓</span> Compliance &amp; CMMC</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="contact-form-card">
+      <h2>Share Your Requirements</h2>
+      <p>Fill out the form below and we'll prepare a tailored proposal for your organization.</p>
+
+      <div id="contact-form-body">
+        <div class="form-row">
+          <div class="form-group"><label>First Name *</label><input type="text" id="fname" placeholder="John"></div>
+          <div class="form-group"><label>Last Name *</label><input type="text" id="lname" placeholder="Smith"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Business Email *</label><input type="email" id="email" placeholder="john@company.com"></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" id="phone" placeholder="(555) 000-0000"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Company Name *</label><input type="text" id="company" placeholder="Acme Corp"></div>
+          <div class="form-group"><label>Company Size</label>
+            <select id="size">
+              <option value="">Select...</option>
+              <option>1–10 employees</option><option>11–50 employees</option>
+              <option>51–200 employees</option><option>201–500 employees</option><option>500+ employees</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label>Industry</label>
+          <select id="industry">
+            <option value="">Select your industry...</option>
+            <option>Accounting</option><option>Architecture</option><option>Construction</option>
+            <option>Education</option><option>Engineering</option><option>Finance</option>
+            <option>Franchise</option><option>Government</option><option>Healthcare</option>
+            <option>Hospitality</option><option>Insurance</option><option>Legal</option>
+            <option>Logistics</option><option>Manufacturing</option><option>Non-Profit</option>
+            <option>Professional Services</option><option>Real Estate</option><option>Retail</option>
+            <option>Technology</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Services Interested In (select all that apply)</label>
+          <div class="checkbox-grid">
+            <label class="checkbox-item"><input type="checkbox"><span>Managed Detection &amp; Response</span></label>
+            <label class="checkbox-item"><input type="checkbox"><span>Cybersecurity</span></label>
+            <label class="checkbox-item"><input type="checkbox"><span>Network Engineering</span></label>
+            <label class="checkbox-item"><input type="checkbox"><span>Cloud Services</span></label>
+            <label class="checkbox-item"><input type="checkbox"><span>Data Backup &amp; Recovery</span></label>
+            <label class="checkbox-item"><input type="checkbox"><span>Productivity Applications</span></label>
+            <label class="checkbox-item"><input type="checkbox"><span>Compliance / CMMC</span></label>
+            <label class="checkbox-item"><input type="checkbox"><span>IT Support / Helpdesk</span></label>
+            <label class="checkbox-item"><input type="checkbox"><span>Unified Communications</span></label>
+            <label class="checkbox-item"><input type="checkbox"><span>Managed Services Package</span></label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Current Challenges / Requirements *</label>
+          <textarea id="requirements" placeholder="Tell us about your current IT environment, pain points, goals, or specific requirements..."></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Preferred Contact Method</label>
+            <select id="contact-pref"><option>Email</option><option>Phone Call</option><option>Video Call</option><option>In-Person Meeting</option></select>
+          </div>
+          <div class="form-group"><label>How Did You Hear About Us?</label>
+            <select id="referral"><option value="">Select...</option><option>Google Search</option><option>LinkedIn</option><option>Referral / Word of Mouth</option><option>Social Media</option><option>Industry Event</option><option>Other</option></select>
+          </div>
+        </div>
+        <button class="form-submit" onclick="submitForm()">Submit My Requirements →</button>
+        <p style="font-size:0.78rem;color:var(--gray);margin-top:12px;text-align:center;">🔒 Your information is encrypted and will never be sold or shared with third parties.</p>
+      </div>
+
+      <div class="success-msg" id="success-msg">
+        <div class="check">✅</div>
+        <h3>Thank You! We've Received Your Request.</h3>
+        <p>A DTCloudOn specialist will review your requirements and reach out within one business day.</p>
+        <button class="btn-primary" style="margin-top:24px;" onclick="resetForm()">Submit Another Inquiry</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="nav.js"></script>
+<script src="utils.js"></script>
+<script>renderNav('contact'); renderFooter(0);</script>
+</body>
+</html>
