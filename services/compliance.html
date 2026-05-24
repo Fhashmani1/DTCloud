@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Data Compliance Solutions — DTCloudOn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* ── HERO ── */
+  .comp-hero {
+    position: relative; min-height: 65vh;
+    display: flex; align-items: center;
+    background: var(--navy); overflow: hidden; padding: 100px 24px 80px;
+  }
+  .comp-hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('../images/datacenter-3.png');
+    background-size: cover; background-position: center top;
+    filter: brightness(0.18) saturate(0.8);
+  }
+  .comp-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(10,22,40,0.96) 0%, rgba(14,42,90,0.55) 55%, rgba(10,22,40,0.9) 100%);
+  }
+  .comp-hero .container { position: relative; z-index: 2; text-align: center; }
+  .comp-hero .section-label { color: var(--sky-light); justify-content: center; display: flex; }
+  .comp-hero h1 { color: var(--white); font-size: clamp(2.2rem,5vw,3.8rem); max-width: 820px; margin: 16px auto 20px; line-height: 1.1; letter-spacing: -1px; }
+  .comp-hero p { color: rgba(255,255,255,0.72); max-width: 640px; margin: 0 auto 36px; font-size: 1.1rem; line-height: 1.75; }
+  .comp-hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── STATS BAR ── */
+  .stats-bar { background: var(--accent); padding: 28px 24px; }
+  .stats-row { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 24px; }
+  .stats-bar .stat { text-align: center; color: var(--white); }
+  .stats-bar .stat-num { font-family:'Sora',sans-serif; font-size:1.8rem; font-weight:800; display:block; }
+  .stats-bar .stat-label { font-size:0.78rem; opacity:0.9; max-width:160px; margin:0 auto; line-height:1.4; }
+
+  /* ── CONTENT SECTIONS ── */
+  .content-section { padding: 80px 24px; }
+  .content-section.alt { background: var(--off-white); }
+  .content-section.dark { background: var(--navy); }
+
+  .split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; max-width: 1200px; margin: 0 auto; }
+  .split-layout.reverse { direction: rtl; }
+  .split-layout.reverse > * { direction: ltr; }
+
+  .content-text h2 { font-size: clamp(1.6rem,2.8vw,2.4rem); color: var(--navy); margin-bottom: 16px; letter-spacing:-0.5px; line-height:1.2; }
+  .content-text p { color: var(--text-mid); line-height: 1.78; margin-bottom: 16px; }
+  .content-text ul { list-style: none; margin: 20px 0; }
+  .content-text li { padding: 10px 0; border-bottom: 1px solid rgba(10,22,40,0.07); font-size: 0.92rem; color: var(--text-mid); display: flex; gap: 12px; align-items: flex-start; }
+  .content-text li::before { content:'✓'; color:var(--sky); font-weight:700; flex-shrink:0; margin-top:1px; }
+  .content-text .inline-link { color: var(--sky); font-size: 0.9rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; transition: gap 0.2s; }
+  .content-text .inline-link:hover { gap: 10px; }
+
+  .visual-panel { background: var(--navy-mid); border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; position: relative; display: flex; align-items: center; justify-content: center; }
+  .visual-panel img { width:100%;height:100%;object-fit:cover;opacity:0.75;display:block; }
+  .visual-panel .panel-icon { position:absolute; font-size:5rem; opacity:0.15; }
+
+  /* ── RISK METER VISUAL ── */
+  .risk-panel {
+    background: var(--off-white); border-radius: 20px; padding: 36px;
+    border: 1px solid rgba(10,22,40,0.07);
+  }
+  .risk-panel h4 { font-size:0.78rem; text-align:center; text-transform:uppercase; letter-spacing:1px; color:var(--gray); margin-bottom:24px; }
+  .risk-meter-track {
+    height: 20px; border-radius: 10px;
+    background: linear-gradient(90deg, #16a34a 0%, #eab308 50%, #dc2626 100%);
+    position: relative; margin-bottom: 12px;
+  }
+  .risk-meter-needle {
+    position: absolute; top: -4px; width: 28px; height: 28px;
+    background: var(--navy); border: 3px solid var(--white);
+    border-radius: 50%; left: 72%; transform: translateX(-50%);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  .risk-labels { display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--gray); margin-bottom: 20px; }
+  .risk-items { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+  .risk-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: var(--white); border-radius: 10px; border: 1px solid rgba(10,22,40,0.06); }
+  .risk-row .r-label { font-size: 0.83rem; color: var(--text-mid); }
+  .risk-badge { padding: 3px 10px; border-radius: 50px; font-size: 0.72rem; font-weight: 700; }
+  .risk-badge.low { background:rgba(22,163,74,0.12);color:#16a34a; }
+  .risk-badge.med { background:rgba(234,179,8,0.15);color:#ca8a04; }
+  .risk-badge.high { background:rgba(239,68,68,0.12);color:#dc2626; }
+
+  /* ── ROI STATS ── */
+  .roi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+  .roi-card { background: var(--white); border-radius: 14px; padding: 28px 20px; text-align: center; border: 1px solid rgba(10,22,40,0.07); transition: all 0.25s; }
+  .roi-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,22,40,0.1); }
+  .roi-card .roi-num { font-family:'Sora',sans-serif; font-size:2rem; font-weight:800; color:var(--accent); display:block; margin-bottom:10px; }
+  .roi-card p { font-size: 0.83rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── KEY QUESTIONS ── */
+  .questions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .question-card {
+    background: var(--white); border-radius: 14px; padding: 32px 28px;
+    border: 1px solid rgba(10,22,40,0.07); text-align: center; transition: all 0.25s;
+  }
+  .question-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,22,40,0.1); border-color: rgba(42,125,225,0.2); }
+  .question-num { font-family:'Sora',sans-serif; font-size:3.5rem; font-weight:900; color:var(--accent); display:block; margin-bottom:12px; opacity:0.9; }
+  .question-card p { font-size: 0.92rem; color: var(--text-mid); font-weight: 500; line-height: 1.6; }
+
+  /* ── SERVICES GRID (replaces carousel) ── */
+  .services-compliance-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+  .service-comp-item { background: var(--white); border-radius: 14px; padding: 28px 24px; border: 1px solid rgba(10,22,40,0.07); transition: all 0.25s; }
+  .service-comp-item:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,22,40,0.1); border-color: rgba(42,125,225,0.2); }
+  .service-comp-item h3 { font-size: 1rem; color: var(--navy); margin-bottom: 10px; font-weight: 700; }
+  .service-comp-item p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.65; }
+
+  /* ── FRAMEWORKS LIST ── */
+  .framework-list { max-width: 900px; margin: 0 auto; }
+  .framework-row { display: grid; grid-template-columns: 64px 120px 1fr; gap: 20px; align-items: center; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .framework-row:last-child { border-bottom: none; }
+  .framework-icon { width: 52px; height: 52px; background: rgba(255,255,255,0.08); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 1px solid rgba(255,255,255,0.1); }
+  .framework-name { font-family:'Sora',sans-serif; font-weight: 800; color: var(--white); font-size: 1rem; }
+  .framework-desc { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.65; }
+
+  /* ── INDUSTRY SPECIFIC ── */
+  .ind-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
+  .ind-chip { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 18px 14px; text-align: center; transition: all 0.2s; text-decoration: none; display: block; }
+  .ind-chip:hover { background: var(--navy); border-color: var(--navy); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(10,22,40,0.15); }
+  .ind-chip .icon { font-size: 1.6rem; margin-bottom: 8px; }
+  .ind-chip p { font-size: 0.8rem; font-weight: 600; color: var(--text-mid); transition: color 0.2s; }
+  .ind-chip:hover p { color: rgba(255,255,255,0.85); }
+
+  /* ── FAQ ── */
+  .faq-list { max-width: 900px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid rgba(10,22,40,0.08); }
+  .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; font-family: 'Sora', sans-serif; font-size: 0.98rem; font-weight: 700; color: var(--navy); transition: color 0.2s; }
+  .faq-question:hover { color: var(--sky); }
+  .faq-question .faq-icon { font-size: 1.1rem; flex-shrink: 0; transition: transform 0.3s; color: var(--accent); }
+  .faq-question.open .faq-icon { transform: rotate(45deg); }
+  .faq-answer { display: none; padding: 0 0 20px; font-size: 0.9rem; color: var(--text-mid); line-height: 1.75; }
+  .faq-answer.open { display: block; }
+
+  @media(max-width:900px){
+    .split-layout { grid-template-columns:1fr; gap:32px; }
+    .split-layout.reverse { direction:ltr; }
+    .questions-grid { grid-template-columns:1fr; }
+    .framework-row { grid-template-columns:52px 1fr; }
+    .framework-name { grid-column:2; }
+    .framework-desc { grid-column:1/-1; }
+    .stats-row { justify-content:center; }
+  }
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="container" style="max-width:1300px;margin:0 auto;">
+    <a href="../index.html">Home</a><span>›</span>
+    <a href="#">IT Services</a><span>›</span>
+    Compliance
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="comp-hero">
+  <div class="comp-hero-bg"></div>
+  <div class="comp-hero-overlay"></div>
+  <div class="container">
+    <div class="section-label">COMPLIANCE</div>
+    <h1>Business Data Compliance Solutions</h1>
+    <p>Every industry has different rules for data protection. Here's how DTCloudOn helps you satisfy compliance requirements and keep your company safe — without the complexity.</p>
+    <div class="comp-hero-btns">
+      <a class="btn-primary" href="../contact.html">Request Compliance Services →</a>
+      <a class="btn-outline" href="../contact.html">Speak with a compliance expert &rsaquo;</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR: ROI of Compliance -->
+<div class="stats-bar">
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">$2.86M</span><span class="stat-label">Avg. savings from regular compliance audits</span></div>
+    <div class="stat"><span class="stat-num">2x</span><span class="stat-label">Non-compliance costs twice as much as compliance</span></div>
+    <div class="stat"><span class="stat-num">$10K</span><span class="stat-label">Avg. per employee spent on regulatory compliance</span></div>
+    <div class="stat"><span class="stat-num">$1.03M</span><span class="stat-label">Saved by implementing regulatory monitoring</span></div>
+    <div class="stat"><span class="stat-num">$520K</span><span class="stat-label">Saved with a formal compliance charter</span></div>
+  </div>
+</div>
+
+<!-- IS COMPLIANCE WORTH THE INVESTMENT? -->
+<div class="content-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:52px;">
+      <div class="section-label">The ROI of Compliance</div>
+      <h2 class="section-title">Is Compliance Worth the Investment?</h2>
+      <p style="color:var(--text-mid);max-width:620px;margin:0 auto;line-height:1.7;">A joint survey conducted by Globalscape and the Ponemon Institute revealed an enormous return on investment for compliance solutions — proving that staying compliant is far cheaper than facing penalties.</p>
+    </div>
+    <div class="roi-grid reveal">
+      <div class="roi-card"><span class="roi-num">$2.86M</span><p>Regular compliance audits saved businesses an average of $2.86 million in avoided penalties and breach costs.</p></div>
+      <div class="roi-card"><span class="roi-num">2×</span><p>Non-compliance was reported to cost twice as much as compliance — making investment in compliance programs financially prudent.</p></div>
+      <div class="roi-card"><span class="roi-num">$10K</span><p>U.S. businesses spend an average of $10,000 per employee on regulatory compliance — a cost that grows with non-compliance penalties.</p></div>
+      <div class="roi-card"><span class="roi-num">$1.03M</span><p>Implementing regulatory monitoring to ensure compliance with changing regulations saved businesses an average of $1.03 million.</p></div>
+      <div class="roi-card"><span class="roi-num">$520K</span><p>Putting a formal compliance charter in place saved businesses an average of $520,000 in avoided fines and remediation costs.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- MITIGATE RISK -->
+<div class="content-section alt">
+  <div class="split-layout reveal">
+    <div class="content-text">
+      <div class="section-label">Risk Management</div>
+      <h2>Mitigate Risk With Real Expertise</h2>
+      <p>DTCloudOn starts every compliance conversation with a risk assessment that prioritizes short-term needs and plans for long-term success — delivering business data compliance solutions that work within your budget while positioning DTCloudOn as a long-term partner in regulatory readiness.</p>
+      <ul>
+        <li>Comprehensive risk assessment to identify compliance gaps</li>
+        <li>Prioritized remediation roadmap with clear timelines</li>
+        <li>Budget-conscious implementation strategies</li>
+        <li>Ongoing compliance monitoring and reporting</li>
+        <li>Long-term regulatory readiness planning</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Contact DTCloudOn →</a>
+    </div>
+    <div class="risk-panel">
+      <h4>Risk Assessment Meter</h4>
+      <div class="risk-meter-track"><div class="risk-meter-needle"></div></div>
+      <div class="risk-labels"><span>Low Risk</span><span>Moderate Risk</span><span>High Risk</span></div>
+      <div class="risk-items">
+        <div class="risk-row"><span class="r-label">Data Encryption</span><div class="risk-badge low">Low Risk</div></div>
+        <div class="risk-row"><span class="r-label">Access Controls</span><div class="risk-badge med">Moderate</div></div>
+        <div class="risk-row"><span class="r-label">Employee Training</span><div class="risk-badge high">High Risk</div></div>
+        <div class="risk-row"><span class="r-label">Incident Response Plan</span><div class="risk-badge med">Moderate</div></div>
+        <div class="risk-row"><span class="r-label">Audit Trail Logging</span><div class="risk-badge low">Low Risk</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SATISFY SECURITY STANDARDS -->
+<div class="content-section">
+  <div class="split-layout reverse reveal">
+    <div class="content-text">
+      <div class="section-label">Cloud Compliance</div>
+      <h2>Satisfy Security Standards With Cloud Compliance Solutions</h2>
+      <p>If you don't understand acronyms like HIPAA, GDPR, ISO, and FINRA, your information may be at risk. As compliance requirements become more complex, more and more businesses look to DTCloudOn for help.</p>
+      <p>We translate complex regulatory requirements into practical, actionable IT controls — keeping your business compliant without disrupting operations.</p>
+      <ul>
+        <li>HIPAA compliance for healthcare organizations</li>
+        <li>PCI-DSS for businesses that process card payments</li>
+        <li>GDPR for organizations handling EU citizen data</li>
+        <li>SOC 2 for technology and SaaS companies</li>
+        <li>FINRA for financial services and advisors</li>
+        <li>NIST Cybersecurity Framework alignment</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">More compliance resources →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">🏥</div>
+      <img src="../images/datacenter-2.png" alt="HIPAA Compliance" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- ENHANCE REPUTATION -->
+<div class="content-section alt">
+  <div class="split-layout reveal">
+    <div class="content-text">
+      <div class="section-label">Business Value</div>
+      <h2>Enhance Your Company's Reputation</h2>
+      <p>Businesses shouldn't be afraid of stricter compliance requirements. Instead, consider enhanced data protection and stronger client privacy as added value for your overall cybersecurity infrastructure.</p>
+      <p>Companies that demonstrate compliance commitment build stronger client trust, win more contracts, and differentiate themselves in competitive markets — especially when working with government agencies or enterprise clients.</p>
+      <ul>
+        <li>Builds trust with clients, partners, and stakeholders</li>
+        <li>Enables access to regulated markets and government contracts</li>
+        <li>Demonstrates commitment to data stewardship</li>
+        <li>Reduces cyber insurance premiums with documented controls</li>
+        <li>Competitive differentiator in RFP and procurement processes</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Protect your organization now →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">⭐</div>
+      <img src="../images/datacenter-1.png" alt="Company Reputation" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- KEY COMPLIANCE QUESTIONS -->
+<div class="content-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="section-label">Know Your Obligations</div>
+      <h2 class="section-title">Key Compliance Questions</h2>
+      <p style="color:var(--text-mid);max-width:620px;margin:0 auto 16px;line-height:1.7;">Depending on the location of your business, the industry it operates in, and its size or scope, compliance can mean many different things.</p>
+      <p style="font-weight:600;color:var(--navy);font-size:0.95rem;">Consider these four questions:</p>
+    </div>
+    <div class="questions-grid reveal">
+      <div class="question-card"><span class="question-num">1</span><p>How do you define personal information within your organization and what data do you collect?</p></div>
+      <div class="question-card"><span class="question-num">2</span><p>What kind of protection is required for that information under applicable regulations?</p></div>
+      <div class="question-card"><span class="question-num">3</span><p>How can your customers exert control over their data — access, correction, and deletion rights?</p></div>
+      <div class="question-card"><span class="question-num">4</span><p>What kind of notification is required if a customer's data is stolen or compromised?</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- IT COMPLIANCE SERVICES (replaces carousel) -->
+<div class="content-section alt">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="section-label">How We Help</div>
+      <h2 class="section-title">IT Compliance Services for Businesses</h2>
+      <p style="color:var(--text-mid);max-width:600px;margin:0 auto;line-height:1.7;">Here's how DTCloudOn helps businesses with data governance and regulatory compliance:</p>
+    </div>
+    <div class="services-compliance-grid reveal">
+      <div class="service-comp-item"><h3>🧭 Guidance</h3><p>DTCloudOn provides companies across North America with compliance best practices so they don't have to incur the cost of hiring a full-time security expert. We're your compliance partner.</p></div>
+      <div class="service-comp-item"><h3>🔗 Coordination</h3><p>Our data security protocols connect employees, computers, and networks. This gets everybody — and every device — on the same compliance page with unified policies and procedures.</p></div>
+      <div class="service-comp-item"><h3>🔍 Assessment</h3><p>DTCloudOn reviews existing security and implements enhanced regulations to satisfy an array of industry and government standards — identifying gaps before auditors do.</p></div>
+      <div class="service-comp-item"><h3>🎓 Training</h3><p>Meeting stringent compliance requirements shouldn't be a once-a-year scramble. Instead, we integrate compliance instruction into day-to-day workflows and culture.</p></div>
+      <div class="service-comp-item"><h3>🔄 Flexibility</h3><p>DTCloudOn helps businesses respond to changing conditions without missing a beat — especially in states where new compliance laws have passed or regulations have changed.</p></div>
+      <div class="service-comp-item"><h3>📊 Reporting</h3><p>Clear, auditor-ready compliance reports and documentation that demonstrate your controls are working — keeping you prepared for audits, assessments, and client due diligence.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPLIANCE FRAMEWORKS: DARK SECTION -->
+<div class="content-section dark">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="section-label" style="color:var(--sky-light);">Compliance Frameworks</div>
+      <h2 class="section-title" style="color:var(--white);">Compliance Solutions for Cybersecurity</h2>
+      <p style="color:rgba(255,255,255,0.6);max-width:580px;margin:0 auto;line-height:1.7;">Compliance means more than just ticking a box. Consider it the foundation for a successful, trustworthy business.</p>
+    </div>
+    <div class="framework-list reveal">
+      <div class="framework-row">
+        <div class="framework-icon">🏥</div>
+        <div class="framework-name">HIPAA</div>
+        <div class="framework-desc">HIPAA compliance is a long, winding road for healthcare providers and the businesses and contractors they work with. Whether you are a covered entity or a business associate, DTCloudOn can help navigate PHI protection, Security Rule requirements, and breach notification procedures.</div>
+      </div>
+      <div class="framework-row">
+        <div class="framework-icon">🏛️</div>
+        <div class="framework-name">CMMC</div>
+        <div class="framework-desc">The Cybersecurity Maturity Model Certification (CMMC) is required for contractors working with the Department of Defense. DTCloudOn helps companies prepare for a CMMC audit by performing a preliminary risk assessment and providing an action plan to close the gaps needed to achieve compliance.</div>
+      </div>
+      <div class="framework-row">
+        <div class="framework-icon">🔬</div>
+        <div class="framework-name">NIST</div>
+        <div class="framework-desc">DTCloudOn works within the cybersecurity framework of the National Institute of Standards and Technology (NIST), which requires businesses to Identify, Protect, Detect, Respond, and Recover in the face of data threats. This includes security awareness training and SIEM implementation.</div>
+      </div>
+      <div class="framework-row">
+        <div class="framework-icon">📈</div>
+        <div class="framework-name">FINRA</div>
+        <div class="framework-desc">The Financial Industry Regulatory Authority (FINRA) regulates the sharing of information and the transparency of transactions conducted by banking, accounting, and tax professionals. DTCloudOn ensures your systems meet FINRA's data protection and recordkeeping requirements.</div>
+      </div>
+      <div class="framework-row">
+        <div class="framework-icon">💳</div>
+        <div class="framework-name">PCI-DSS</div>
+        <div class="framework-desc">If your business accepts major credit cards as payment, you're required to comply with the Payment Card Industry (PCI) Data Security Standard — established in 2004 to improve protection for card issuers by ensuring merchants meet minimum standards for the storage, processing, and transmission of cardholder data.</div>
+      </div>
+      <div class="framework-row">
+        <div class="framework-icon">🌍</div>
+        <div class="framework-name">GDPR</div>
+        <div class="framework-desc">The European Union's General Data Protection Regulation (GDPR), enacted in 2018, standardizes data privacy laws while increasing the transparency with which organizations approach data handling. GDPR has had ripple effects across the globe as its standards are adopted by other governments and regulatory bodies.</div>
+      </div>
+      <div class="framework-row">
+        <div class="framework-icon">🎯</div>
+        <div class="framework-name">Penetration Testing</div>
+        <div class="framework-desc">Effective cybersecurity requires a proactive approach. This includes penetration testing, which simulates a cyberattack against your organization — allowing DTCloudOn to identify and repair vulnerabilities before a hacker does, as well as support compliance with data privacy and security regulations.</div>
+      </div>
+      <div class="framework-row">
+        <div class="framework-icon">📋</div>
+        <div class="framework-name">SOC 2</div>
+        <div class="framework-desc">SOC 2 compliance demonstrates that your organization has adequate controls in place for security, availability, processing integrity, confidentiality, and privacy. Essential for SaaS companies and technology service providers who handle customer data.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INDUSTRY-SPECIFIC COMPLIANCE -->
+<div class="content-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="section-label">Industry-Specific</div>
+      <h2 class="section-title">Industry-Specific Compliance Solutions</h2>
+      <p style="color:var(--text-mid);max-width:600px;margin:0 auto;line-height:1.7;">Different industries require different approaches to technology and compliance solutions.</p>
+    </div>
+    <div class="ind-grid reveal">
+      <a class="ind-chip" href="../industries/accounting.html"><div class="icon">📊</div><p>Accounting</p></a>
+      <a class="ind-chip" href="../industries/architects.html"><div class="icon">📐</div><p>Architects</p></a>
+      <a class="ind-chip" href="../industries/construction.html"><div class="icon">🏗️</div><p>Construction</p></a>
+      <a class="ind-chip" href="../industries/education.html"><div class="icon">🎓</div><p>Education</p></a>
+      <a class="ind-chip" href="../industries/engineering.html"><div class="icon">⚙️</div><p>Engineering</p></a>
+      <a class="ind-chip" href="../industries/finance.html"><div class="icon">🏦</div><p>Finance</p></a>
+      <a class="ind-chip" href="../industries/franchises.html"><div class="icon">🍔</div><p>Franchises</p></a>
+      <a class="ind-chip" href="../industries/government.html"><div class="icon">🏛️</div><p>Government</p></a>
+      <a class="ind-chip" href="../industries/healthcare.html"><div class="icon">🏥</div><p>Healthcare</p></a>
+      <a class="ind-chip" href="../industries/hospitality.html"><div class="icon">🏨</div><p>Hospitality</p></a>
+      <a class="ind-chip" href="../industries/insurance.html"><div class="icon">🔖</div><p>Insurance</p></a>
+      <a class="ind-chip" href="../industries/legal.html"><div class="icon">⚖️</div><p>Legal</p></a>
+      <a class="ind-chip" href="../industries/manufacturing.html"><div class="icon">🏭</div><p>Manufacturing</p></a>
+      <a class="ind-chip" href="../industries/nonprofit.html"><div class="icon">🤝</div><p>Non-Profit</p></a>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="content-section alt">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <h2 class="section-title">FAQs</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">What are business data compliance solutions and who needs them?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Business data compliance solutions help organizations meet legal and industry requirements for handling sensitive information, including customer, financial, and operational data. Any business that stores personal data, processes payments, operates in regulated industries, or works with government or healthcare entities can benefit from structured compliance support.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">How does DTCloudOn approach regulatory compliance for different industries?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">DTCloudOn begins with a comprehensive risk assessment to identify applicable regulations, existing gaps, and operational priorities. From there, tailored controls, policies, monitoring procedures, and documentation are implemented to align with standards such as HIPAA, CMMC, NIST, PCI DSS, GDPR, and FINRA based on the organization's sector and risk profile.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">What risks does non-compliance create for businesses?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Failure to comply with data protection regulations can lead to financial penalties, legal exposure, operational disruption, reputational damage, and loss of customer trust. In severe cases, organizations may face restrictions on doing business, contract termination, or mandatory audits that increase long-term costs.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">How long does it take to become compliant with data regulations?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">The timeline depends on the organization's size, industry, current security maturity, and regulatory scope. Some businesses can address key requirements within a few months, while complex environments may require phased improvements over a longer period to implement policies, technical safeguards, employee training, and continuous monitoring.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Can compliance solutions improve cybersecurity posture?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Yes. Compliance frameworks typically require controls such as access management, encryption, monitoring, incident response planning, and employee awareness training. Implementing these safeguards strengthens overall cybersecurity resilience while also satisfying regulatory obligations.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">What is included in a compliance risk assessment?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">A compliance risk assessment evaluates data flows, infrastructure, policies, third-party relationships, access controls, and potential vulnerabilities. The goal is to determine which regulations apply, measure current alignment, and prioritize remediation steps that reduce exposure while supporting business operations.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">How do cloud environments affect compliance requirements?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Cloud adoption introduces shared responsibility between the provider and the business. Organizations must ensure proper configuration, identity management, data protection controls, logging, and vendor oversight to remain compliant while benefiting from scalability and remote accessibility.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Why are compliance services considered a long-term investment?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Regulations evolve, threats change, and business operations grow. Ongoing monitoring, periodic audits, policy updates, and employee training are necessary to maintain compliance over time. Continuous support helps organizations adapt to new requirements while avoiding costly remediation after violations occur.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div class="container">
+    <h2>Ready to Get Compliant — and Stay That Way?</h2>
+    <p>DTCloudOn makes compliance manageable, affordable, and built into your operations. Start with a free risk assessment.</p>
+    <a class="btn-white" href="../contact.html">Request a Free Compliance Assessment →</a>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="../nav.js"></script>
+<script src="../utils.js"></script>
+<script>
+  renderNav('services', '../');
+  renderFooter(1);
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-question').forEach(b => b.classList.remove('open'));
+    if (!isOpen) { answer.classList.add('open'); btn.classList.add('open'); }
+  }
+</script>
+</body>
+</html>
