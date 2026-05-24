@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Network Support Services — DTCloudOn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* ── HERO ── */
+  .net-hero {
+    position: relative; min-height: 62vh;
+    display: flex; align-items: center;
+    background: var(--navy); overflow: hidden; padding: 100px 24px 80px;
+  }
+  .net-hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('../images/datacenter-1.png');
+    background-size: cover; background-position: center;
+    filter: brightness(0.2) saturate(1.1);
+  }
+  .net-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(10,22,40,0.95) 0%, rgba(14,42,90,0.5) 55%, rgba(10,22,40,0.88) 100%);
+  }
+  .net-hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(42,125,225,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(42,125,225,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .net-hero .container { position: relative; z-index: 2; text-align: center; }
+  .net-hero .section-label { color: var(--sky-light); justify-content: center; display: flex; }
+  .net-hero h1 { color: var(--white); font-size: clamp(2.4rem,5vw,3.8rem); max-width: 800px; margin: 16px auto 20px; line-height: 1.1; letter-spacing: -1px; }
+  .net-hero p { color: rgba(255,255,255,0.72); max-width: 600px; margin: 0 auto 36px; font-size: 1.1rem; line-height: 1.75; }
+  .net-hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── STATS BAR ── */
+  .stats-bar { background: var(--accent); padding: 28px 24px; }
+  .stats-row { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 24px; }
+  .stats-bar .stat { text-align: center; color: var(--white); }
+  .stats-bar .stat-num { font-family:'Sora',sans-serif; font-size:2.2rem; font-weight:800; display:block; }
+  .stats-bar .stat-label { font-size:0.82rem; opacity:0.9; }
+
+  /* ── CONTENT SECTIONS ── */
+  .content-section { padding: 80px 24px; }
+  .content-section.alt { background: var(--off-white); }
+  .content-section.dark { background: var(--navy); }
+
+  .split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; max-width: 1200px; margin: 0 auto; }
+  .split-layout.reverse { direction: rtl; }
+  .split-layout.reverse > * { direction: ltr; }
+
+  .content-text h2 { font-size: clamp(1.6rem,2.8vw,2.4rem); color: var(--navy); margin-bottom: 16px; letter-spacing:-0.5px; line-height:1.2; }
+  .content-text p { color: var(--text-mid); line-height: 1.78; margin-bottom: 16px; }
+  .content-text ul { list-style: none; margin: 20px 0; }
+  .content-text li { padding: 10px 0; border-bottom: 1px solid rgba(10,22,40,0.07); font-size: 0.92rem; color: var(--text-mid); display: flex; gap: 12px; align-items: flex-start; }
+  .content-text li::before { content:'✓'; color:var(--sky); font-weight:700; flex-shrink:0; margin-top:1px; }
+  .content-text .inline-link { color: var(--sky); font-size: 0.9rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; transition: gap 0.2s; }
+  .content-text .inline-link:hover { gap: 10px; }
+
+  .visual-panel { background: var(--navy-mid); border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; position: relative; display: flex; align-items: center; justify-content: center; }
+  .visual-panel img { width:100%;height:100%;object-fit:cover;opacity:0.75;display:block; }
+  .visual-panel .panel-icon { position:absolute; font-size:5rem; opacity:0.15; }
+
+  /* ── CONNECTIVITY CARDS (replaces carousel) ── */
+  .connect-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .connect-item {
+    background: var(--white); border-radius: 14px; padding: 28px 24px;
+    border: 1px solid rgba(10,22,40,0.07); transition: all 0.25s;
+  }
+  .connect-item:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,22,40,0.1); border-color: rgba(42,125,225,0.2); }
+  .connect-item h3 { font-size: 1rem; color: var(--navy); margin-bottom: 10px; font-weight: 700; }
+  .connect-item p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.65; }
+
+  /* ── TECH SPECS LIST ── */
+  .tech-list { max-width: 900px; margin: 0 auto; }
+  .tech-row {
+    display: grid; grid-template-columns: 64px 180px 1fr;
+    gap: 20px; align-items: center;
+    padding: 20px 0; border-bottom: 1px solid rgba(10,22,40,0.07);
+  }
+  .tech-row:last-child { border-bottom: none; }
+  .tech-icon { width: 52px; height: 52px; background: var(--off-white); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid rgba(10,22,40,0.06); }
+  .tech-name { font-family:'Sora',sans-serif; font-weight: 700; color: var(--navy); font-size: 0.95rem; }
+  .tech-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── RELATED SERVICES GRID ── */
+  .related-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;
+  }
+  .related-card {
+    background: var(--white); border-radius: 14px; padding: 28px 20px;
+    border: 1px solid rgba(10,22,40,0.07); text-align: center;
+    text-decoration: none; transition: all 0.25s; display: block;
+  }
+  .related-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,22,40,0.1); border-color: rgba(42,125,225,0.2); }
+  .related-card .r-icon { font-size: 2rem; margin-bottom: 12px; }
+  .related-card h3 { font-size: 0.95rem; color: var(--navy); margin-bottom: 6px; font-weight: 700; }
+  .related-card .need { font-size: 0.78rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; font-style: italic; }
+  .related-card p { font-size: 0.8rem; color: var(--text-mid); line-height: 1.55; }
+
+  /* ── INDUSTRIES GRID ── */
+  .ind-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
+  .ind-chip { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 18px 14px; text-align: center; transition: all 0.2s; text-decoration: none; display: block; }
+  .ind-chip:hover { background: var(--navy); border-color: var(--navy); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(10,22,40,0.15); }
+  .ind-chip .icon { font-size: 1.6rem; margin-bottom: 8px; }
+  .ind-chip p { font-size: 0.8rem; font-weight: 600; color: var(--text-mid); transition: color 0.2s; }
+  .ind-chip:hover p { color: rgba(255,255,255,0.85); }
+
+  /* ── FAQ ── */
+  .faq-list { max-width: 900px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid rgba(10,22,40,0.08); }
+  .faq-question {
+    width: 100%; text-align: left; background: none; border: none;
+    padding: 20px 0; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+    font-family: 'Sora', sans-serif; font-size: 0.98rem; font-weight: 700;
+    color: var(--navy); transition: color 0.2s;
+  }
+  .faq-question:hover { color: var(--sky); }
+  .faq-question .faq-icon { font-size: 1.1rem; flex-shrink: 0; transition: transform 0.3s; color: var(--accent); }
+  .faq-question.open .faq-icon { transform: rotate(45deg); }
+  .faq-answer { display: none; padding: 0 0 20px; font-size: 0.9rem; color: var(--text-mid); line-height: 1.75; }
+  .faq-answer.open { display: block; }
+
+  /* ── PROCESS STEPS ── */
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+  .step-card { background: var(--white); border-radius: 16px; padding: 32px 24px; border: 1px solid rgba(10,22,40,0.08); transition: all 0.3s; }
+  .step-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,22,40,0.1); }
+  .step-num { width: 40px; height: 40px; background: var(--accent); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Sora',sans-serif; font-weight: 800; font-size: 1rem; margin-bottom: 16px; }
+  .step-card h3 { font-size: 1rem; color: var(--navy); margin-bottom: 10px; }
+  .step-card p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
+
+  @media(max-width:900px){
+    .split-layout { grid-template-columns:1fr; gap:32px; }
+    .split-layout.reverse { direction:ltr; }
+    .tech-row { grid-template-columns: 52px 1fr; }
+    .tech-name { grid-column: 2; }
+    .tech-desc { grid-column: 1 / -1; }
+    .stats-row { justify-content:center; }
+  }
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="container" style="max-width:1300px;margin:0 auto;">
+    <a href="../index.html">Home</a><span>›</span>
+    <a href="#">IT Services</a><span>›</span>
+    IT Network Support Services
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="net-hero">
+  <div class="net-hero-bg"></div>
+  <div class="net-hero-overlay"></div>
+  <div class="net-hero-grid"></div>
+  <div class="container">
+    <div class="section-label">STAY CONNECTED AND PROTECTED</div>
+    <h1>IT Network Support Services</h1>
+    <p>Customized network design and management — keeping your business connected, secure, and running at peak performance 24/7/365.</p>
+    <div class="net-hero-btns">
+      <a class="btn-primary" href="../contact.html">Request Network Management →</a>
+      <a class="btn-outline" href="../contact.html">Speak with a network expert &rsaquo;</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">24/7/365</span><span class="stat-label">Network monitoring &amp; support</span></div>
+    <div class="stat"><span class="stat-num">99.9%</span><span class="stat-label">Network uptime SLA</span></div>
+    <div class="stat"><span class="stat-num">&lt;15 min</span><span class="stat-label">Critical incident response</span></div>
+    <div class="stat"><span class="stat-num">Zero Trust</span><span class="stat-label">Security architecture</span></div>
+  </div>
+</div>
+
+<!-- SIMPLIFIED NETWORK SECURITY BANNER -->
+<div style="background:var(--off-white);padding:60px 24px;text-align:center;">
+  <div class="section-label" style="justify-content:center;display:flex;">TELECOMMUNICATIONS SUPPORT</div>
+  <h2 style="font-size:clamp(2rem,4vw,3rem);color:var(--navy);margin:12px 0 20px;letter-spacing:-0.5px;">Simplified Network Security</h2>
+  <p style="color:var(--text-mid);max-width:620px;margin:0 auto 32px;line-height:1.75;font-size:1.05rem;">DTCloudOn makes network management simple — protecting your business with comprehensive security, proactive monitoring, and expert support at every layer of your infrastructure.</p>
+  <a class="btn-primary" href="../contact.html">Get a Network Assessment →</a>
+</div>
+
+<!-- NETWORK DESIGN & ANALYSIS -->
+<div class="content-section">
+  <div class="split-layout reveal">
+    <div class="content-text">
+      <div class="section-label">Design &amp; Analysis</div>
+      <h2>Network Design and Analysis</h2>
+      <p>Protecting your business requires 24/7/365 support — it's not just a task for office hours. DTCloudOn conducts comprehensive network inspections and security scans that proactively address problems before they compromise your company's safety.</p>
+      <p>Our approach centers on identifying network breaches and potential threats before they jeopardize your company's systems. This preemptive stance ensures your network solutions remain resilient against evolving cyber threats, safeguarding your network security, sensitive data, and customer trust.</p>
+      <p>Our holistic approach and continuous monitoring of critical datasets encompass strategic design and analysis solutions tailored to your unique business needs — optimizing network performance while minimizing risks.</p>
+      <ul>
+        <li>Comprehensive network topology mapping and documentation</li>
+        <li>Security gap analysis and vulnerability assessment</li>
+        <li>Bandwidth capacity planning and optimization</li>
+        <li>Network architecture design for scalability and resilience</li>
+      </ul>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">🌐</div>
+      <img src="../images/datacenter-2.png" alt="Network Design" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- FEWER SYSTEM OUTAGES -->
+<div class="content-section alt">
+  <div class="split-layout reverse reveal">
+    <div class="content-text">
+      <div class="section-label">Business Continuity</div>
+      <h2>Fewer System Outages</h2>
+      <p>IT outages can be caused by human error, configuration issues, and natural disasters. But when you properly manage your networks, you can stay one step ahead of potential problems — leading to fewer bottlenecks and disruptions.</p>
+      <p>DTCloudOn oversees network configuration and user access by adopting a robust network maintenance plan to mitigate potential risks. We implement disaster recovery and business continuity plans, including data backup and mechanisms to fortify your network's resilience against unforeseen security breaches.</p>
+      <p>Our network third-party hardware maintenance services give you more control over your network systems to minimize the frequency and duration of system outages while enhancing overall resilience.</p>
+      <ul>
+        <li>Proactive configuration management and change control</li>
+        <li>Automated failover and redundancy systems</li>
+        <li>Disaster recovery planning and testing</li>
+        <li>Hardware lifecycle management and replacement planning</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Keep things running smoothly →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">⚡</div>
+      <img src="../images/datacenter-3.png" alt="System Reliability" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- ENHANCED CYBERSECURITY -->
+<div class="content-section">
+  <div class="split-layout reveal">
+    <div class="content-text">
+      <div class="section-label">Network Security</div>
+      <h2>Enhanced Cybersecurity with Network Security Management</h2>
+      <p>Network management protects your business-critical data by comparing normal system performance with the results of intrusion detection and traffic analysis tools. If anything looks amiss, DTCloudOn can isolate the aberration and fix it before it affects other devices connected to your network.</p>
+      <p>Our vigilant network monitoring services swiftly detect any irregularities within your network infrastructure. These potential issues may indicate unauthorized access attempts, security breaches, or other suspicious activities. Identifying these issues in real-time allows us to isolate security breaches and mitigate potential threats.</p>
+      <p>Such proactive measures prevent potential threats from spreading into your networks and minimize potential damage — bolstering your software updates and network maintenance systems to solidify your cybersecurity posture.</p>
+      <ul>
+        <li>Intrusion detection and prevention systems (IDS/IPS)</li>
+        <li>Real-time traffic analysis and anomaly detection</li>
+        <li>Network segmentation and micro-segmentation</li>
+        <li>Zero-trust network access (ZTNA) implementation</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Build a perimeter of protection →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">🔐</div>
+      <img src="../images/datacenter-1.png" alt="Network Security" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- PROACTIVE MONITORING + IMMEDIATE RESOLUTION -->
+<div class="content-section alt">
+  <div class="split-layout reverse reveal">
+    <div class="content-text">
+      <div class="section-label">Monitoring</div>
+      <h2>Proactive Monitoring</h2>
+      <p>Why monitor every piece of hardware and software used by your business? Because when you track the function and performance of networks, you can quickly adjust system settings to meet demand.</p>
+      <ul>
+        <li>24/7 network performance dashboards and alerting</li>
+        <li>Bandwidth utilization tracking and capacity alerts</li>
+        <li>Device health monitoring across all network nodes</li>
+        <li>Automated performance reports delivered monthly</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Smart network management for your business →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">📡</div>
+      <img src="../images/datacenter-2.png" alt="Proactive Monitoring" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<div class="content-section">
+  <div class="split-layout reveal">
+    <div class="content-text">
+      <div class="section-label">Rapid Response</div>
+      <h2>Immediate Resolution</h2>
+      <p>When we see issues, we fix them — we don't wait until they escalate. DTCloudOn can lock down networks to address vulnerabilities while maintaining connectivity for your employees. Our network management software optimizes performance and security simultaneously.</p>
+      <ul>
+        <li>Automated threat containment and network isolation</li>
+        <li>Remote remediation for most network issues</li>
+        <li>On-site dispatch when physical intervention is required</li>
+        <li>Post-incident reporting and root cause analysis</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Fix your network issues →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">🚨</div>
+      <img src="../images/datacenter-3.png" alt="Immediate Resolution" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- HOW STRONG IS YOUR CONNECTION -->
+<div class="content-section alt">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:52px;">
+      <h2 class="section-title">How Strong Is Your Connection?</h2>
+      <p class="section-sub" style="margin:0 auto;">Network connectivity issues can strain businesses. Here's how DTCloudOn can help:</p>
+    </div>
+    <div class="connect-grid reveal">
+      <div class="connect-item"><h3>🔒 Secure Wi-Fi Networks</h3><p>Whether it's voice, video, text, or email, every company has to stay connected. DTCloudOn provides network bandwidth you can count on, day or night, no matter how busy your employees are.</p></div>
+      <div class="connect-item"><h3>🏠 Safe Remote Work Environment</h3><p>Hybrid work environments and remote workforces mean different liabilities and risks. DTCloudOn establishes systems that give employees reliable and safe access using tools like multi-factor authentication (MFA), single sign-on, and encrypted VPN connections.</p></div>
+      <div class="connect-item"><h3>🖥️ State-of-the-Art Network Equipment</h3><p>Network management doesn't always require an investment in new equipment. DTCloudOn can help you make informed infrastructure choices to support bandwidth needs for years to come.</p></div>
+      <div class="connect-item"><h3>🕐 24/7/365 Support</h3><p>We review your network operations on a recurring basis — typically every month or quarter. This allows us to solve issues before you notice them and analyze network health, downtime, and security threats.</p></div>
+      <div class="connect-item"><h3>📈 Increased Productivity</h3><p>What's the best way to measure the success of network management solutions? The lack of downtime — and a corresponding increase in employee satisfaction and productivity. That's our goal every day.</p></div>
+      <div class="connect-item"><h3>🤝 Industry-Best Partners</h3><p>We understand the nuances of different network providers and can help you select the right vendor. Then we extend our support with smart contract terms and easy payment options.</p></div>
+      <div class="connect-item"><h3>🚀 Solution Deployment</h3><p>DTCloudOn serves as your network project manager, ensuring that new services are properly implemented so they don't cause any disruptions to everyday business operations.</p></div>
+      <div class="connect-item"><h3>🔑 Virtual Private Network (VPN)</h3><p>A VPN provides an extra layer of privacy by encrypting your internet data when using unsecured networks — allowing businesses and individuals to protect their online data and sensitive business information from prying eyes.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- TECH SPECS: WHAT WE MANAGE -->
+<div class="content-section dark">
+  <div class="container">
+    <div class="section-label" style="color:var(--sky-light);text-align:center;">Tech Specs</div>
+    <h2 class="section-title" style="color:var(--white);text-align:center;margin-bottom:48px;">IT Network Management Services</h2>
+    <div class="tech-list reveal">
+      <div class="tech-row" style="border-color:rgba(255,255,255,0.08);">
+        <div class="tech-icon" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.1);">📡</div>
+        <div class="tech-name" style="color:var(--white);">Internet Services</div>
+        <div class="tech-desc" style="color:rgba(255,255,255,0.65);">We can help you find a reliable and affordable internet service provider to maintain online connectivity — and manage that connection for optimal performance.</div>
+      </div>
+      <div class="tech-row" style="border-color:rgba(255,255,255,0.08);">
+        <div class="tech-icon" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.1);">🔥</div>
+        <div class="tech-name" style="color:var(--white);">Firewall Management</div>
+        <div class="tech-desc" style="color:rgba(255,255,255,0.65);">Firewalls are a critical part of cybersecurity. DTCloudOn applies industry best practices to safeguard your network — configuring and monitoring rules, policies, tracking changes, and controlling user access to firewall settings.</div>
+      </div>
+      <div class="tech-row" style="border-color:rgba(255,255,255,0.08);">
+        <div class="tech-icon" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.1);">📶</div>
+        <div class="tech-name" style="color:var(--white);">Wi-Fi Management</div>
+        <div class="tech-desc" style="color:rgba(255,255,255,0.65);">We help businesses maintain optimal Wi-Fi signals that are safe and secure to keep employees connected and productive — including wireless security audits and access point management.</div>
+      </div>
+      <div class="tech-row" style="border-color:rgba(255,255,255,0.08);">
+        <div class="tech-icon" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.1);">🧩</div>
+        <div class="tech-name" style="color:var(--white);">Network Design</div>
+        <div class="tech-desc" style="color:rgba(255,255,255,0.65);">As technology advances, networks expand in complexity. DTCloudOn helps businesses design and construct networks that are optimized for their particular business requirements — LAN, WAN, SD-WAN, and hybrid environments.</div>
+      </div>
+      <div class="tech-row" style="border-color:rgba(255,255,255,0.08);">
+        <div class="tech-icon" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.1);">🔑</div>
+        <div class="tech-name" style="color:var(--white);">Remote Access (VPN)</div>
+        <div class="tech-desc" style="color:rgba(255,255,255,0.65);">With more employees working remotely than ever before, providing secure access to your systems for remote teams is crucial. VPNs are critical to enabling and protecting that connection securely.</div>
+      </div>
+      <div class="tech-row" style="border-color:rgba(255,255,255,0.08);">
+        <div class="tech-icon" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.1);">🗺️</div>
+        <div class="tech-name" style="color:var(--white);">Network Diagramming</div>
+        <div class="tech-desc" style="color:rgba(255,255,255,0.65);">Our automated discovery tools visualize all of the nodes of a business network to identify needed improvements, reduce time in troubleshooting, ease documentation efforts, and catch issues before they affect day-to-day operations.</div>
+      </div>
+      <div class="tech-row" style="border-color:rgba(255,255,255,0.08);">
+        <div class="tech-icon" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.1);">🔄</div>
+        <div class="tech-name" style="color:var(--white);">SD-WAN Management</div>
+        <div class="tech-desc" style="color:rgba(255,255,255,0.65);">Software-defined WAN solutions that intelligently route traffic across multiple connections — reducing costs, improving performance, and providing built-in redundancy for branch offices and distributed teams.</div>
+      </div>
+      <div class="tech-row" style="border-color:rgba(255,255,255,0.08);border-bottom:none;">
+        <div class="tech-icon" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.1);">📊</div>
+        <div class="tech-name" style="color:var(--white);">Network Performance Monitoring</div>
+        <div class="tech-desc" style="color:rgba(255,255,255,0.65);">Continuous monitoring of network bandwidth, latency, packet loss, and device health — with automated alerts and dashboards that give you real-time visibility into your entire network infrastructure.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPLIANCE / INDUSTRIES -->
+<div class="content-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="section-label">Industry Compliance</div>
+      <h2 class="section-title">Compliance Solutions Adapted to Industry Needs</h2>
+      <p style="color:var(--text-mid);max-width:620px;margin:0 auto;line-height:1.7;">Technological strategies must be tailored to address the unique regulatory and operational demands inherent to each sector.</p>
+    </div>
+    <div class="ind-grid reveal">
+      <a class="ind-chip" href="../industries/accounting.html"><div class="icon">📊</div><p>Accounting</p></a>
+      <a class="ind-chip" href="../industries/architects.html"><div class="icon">📐</div><p>Architecture Firms</p></a>
+      <a class="ind-chip" href="../industries/construction.html"><div class="icon">🏗️</div><p>Construction</p></a>
+      <a class="ind-chip" href="../industries/education.html"><div class="icon">🎓</div><p>Education</p></a>
+      <a class="ind-chip" href="../industries/engineering.html"><div class="icon">⚙️</div><p>Engineering</p></a>
+      <a class="ind-chip" href="../industries/finance.html"><div class="icon">🏦</div><p>Finance</p></a>
+      <a class="ind-chip" href="../industries/franchises.html"><div class="icon">🍔</div><p>Franchises</p></a>
+      <a class="ind-chip" href="../industries/healthcare.html"><div class="icon">🏥</div><p>Healthcare</p></a>
+      <a class="ind-chip" href="../industries/hospitality.html"><div class="icon">🏨</div><p>Hospitality</p></a>
+      <a class="ind-chip" href="../industries/legal.html"><div class="icon">⚖️</div><p>Legal</p></a>
+      <a class="ind-chip" href="../industries/manufacturing.html"><div class="icon">🏭</div><p>Manufacturing</p></a>
+      <a class="ind-chip" href="../industries/nonprofit.html"><div class="icon">🤝</div><p>Non-Profit</p></a>
+      <a class="ind-chip" href="../industries/professional-services.html"><div class="icon">💼</div><p>Professional Services</p></a>
+      <a class="ind-chip" href="../industries/retail.html"><div class="icon">🛒</div><p>Retail</p></a>
+    </div>
+  </div>
+</div>
+
+<!-- RELATED SERVICES -->
+<div class="content-section alt">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <h2 class="section-title">A Secure Networking Solution Can Make All the Difference</h2>
+      <p style="color:var(--text-mid);max-width:640px;margin:0 auto;line-height:1.7;">Network solutions work even better when combined with other IT services. Here's how DTCloudOn can support your complete IT environment:</p>
+    </div>
+    <div class="related-grid reveal">
+      <a class="related-card" href="cloud.html"><div class="r-icon">☁️</div><h3>Cloud Services</h3><p class="need">I want to migrate to the cloud.</p><p>Experience cost savings, efficiencies, and anywhere access of the latest cloud solutions.</p></a>
+      <a class="related-card" href="compliance.html"><div class="r-icon">📋</div><h3>Compliance</h3><p class="need">I need to comply with industry regulations.</p><p>Confidently meet data and privacy regulations through specialized compliance services.</p></a>
+      <a class="related-card" href="cybersecurity.html"><div class="r-icon">🔒</div><h3>Cybersecurity</h3><p class="need">I need protection from ransomware.</p><p>Defend your business against cyberthreats with multi-layered security solutions.</p></a>
+      <a class="related-card" href="backup.html"><div class="r-icon">💾</div><h3>Data Backup</h3><p class="need">I need to securely back up my data.</p><p>Know that you can recover your data no matter what with consistent, dependable backup solutions.</p></a>
+      <a class="related-card" href="it-guidance.html"><div class="r-icon">🗺️</div><h3>IT Guidance</h3><p class="need">I need an IT strategy.</p><p>Put our expertise to work for your business with customized IT guidance and vCIO services.</p></a>
+      <a class="related-card" href="procurement.html"><div class="r-icon">🛒</div><h3>IT Procurement</h3><p class="need">I'm opening a new location.</p><p>Leverage our vendor relationships for cost-effective, top-quality systems and equipment.</p></a>
+      <a class="related-card" href="it-support.html"><div class="r-icon">🎧</div><h3>IT Support</h3><p class="need">I need faster IT support.</p><p>Rely on dependable IT support to resolve issues quickly and avoid disruptions.</p></a>
+      <a class="related-card" href="managed-services.html"><div class="r-icon">🖥️</div><h3>Managed Services</h3><p class="need">My business needs help with IT.</p><p>Keep your technology securely running at peak potential with 24/7 monitoring and expert management.</p></a>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="content-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:52px;">
+      <h2 class="section-title">FAQs</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          1. What are network management services and why do businesses need them?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">Network management services oversee the performance, security, and reliability of a company's network infrastructure. These services include monitoring, configuration, maintenance, and threat detection to reduce outages, improve connectivity, and protect business data. Proactive network management helps businesses maintain operational continuity and system stability.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          2. How does continuous network monitoring improve cybersecurity?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">Continuous monitoring analyzes network traffic, device performance, and user activity to identify unusual behavior that may indicate cyber threats. Early detection allows security teams to isolate suspicious activity, prevent unauthorized access, and stop threats from spreading across connected systems.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          3. What is included in professional network security management services?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">Network security management services typically include firewall oversight, intrusion detection, vulnerability scanning, traffic analysis, and policy enforcement. These layers work together to protect sensitive business data, maintain system integrity, and strengthen overall cybersecurity posture.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          4. How can network management reduce system outages?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">Network management reduces downtime by identifying configuration issues, hardware failures, and performance bottlenecks before they escalate. Preventive maintenance, monitoring alerts, and rapid issue resolution help maintain stable connectivity and consistent system performance.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          5. Why is network design important for long-term performance?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">Strategic network design ensures that infrastructure supports current business operations while allowing scalability. Proper design improves speed, reliability, and security while minimizing risks associated with outdated or poorly configured systems.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          6. How do firewall management services protect business networks?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">Firewall management involves configuring rules, monitoring traffic, updating policies, and reviewing access controls. Properly managed firewalls act as a barrier between internal systems and external threats, helping prevent unauthorized access and data breaches.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          7. What role does Wi-Fi management play in network security?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">Wi-Fi management ensures wireless networks are encrypted, segmented, and monitored for unauthorized access. Secure Wi-Fi configurations prevent intrusions while maintaining reliable connectivity for employees and business operations.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          8. How does network management support remote work security?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">Secure remote access solutions such as VPNs allow employees to connect safely to internal systems. Network management services monitor these connections, enforce security protocols, and protect data transmission across remote environments.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          9. What is the benefit of network diagramming and documentation?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">Network diagramming provides a visual map of all devices, connections, and configurations. This improves troubleshooting speed, helps identify vulnerabilities, supports audits, and ensures networks can be managed efficiently as they grow.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          10. How does proactive network maintenance support business continuity?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">Routine inspections, updates, and performance optimization keep systems functioning reliably. Proactive maintenance reduces the likelihood of failures, enhances resilience against cyber threats, and supports uninterrupted business operations.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div class="container">
+    <h2>Ready to Strengthen Your Network?</h2>
+    <p>Talk to a DTCloudOn network specialist — free assessment, no commitment. We'll identify gaps and build a plan.</p>
+    <a class="btn-white" href="../contact.html">Request a Free Network Assessment →</a>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="../nav.js"></script>
+<script src="../utils.js"></script>
+<script>
+  renderNav('services', '../');
+  renderFooter(1);
+
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-question').forEach(b => b.classList.remove('open'));
+    if (!isOpen) { answer.classList.add('open'); btn.classList.add('open'); }
+  }
+</script>
+</body>
+</html>
