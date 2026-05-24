@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Productivity Applications — DTCloudOn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* ── HERO ── */
+  .prod-hero {
+    position: relative;
+    min-height: 62vh;
+    display: flex;
+    align-items: center;
+    background: var(--navy);
+    overflow: hidden;
+    padding: 100px 24px 80px;
+  }
+  .prod-hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('../images/datacenter-1.png');
+    background-size: cover; background-position: center;
+    filter: brightness(0.2) saturate(1.1);
+  }
+  .prod-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(10,22,40,0.95) 0%, rgba(14,42,90,0.5) 55%, rgba(10,22,40,0.88) 100%);
+  }
+  .prod-hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(42,125,225,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42,125,225,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .prod-hero .container { position: relative; z-index: 2; text-align: center; }
+  .prod-hero .section-label { color: var(--sky-light); justify-content: center; display: flex; }
+  .prod-hero h1 {
+    color: var(--white);
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    max-width: 760px; margin: 16px auto 20px;
+    line-height: 1.1; letter-spacing: -1px;
+  }
+  .prod-hero p {
+    color: rgba(255,255,255,0.72);
+    max-width: 600px; margin: 0 auto 36px;
+    font-size: 1.1rem; line-height: 1.75;
+  }
+  .prod-hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── STATS BAR ── */
+  .stats-bar { background: var(--accent); padding: 28px 24px; }
+  .stats-row {
+    max-width: 1000px; margin: 0 auto;
+    display: flex; justify-content: space-around; flex-wrap: wrap; gap: 24px;
+  }
+  .stats-bar .stat { text-align: center; color: var(--white); }
+  .stats-bar .stat-num { font-family:'Sora',sans-serif; font-size:2.2rem; font-weight:800; display:block; }
+  .stats-bar .stat-label { font-size:0.82rem; opacity:0.9; }
+
+  /* ── CONTENT SECTIONS ── */
+  .content-section { padding: 80px 24px; }
+  .content-section.alt { background: var(--off-white); }
+  .content-section.dark { background: var(--navy); }
+
+  .split-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: center;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .split-layout.reverse { direction: rtl; }
+  .split-layout.reverse > * { direction: ltr; }
+
+  .content-text h2 { font-size: clamp(1.6rem,2.8vw,2.4rem); color: var(--navy); margin-bottom: 16px; letter-spacing:-0.5px; line-height:1.2; }
+  .content-text.dark-text h2 { color: var(--white); }
+  .content-text p { color: var(--text-mid); line-height: 1.78; margin-bottom: 16px; }
+  .content-text.dark-text p { color: rgba(255,255,255,0.7); }
+  .content-text ul { list-style: none; margin: 20px 0; }
+  .content-text li {
+    padding: 10px 0; border-bottom: 1px solid rgba(10,22,40,0.07);
+    font-size: 0.92rem; color: var(--text-mid);
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .content-text.dark-text li { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.08); }
+  .content-text li::before { content:'✓'; color:var(--sky); font-weight:700; flex-shrink:0; margin-top:1px; }
+  .content-text .inline-link {
+    color: var(--sky); font-size: 0.9rem; font-weight: 600;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 8px; transition: gap 0.2s;
+  }
+  .content-text .inline-link:hover { gap: 10px; }
+
+  .visual-panel {
+    background: var(--navy-mid); border-radius: 20px;
+    overflow: hidden; aspect-ratio: 4/3;
+    position: relative; display: flex;
+    align-items: center; justify-content: center;
+  }
+  .visual-panel img { width:100%;height:100%;object-fit:cover;opacity:0.75;display:block; }
+  .visual-panel .panel-icon { position:absolute; font-size:5rem; opacity:0.15; }
+
+  /* ── BETTER WAY BANNER ── */
+  .better-banner {
+    background: var(--off-white);
+    padding: 72px 24px;
+    text-align: center;
+  }
+  .better-banner h2 {
+    font-size: clamp(2rem,4vw,3rem);
+    color: var(--navy); margin-bottom: 16px; letter-spacing: -0.5px;
+  }
+  .better-banner p {
+    color: var(--text-mid); max-width: 640px;
+    margin: 0 auto 32px; line-height: 1.75; font-size: 1.05rem;
+  }
+
+  /* ── PLATFORM CARDS (M365 + Google) ── */
+  .platforms-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .platform-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 40px 36px;
+    border: 1px solid rgba(10,22,40,0.08);
+    transition: all 0.3s;
+  }
+  .platform-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(10,22,40,0.1); }
+  .platform-logo {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+  }
+  .platform-name {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.5rem; font-weight: 800;
+    color: var(--navy); margin-bottom: 16px;
+  }
+  .platform-card p { color: var(--text-mid); line-height: 1.7; margin-bottom: 16px; font-size: 0.92rem; }
+  .app-icons {
+    display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 24px;
+  }
+  .app-icon {
+    width: 44px; height: 44px;
+    background: var(--off-white);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    border: 1px solid rgba(10,22,40,0.06);
+  }
+
+  /* ── BENEFITS GRID (replaces carousel) ── */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .benefit-item {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px 24px;
+    border: 1px solid rgba(10,22,40,0.07);
+    transition: all 0.25s;
+  }
+  .benefit-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(10,22,40,0.1);
+    border-color: rgba(42,125,225,0.2);
+  }
+  .benefit-item h3 { font-size: 1rem; color: var(--navy); margin-bottom: 10px; font-weight: 700; }
+  .benefit-item p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.65; }
+
+  /* ── APP LIST TABLE ── */
+  .app-list { max-width: 900px; margin: 0 auto; }
+  .app-row {
+    display: grid;
+    grid-template-columns: 64px 160px 1fr;
+    gap: 20px;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(10,22,40,0.07);
+  }
+  .app-row:last-child { border-bottom: none; }
+  .app-row-icon {
+    width: 52px; height: 52px;
+    background: var(--off-white);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    border: 1px solid rgba(10,22,40,0.06);
+  }
+  .app-row-name { font-family:'Sora',sans-serif; font-weight: 700; color: var(--navy); font-size: 0.95rem; }
+  .app-row-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── RELATED SERVICES ── */
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .related-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px 20px;
+    border: 1px solid rgba(10,22,40,0.07);
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: block;
+  }
+  .related-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(10,22,40,0.1);
+    border-color: rgba(42,125,225,0.2);
+  }
+  .related-card .r-icon { font-size: 2rem; margin-bottom: 12px; }
+  .related-card h3 { font-size: 0.95rem; color: var(--navy); margin-bottom: 8px; font-weight: 700; }
+  .related-card .need { font-size: 0.78rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; font-style: italic; }
+  .related-card p { font-size: 0.8rem; color: var(--text-mid); line-height: 1.55; }
+
+  /* ── INDUSTRIES GRID ── */
+  .industries-compliance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+  .ind-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 16px;
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+  }
+  .ind-card:hover {
+    background: var(--navy);
+    border-color: var(--navy);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(10,22,40,0.15);
+  }
+  .ind-card .icon { font-size: 1.8rem; margin-bottom: 10px; }
+  .ind-card p { font-size: 0.82rem; font-weight: 600; color: var(--text-mid); transition: color 0.2s; }
+  .ind-card:hover p { color: rgba(255,255,255,0.85); }
+
+  /* ── PROCESS STEPS ── */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .step-card {
+    background: var(--white); border-radius: 16px;
+    padding: 32px 24px; border: 1px solid rgba(10,22,40,0.08);
+    transition: all 0.3s;
+  }
+  .step-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,22,40,0.1); }
+  .step-num {
+    width: 40px; height: 40px; background: var(--accent); color: var(--white);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: 'Sora',sans-serif; font-weight: 800; font-size: 1rem; margin-bottom: 16px;
+  }
+  .step-card h3 { font-size: 1rem; color: var(--navy); margin-bottom: 10px; }
+  .step-card p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
+
+  @media(max-width:900px){
+    .split-layout { grid-template-columns:1fr; gap:32px; }
+    .split-layout.reverse { direction:ltr; }
+    .platforms-grid { grid-template-columns:1fr; }
+    .app-row { grid-template-columns: 52px 1fr; }
+    .app-row-name { grid-column: 2; }
+    .app-row-desc { grid-column: 1 / -1; padding-left: 0; }
+    .stats-row { justify-content:center; }
+  }
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="container" style="max-width:1300px;margin:0 auto;">
+    <a href="../index.html">Home</a>
+    <span>›</span>
+    <a href="#">IT Services</a>
+    <span>›</span>
+    Productivity Applications
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="prod-hero">
+  <div class="prod-hero-bg"></div>
+  <div class="prod-hero-overlay"></div>
+  <div class="prod-hero-grid"></div>
+  <div class="container">
+    <div class="section-label">PRODUCTIVITY APPLICATIONS</div>
+    <h1>Making the Work World Productive</h1>
+    <p>Empower your team with the tools they need to work smarter, not harder — from anywhere, on any device, at any time.</p>
+    <div class="prod-hero-btns">
+      <a class="btn-primary" href="../contact.html">Request Productivity Applications →</a>
+      <a class="btn-outline" href="../contact.html">Speak with a productivity applications expert &rsaquo;</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">25%</span><span class="stat-label">Average productivity increase with M365</span></div>
+    <div class="stat"><span class="stat-num">Any Device</span><span class="stat-label">Cloud-based access anywhere</span></div>
+    <div class="stat"><span class="stat-num">M365 &amp; GW</span><span class="stat-label">Certified partner for both platforms</span></div>
+    <div class="stat"><span class="stat-num">Zero Downtime</span><span class="stat-label">Migration approach</span></div>
+  </div>
+</div>
+
+<!-- BETTER WAY BANNER -->
+<div class="better-banner">
+  <h2>A Better Way to Get Work Done</h2>
+  <p>When employees struggle with remote access and fumble with file collaboration, engagement often plummets. DTCloudOn facilitates critical projects by getting the latest workforce productivity apps installed, configured, and optimized for your team.</p>
+  <a class="btn-primary" href="../contact.html">Explore Options →</a>
+</div>
+
+<!-- PLATFORM CARDS: M365 + Google Workspace -->
+<div class="content-section">
+  <div class="container">
+    <div class="section-label">Our Platform Partners</div>
+    <h2 class="section-title">The World's Leading Productivity Suites</h2>
+    <p class="section-sub">DTCloudOn is a certified partner for both Microsoft 365 and Google Workspace — we help you choose, deploy, and manage the right platform for your business.</p>
+    <div class="platforms-grid reveal">
+      <div class="platform-card">
+        <div class="platform-logo">🟦</div>
+        <div class="platform-name">Microsoft 365</div>
+        <p>The most popular productivity suite in the world, Microsoft 365 includes key apps like Outlook, Teams, Word, Excel, and PowerPoint. DTCloudOn handles licensing, workflow automation, device management, and cybersecurity for every app in the Microsoft 365 ecosystem.</p>
+        <div class="app-icons">
+          <div class="app-icon">📧</div>
+          <div class="app-icon">☁️</div>
+          <div class="app-icon">📝</div>
+          <div class="app-icon">📊</div>
+          <div class="app-icon">📊</div>
+          <div class="app-icon">📓</div>
+          <div class="app-icon">👥</div>
+          <div class="app-icon">🗂️</div>
+        </div>
+        <a class="inline-link" href="../contact.html">Make Microsoft 365 work for you →</a>
+      </div>
+      <div class="platform-card">
+        <div class="platform-logo">🔴</div>
+        <div class="platform-name">Google Workspace</div>
+        <p>Want everything in one place? Google Workspace makes it possible with Gmail, Calendar, Drive, Docs, Sheets, Meet, and more. DTCloudOn keeps your business connected and secure with these popular cloud-native apps.</p>
+        <div class="app-icons">
+          <div class="app-icon">📧</div>
+          <div class="app-icon">📅</div>
+          <div class="app-icon">💾</div>
+          <div class="app-icon">📄</div>
+          <div class="app-icon">🎥</div>
+          <div class="app-icon">📊</div>
+          <div class="app-icon">🎨</div>
+          <div class="app-icon">💬</div>
+        </div>
+        <a class="inline-link" href="../contact.html">Manage your Google Workspace →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BENEFITS GRID (replaces carousel) -->
+<div class="content-section alt">
+  <div class="container">
+    <div class="section-label">Why Productivity Apps Matter</div>
+    <h2 class="section-title">The Business Benefits of Modern Productivity Tools</h2>
+    <p class="section-sub">The right productivity stack doesn't just save time — it fundamentally changes how your team works together.</p>
+    <div class="benefits-grid reveal">
+      <div class="benefit-item">
+        <h3>⚡ Cost-Effective Solutions</h3>
+        <p>DTCloudOn streamlines installation, maintenance, and licensing of productivity apps — helping clients save on recurring costs, consolidate IT spending, and strategize for long-term success.</p>
+      </div>
+      <div class="benefit-item">
+        <h3>📈 Increased Efficiency</h3>
+        <p>Productivity apps like Microsoft 365 and Google Workspace provide critical collaboration and communication platforms to keep day-to-day work running smoothly — reducing friction and time lost.</p>
+      </div>
+      <div class="benefit-item">
+        <h3>🔄 Version Control</h3>
+        <p>Automated features built into productivity apps reduce errors in real-time and track changes made to files — ensuring updates are made to the right documents and that users can revert to past versions.</p>
+      </div>
+      <div class="benefit-item">
+        <h3>🌐 Workplace Flexibility</h3>
+        <p>With more and more employees working remote or hybrid schedules, productivity apps provide access to the right information — anytime, anywhere, and from any device.</p>
+      </div>
+      <div class="benefit-item">
+        <h3>🔒 Business Security</h3>
+        <p>Productivity apps facilitate collaboration while also safeguarding company data with credential security, device protocols, and user onboarding — keeping your data where it belongs.</p>
+      </div>
+      <div class="benefit-item">
+        <h3>🤝 Better Collaboration</h3>
+        <p>Real-time co-authoring, shared calendars, video conferencing, and team channels keep your people aligned — whether they're in the same office or across the country.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT WE MANAGE: APP LIST -->
+<div class="content-section">
+  <div class="container">
+    <div class="section-label">What We Manage</div>
+    <h2 class="section-title">Applications We Deploy &amp; Support</h2>
+    <p class="section-sub">DTCloudOn handles the full lifecycle of your productivity apps — from licensing and deployment to ongoing support and user training.</p>
+    <div class="app-list reveal">
+      <div class="app-row">
+        <div class="app-row-icon">🖥️</div>
+        <div class="app-row-name">MS365 / Google Apps</div>
+        <div class="app-row-desc">DTCloudOn helps businesses implement and optimize popular productivity apps like Microsoft Office 365 and Google Suite — including installation, ongoing license management, and device provisioning.</div>
+      </div>
+      <div class="app-row">
+        <div class="app-row-icon">📧</div>
+        <div class="app-row-name">Email</div>
+        <div class="app-row-desc">Cloud-based email accessible on laptops, desktops, and mobile phones is a must for today's businesses. DTCloudOn helps companies implement and manage specialized email tools across all devices.</div>
+      </div>
+      <div class="app-row">
+        <div class="app-row-icon">👥</div>
+        <div class="app-row-name">Microsoft Teams</div>
+        <div class="app-row-desc">Full Teams deployment, configuration, and governance — channels, meetings, calling, and integration with your other Microsoft 365 apps for seamless collaboration.</div>
+      </div>
+      <div class="app-row">
+        <div class="app-row-icon">📁</div>
+        <div class="app-row-name">SharePoint &amp; OneDrive</div>
+        <div class="app-row-desc">Document management, intranet setup, and file sharing infrastructure — built and secured so your team can find, share, and collaborate on content without friction.</div>
+      </div>
+      <div class="app-row">
+        <div class="app-row-icon">🔐</div>
+        <div class="app-row-name">Identity &amp; Access (Entra ID)</div>
+        <div class="app-row-desc">Single sign-on, multi-factor authentication, and conditional access policies — securing your productivity apps without slowing your team down.</div>
+      </div>
+      <div class="app-row">
+        <div class="app-row-icon">⚙️</div>
+        <div class="app-row-name">Microsoft Intune / MDM</div>
+        <div class="app-row-desc">Mobile device management for corporate and BYOD devices — enforcing security policies and ensuring your apps are deployed and updated consistently across your fleet.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MIGRATION + CLOUD + TRAINING -->
+<div class="content-section alt">
+  <div class="split-layout reveal">
+    <div class="content-text">
+      <div class="section-label">Migration Services</div>
+      <h2>Migration Services</h2>
+      <p>Migrating data between productivity apps isn't easy. DTCloudOn sets you up for success, minimizing disruptions and ensuring seamless operations during the transition.</p>
+      <ul>
+        <li>Email and calendar migration (Gmail ↔ Outlook)</li>
+        <li>File migration to SharePoint, OneDrive, or Google Drive</li>
+        <li>On-premises to cloud migration planning and execution</li>
+        <li>Tenant-to-tenant Microsoft 365 migrations</li>
+        <li>Zero-downtime migration approach</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Move your information securely →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">🔀</div>
+      <img src="../images/datacenter-2.png" alt="Migration Services" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<div class="content-section">
+  <div class="split-layout reverse reveal">
+    <div class="content-text">
+      <div class="section-label">Cloud Accessibility</div>
+      <h2>Cloud Accessibility</h2>
+      <p>The best productivity apps are based in the cloud, giving employees the access and flexibility they need to work anytime and anywhere — from any device, with full security controls in place.</p>
+      <ul>
+        <li>Work from any device — laptop, tablet, or mobile</li>
+        <li>Real-time sync across all platforms and locations</li>
+        <li>Secure remote access without VPN complexity</li>
+        <li>Offline capability with automatic sync when reconnected</li>
+        <li>Consistent experience across Windows, Mac, iOS, and Android</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Leverage the benefits of the cloud →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">☁️</div>
+      <img src="../images/datacenter-3.png" alt="Cloud Access" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<div class="content-section alt">
+  <div class="split-layout reveal">
+    <div class="content-text">
+      <div class="section-label">Training &amp; Guidance</div>
+      <h2>Training and Guidance</h2>
+      <p>DTCloudOn doesn't just install productivity apps and then leave you hanging. Instead, we provide ongoing education and support to navigate upgrades, interface changes, and licensing updates.</p>
+      <p>Our training programs are designed for real users — practical, role-based, and delivered in the format that works best for your team.</p>
+      <ul>
+        <li>Role-based onboarding training for new users</li>
+        <li>Live virtual and on-site training sessions</li>
+        <li>Self-service learning resources and documentation</li>
+        <li>Upgrade guidance when new features are released</li>
+        <li>Ongoing helpdesk support for app questions</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Educate your staff →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">🎓</div>
+      <img src="../images/datacenter-1.png" alt="Training" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- SECTOR-SPECIFIC COMPLIANCE -->
+<div class="content-section dark">
+  <div class="container">
+    <div class="section-label" style="color:var(--sky-light);text-align:center;">Industry Compliance</div>
+    <h2 class="section-title" style="color:var(--white);text-align:center;margin-bottom:12px;">Sector-Specific Compliance Approaches</h2>
+    <p style="color:rgba(255,255,255,0.6);text-align:center;max-width:620px;margin:0 auto 48px;line-height:1.7;">Technological solutions must be designed with consideration for the distinct requirements of each industry.</p>
+    <div class="industries-compliance-grid reveal">
+      <a class="ind-card" href="../industries/accounting.html"><div class="icon">📊</div><p>Accounting</p></a>
+      <a class="ind-card" href="../industries/architects.html"><div class="icon">📐</div><p>Architects</p></a>
+      <a class="ind-card" href="../industries/construction.html"><div class="icon">🏗️</div><p>Construction</p></a>
+      <a class="ind-card" href="../industries/education.html"><div class="icon">🎓</div><p>Education</p></a>
+      <a class="ind-card" href="../industries/engineering.html"><div class="icon">⚙️</div><p>Engineering</p></a>
+      <a class="ind-card" href="../industries/finance.html"><div class="icon">🏦</div><p>Finance</p></a>
+      <a class="ind-card" href="../industries/franchises.html"><div class="icon">🍔</div><p>Franchises</p></a>
+      <a class="ind-card" href="../industries/healthcare.html"><div class="icon">🏥</div><p>Healthcare</p></a>
+      <a class="ind-card" href="../industries/hospitality.html"><div class="icon">🏨</div><p>Hospitality</p></a>
+      <a class="ind-card" href="../industries/insurance.html"><div class="icon">🔖</div><p>Insurance</p></a>
+      <a class="ind-card" href="../industries/legal.html"><div class="icon">⚖️</div><p>Legal</p></a>
+      <a class="ind-card" href="../industries/manufacturing.html"><div class="icon">🏭</div><p>Manufacturing</p></a>
+    </div>
+  </div>
+</div>
+
+<!-- APPS ARE JUST THE START -->
+<div class="content-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:52px;">
+      <h2 class="section-title">Apps Are Just the Start</h2>
+      <p class="section-sub" style="margin:0 auto;">Productivity applications can provide a huge boost by increasing collaboration and efficiency. Combining them with other IT services can yield even better results.</p>
+    </div>
+    <div class="related-grid reveal">
+      <a class="related-card" href="managed-services.html">
+        <div class="r-icon">🖥️</div>
+        <h3>Managed Services</h3>
+        <p class="need">My business needs help with IT and security.</p>
+        <p>Keep your technology securely running at peak performance with proactive managed IT services.</p>
+      </a>
+      <a class="related-card" href="cybersecurity.html">
+        <div class="r-icon">🔒</div>
+        <h3>Cybersecurity</h3>
+        <p class="need">I need protection from ransomware.</p>
+        <p>Defend your business against cyberthreats with multi-layered security built into your productivity stack.</p>
+      </a>
+      <a class="related-card" href="unified-comms.html">
+        <div class="r-icon">💬</div>
+        <h3>Unified Communications</h3>
+        <p class="need">My team needs to collaborate and connect.</p>
+        <p>Seize new opportunities and foster collaboration with integrated voice, video, and messaging.</p>
+      </a>
+      <a class="related-card" href="cloud.html">
+        <div class="r-icon">☁️</div>
+        <h3>Cloud Services</h3>
+        <p class="need">I want to migrate to the cloud.</p>
+        <p>Experience the cost savings, efficiencies, and anywhere-access that cloud infrastructure provides.</p>
+      </a>
+      <a class="related-card" href="backup.html">
+        <div class="r-icon">💾</div>
+        <h3>Data Backup</h3>
+        <p class="need">I need to securely back up my data.</p>
+        <p>Know that you can recover your data no matter what — with automated, tested backup and recovery.</p>
+      </a>
+      <a class="related-card" href="it-support.html">
+        <div class="r-icon">🎧</div>
+        <h3>IT Support</h3>
+        <p class="need">I need faster IT support.</p>
+        <p>Rely on dependable IT support to resolve issues quickly and avoid disruptions to your productivity.</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div class="container">
+    <h2>Ready to Make Your Team More Productive?</h2>
+    <p>Let DTCloudOn deploy, secure, and optimize the productivity apps your business runs on — starting today.</p>
+    <a class="btn-white" href="../contact.html">Request Productivity Applications →</a>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="../nav.js"></script>
+<script src="../utils.js"></script>
+<script>renderNav('services', '../'); renderFooter(1);</script>
+</body>
+</html>
