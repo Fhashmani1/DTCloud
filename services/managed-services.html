@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Managed IT Services — DTCloudOn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* ── HERO ── */
+  .ms-hero {
+    position: relative;
+    min-height: 62vh;
+    display: flex;
+    align-items: center;
+    background: var(--navy);
+    overflow: hidden;
+    padding: 100px 24px 80px;
+  }
+  .ms-hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('../images/datacenter-2.png');
+    background-size: cover; background-position: center;
+    filter: brightness(0.22) saturate(1.1);
+  }
+  .ms-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(10,22,40,0.95) 0%, rgba(14,42,90,0.5) 55%, rgba(10,22,40,0.88) 100%);
+  }
+  .ms-hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(42,125,225,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42,125,225,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .ms-hero .container { position: relative; z-index: 2; text-align: center; }
+  .ms-hero .section-label { color: var(--sky-light); justify-content: center; display: flex; }
+  .ms-hero h1 {
+    color: var(--white);
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    max-width: 860px; margin: 16px auto 20px;
+    line-height: 1.1; letter-spacing: -1px;
+  }
+  .ms-hero p {
+    color: rgba(255,255,255,0.72);
+    max-width: 640px; margin: 0 auto 36px;
+    font-size: 1.1rem; line-height: 1.75;
+  }
+  .ms-hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── STATS BAR ── */
+  .stats-bar { background: var(--accent); padding: 28px 24px; }
+  .stats-row {
+    max-width: 1000px; margin: 0 auto;
+    display: flex; justify-content: space-around; flex-wrap: wrap; gap: 24px;
+  }
+  .stats-bar .stat { text-align: center; color: var(--white); }
+  .stats-bar .stat-num { font-family:'Sora',sans-serif; font-size:2.2rem; font-weight:800; display:block; }
+  .stats-bar .stat-label { font-size:0.82rem; opacity:0.9; }
+
+  /* ── CONTENT SECTIONS ── */
+  .content-section { padding: 80px 24px; }
+  .content-section.alt { background: var(--off-white); }
+  .content-section.dark { background: var(--navy); }
+
+  .split-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: center;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .split-layout.reverse { direction: rtl; }
+  .split-layout.reverse > * { direction: ltr; }
+
+  .content-text h2 { font-size: clamp(1.6rem,2.8vw,2.4rem); color: var(--navy); margin-bottom: 16px; letter-spacing:-0.5px; line-height:1.2; }
+  .content-text.dark-text h2 { color: var(--white); }
+  .content-text p { color: var(--text-mid); line-height: 1.78; margin-bottom: 16px; }
+  .content-text.dark-text p { color: rgba(255,255,255,0.7); }
+  .content-text ul { list-style: none; margin: 20px 0; }
+  .content-text li {
+    padding: 10px 0; border-bottom: 1px solid rgba(10,22,40,0.07);
+    font-size: 0.92rem; color: var(--text-mid);
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .content-text.dark-text li { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.08); }
+  .content-text li::before { content:'✓'; color:var(--sky); font-weight:700; flex-shrink:0; margin-top:1px; }
+  .content-text .inline-link {
+    color: var(--sky); font-size: 0.9rem; font-weight: 600;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 8px; transition: gap 0.2s;
+  }
+  .content-text .inline-link:hover { gap: 10px; }
+
+  .visual-panel {
+    background: var(--navy-mid); border-radius: 20px;
+    overflow: hidden; aspect-ratio: 4/3;
+    position: relative; display: flex;
+    align-items: center; justify-content: center;
+  }
+  .visual-panel img { width:100%;height:100%;object-fit:cover;opacity:0.75;display:block; }
+  .visual-panel .panel-icon { position:absolute; font-size:5rem; opacity:0.15; }
+
+  /* Dashboard mockup panel */
+  .dashboard-panel {
+    background: var(--navy);
+    border-radius: 20px;
+    padding: 28px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .dashboard-panel h4 {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.78rem; text-align: center;
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;
+  }
+  .dash-metric {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .dash-metric span { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+  .dash-bar { height: 6px; border-radius: 3px; margin-top: 6px; }
+  .dash-metric-inner { flex: 1; margin-left: 16px; }
+  .dash-metric-inner .label { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
+  .uptime-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(22,163,74,0.15); color: #4ade80;
+    border: 1px solid rgba(22,163,74,0.3);
+    padding: 4px 12px; border-radius: 50px;
+    font-size: 0.82rem; font-weight: 700; margin-bottom: 20px;
+  }
+  .uptime-badge::before { content:'▲'; font-size: 0.65rem; }
+
+  /* ── SERVICES WHAT'S INCLUDED GRID ── */
+  .included-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .included-item {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px 24px;
+    border: 1px solid rgba(10,22,40,0.07);
+    display: flex; gap: 16px; align-items: flex-start;
+    transition: all 0.25s;
+  }
+  .included-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(10,22,40,0.1);
+    border-color: rgba(42,125,225,0.2);
+  }
+  .included-item .item-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(42,125,225,0.12), rgba(42,125,225,0.04));
+    border: 1px solid rgba(42,125,225,0.15);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  .included-item h3 { font-size: 0.95rem; color: var(--navy); margin-bottom: 6px; font-weight: 700; }
+  .included-item p { font-size: 0.83rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── BENEFITS DARK SECTION ── */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .benefit-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 28px 20px;
+    text-align: center;
+  }
+  .benefit-card .b-icon { font-size: 2rem; margin-bottom: 12px; }
+  .benefit-card h3 { color: var(--white); font-size: 1rem; margin-bottom: 8px; }
+  .benefit-card p { font-size: 0.83rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+  /* ── PROCESS STEPS ── */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .step-card {
+    background: var(--white); border-radius: 16px;
+    padding: 32px 24px; border: 1px solid rgba(10,22,40,0.08);
+    transition: all 0.3s;
+  }
+  .step-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,22,40,0.1); }
+  .step-num {
+    width: 40px; height: 40px; background: var(--accent); color: var(--white);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: 'Sora',sans-serif; font-weight: 800; font-size: 1rem; margin-bottom: 16px;
+  }
+  .step-card h3 { font-size: 1rem; color: var(--navy); margin-bottom: 10px; }
+  .step-card p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
+
+  @media(max-width:900px){
+    .split-layout { grid-template-columns:1fr; gap:32px; }
+    .split-layout.reverse { direction:ltr; }
+    .stats-row { justify-content:center; }
+  }
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="container" style="max-width:1300px;margin:0 auto;">
+    <a href="../index.html">Home</a>
+    <span>›</span>
+    <a href="#">IT Services</a>
+    <span>›</span>
+    Managed Services
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="ms-hero">
+  <div class="ms-hero-bg"></div>
+  <div class="ms-hero-overlay"></div>
+  <div class="ms-hero-grid"></div>
+  <div class="container">
+    <div class="section-label">MANAGED SERVICES</div>
+    <h1>IT Managed Services &amp; Remote Managed IT Support</h1>
+    <p>Keep your technology secure and running smoothly without missing a beat — or missing out on all the benefits that managed IT services provide.</p>
+    <div class="ms-hero-btns">
+      <a class="btn-primary" href="../contact.html">Request a Meeting →</a>
+      <a class="btn-outline" href="../contact.html">Speak with us about managed IT services &rsaquo;</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Remote monitoring &amp; management</span></div>
+    <div class="stat"><span class="stat-num">99.9%</span><span class="stat-label">Guaranteed uptime SLA</span></div>
+    <div class="stat"><span class="stat-num">40%</span><span class="stat-label">Average IT cost reduction</span></div>
+    <div class="stat"><span class="stat-num">Flat Rate</span><span class="stat-label">Predictable monthly pricing</span></div>
+  </div>
+</div>
+
+<!-- SECTION 1: Address IT Issues Before They Become Problems -->
+<div class="content-section">
+  <div class="split-layout reveal">
+    <div class="content-text">
+      <div class="section-label">Proactive IT Management</div>
+      <h2>Address IT Issues Before They Become Problems</h2>
+      <p>Through Remote Monitoring and Management (RMM), DTCloudOn keeps watch over the health of your devices and infrastructure 24/7 to proactively keep them up and running.</p>
+      <p>As a trusted managed IT service provider, we offer various types of managed IT services that ensure your technology performs at its best — enabling consistent monitoring, automated security, and performance patch updates to improve speed and prevent cyberattacks.</p>
+      <ul>
+        <li>Real-time monitoring of servers, workstations, and network devices</li>
+        <li>Automated patch management and software updates</li>
+        <li>Performance alerts before issues become outages</li>
+        <li>Remote remediation — most issues fixed without a site visit</li>
+        <li>Monthly health reports with trend analysis</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Get started with RMM now →</a>
+    </div>
+    <div class="dashboard-panel">
+      <h4>Weekly Monitoring Report</h4>
+      <div class="uptime-badge">100.0%</div>
+      <div class="dash-metric">
+        <div class="dash-metric-inner">
+          <div class="label">Weekly Activity</div>
+          <div class="dash-bar" style="background:linear-gradient(90deg,var(--sky),var(--sky-light));width:85%;"></div>
+        </div>
+      </div>
+      <div class="dash-metric">
+        <div class="dash-metric-inner">
+          <div class="label">Email Threats Blocked</div>
+          <div class="dash-bar" style="background:linear-gradient(90deg,var(--accent),#f97316);width:62%;"></div>
+        </div>
+      </div>
+      <div class="dash-metric">
+        <div class="dash-metric-inner">
+          <div class="label">Downtime Events</div>
+          <div class="dash-bar" style="background:linear-gradient(90deg,#4ade80,#22c55e);width:8%;"></div>
+        </div>
+      </div>
+      <div class="dash-metric">
+        <div class="dash-metric-inner">
+          <div class="label">Hacking Attempts Blocked</div>
+          <div class="dash-bar" style="background:linear-gradient(90deg,var(--accent),#ef4444);width:74%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: Save Time and Expense -->
+<div class="content-section alt">
+  <div class="split-layout reverse reveal">
+    <div class="content-text">
+      <div class="section-label">Business Value</div>
+      <h2>Save Time and Expense</h2>
+      <p>Smart business leaders know that outsourcing IT services and support to a team of industry professionals frees up their teams to focus on the success of the business.</p>
+      <p>By following best practices, managed services not only ensure reliable support but also offer cost efficiencies that can help your budget go further — replacing unpredictable break-fix costs with a flat monthly fee.</p>
+      <ul>
+        <li>Eliminate surprise IT repair bills with flat-rate pricing</li>
+        <li>Reduce internal IT overhead and staffing costs</li>
+        <li>Free your team to focus on revenue-generating work</li>
+        <li>Scale up or down as your business grows</li>
+        <li>Access enterprise-grade tools at SMB-friendly rates</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Contact us to start saving today →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">💰</div>
+      <img src="../images/datacenter-1.png" alt="Cost Savings" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: Improve Security -->
+<div class="content-section">
+  <div class="split-layout reveal">
+    <div class="content-text">
+      <div class="section-label">Security-First Approach</div>
+      <h2>Improve Security with IT Managed Services</h2>
+      <p>Cybersecurity should never be an add-on. That's why DTCloudOn factors security into every aspect of our managed services approach.</p>
+      <p>Remote Monitoring and Management delivers continuous device health awareness to spot potential problems early, and our antivirus protection helps block common threats. Asset inventory and warranty management services track everything in your network, making it easier to identify potential cybersecurity weaknesses.</p>
+      <ul>
+        <li>Antivirus and anti-malware protection on all endpoints</li>
+        <li>Continuous vulnerability scanning and patch deployment</li>
+        <li>Asset inventory and warranty lifecycle tracking</li>
+        <li>Email threat filtering and phishing protection</li>
+        <li>Security policy enforcement across all devices</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Let's talk about better security →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">🔐</div>
+      <img src="../images/datacenter-3.png" alt="Security" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: Inventory Your IT Assets -->
+<div class="content-section alt">
+  <div class="split-layout reverse reveal">
+    <div class="content-text">
+      <div class="section-label">Asset Management</div>
+      <h2>Inventory Your IT Assets</h2>
+      <p>Compiling an accurate list of the devices, apps, and equipment that make up your IT environment is not as easy as it seems — and keeping that inventory updated can be an even bigger challenge.</p>
+      <p>DTCloudOn's managed IT services include an asset inventory offering along with warranty and asset lifecycle tracking to simplify cost control, financial reporting, and cybersecurity risk management.</p>
+      <ul>
+        <li>Complete hardware and software asset discovery</li>
+        <li>Warranty expiration tracking and renewal alerts</li>
+        <li>Software license compliance management</li>
+        <li>Hardware lifecycle planning and refresh recommendations</li>
+        <li>Financial reporting integration for IT assets</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Contact us to start your inventory →</a>
+    </div>
+    <div class="dashboard-panel" style="background:var(--navy-mid);">
+      <h4>Asset Inventory</h4>
+      <div class="uptime-badge" style="background:rgba(42,125,225,0.15);color:var(--sky-light);border-color:rgba(42,125,225,0.3);">▲ 67.4%</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px;">
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-family:'Sora',sans-serif;font-size:1.4rem;font-weight:800;color:var(--sky-light);">142</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);">Devices Tracked</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-family:'Sora',sans-serif;font-size:1.4rem;font-weight:800;color:#4ade80;">98%</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);">Compliance Rate</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-family:'Sora',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent);">7</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);">Expiring Soon</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-family:'Sora',sans-serif;font-size:1.4rem;font-weight:800;color:var(--white);">38</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);">Software Licenses</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT'S INCLUDED GRID -->
+<div class="content-section">
+  <div class="container">
+    <div class="section-label">What's Included</div>
+    <h2 class="section-title">Everything in Our Managed Services Package</h2>
+    <p class="section-sub">One flat monthly fee. Complete coverage. No surprises.</p>
+    <div class="included-grid reveal">
+      <div class="included-item">
+        <div class="item-icon">📡</div>
+        <div><h3>Remote Monitoring &amp; Management (RMM)</h3><p>24/7 monitoring of all endpoints, servers, and network devices with automated alerts and remote remediation.</p></div>
+      </div>
+      <div class="included-item">
+        <div class="item-icon">🔒</div>
+        <div><h3>Endpoint Security</h3><p>Antivirus, anti-malware, and EDR deployed and managed across every device in your environment.</p></div>
+      </div>
+      <div class="included-item">
+        <div class="item-icon">🔄</div>
+        <div><h3>Patch Management</h3><p>Automated OS and application patching keeps your systems current and protected against known vulnerabilities.</p></div>
+      </div>
+      <div class="included-item">
+        <div class="item-icon">💾</div>
+        <div><h3>Backup &amp; Disaster Recovery</h3><p>Automated daily backups with offsite replication and tested recovery procedures to minimize downtime.</p></div>
+      </div>
+      <div class="included-item">
+        <div class="item-icon">🖥️</div>
+        <div><h3>Helpdesk &amp; IT Support</h3><p>Responsive helpdesk support for your team — remote and on-site — with defined SLA response times.</p></div>
+      </div>
+      <div class="included-item">
+        <div class="item-icon">📦</div>
+        <div><h3>Asset Inventory &amp; Lifecycle</h3><p>Complete tracking of hardware, software licenses, warranty status, and end-of-life planning for all IT assets.</p></div>
+      </div>
+      <div class="included-item">
+        <div class="item-icon">📧</div>
+        <div><h3>Email Security</h3><p>Spam filtering, phishing protection, and email threat intelligence to keep your inbox clean and your team safe.</p></div>
+      </div>
+      <div class="included-item">
+        <div class="item-icon">📊</div>
+        <div><h3>Monthly Reporting</h3><p>Clear, plain-English reports showing system health, threat activity, uptime, and ticket resolution metrics.</p></div>
+      </div>
+      <div class="included-item">
+        <div class="item-icon">🗺️</div>
+        <div><h3>vCIO &amp; IT Strategy</h3><p>Quarterly technology reviews and strategic planning to align your IT roadmap with your business goals and budget.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BENEFITS: DARK SECTION -->
+<div class="content-section dark">
+  <div class="container">
+    <div class="section-label" style="color:var(--sky-light);text-align:center;">Why Managed Services</div>
+    <h2 class="section-title" style="color:var(--white);text-align:center;margin-bottom:48px;">The Business Case for Managed IT</h2>
+    <div class="benefits-grid reveal">
+      <div class="benefit-card"><div class="b-icon">💸</div><h3>Predictable Costs</h3><p>Replace unpredictable repair bills with a flat monthly fee. Budget with confidence — no surprise IT expenses.</p></div>
+      <div class="benefit-card"><div class="b-icon">⚡</div><h3>Faster Resolution</h3><p>Issues are caught and resolved proactively — often before you even notice them. Less downtime, more productivity.</p></div>
+      <div class="benefit-card"><div class="b-icon">🔐</div><h3>Stronger Security</h3><p>Security is built into every layer of our managed services — not treated as an afterthought or optional add-on.</p></div>
+      <div class="benefit-card"><div class="b-icon">📈</div><h3>Business Focus</h3><p>Your team stops wasting time on IT problems and starts focusing on work that drives growth and revenue.</p></div>
+      <div class="benefit-card"><div class="b-icon">🧩</div><h3>One Partner</h3><p>One point of contact for all your technology needs — no juggling multiple vendors or playing the blame game.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW WE ONBOARD -->
+<div class="content-section alt">
+  <div class="container">
+    <div class="section-label">Getting Started</div>
+    <h2 class="section-title">How We Onboard Your Business</h2>
+    <p class="section-sub">Getting started with DTCloudOn managed services is smooth, structured, and disruption-free.</p>
+    <div class="steps-grid reveal">
+      <div class="step-card"><div class="step-num">1</div><h3>Discovery Call</h3><p>We learn about your business, current IT setup, pain points, and goals — no obligation, no pressure.</p></div>
+      <div class="step-card"><div class="step-num">2</div><h3>Environment Assessment</h3><p>We audit your current infrastructure, document everything, and identify risks, gaps, and quick wins.</p></div>
+      <div class="step-card"><div class="step-num">3</div><h3>Proposal &amp; Agreement</h3><p>You receive a clear proposal with flat monthly pricing, defined scope, and SLA commitments — no hidden fees.</p></div>
+      <div class="step-card"><div class="step-num">4</div><h3>Onboarding &amp; Deployment</h3><p>We deploy monitoring agents, security tools, and backup solutions — typically within 5 business days with zero disruption.</p></div>
+      <div class="step-card"><div class="step-num">5</div><h3>Ongoing Management</h3><p>From day one, your environment is actively monitored, maintained, and secured around the clock by our team.</p></div>
+      <div class="step-card"><div class="step-num">6</div><h3>Quarterly Reviews</h3><p>Regular vCIO check-ins keep your IT strategy aligned to your business — and ensure you're getting maximum value.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div class="container">
+    <h2>Ready for IT That Just Works?</h2>
+    <p>Let DTCloudOn manage your technology so you can focus on running your business. Flat-rate pricing, no surprises.</p>
+    <a class="btn-white" href="../contact.html">Request a Free IT Assessment →</a>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="../nav.js"></script>
+<script src="../utils.js"></script>
+<script>renderNav('services', '../'); renderFooter(1);</script>
+</body>
+</html>
