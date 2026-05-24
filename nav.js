@@ -107,4 +107,4 @@ function renderNav(activePage, basePath) {
 function toggleMobileMenu() {
   const m = document.getElementById('mobile-menu');
   m.classList.toggle('open');
-}
+} 
