@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Support for Engineering Firms | CMIT Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0d1b2e;
+    --navy-mid: #132640;
+    --red: #e03a2f;
+    --red-hover: #c22c23;
+    --white: #ffffff;
+    --light-bg: #f4f6f8;
+    --text-dark: #0d1b2e;
+    --text-muted: #4a5568;
+    --border: #dde3ea;
+    --font-main: 'Nunito Sans', sans-serif;
+  }
+
+  body { font-family: var(--font-main); color: var(--text-dark); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 72px;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo-text { font-size: 22px; font-weight: 800; color: var(--white); text-decoration: none; }
+  .logo-text span { color: var(--red); }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .btn-nav {
+    background: var(--red); color: var(--white);
+    padding: 10px 22px; border-radius: 40px;
+    font-size: 14px; font-weight: 700; text-decoration: none; transition: background 0.2s;
+  }
+  .btn-nav:hover { background: var(--red-hover); }
+
+  /* HERO */
+  .hero {
+    position: relative; height: 500px;
+    background: linear-gradient(135deg, #0a1520 0%, #172840 50%, #1e3558 100%);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; overflow: hidden;
+  }
+  .hero-bg-svg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    opacity: 0.12;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-breadcrumb {
+    display: flex; align-items: center; gap: 10px; justify-content: center;
+    color: rgba(255,255,255,0.55); font-size: 12px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 20px;
+  }
+  .hero-breadcrumb span { color: var(--red); }
+  .hero h1 {
+    font-size: clamp(36px, 5.5vw, 56px); font-weight: 800;
+    color: var(--white); letter-spacing: -1px; line-height: 1.1;
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.65); font-size: 17px;
+    margin-top: 16px; max-width: 520px; margin-left: auto; margin-right: auto;
+  }
+  .hero-actions { display: flex; gap: 16px; justify-content: center; margin-top: 32px; }
+  .btn-primary {
+    background: var(--red); color: var(--white);
+    padding: 14px 32px; border-radius: 40px;
+    font-size: 15px; font-weight: 700; text-decoration: none;
+    transition: background 0.2s, transform 0.15s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--red-hover); transform: translateY(-1px); }
+  .btn-outline {
+    border: 2px solid rgba(255,255,255,0.4); color: var(--white);
+    padding: 14px 32px; border-radius: 40px;
+    font-size: 15px; font-weight: 700; text-decoration: none;
+    transition: border-color 0.2s, background 0.2s; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+  /* STATS BAR */
+  .stats-bar { background: var(--navy); display: flex; justify-content: center; }
+  .stat-item {
+    flex: 1; max-width: 260px; padding: 40px 32px; text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-size: 40px; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 8px; }
+  .stat-num span { color: var(--red); }
+  .stat-label { font-size: 13px; color: rgba(255,255,255,0.6); font-weight: 600; letter-spacing: 0.5px; }
+
+  /* INTRO */
+  .intro {
+    background: var(--light-bg);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+  }
+  .intro-text { padding: 72px 64px; }
+  .intro-text p { font-size: 17px; color: var(--text-muted); line-height: 1.75; margin-bottom: 20px; }
+  .intro-img { height: 480px; overflow: hidden; position: relative; }
+  .intro-img svg { width: 100%; height: 100%; }
+
+  /* SHARED */
+  section { padding: 80px 48px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+  .section-title { font-size: clamp(26px, 3.5vw, 38px); font-weight: 800; color: var(--navy); line-height: 1.2; margin-bottom: 20px; }
+  .section-body { font-size: 17px; color: var(--text-muted); line-height: 1.75; max-width: 600px; }
+
+  /* SPLIT */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+
+  /* IMG CARD */
+  .img-card {
+    border-radius: 16px; overflow: hidden; height: 400px;
+    background: var(--navy-mid); position: relative;
+  }
+  .img-card svg { width: 100%; height: 100%; }
+
+  /* WHY LIST */
+  .why-list { list-style: none; margin-top: 28px; display: flex; flex-direction: column; gap: 16px; }
+  .why-list li { display: flex; gap: 14px; align-items: flex-start; font-size: 15px; color: var(--text-muted); line-height: 1.65; }
+  .why-bullet {
+    width: 22px; height: 22px; min-width: 22px;
+    background: var(--red); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin-top: 2px;
+  }
+  .why-bullet svg { width: 12px; height: 12px; stroke: white; fill: none; stroke-width: 3; }
+  .why-list li strong { color: var(--navy); }
+
+  /* SERVICES */
+  .services-bg { background: var(--light-bg); }
+  .service-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px 32px;
+    transition: box-shadow 0.2s, transform 0.2s; margin-bottom: 20px;
+  }
+  .service-card:hover { box-shadow: 0 8px 32px rgba(13,27,46,0.1); transform: translateY(-3px); }
+  .service-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: #fde8e7; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
+  }
+  .service-icon svg { width: 24px; height: 24px; stroke: var(--red); fill: none; stroke-width: 2; }
+  .service-card h3 { font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+  .service-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+  .service-card a { color: var(--red); font-weight: 700; text-decoration: underline; }
+
+  /* CMMC SECTION */
+  .cmmc-section { background: var(--white); }
+  .cmmc-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fde8e7; color: var(--red); font-size: 12px; font-weight: 800;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 40px; margin-bottom: 16px;
+  }
+
+  /* CALLOUT */
+  .callout {
+    background: var(--navy-mid); text-align: center; padding: 80px 48px;
+    position: relative; overflow: hidden;
+  }
+  .callout::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(224,58,47,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(255,255,255,0.04) 0%, transparent 60%);
+  }
+  .callout-inner { position: relative; z-index: 1; }
+  .callout h2 { font-size: clamp(28px, 4vw, 46px); font-weight: 800; color: var(--white); margin-bottom: 16px; }
+  .callout p { font-size: 18px; color: rgba(255,255,255,0.75); margin-bottom: 36px; max-width: 560px; margin-left: auto; margin-right: auto; }
+
+  /* CONTACT FORM SECTION */
+  .contact-section { background: var(--light-bg); padding: 80px 48px; }
+  .contact-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+  .contact-inner h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; color: var(--navy); margin-bottom: 40px; line-height: 1.15; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-group label { font-size: 13px; font-weight: 700; color: var(--navy); }
+  .form-group label span { color: var(--red); }
+  .form-group input, .form-group select, .form-group textarea {
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 11px 14px; font-size: 15px; font-family: var(--font-main);
+    color: var(--text-dark); background: var(--white);
+    transition: border-color 0.2s; outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--navy); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .btn-submit {
+    display: inline-block; background: var(--red); color: var(--white);
+    padding: 14px 40px; border-radius: 40px; font-size: 16px;
+    font-weight: 700; border: none; cursor: pointer;
+    margin-top: 24px; transition: background 0.2s; font-family: var(--font-main);
+  }
+  .btn-submit:hover { background: var(--red-hover); }
+
+  /* FAQs */
+  .faq-title-center { text-align: center; margin-bottom: 56px; }
+  .faq-title-center h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 800; color: var(--navy); }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .faq-item {
+    background: var(--light-bg); border-radius: 14px; padding: 28px 32px;
+    border-left: 4px solid var(--red);
+  }
+  .faq-item h3 { font-size: 16px; font-weight: 800; color: var(--navy); margin-bottom: 12px; }
+  .faq-item p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+  .btn-red-solid {
+    display: inline-block; background: var(--red); color: var(--white);
+    padding: 14px 32px; border-radius: 40px;
+    font-size: 15px; font-weight: 700; text-decoration: none;
+    margin-top: 32px; transition: background 0.2s;
+  }
+  .btn-red-solid:hover { background: var(--red-hover); }
+
+  /* FOOTER */
+  footer { background: var(--navy); color: rgba(255,255,255,0.6); text-align: center; padding: 32px 48px; font-size: 13px; }
+  footer a { color: rgba(255,255,255,0.75); text-decoration: none; margin: 0 12px; }
+  footer a:hover { color: var(--white); }
+  .footer-logo { color: var(--white); font-weight: 800; font-size: 18px; margin-bottom: 12px; }
+  .footer-logo span { color: var(--red); }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .intro { grid-template-columns: 1fr; }
+    .intro-img { height: 300px; }
+    .split { grid-template-columns: 1fr; gap: 32px; }
+    section { padding: 56px 24px; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .stats-bar { flex-wrap: wrap; }
+    .stat-item { flex: 1 1 140px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo-text"><em style="font-style:italic;">CMIT</em> <span>Solutions</span></a>
+  <div class="nav-links">
+    <a href="#">IT Services ▾</a>
+    <a href="#">Industries ▾</a>
+    <a href="#">Resources ▾</a>
+    <a href="#">About ▾</a>
+    <a href="#">Blog</a>
+    <a href="#">Locations</a>
+  </div>
+  <div style="display:flex; align-items:center; gap:20px;">
+    <span style="color:white; font-size:14px; font-weight:700;">(510) 399-4088</span>
+    <a href="#contact" class="btn-nav">Contact Us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- engineering-themed SVG background pattern -->
+  <svg class="hero-bg-svg" viewBox="0 0 1400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <!-- gear large -->
+    <circle cx="200" cy="250" r="140" fill="none" stroke="white" stroke-width="14"/>
+    <circle cx="200" cy="250" r="90" fill="none" stroke="white" stroke-width="6"/>
+    <circle cx="200" cy="250" r="25" fill="white"/>
+    <rect x="188" y="95" width="24" height="50" rx="4" fill="white" transform="rotate(0 200 250)"/>
+    <rect x="188" y="95" width="24" height="50" rx="4" fill="white" transform="rotate(30 200 250)"/>
+    <rect x="188" y="95" width="24" height="50" rx="4" fill="white" transform="rotate(60 200 250)"/>
+    <rect x="188" y="95" width="24" height="50" rx="4" fill="white" transform="rotate(90 200 250)"/>
+    <rect x="188" y="95" width="24" height="50" rx="4" fill="white" transform="rotate(120 200 250)"/>
+    <rect x="188" y="95" width="24" height="50" rx="4" fill="white" transform="rotate(150 200 250)"/>
+    <rect x="188" y="95" width="24" height="50" rx="4" fill="white" transform="rotate(180 200 250)"/>
+    <rect x="188" y="95" width="24" height="50" rx="4" fill="white" transform="rotate(210 200 250)"/>
+    <rect x="188" y="95" width="24" height="50" rx="4" fill="white" transform="rotate(240 200 250)"/>
+    <rect x="188" y="95" width="24" height="50" rx="4" fill="white" transform="rotate(270 200 250)"/>
+    <rect x="188" y="95" width="24" height="50" rx="4" fill="white" transform="rotate(300 200 250)"/>
+    <rect x="188" y="95" width="24" height="50" rx="4" fill="white" transform="rotate(330 200 250)"/>
+    <!-- gear small right -->
+    <circle cx="1200" cy="150" r="90" fill="none" stroke="white" stroke-width="10"/>
+    <circle cx="1200" cy="150" r="55" fill="none" stroke="white" stroke-width="5"/>
+    <circle cx="1200" cy="150" r="18" fill="white"/>
+    <rect x="1191" y="48" width="18" height="36" rx="3" fill="white" transform="rotate(0 1200 150)"/>
+    <rect x="1191" y="48" width="18" height="36" rx="3" fill="white" transform="rotate(45 1200 150)"/>
+    <rect x="1191" y="48" width="18" height="36" rx="3" fill="white" transform="rotate(90 1200 150)"/>
+    <rect x="1191" y="48" width="18" height="36" rx="3" fill="white" transform="rotate(135 1200 150)"/>
+    <rect x="1191" y="48" width="18" height="36" rx="3" fill="white" transform="rotate(180 1200 150)"/>
+    <rect x="1191" y="48" width="18" height="36" rx="3" fill="white" transform="rotate(225 1200 150)"/>
+    <rect x="1191" y="48" width="18" height="36" rx="3" fill="white" transform="rotate(270 1200 150)"/>
+    <rect x="1191" y="48" width="18" height="36" rx="3" fill="white" transform="rotate(315 1200 150)"/>
+    <!-- circuit lines -->
+    <line x1="500" y1="100" x2="900" y2="100" stroke="white" stroke-width="2"/>
+    <line x1="700" y1="100" x2="700" y2="400" stroke="white" stroke-width="2"/>
+    <circle cx="700" cy="100" r="6" fill="white"/>
+    <circle cx="700" cy="250" r="6" fill="white"/>
+    <circle cx="700" cy="400" r="6" fill="white"/>
+    <circle cx="500" cy="100" r="6" fill="white"/>
+    <circle cx="900" cy="100" r="6" fill="white"/>
+    <line x1="500" y1="100" x2="500" y2="300" stroke="white" stroke-width="2"/>
+    <circle cx="500" cy="300" r="6" fill="white"/>
+    <line x1="900" y1="100" x2="900" y2="200" stroke="white" stroke-width="2"/>
+    <circle cx="900" cy="200" r="6" fill="white"/>
+  </svg>
+  <div class="hero-content">
+    <div class="hero-breadcrumb">
+      INDUSTRIES <span>●</span> ENGINEERING
+    </div>
+    <h1>IT Support for Engineering Firms</h1>
+    <p class="hero-sub">Powerful, secure IT infrastructure for performance-intensive engineering environments — designed to keep your team productive.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Contact Us Today</a>
+      <a href="#services" class="btn-outline">View IT Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">24<span>/7</span></div>
+    <div class="stat-label">Expert Support</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">250<span>+</span></div>
+    <div class="stat-label">Locations Nationwide</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">20<span>+ yrs</span></div>
+    <div class="stat-label">Industry Experience</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">99<span>%</span></div>
+    <div class="stat-label">Client Satisfaction</div>
+  </div>
+</div>
+
+<!-- INTRO SECTION -->
+<div class="intro">
+  <div class="intro-text">
+    <div class="section-label">Why CMIT for Engineering</div>
+    <h2 class="section-title" style="max-width:480px;">IT Management Built for Complex Engineering Environments</h2>
+    <p>Positioning your engineering firm for success means having the software, hardware, and communications technology to connect with both your internal team and your clients quickly, effectively, and without interruption. It's all possible with CMIT Solutions.</p>
+    <p>From complex design software to the powerful systems needed to run it, your business needs the best equipment and applications to stay competitive in the engineering industry. You also need IT experts who can address issues, protect your data, and provide peace of mind to your employees and your clients. CMIT Solutions offers a complete suite of IT services that stand out in the IT industry for quality, convenience, and accessibility.</p>
+  </div>
+  <div class="intro-img">
+    <svg viewBox="0 0 600 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <rect width="600" height="480" fill="#b8c8d8"/>
+      <!-- factory/lab background -->
+      <rect x="0" y="260" width="600" height="220" fill="#9bafc2"/>
+      <!-- machines in background -->
+      <rect x="380" y="120" width="60" height="160" rx="4" fill="#7a9ab8"/>
+      <rect x="390" y="100" width="40" height="30" rx="2" fill="#6a8aaa"/>
+      <rect x="450" y="150" width="50" height="130" rx="4" fill="#7a9ab8"/>
+      <rect x="500" y="130" width="80" height="150" rx="4" fill="#6a8aaa"/>
+      <!-- control panel -->
+      <rect x="180" y="280" width="240" height="140" rx="6" fill="#2d4a7a"/>
+      <rect x="195" y="295" width="100" height="65" rx="3" fill="#3d5f8f"/>
+      <!-- control panel screen content -->
+      <rect x="205" y="305" width="80" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
+      <rect x="205" y="319" width="60" height="5" rx="2" fill="rgba(255,255,255,0.25)"/>
+      <rect x="205" y="331" width="70" height="5" rx="2" fill="rgba(255,255,255,0.25)"/>
+      <!-- buttons on panel -->
+      <circle cx="330" cy="310" r="8" fill="#e03a2f"/>
+      <circle cx="355" cy="310" r="8" fill="#f39c12"/>
+      <circle cx="380" cy="310" r="8" fill="#2ecc71"/>
+      <rect x="315" y="330" width="80" height="30" rx="4" fill="#1a3057"/>
+      <!-- Tablet/laptop on workbench -->
+      <rect x="95" y="295" width="130" height="85" rx="6" fill="#1a2f50"/>
+      <rect x="105" y="305" width="110" height="60" rx="3" fill="#2d4a7a"/>
+      <!-- CAD-like lines on laptop screen -->
+      <circle cx="155" cy="325" r="18" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+      <line x1="137" y1="325" x2="173" y2="325" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+      <line x1="155" y1="307" x2="155" y2="343" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+      <circle cx="155" cy="325" r="5" fill="#e03a2f"/>
+      <!-- Person 1 (left, darker) -->
+      <circle cx="130" cy="195" r="34" fill="#8d5524"/>
+      <rect x="96" y="229" width="68" height="85" rx="10" fill="#3498db"/>
+      <!-- Person 2 (right) -->
+      <circle cx="270" cy="180" r="30" fill="#d4a882"/>
+      <rect x="240" y="210" width="60" height="80" rx="10" fill="#2c3e50"/>
+      <!-- hard hats -->
+      <ellipse cx="130" cy="166" rx="34" ry="12" fill="#f1c40f"/>
+      <rect x="96" y="160" width="68" height="16" rx="8" fill="#f1c40f"/>
+      <ellipse cx="270" cy="154" rx="30" ry="10" fill="#e8e8e8"/>
+      <rect x="240" y="148" width="60" height="14" rx="7" fill="#e8e8e8"/>
+      <!-- workbench -->
+      <rect x="60" y="375" width="480" height="16" rx="4" fill="#0d1b2e"/>
+      <!-- tools on bench -->
+      <rect x="420" y="355" width="8" height="22" rx="2" fill="#555" transform="rotate(-10 424 366)"/>
+      <rect x="440" y="350" width="8" height="28" rx="2" fill="#777" transform="rotate(5 444 364)"/>
+      <rect x="460" y="358" width="6" height="18" rx="2" fill="#888"/>
+      <!-- floor -->
+      <rect x="0" y="430" width="600" height="50" fill="rgba(0,0,0,0.12)"/>
+    </svg>
+  </div>
+</div>
+
+<!-- SERVICES DESIGNED FOR YOU -->
+<section style="background: var(--white);" id="services">
+  <div class="section-inner">
+    <div class="split">
+      <div class="img-card" style="height:460px;">
+        <svg viewBox="0 0 400 460" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+          <rect width="400" height="460" fill="#243d6a"/>
+          <!-- two engineers with hard hats looking at tablet -->
+          <circle cx="145" cy="160" r="36" fill="#6d4c41"/>
+          <ellipse cx="145" cy="134" rx="36" ry="12" fill="#f5f5f5"/>
+          <rect cx="109" cy="134" width="72" height="14" rx="7" fill="#f5f5f5"/>
+          <rect x="113" y="196" width="64" height="90" rx="10" fill="#37474f"/>
+          <!-- second person -->
+          <circle cx="260" cy="175" r="30" fill="#c8a37a"/>
+          <ellipse cx="260" cy="151" rx="30" ry="10" fill="#f5f5f5"/>
+          <rect x="230" y="205" width="60" height="80" rx="10" fill="#1565c0"/>
+          <!-- tablet they're looking at -->
+          <rect x="155" y="250" width="110" height="80" rx="6" fill="#1a2f50"/>
+          <rect x="163" y="258" width="94" height="56" rx="3" fill="#2d4a7a"/>
+          <!-- CAD drawing on tablet -->
+          <polygon points="195,272 228,272 222,295 202,295" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+          <line x1="210" y1="272" x2="210" y2="295" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <circle cx="210" cy="283" r="5" fill="#e03a2f"/>
+          <!-- factory floor elements -->
+          <rect x="30" y="355" width="340" height="8" rx="2" fill="#1a3057"/>
+          <rect x="30" y="330" width="70" height="40" rx="4" fill="#1a3057"/>
+          <rect x="300" y="320" width="70" height="50" rx="4" fill="#1a3057"/>
+          <rect x="0" y="385" width="400" height="75" fill="rgba(0,0,0,0.2)"/>
+          <!-- circuit pattern top -->
+          <line x1="20" y1="30" x2="380" y2="30" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <line x1="200" y1="15" x2="200" y2="80" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <circle cx="200" cy="30" r="4" fill="rgba(255,255,255,0.15)"/>
+        </svg>
+      </div>
+      <div>
+        <div class="section-label">Custom IT Plans</div>
+        <h2 class="section-title">IT Services for Engineering Firms Designed Just for You</h2>
+        <p class="section-body">Our team will assemble an array of services to meet your needs today and prepare for the ever-expanding needs of your growing business.</p>
+        <div style="margin-top:28px;">
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3>IT Procurement Services</h3>
+            <p><a href="#">IT procurement services</a> will source the high-performance systems your business needs to succeed.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Cybersecurity</h3>
+            <p><a href="#">Cybersecurity</a> keeps your information secure whether you're in your office or collaborating around the world.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </div>
+            <h3>Data Backup &amp; Recovery</h3>
+            <p><a href="#">Data backup and recovery services</a> ensure your complex design files don't get lost due to accidents or online threats.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+            </div>
+            <h3>Business Applications</h3>
+            <p><a href="#">Business applications</a> support helps you source and install software applications unique to your industry.</p>
+          </div>
+        </div>
+        <a href="#" class="btn-red-solid">View Our Full List of IT Services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAKE THE DIFFERENCE -->
+<section style="background: var(--light-bg);">
+  <div class="section-inner">
+    <div class="split">
+      <div>
+        <div class="section-label">Our Advantage</div>
+        <h2 class="section-title">IT Services for Engineers Make the Difference</h2>
+        <p class="section-body">No business is one-size-fits-all, so your IT solutions shouldn't be cookie-cutter, either. Contact CMIT Solutions today, and we'll start designing your custom IT management plan, giving you the tools and security you require to elevate your business to the next level.</p>
+        <ul class="why-list">
+          <li>
+            <span class="why-bullet"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>
+            <span><strong>CAD & BIM software support</strong> — optimized workstations for design-intensive workflows</span>
+          </li>
+          <li>
+            <span class="why-bullet"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>
+            <span><strong>Secure file sharing</strong> — protected collaboration across offices and project sites</span>
+          </li>
+          <li>
+            <span class="why-bullet"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>
+            <span><strong>24/7 monitoring</strong> — proactive issue detection before it disrupts your projects</span>
+          </li>
+          <li>
+            <span class="why-bullet"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>
+            <span><strong>Scalable infrastructure</strong> — grows with your firm without major restructuring</span>
+          </li>
+        </ul>
+        <a href="#contact" class="btn-red-solid">Start Building Your IT Plan</a>
+      </div>
+      <div class="img-card" style="height:440px;">
+        <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+          <rect width="400" height="440" fill="#1a3057"/>
+          <!-- engineer at multi-monitor desk -->
+          <!-- monitors -->
+          <rect x="40" y="140" width="120" height="80" rx="4" fill="#0d1b2e"/>
+          <rect x="48" y="148" width="104" height="62" rx="2" fill="#2d4a7a"/>
+          <rect x="95" y="220" width="30" height="8" rx="2" fill="#0d1b2e"/>
+          <rect x="88" y="228" width="44" height="4" rx="2" fill="#0d1b2e"/>
+
+          <rect x="175" y="120" width="150" height="100" rx="4" fill="#0d1b2e"/>
+          <rect x="183" y="128" width="134" height="82" rx="2" fill="#253d6a"/>
+          <!-- CAD view on main monitor -->
+          <circle cx="250" cy="165" r="28" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+          <circle cx="250" cy="165" r="14" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+          <line x1="222" y1="165" x2="278" y2="165" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <line x1="250" y1="137" x2="250" y2="193" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <circle cx="250" cy="165" r="5" fill="#e03a2f"/>
+          <rect x="240" y="220" width="70" height="8" rx="2" fill="#0d1b2e"/>
+          <rect x="255" y="228" width="40" height="4" rx="2" fill="#0d1b2e"/>
+
+          <!-- desk -->
+          <rect x="20" y="250" width="360" height="12" rx="3" fill="#0a1520"/>
+
+          <!-- engineer (seated) -->
+          <circle cx="130" cy="195" r="28" fill="#8d5524"/>
+          <rect x="102" y="223" width="56" height="55" rx="8" fill="#1565c0"/>
+
+          <!-- keyboard/mouse -->
+          <rect x="95" y="240" width="80" height="18" rx="4" fill="#1a2f50"/>
+          <circle cx="190" cy="249" r="8" fill="#1a2f50"/>
+
+          <!-- side panel with metrics -->
+          <rect x="330" y="140" width="60" height="100" rx="6" fill="#0d1b2e"/>
+          <rect x="338" y="152" width="44" height="6" rx="2" fill="rgba(255,255,255,0.2)"/>
+          <rect x="338" y="165" width="34" height="5" rx="2" fill="rgba(255,255,255,0.15)"/>
+          <rect x="338" y="178" width="40" height="5" rx="2" fill="rgba(255,255,255,0.15)"/>
+          <circle cx="358" cy="210" r="10" fill="#e03a2f" opacity="0.7"/>
+
+          <!-- floor -->
+          <rect x="0" y="380" width="400" height="60" fill="rgba(0,0,0,0.2)"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CMMC 2.0 -->
+<section class="cmmc-section">
+  <div class="section-inner">
+    <div class="split">
+      <div class="img-card" style="height:340px; background: linear-gradient(135deg, #1a3057, #0d1b2e);">
+        <svg viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+          <rect width="400" height="340" fill="#1a3057"/>
+          <!-- capitol building silhouette -->
+          <rect x="80" y="200" width="240" height="100" fill="#243d6a"/>
+          <!-- columns -->
+          <rect x="100" y="180" width="16" height="120" fill="#1a3057"/>
+          <rect x="130" y="180" width="16" height="120" fill="#1a3057"/>
+          <rect x="160" y="180" width="16" height="120" fill="#1a3057"/>
+          <rect x="190" y="180" width="16" height="120" fill="#1a3057"/>
+          <rect x="220" y="180" width="16" height="120" fill="#1a3057"/>
+          <rect x="250" y="180" width="16" height="120" fill="#1a3057"/>
+          <rect x="280" y="180" width="16" height="120" fill="#1a3057"/>
+          <!-- dome base -->
+          <rect x="140" y="140" width="120" height="60" rx="2" fill="#1a3057"/>
+          <!-- dome -->
+          <ellipse cx="200" cy="140" rx="60" ry="50" fill="#1a3057"/>
+          <!-- lantern on dome -->
+          <rect x="190" y="85" width="20" height="40" rx="4" fill="#1a3057"/>
+          <rect x="193" y="75" width="14" height="16" rx="2" fill="#e03a2f" opacity="0.8"/>
+          <!-- steps -->
+          <rect x="65" y="295" width="270" height="10" rx="0" fill="#132640"/>
+          <rect x="55" y="305" width="290" height="10" rx="0" fill="#0d1b2e"/>
+          <!-- sky gradient effect via overlay -->
+          <rect x="0" y="0" width="400" height="100" fill="url(#skygrad)" opacity="0.4"/>
+          <defs>
+            <linearGradient id="skygrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#6a9fd8"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </linearGradient>
+          </defs>
+          <!-- CMMC shield icon -->
+          <path d="M340 30 L380 45 L380 75 C380 95 360 110 340 115 C320 110 300 95 300 75 L300 45 Z" fill="#e03a2f" opacity="0.85"/>
+          <text x="340" y="78" text-anchor="middle" fill="white" font-size="20" font-weight="bold" font-family="sans-serif">2.0</text>
+        </svg>
+      </div>
+      <div>
+        <div class="cmmc-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Compliance
+        </div>
+        <h2 class="section-title">Get to Know CMMC 2.0</h2>
+        <p class="section-body">The increasing frequency and complexity of cyberattacks are clear evidence of the growing threat to our national security. In order to protect American ingenuity, the U.S. Department of Defense (DoD) developed the Cybersecurity Maturity Model Certification (CMMC) program to strengthen security within its Defense Industrial Base (DIB).</p>
+        <p style="font-size:17px; color:var(--text-muted); line-height:1.75; margin-top:16px;">CMIT Solutions can help you become more knowledgeable about CMMC and the IT security hygiene your organization may need to address.</p>
+        <a href="#contact" class="btn-red-solid">Learn About CMMC Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALL OUT BANNER -->
+<section class="callout">
+  <div class="callout-inner">
+    <h2>Start Building Your IT Service Plan Today</h2>
+    <p>Contact CMIT Solutions to learn how our services can make your engineering firm stand out.</p>
+    <a href="#contact" class="btn-primary" style="font-size:16px; padding:16px 40px;">Contact Us</a>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <h2>Contact us today for IT support for engineering companies</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>First name <span>*</span></label>
+        <input type="text" placeholder="First name">
+      </div>
+      <div class="form-group">
+        <label>Last name <span>*</span></label>
+        <input type="text" placeholder="Last name">
+      </div>
+      <div class="form-group">
+        <label>Email <span>*</span></label>
+        <input type="email" placeholder="Email address">
+      </div>
+      <div class="form-group">
+        <label>Phone number <span>*</span></label>
+        <input type="tel" placeholder="Phone number">
+      </div>
+      <div class="form-group">
+        <label>Company name</label>
+        <input type="text" placeholder="Company name">
+      </div>
+      <div class="form-group">
+        <label>Location <span>*</span></label>
+        <input type="text" placeholder="City, State">
+      </div>
+      <div class="form-group full">
+        <label>How can we help?</label>
+        <textarea placeholder="Tell us about your IT needs..."></textarea>
+      </div>
+    </div>
+    <button class="btn-submit">Submit</button>
+  </div>
+</div>
+
+<!-- FAQs -->
+<section style="background: var(--white);">
+  <div class="section-inner">
+    <div class="faq-title-center">
+      <div class="section-label" style="text-align:center;">FAQs</div>
+      <h2>Common Questions</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>What are IT services for engineering firms?</h3>
+        <p>IT services for engineering firms focus on supporting performance-intensive environments that rely on specialized design software, secure data handling, and reliable collaboration tools. These services ensure systems remain stable, scalable, and aligned with demanding engineering workflows.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do IT services support engineering design software and large files?</h3>
+        <p>Engineering IT services optimize hardware performance, storage architecture, and network capacity to support CAD, BIM, simulation, and modeling software. This includes configuring high-performance workstations, managing licenses, and ensuring large design files remain accessible without delays or data loss.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How is sensitive engineering data protected?</h3>
+        <p>Data protection is achieved through layered cybersecurity controls, secure access management, encrypted backups, and continuous monitoring. These measures help protect intellectual property, client information, and proprietary designs from internal risks and external threats.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can IT services support collaboration across offices and project sites?</h3>
+        <p>Yes. IT services enable secure collaboration through cloud platforms, remote access solutions, and protected communication tools. This allows engineering teams to work efficiently across offices, job sites, and international locations without compromising security or performance.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What role does data backup and recovery play for engineering companies?</h3>
+        <p>Backup and recovery services ensure critical design files, project documentation, and operational data can be restored quickly in the event of system failures, accidental deletion, or cyber incidents. This minimizes downtime and protects long-term project continuity.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do IT services scale as an engineering firm grows?</h3>
+        <p>IT service plans are designed to scale alongside firm growth, accommodating additional users, software requirements, and infrastructure demands. This approach supports expansion without requiring major internal IT restructuring.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is CMMC, and why is it relevant to engineering firms?</h3>
+        <p>CMMC is a cybersecurity framework developed by the U.S. Department of Defense to protect sensitive information within the Defense Industrial Base. Engineering firms working with government or defense-related projects may need to align their IT security practices with CMMC requirements.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How does managed IT support improve operational efficiency?</h3>
+        <p>Managed IT support reduces technical disruptions through proactive monitoring and expert oversight. Engineering teams can focus on design, analysis, and project delivery while IT specialists handle system performance, security, and compliance matters.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><em style="font-style:italic;">CMIT</em> <span>Solutions</span></div>
+  <div style="margin-bottom:16px;">
+    <a href="#">IT Services</a>
+    <a href="#">Industries</a>
+    <a href="#">About</a>
+    <a href="#">Blog</a>
+    <a href="#">Locations</a>
+    <a href="#">Contact Us</a>
+  </div>
+  <div>© 2025 CMIT Solutions. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
