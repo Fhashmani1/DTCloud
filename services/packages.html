@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Service Packages — DTCloudOn</title>
+<meta name="description" content="Every DTCloudOn package is built with security as the foundation. Choose your level of support and add optional layers of protection for your business.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+
+  /* ── HERO ── */
+  .pkg-hero {
+    position: relative;
+    min-height: 58vh;
+    display: flex;
+    align-items: center;
+    background: #0a0a0a;
+    overflow: hidden;
+    padding: 100px 24px 80px;
+  }
+  .pkg-hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #0a0a12 0%, #0d1020 50%, #10091a 100%);
+  }
+  /* subtle shield icons pattern */
+  .pkg-hero-pattern {
+    position: absolute; inset: 0;
+    opacity: 0.06;
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.3) 0px, rgba(255,255,255,0.3) 1px,
+      transparent 1px, transparent 60px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,0.3) 0px, rgba(255,255,255,0.3) 1px,
+      transparent 1px, transparent 60px
+    );
+  }
+  .pkg-hero .container { position: relative; z-index: 2; max-width: 900px; }
+  .pkg-hero-label {
+    font-family:'Sora',sans-serif; font-weight:700; font-size:.72rem;
+    letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.5);
+    margin-bottom:24px;
+  }
+  .pkg-hero h1 {
+    color: var(--white);
+    font-size: clamp(2.4rem, 5.5vw, 4rem);
+    line-height: 1.1; letter-spacing: -1.5px;
+    margin-bottom: 20px;
+    max-width: 740px;
+  }
+  .pkg-hero h1 .highlight {
+    background: var(--accent);
+    color: var(--white);
+    padding: 2px 12px;
+    border-radius: 6px;
+    display: inline;
+  }
+  .pkg-hero p {
+    color: rgba(255,255,255,0.62);
+    font-size: 1rem; line-height: 1.75;
+    max-width: 500px; margin-bottom: 36px;
+  }
+  /* lock icon illustration */
+  .pkg-hero-visual {
+    position: absolute; right: 8%; top: 50%; transform: translateY(-50%);
+    display: flex; align-items: flex-end; gap: 8px;
+    z-index: 1;
+  }
+  .lock-body {
+    width: 120px; height: 130px;
+    background: linear-gradient(135deg, #c4281e, #e03a2f);
+    border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem;
+    box-shadow: 0 20px 60px rgba(224,58,47,0.35);
+  }
+  .check-badge {
+    width: 80px; height: 80px;
+    background: rgba(255,255,255,.12);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  /* ── GRADIENT BAND (blue-to-purple) ── */
+  .gradient-band {
+    background: linear-gradient(135deg, #3b82f6 0%, #6d28d9 100%);
+    padding: 80px 24px;
+  }
+  .gradient-band-title {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+  .gradient-band-title h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--white);
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .gradient-band-title h2 strong {
+    background: var(--white);
+    color: #0a0a12;
+    padding: 2px 10px;
+    border-radius: 4px;
+    display: inline;
+  }
+  .gradient-band-title p {
+    color: rgba(255,255,255,0.72);
+    font-size: 1rem;
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── SECURITY FEATURES GRID ── */
+  .security-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .security-card {
+    background: rgba(255,255,255,0.92);
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.25s;
+  }
+  .security-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    background: var(--white);
+  }
+  .security-card .sc-icon {
+    width: 56px; height: 56px;
+    background: var(--off-white);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    margin: 0 auto 16px;
+  }
+  .security-card h3 { font-size: .92rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
+  .security-card p { font-size: .8rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── SUPPORT LEVELS ── */
+  .content-section { padding: 80px 24px; }
+  .content-section.alt { background: var(--off-white); }
+  .content-section.dark-grad {
+    background: linear-gradient(160deg, #3a6fd8 0%, #5b21b6 100%);
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .pricing-card {
+    background: var(--off-white);
+    border-radius: 20px;
+    padding: 36px 28px;
+    border: 1px solid rgba(10,22,40,0.08);
+    display: flex; flex-direction: column;
+    transition: all 0.25s;
+    position: relative;
+  }
+  .pricing-card.featured {
+    background: var(--navy);
+    border-color: var(--accent);
+    box-shadow: 0 20px 60px rgba(10,22,40,0.25);
+  }
+  .pricing-card.featured .pc-desc,
+  .pricing-card.featured .pc-rec-label,
+  .pricing-card.featured .pc-rec-item { color: rgba(255,255,255,0.7); }
+  .pricing-card.featured h3 { color: var(--white); }
+  .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(10,22,40,0.12); }
+  .pc-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--accent); color: var(--white);
+    font-family:'Sora',sans-serif; font-weight:800; font-size:.72rem;
+    letter-spacing:.1em; text-transform:uppercase;
+    padding: 5px 18px; border-radius:50px;
+  }
+  .pc-tier {
+    font-family:'Sora',sans-serif; font-weight:700; font-size:.72rem;
+    letter-spacing:.15em; text-transform:uppercase;
+    color: var(--gray); margin-bottom: 8px;
+  }
+  .pricing-card.featured .pc-tier { color: rgba(255,255,255,.45); }
+  .pricing-card h3 { font-size: 1.3rem; color: var(--navy); margin-bottom: 16px; }
+  .pc-desc { font-size: .88rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(10,22,40,0.08); }
+  .pricing-card.featured .pc-desc { border-color: rgba(255,255,255,0.1); }
+  .pc-rec-label { font-size:.78rem; font-weight:700; color:var(--gray); text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px; }
+  .pc-rec-list { list-style:none; display:flex; flex-direction:column; gap:8px; margin-bottom:28px; flex:1; }
+  .pc-rec-item { font-size:.85rem; color:var(--text-mid); display:flex; gap:10px; align-items:flex-start; line-height:1.5; }
+  .pc-rec-item::before { content:''; width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0;margin-top:6px; }
+  .pc-btn { display:block; text-align:center; background:var(--accent); color:var(--white); padding:14px 24px; border-radius:50px; font-family:'Sora',sans-serif; font-weight:700; font-size:.9rem; transition:all 0.2s; text-decoration:none; }
+  .pc-btn:hover { background: #c4281e; transform:translateY(-1px); }
+  .pc-btn.outline { background:transparent; border:2px solid rgba(255,255,255,.4); color:var(--white); }
+  .pc-btn.outline:hover { border-color:var(--white); background:rgba(255,255,255,.08); }
+
+  /* ── EXTRA LAYER ── */
+  .addon-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px 40px;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .addon-item {
+    display: flex; align-items: flex-start; gap: 16px;
+  }
+  .addon-icon {
+    width: 52px; height: 52px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .addon-text h3 { font-size: .92rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .addon-text p { font-size: .8rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+
+  /* ── WHY SECTION ── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .why-card {
+    background: var(--white);
+    border: 1px solid rgba(10,22,40,0.08);
+    border-radius: 14px;
+    padding: 28px 24px;
+    transition: all 0.25s;
+  }
+  .why-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(10,22,40,.1); border-color:rgba(42,125,225,0.2); }
+  .why-card .wc-icon { font-size: 1.8rem; margin-bottom: 12px; }
+  .why-card h3 { font-size: .95rem; font-weight:700; color:var(--navy); margin-bottom:8px; }
+  .why-card p { font-size:.84rem; color:var(--text-mid); line-height:1.65; }
+
+  @media(max-width:900px){
+    .security-grid { grid-template-columns: 1fr 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .addon-grid { grid-template-columns: 1fr 1fr; }
+    .pkg-hero-visual { display:none; }
+  }
+  @media(max-width:540px){
+    .security-grid { grid-template-columns:1fr; }
+    .addon-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="container" style="max-width:1300px;margin:0 auto;">
+    <a href="../index.html">Home</a>
+    <span>›</span>
+    <a href="#">IT Services</a>
+    <span>›</span>
+    Packages
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="pkg-hero">
+  <div class="pkg-hero-bg"></div>
+  <div class="pkg-hero-pattern"></div>
+  <div class="container">
+    <div class="pkg-hero-label">IT Packages</div>
+    <h1>We built <span class="highlight">every package</span> with <strong>security</strong> as the foundation.</h1>
+    <p>Instead of adding protection later, our plans are designed with security at the core from day one.</p>
+    <a class="btn-primary" href="../contact.html">Upgrade your cybersecurity →</a>
+  </div>
+  <div class="pkg-hero-visual">
+    <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-end;">
+      <div class="check-badge">✅</div>
+      <div class="lock-body">🔐</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECURITY COMES STANDARD -->
+<div class="gradient-band">
+  <div class="gradient-band-title">
+    <h2>Security comes <strong>standard.</strong></h2>
+    <p>Every plan starts with a powerful security foundation designed to keep your business protected, monitored, and running smoothly.</p>
+  </div>
+  <div class="security-grid reveal">
+    <div class="security-card">
+      <div class="sc-icon">📍</div>
+      <h3>RMM</h3>
+      <p>Remotely monitors and manages your devices.</p>
+    </div>
+    <div class="security-card">
+      <div class="sc-icon">📄</div>
+      <h3>IT Documentation</h3>
+      <p>Organizes and tracks your IT systems and assets.</p>
+    </div>
+    <div class="security-card">
+      <div class="sc-icon">🔖</div>
+      <h3>Lifecycle Management</h3>
+      <p>Manages device setup, updates, and replacement.</p>
+    </div>
+    <div class="security-card">
+      <div class="sc-icon">🔄</div>
+      <h3>Secure-Patching Update Oversight</h3>
+      <p>Keeps your systems updated and secure.</p>
+    </div>
+    <div class="security-card">
+      <div class="sc-icon">🛡️</div>
+      <h3>Next-Gen AV</h3>
+      <p>Protects devices from viruses and malware.</p>
+    </div>
+    <div class="security-card">
+      <div class="sc-icon">🌐</div>
+      <h3>DNS Filtering</h3>
+      <p>Blocks access to harmful or risky websites.</p>
+    </div>
+    <div class="security-card">
+      <div class="sc-icon">🔍</div>
+      <h3>Managed Detection &amp; Response (MDR)</h3>
+      <p>Detects and responds to threats in real time.</p>
+    </div>
+    <div class="security-card">
+      <div class="sc-icon">🤖</div>
+      <h3>AI-Driven Threat Detection</h3>
+      <p>Identifies unusual behavior and potential threats.</p>
+    </div>
+    <div class="security-card">
+      <div class="sc-icon">⚠️</div>
+      <h3>24/7 SOC Monitoring</h3>
+      <p>Continuously monitors your systems for threats.</p>
+    </div>
+    <div class="security-card">
+      <div class="sc-icon">🚨</div>
+      <h3>Detection &amp; Alert-Driven Response Workflow</h3>
+      <p>Responds quickly to alerts.</p>
+    </div>
+    <div class="security-card">
+      <div class="sc-icon">🎓</div>
+      <h3>Security Awareness Training</h3>
+      <p>Trains your team to recognize and avoid threats.</p>
+    </div>
+    <div class="security-card">
+      <div class="sc-icon">🔥</div>
+      <h3>Firewall &amp; WiFi Management</h3>
+      <p>Secures and manages your network and connectivity.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CHOOSE YOUR LEVEL OF SUPPORT -->
+<div class="content-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:52px;">
+      <div class="section-label">Support Tiers</div>
+      <h2 class="section-title">Choose <strong>your level</strong> of support.</h2>
+      <p class="section-sub" style="margin:0 auto;">Choose the support level that matches how hands-on you want your IT partner to be.</p>
+    </div>
+    <div class="pricing-grid reveal">
+
+      <!-- TIER 1: ESSENTIALS -->
+      <div class="pricing-card">
+        <div class="pc-tier">Tier 1</div>
+        <h3>Essentials</h3>
+        <div class="pc-desc">Time and materials hourly fee for remote support and on-site support.</div>
+        <div class="pc-rec-label">Recommended for:</div>
+        <ul class="pc-rec-list">
+          <li class="pc-rec-item">Small teams with simple IT environments</li>
+          <li class="pc-rec-item">Businesses comfortable paying per issue</li>
+          <li class="pc-rec-item">Low compliance or security requirements</li>
+        </ul>
+        <a class="pc-btn" href="../contact.html">Request Package →</a>
+      </div>
+
+      <!-- TIER 2: STANDARD (FEATURED) -->
+      <div class="pricing-card featured">
+        <div class="pc-badge">Most Popular</div>
+        <div class="pc-tier">Tier 2</div>
+        <h3>Standard</h3>
+        <div class="pc-desc">Unlimited remote support. Time and Materials hourly fee for on-site support.</div>
+        <div class="pc-rec-label">Recommended for:</div>
+        <ul class="pc-rec-list">
+          <li class="pc-rec-item">Growing teams that need consistent support</li>
+          <li class="pc-rec-item">Businesses that want predictable IT costs</li>
+          <li class="pc-rec-item">Moderate security and uptime expectations</li>
+        </ul>
+        <a class="pc-btn outline" href="../contact.html">Request Package →</a>
+      </div>
+
+      <!-- TIER 3: ENTERPRISE -->
+      <div class="pricing-card">
+        <div class="pc-tier">Tier 3</div>
+        <h3>Enterprise</h3>
+        <div class="pc-desc">Unlimited 24/7/365 live help desk + priority on-site support.</div>
+        <div class="pc-rec-label">Recommended for:</div>
+        <ul class="pc-rec-list">
+          <li class="pc-rec-item">Teams that need immediate, always-on support</li>
+          <li class="pc-rec-item">Businesses with high security or compliance needs</li>
+          <li class="pc-rec-item">Operations that rely heavily on technology</li>
+        </ul>
+        <a class="pc-btn" href="../contact.html">Request Package →</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ADD AN EXTRA LAYER OF PROTECTION -->
+<div class="content-section dark-grad">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:52px;">
+      <h2 style="font-size:clamp(2rem,4vw,3rem);color:var(--white);letter-spacing:-1px;line-height:1.1;margin-bottom:16px;">
+        Add an <strong style="font-style:italic;">extra layer</strong> of protection.
+      </h2>
+      <p style="color:rgba(255,255,255,0.72);font-size:1rem;max-width:560px;margin:0 auto;line-height:1.7;">
+        Optional services that expand your protection, security, and cloud capabilities.
+      </p>
+    </div>
+    <div class="addon-grid reveal">
+      <div class="addon-item">
+        <div class="addon-icon">☁️</div>
+        <div class="addon-text">
+          <h3>Data Continuity</h3>
+          <p>Cloud file backup with monthly restoration testing.</p>
+        </div>
+      </div>
+      <div class="addon-item">
+        <div class="addon-icon">✉️</div>
+        <div class="addon-text">
+          <h3>Email Security</h3>
+          <p>Comprehensive Business Email Compromise protection.</p>
+        </div>
+      </div>
+      <div class="addon-item">
+        <div class="addon-icon">🔑</div>
+        <div class="addon-text">
+          <h3>Secure Access</h3>
+          <p>Identity &amp; VPN Security Management.</p>
+        </div>
+      </div>
+      <div class="addon-item">
+        <div class="addon-icon">🌍</div>
+        <div class="addon-text">
+          <h3>Cloud Resource Management</h3>
+          <p>MS365/Google procurement, Secure Cloud application management.</p>
+        </div>
+      </div>
+      <div class="addon-item">
+        <div class="addon-icon">📋</div>
+        <div class="addon-text">
+          <h3>Compliance</h3>
+          <p>Comprehensive cybersecurity program with training, policies, maturity assessments, and vulnerability management.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY DTCLOUDON PACKAGES -->
+<div class="content-section alt">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="section-label">Why DTCloudOn</div>
+      <h2 class="section-title">Everything Your Business Needs, In One Package</h2>
+      <p class="section-sub" style="margin:0 auto;">Our packages are built around your business reality — not a one-size-fits-all checklist. Every plan is backed by certified experts, proven tools, and proactive management.</p>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <div class="wc-icon">🔐</div>
+        <h3>Security-First Design</h3>
+        <p>Every package includes enterprise-grade security tools baked in from day one — not bolted on as an afterthought.</p>
+      </div>
+      <div class="why-card">
+        <div class="wc-icon">📈</div>
+        <h3>Scales With Your Business</h3>
+        <p>Start with what you need today and upgrade seamlessly as your team grows, your compliance needs deepen, or your risk profile changes.</p>
+      </div>
+      <div class="why-card">
+        <div class="wc-icon">💰</div>
+        <h3>Predictable IT Costs</h3>
+        <p>No surprise invoices. Choose a tier that matches your budget and get a consistent, transparent monthly cost for IT services.</p>
+      </div>
+      <div class="why-card">
+        <div class="wc-icon">🎧</div>
+        <h3>Expert Support, Always Available</h3>
+        <p>From remote troubleshooting to on-site visits, our certified technicians are available when you need them — at the speed your business demands.</p>
+      </div>
+      <div class="why-card">
+        <div class="wc-icon">⚙️</div>
+        <h3>Proactive, Not Reactive</h3>
+        <p>We monitor, patch, and manage your systems continuously — catching problems before they become outages or breaches.</p>
+      </div>
+      <div class="why-card">
+        <div class="wc-icon">📋</div>
+        <h3>Compliance-Ready</h3>
+        <p>Packages are designed to support HIPAA, SOC 2, CMMC, and other regulatory frameworks — so your IT keeps you in good standing.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div class="container">
+    <h2>Ready to Find Your Perfect IT Package?</h2>
+    <p>Talk to a DTCloudOn specialist — we'll match you with the right tier and any add-ons your business needs, no commitment required.</p>
+    <a class="btn-white" href="../contact.html">Request a Free Consultation →</a>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="../nav.js"></script>
+<script src="../utils.js"></script>
+<script>renderNav('services', '../'); renderFooter(1);</script>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
