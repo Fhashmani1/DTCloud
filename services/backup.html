@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Backup & Recovery Services | DTCloudOn</title>
+  <meta name="description" content="Keep your business operating no matter what disruptions come your way. DTCloudOn provides enterprise-grade data backup, disaster recovery, and cloud storage solutions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── CSS VARIABLES (matches site-wide tokens) ── */
+    :root {
+      --navy:   #0d1b2e;
+      --navy2:  #122039;
+      --accent: #e03a2f;
+      --accent2:#c4281e;
+      --teal:   #1a6b72;
+      --light:  #f4f7fb;
+      --white:  #ffffff;
+      --text:   #1c2b3a;
+      --muted:  #5a6e82;
+      --border: #dde4ed;
+      --shadow: 0 4px 24px rgba(13,27,46,.10);
+      --rad:    10px;
+      --trans:  .25s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+    img  { max-width: 100%; display: block; }
+    a    { color: inherit; text-decoration: none; }
+
+    /* ── NAV PLACEHOLDER (filled by nav.js) ── */
+    #nav-placeholder {}
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 60%, #0a2e3a 100%);
+      color: var(--white);
+      padding: 100px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 70% 50%, rgba(26,107,114,.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: 'Outfit', sans-serif;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #7ecdd3;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.12;
+      max-width: 720px;
+      margin: 0 auto 20px;
+    }
+    .hero h1 span { color: #7ecdd3; }
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.75);
+      max-width: 560px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background var(--trans), transform var(--trans);
+      border: none; cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      border: 2px solid rgba(255,255,255,.35);
+      transition: border-color var(--trans), background var(--trans);
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,.08); }
+
+    /* ── FILE TYPES STRIP ── */
+    .file-types {
+      background: var(--light);
+      padding: 28px 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .file-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      box-shadow: 0 2px 6px rgba(0,0,0,.06);
+    }
+    .file-badge .dot { width: 10px; height: 10px; border-radius: 3px; }
+    .dot-pdf  { background: #e03a2f; }
+    .dot-doc  { background: #2563eb; }
+    .dot-xls  { background: #16a34a; }
+    .dot-ppt  { background: #ea580c; }
+    .dot-jpg  { background: #0ea5e9; }
+    .dot-zip  { background: #7c3aed; }
+    .file-badge span { color: var(--muted); font-weight: 400; }
+
+    /* ── LAYOUT HELPERS ── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .section    { padding: 80px 24px; }
+    .section-alt { background: var(--light); }
+
+    /* ── SECTION HEADER ── */
+    .section-header { text-align: center; max-width: 700px; margin: 0 auto 52px; }
+    .section-eyebrow {
+      font-family: 'Outfit', sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .section-header p { color: var(--muted); font-size: 1rem; line-height: 1.7; }
+
+    /* ── FEATURE SPLIT (image left/right) ── */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .split.reverse { direction: rtl; }
+    .split.reverse > * { direction: ltr; }
+
+    .split-visual {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: var(--light);
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .split-text h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.4rem, 2.8vw, 2rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .split-text p { color: var(--muted); line-height: 1.75; margin-bottom: 18px; }
+    .split-text a.text-link {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: .95rem;
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .split-text a.text-link:hover { text-decoration: underline; }
+
+    /* ── MOCK VISUAL: Broken laptop ── */
+    .mock-broken {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      border-radius: 16px;
+      padding: 40px 30px;
+      text-align: center;
+      color: var(--white);
+      min-height: 300px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+    }
+    .mock-broken .laptop-icon { font-size: 5rem; filter: grayscale(0.3); }
+    .mock-broken .label {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700; font-size: .95rem;
+      color: rgba(255,255,255,.7);
+      border: 1px dashed rgba(255,255,255,.3);
+      border-radius: 8px;
+      padding: 8px 18px;
+    }
+
+    /* ── MOCK VISUAL: Shield ── */
+    .mock-shield {
+      background: linear-gradient(135deg, #0d3349 0%, #0a1f2e 100%);
+      border-radius: 16px;
+      padding: 40px 30px;
+      text-align: center;
+      color: var(--white);
+      min-height: 300px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+    }
+    .mock-shield .shield-icon { font-size: 5rem; }
+    .mock-shield .error-box {
+      background: rgba(224,58,47,.15);
+      border: 1px solid rgba(224,58,47,.4);
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: .85rem;
+      color: #ff9b94;
+      font-family: 'Outfit', sans-serif;
+    }
+    .mock-shield .recover-box {
+      background: rgba(22,163,74,.15);
+      border: 1px solid rgba(22,163,74,.4);
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: .85rem;
+      color: #6ee7b7;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+    }
+
+    /* ── MOCK VISUAL: NIST wheel ── */
+    .mock-nist {
+      background: var(--light);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 300px;
+    }
+    .nist-wheel {
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: conic-gradient(
+        #e03a2f 0deg 72deg,
+        #f97316 72deg 144deg,
+        #eab308 144deg 216deg,
+        #22c55e 216deg 288deg,
+        #1a6b72 288deg 360deg
+      );
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,.15);
+    }
+    .nist-wheel::after {
+      content: 'NIST';
+      position: absolute;
+      width: 80px; height: 80px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--navy);
+    }
+    .nist-labels { margin-left: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .nist-label { display: flex; align-items: center; gap: 8px; font-size: .82rem; font-weight: 600; }
+    .nist-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+    /* ── SOLUTIONS CARDS ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--rad);
+      padding: 28px 24px;
+      transition: box-shadow var(--trans), transform var(--trans), border-color var(--trans);
+    }
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(13,27,46,.12);
+      transform: translateY(-4px);
+      border-color: rgba(224,58,47,.3);
+    }
+    .card-icon {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, rgba(224,58,47,.1), rgba(224,58,47,.05));
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+    .card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .card p { font-size: .88rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── SERVICE LIST (icon + text rows) ── */
+    .service-list { display: flex; flex-direction: column; gap: 28px; max-width: 800px; margin: 0 auto; }
+    .service-row {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 24px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--rad);
+      transition: box-shadow var(--trans), border-color var(--trans);
+    }
+    .service-row:hover { box-shadow: var(--shadow); border-color: rgba(224,58,47,.25); }
+    .service-row-icon {
+      width: 56px; height: 56px;
+      background: var(--navy);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .service-row-text h3 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .service-row-text p { font-size: .9rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── INDUSTRIES STRIP ── */
+    .industries-strip {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .ind-card {
+      flex: 1; min-width: 160px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--rad);
+      padding: 20px 18px;
+      text-align: center;
+      transition: box-shadow var(--trans), border-color var(--trans), transform var(--trans);
+    }
+    .ind-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); border-color: rgba(224,58,47,.3); }
+    .ind-card .ind-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .ind-card span { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: .9rem; color: var(--navy); }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 4px; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-question {
+      width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+      padding: 20px 8px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 700;
+      color: var(--navy);
+    }
+    .faq-question .chevron { font-size: .9rem; transition: transform .25s; color: var(--accent); }
+    .faq-item.open .chevron { transform: rotate(180deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s; }
+    .faq-answer p { padding: 0 8px 20px; color: var(--muted); line-height: 1.75; font-size: .95rem; }
+
+    /* ── MIX & MATCH related services ── */
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .related-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--rad);
+      padding: 24px 20px;
+      transition: box-shadow var(--trans), transform var(--trans), border-color var(--trans);
+    }
+    .related-card:hover { box-shadow: var(--shadow); transform: translateY(-4px); border-color: rgba(224,58,47,.3); }
+    .r-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .related-card h3 { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1rem; color: var(--navy); margin-bottom: 4px; }
+    .related-card .need { font-size: .8rem; font-weight: 600; color: var(--accent); margin-bottom: 8px; font-style: italic; }
+    .related-card p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
+      color: var(--white);
+      padding: 72px 24px;
+      text-align: center;
+    }
+    .cta-strip h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .cta-strip p { color: rgba(255,255,255,.7); font-size: 1rem; max-width: 540px; margin: 0 auto 32px; line-height: 1.7; }
+    .btn-white {
+      background: var(--white);
+      color: var(--navy);
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background var(--trans), transform var(--trans);
+      display: inline-block;
+    }
+    .btn-white:hover { background: #e8edf4; transform: translateY(-2px); }
+
+    /* ── STAT BAND ── */
+    .stat-band {
+      background: var(--navy);
+      padding: 48px 24px;
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; color: var(--white); }
+    .stat-item .stat-val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #7ecdd3;
+      line-height: 1;
+    }
+    .stat-item .stat-label { font-size: .85rem; color: rgba(255,255,255,.6); margin-top: 6px; max-width: 130px; }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .split { grid-template-columns: 1fr; gap: 36px; }
+      .split.reverse { direction: ltr; }
+      .stat-band { gap: 32px; }
+      .cards-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-eyebrow">Your Files Are Safe With Us</div>
+    <h1>Data Backup &amp; <span>Recovery Services</span></h1>
+    <p>Keep your business operating no matter what disruptions come your way — ransomware, hardware failure, or natural disaster.</p>
+    <div class="hero-btns">
+      <a href="../contact.html" class="btn-primary">Request Data Backup</a>
+      <a href="#solutions" class="btn-outline">See All Solutions</a>
+    </div>
+  </section>
+
+  <!-- ── FILE TYPES STRIP ── -->
+  <div class="file-types">
+    <div class="file-badge"><span class="dot dot-pdf"></span>PDF <span>protected</span></div>
+    <div class="file-badge"><span class="dot dot-doc"></span>DOC <span>protected</span></div>
+    <div class="file-badge"><span class="dot dot-xls"></span>XLS <span>protected</span></div>
+    <div class="file-badge"><span class="dot dot-ppt"></span>PPT <span>protected</span></div>
+    <div class="file-badge"><span class="dot dot-jpg"></span>JPG <span>protected</span></div>
+    <div class="file-badge"><span class="dot dot-zip"></span>ZIP <span>protected</span></div>
+  </div>
+
+  <!-- ── STAT BAND ── -->
+  <div class="stat-band">
+    <div class="stat-item">
+      <div class="stat-val">99.9%</div>
+      <div class="stat-label">Backup uptime guarantee</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">&lt;1hr</div>
+      <div class="stat-label">Average recovery time objective</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">3-2-1</div>
+      <div class="stat-label">Backup strategy: onsite, offsite, cloud</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">AES-256</div>
+      <div class="stat-label">Encryption on all stored data</div>
+    </div>
+  </div>
+
+  <!-- ── IMAGINE SECTION ── -->
+  <section class="section">
+    <div class="split reveal">
+      <div class="split-visual">
+        <div class="mock-broken">
+          <div class="laptop-icon">💻</div>
+          <div class="label">⚠️ Hardware failure detected</div>
+          <div style="font-size:.82rem; color:rgba(255,255,255,.5); max-width:200px; text-align:center; line-height:1.5;">Without a backup, this could mean days of downtime and permanent data loss.</div>
+        </div>
+      </div>
+      <div class="split-text">
+        <h2>Imagine Never Losing a File Again</h2>
+        <p>Get back up and running quickly with a full suite of data storage and business recovery services. Accidents happen — broken hardware, accidental deletions, coffee spills. With DTCloudOn, your data is always recoverable from its latest backup point.</p>
+        <p>We build a clear storage hierarchy for your data depending on how critical it is, mixing onsite servers with secure cloud solutions so nothing slips through the cracks.</p>
+        <a href="../contact.html" class="text-link">Find your backup fit →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DISASTER RECOVERY ── -->
+  <section class="section section-alt">
+    <div class="split reverse reveal">
+      <div class="split-visual">
+        <div class="mock-nist">
+          <div class="nist-wheel"></div>
+          <div class="nist-labels">
+            <div class="nist-label"><div class="nist-dot" style="background:#e03a2f;"></div> Identify</div>
+            <div class="nist-label"><div class="nist-dot" style="background:#f97316;"></div> Protect</div>
+            <div class="nist-label"><div class="nist-dot" style="background:#eab308;"></div> Detect</div>
+            <div class="nist-label"><div class="nist-dot" style="background:#22c55e;"></div> Respond</div>
+            <div class="nist-label"><div class="nist-dot" style="background:#1a6b72;"></div> Recover</div>
+          </div>
+        </div>
+      </div>
+      <div class="split-text">
+        <h2>Recover Quickly When a Disaster Hits</h2>
+        <p>Disaster recovery includes data restoration and business continuity protocols, along with the procurement of replacement equipment in case of catastrophic loss and deployment of remote work policies during prolonged disruptions.</p>
+        <p>At DTCloudOn, we ensure all data backups are consistent with regulatory requirements — including end-to-end encryption, redundant storage in geographically diverse data centers, version history preservation, and detailed time stamping.</p>
+        <a href="../contact.html" class="text-link">Protect your information →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CYBERATTACK PROTECTION ── -->
+  <section class="section">
+    <div class="split reveal">
+      <div class="split-visual">
+        <div class="mock-shield">
+          <div class="shield-icon">🛡️</div>
+          <div class="error-box">🔴 Ransomware infection detected</div>
+          <div style="font-size:.8rem; color:rgba(255,255,255,.5);">Attempting to encrypt your files…</div>
+          <div class="recover-box">✅ Clean backup restored — zero ransom paid</div>
+        </div>
+      </div>
+      <div class="split-text">
+        <h2>Protection from Cyberattacks</h2>
+        <p>Without trusted data backups, many companies affected by ransomware pay thousands of dollars to cybercriminals hoping to retrieve their data. With DTCloudOn, we can remove infections, wipe affected systems clean, retrieve data from its latest backup point, and reinstall everything you thought was lost.</p>
+        <a href="cybersecurity.html" class="text-link">Add an extra layer of protection →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SEAMLESS BACKUP SOLUTIONS CARDS ── -->
+  <section id="solutions" class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Seamless Backup Solutions</div>
+        <h2>Our Multi-Level Approach Protects Your Network Top to Bottom</h2>
+        <p>Whether you're protecting against ransomware, hardware failure, human error, or natural disasters — DTCloudOn has a solution built for your needs.</p>
+      </div>
+      <div class="cards-grid reveal">
+        <div class="card">
+          <div class="card-icon">🔒</div>
+          <h3>Hacker Prevention</h3>
+          <p>The best way to protect against ransomware and infections is with regularly executed data backups that mitigate the negative impacts of hacks and cyberattacks.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">👤</div>
+          <h3>Human-Error Related Tasks</h3>
+          <p>Automated data backups save your business from accidental deletion, device loss, and even coffee spills.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">☁️</div>
+          <h3>Access Files from Anywhere</h3>
+          <p>If company data is backed up in the cloud, your employees can access it anytime, from any device, with secure permissions.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔐</div>
+          <h3>VPN &amp; Secure Private Data</h3>
+          <p>A VPN protects the computer user and business network, adding extra layers of security to Internet connections and shielding data while in transit.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏗️</div>
+          <h3>Automatic Cloud Infrastructure</h3>
+          <p>As storage shifts from on-premises to the cloud, businesses need to know their information is safe, secure, compliant, and encrypted.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🌀</div>
+          <h3>Disaster Recovery Services</h3>
+          <p>Reliable data backup protects your business from hurricanes, fires, tornadoes, blizzards, and other weather-related natural disasters.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚙️</div>
+          <h3>Simple, Custom Solutions</h3>
+          <p>Maybe you want to monitor your own data backups or understand the cloud better. Whatever your priority, DTCloudOn can help with data protection and backup resilience.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <h3>Expert Backup Monitoring</h3>
+          <p>"Set it and forget it" is great, but it also needs comprehensive backup reporting and continuous monitoring to proactively provide backup alerts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MULTIPLE FORMS OF BACKUP ── -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Multiple Forms of Backup Are Essential</div>
+        <h2>Easily Recoverable, Image-Based Backups On-Premises and in the Cloud</h2>
+        <p>We help clients safeguard information by creating easily recoverable, image-based backups so your business always has access to the data it needs.</p>
+      </div>
+      <div class="service-list reveal">
+        <div class="service-row">
+          <div class="service-row-icon">☁️</div>
+          <div class="service-row-text">
+            <h3>Cloud File Backup</h3>
+            <p>Protect your data with continuous file copy and secure storage of your information, along with easy data retrieval from the cloud.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <div class="service-row-icon">🔥</div>
+          <div class="service-row-text">
+            <h3>On-Premises Disaster Recovery</h3>
+            <p>Ensure quick recovery when cyberattacks, natural disasters, or employee errors happen by restoring your full IT infrastructure.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <div class="service-row-icon">✅</div>
+          <div class="service-row-text">
+            <h3>Monthly Backup Testing</h3>
+            <p>Your backups are only as good as the last tested restore. Our platforms validate the integrity of backups so you know you can recover quickly in case of disaster.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <div class="service-row-icon">📋</div>
+          <div class="service-row-text">
+            <h3>Disaster Recovery Plan</h3>
+            <p>Don't wait until you lose critical business information to know how you'll respond. With a proactive disaster recovery plan in place, you can return to regular operations in no time.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <div class="service-row-icon">🔄</div>
+          <div class="service-row-text">
+            <h3>Automatic Cloud Data Backup Solutions</h3>
+            <p>Regularly executed virtual backups can help lower business costs by reducing the need for dedicated physical hardware.</p>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:40px;">
+        <a href="../contact.html" class="btn-primary" style="display:inline-block;">Request a Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── INDUSTRIES ── -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Industry-Driven Compliance Solutions</div>
+        <h2>Backup Solutions Tailored to Your Industry's Regulations</h2>
+        <p>Technological implementations should be structured to align with the specific regulatory frameworks and operational dynamics of individual industries.</p>
+      </div>
+      <div class="industries-strip reveal">
+        <div class="ind-card">
+          <div class="ind-icon">🧾</div>
+          <span>Accounting</span>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">🏗️</div>
+          <span>Construction</span>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">🎓</div>
+          <span>Education</span>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">⚙️</div>
+          <span>Engineering</span>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">💹</div>
+          <span>Finance</span>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">🏥</div>
+          <span>Healthcare</span>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">⚖️</div>
+          <span>Legal</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">FAQs</div>
+        <h2>Common Questions About Data Backup &amp; Recovery</h2>
+      </div>
+      <div class="faq-list reveal">
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            1. What is the difference between data backup and disaster recovery services?
+            <span class="chevron">▼</span>
+          </button>
+          <div class="faq-answer"><p>Data backup refers to the routine copying and secure storage of business data so it can be restored if lost, corrupted, or encrypted. Disaster recovery services go further by restoring entire systems, infrastructure, and operations after events such as ransomware attacks, hardware failure, or natural disasters. Together, data backup and recovery services ensure both file protection and full business continuity.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            2. How do data backup and disaster recovery services protect against ransomware?
+            <span class="chevron">▼</span>
+          </button>
+          <div class="faq-answer"><p>When ransomware encrypts systems, clean backup copies allow IT teams to remove the infection, rebuild systems, and restore data without paying attackers. Versioned backups, offline storage, and secure cloud replication reduce the risk of backup compromise and allow rapid recovery to a point before the attack occurred.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            3. How often should business data be backed up?
+            <span class="chevron">▼</span>
+          </button>
+          <div class="faq-answer"><p>Critical business systems often require continuous or near-real-time backups, while less sensitive data may be backed up daily or weekly. Backup frequency should be based on how much data loss a business can tolerate, known as the Recovery Point Objective (RPO).</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            4. What are cloud data backup solutions and are they secure?
+            <span class="chevron">▼</span>
+          </button>
+          <div class="faq-answer"><p>Cloud data backup solutions store encrypted copies of business data in geographically separate data centers. Security is maintained through encryption, access controls, multi-factor authentication, and redundant infrastructure, reducing risks associated with on-site hardware failure or local disasters.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            5. Why is backup testing important for data resilience?
+            <span class="chevron">▼</span>
+          </button>
+          <div class="faq-answer"><p>Backups are only reliable if they can be restored successfully. Regular backup testing verifies data integrity, confirms recovery procedures, and identifies configuration issues before a real incident occurs, reducing downtime during emergencies.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            6. What does a data backup consultant do for a business?
+            <span class="chevron">▼</span>
+          </button>
+          <div class="faq-answer"><p>A data backup consultant evaluates system risks, data criticality, compliance requirements, and infrastructure dependencies. They design structured backup strategies, define retention policies, and ensure that storage, recovery, and monitoring processes align with business continuity goals.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            7. How do data backup solutions support regulatory compliance?
+            <span class="chevron">▼</span>
+          </button>
+          <div class="faq-answer"><p>Many regulations require secure storage, retention policies, encryption, and audit trails. Professionally managed data backup solutions include timestamped version history, encrypted storage, and documented recovery processes that support legal, financial, and industry compliance standards.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            8. Can a business operate during a disaster with proper backup systems?
+            <span class="chevron">▼</span>
+          </button>
+          <div class="faq-answer"><p>Yes. Modern data backup and disaster recovery services often include cloud failover environments that allow employees to work remotely while primary systems are restored. This minimizes service interruption and protects revenue continuity.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            9. What types of data should always be included in backup plans?
+            <span class="chevron">▼</span>
+          </button>
+          <div class="faq-answer"><p>Priority data typically includes financial records, customer information, operational databases, system configurations, emails, and application environments. Backup plans should cover both structured data and full system images.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            10. How do layered backup strategies improve data protection?
+            <span class="chevron">▼</span>
+          </button>
+          <div class="faq-answer"><p>Using multiple backup types — such as on-site image backups, off-site cloud copies, and immutable storage — reduces single points of failure. Layered backup strategies improve resilience against cyberattacks, hardware failure, and environmental disasters.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RELATED SERVICES ── -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Mix and Match Different Solutions</div>
+        <h2>Combine Data Backup with Other IT Services</h2>
+        <p>One size does not fit all. Our solutions are designed as modular offerings that come together in an infinite variety of combinations.</p>
+      </div>
+      <div class="related-grid reveal">
+        <a class="related-card" href="cybersecurity.html">
+          <div class="r-icon">🔒</div>
+          <h3>Cybersecurity</h3>
+          <p class="need">I need protection from ransomware.</p>
+          <p>Defend your business against cyberthreats with multi-layered security solutions.</p>
+        </a>
+        <a class="related-card" href="cloud.html">
+          <div class="r-icon">☁️</div>
+          <h3>Cloud Services</h3>
+          <p class="need">I want to migrate to the cloud.</p>
+          <p>Experience cost savings, efficiencies, and anywhere access with the latest cloud solutions.</p>
+        </a>
+        <a class="related-card" href="mdr.html">
+          <div class="r-icon">🛡️</div>
+          <h3>Managed Detection &amp; Response</h3>
+          <p class="need">I need 24/7 threat monitoring.</p>
+          <p>Keep your network monitored around the clock with expert-led MDR services.</p>
+        </a>
+        <a class="related-card" href="compliance.html">
+          <div class="r-icon">📋</div>
+          <h3>Compliance &amp; CMMC</h3>
+          <p class="need">I need to comply with industry regulations.</p>
+          <p>Confidently meet data and privacy regulations with specialized compliance services.</p>
+        </a>
+        <a class="related-card" href="managed-services.html">
+          <div class="r-icon">🖥️</div>
+          <h3>Managed Services</h3>
+          <p class="need">My business needs help with IT and security.</p>
+          <p>Keep your technology securely running at peak potential with 24/7 monitoring.</p>
+        </a>
+        <a class="related-card" href="network.html">
+          <div class="r-icon">🌐</div>
+          <h3>Network Management</h3>
+          <p class="need">I need faster wifi and streamlined systems.</p>
+          <p>Improve your network connectivity through secure, high-performance network solutions.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA STRIP ── -->
+  <div class="cta-strip">
+    <div class="container">
+      <h2>Ready to Protect Your Business Data?</h2>
+      <p>Let DTCloudOn build a backup and recovery strategy tailored to your business — so you're always ready for whatever comes next.</p>
+      <a class="btn-white" href="../contact.html">Request Data Backup Services →</a>
+    </div>
+  </div>
+
+  <!-- ── FOOTER PLACEHOLDER ── -->
+  <div id="footer-placeholder"></div>
+
+  <!-- ── SCRIPTS ── -->
+  <script src="../nav.js"></script>
+  <script src="../utils.js"></script>
+  <script>renderNav('services', '../'); renderFooter(1);</script>
+
+  <script>
+    /* FAQ accordion */
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-answer');
+      const isOpen = item.classList.contains('open');
+
+      document.querySelectorAll('.faq-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-answer').style.maxHeight = '0';
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    }
+
+    /* Scroll reveal */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
