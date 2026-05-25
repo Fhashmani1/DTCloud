@@ -36,7 +36,6 @@ function renderNav(activePage, basePath) {
             <a href="${basePath}services/network.html">IT Network Support</a>
             <a href="${basePath}services/backup.html">Data Backup &amp; Recovery</a>
             <a href="${basePath}services/compliance.html">Compliance</a>
-            <a href="${basePath}services/cmmc.html">CMMC Compliance</a>
             <a href="${basePath}services/unified-comms.html">Unified Communications</a>
             <a href="${basePath}services/it-guidance.html">IT Guidance</a>
             <a href="${basePath}services/procurement.html">IT Procurement</a>
