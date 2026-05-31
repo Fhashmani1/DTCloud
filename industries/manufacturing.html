@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Support for Manufacturing — DTCloudOn</title>
+<meta name="description" content="DTCloudOn provides managed IT services for manufacturers — reliable networks, automation support, cybersecurity, IT procurement, and 24/7 monitoring to keep production lines running.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* ── HERO ── */
+  .ind-hero {
+    position: relative; min-height: 52vh;
+    display: flex; align-items: flex-end;
+    background: var(--navy); overflow: hidden; padding: 80px 24px 60px;
+  }
+  .ind-hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('../images/manufacturing-floor.png');
+    background-size: cover; background-position: center;
+    filter: brightness(0.3) saturate(1.05);
+  }
+  .ind-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(10,22,40,0.82) 40%, rgba(10,22,40,0.38) 100%);
+  }
+  .ind-hero .container { position: relative; z-index: 2; }
+  .ind-hero-breadcrumb {
+    display: flex; align-items: center; gap: 10px;
+    font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: rgba(255,255,255,.55); margin-bottom: 20px;
+  }
+  .ind-hero-breadcrumb span { color: var(--accent); }
+  .ind-hero h1 {
+    color: var(--white);
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    line-height: 1.1; letter-spacing: -1px; max-width: 680px;
+  }
+
+  /* ── CONTENT SECTIONS ── */
+  .content-section { padding: 80px 24px; }
+  .content-section.alt { background: var(--off-white); }
+
+  .split-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: center;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .split-layout.reverse { direction: rtl; }
+  .split-layout.reverse > * { direction: ltr; }
+
+  .content-text h2 { font-size: clamp(1.5rem,2.6vw,2.2rem); color: var(--navy); margin-bottom: 16px; letter-spacing:-.5px; line-height:1.25; }
+  .content-text p { color: var(--text-mid); line-height: 1.78; margin-bottom: 14px; }
+  .content-text ul { list-style: none; margin: 16px 0 20px; display: flex; flex-direction: column; gap: 10px; }
+  .content-text li { font-size:.92rem; color:var(--text-mid); display:flex; gap:12px; align-items:flex-start; line-height:1.55; }
+  .content-text li .li-dot { width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0;margin-top:5px; }
+  .content-text li a { color:var(--sky); text-decoration:underline; }
+  .content-text .inline-link {
+    color:var(--sky); font-size:.9rem; font-weight:600;
+    display:inline-flex; align-items:center; gap:6px;
+    margin-top:8px; transition:gap .2s; text-decoration:none;
+  }
+  .content-text .inline-link:hover { gap:10px; }
+
+  .visual-panel {
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 12px 48px rgba(10,22,40,.14);
+    aspect-ratio: 4/3;
+    background: var(--off-white);
+    position: relative; display:flex; align-items:center; justify-content:center;
+  }
+  .visual-panel .panel-icon { font-size:5rem; opacity:.12; }
+  .visual-panel .overlay-badge {
+    position:absolute; bottom:20px; left:20px; right:20px;
+    background:rgba(10,22,40,.85); backdrop-filter:blur(8px);
+    border-radius:12px; padding:14px 18px;
+    display:flex; align-items:center; gap:12px;
+    border:1px solid rgba(255,255,255,.1);
+  }
+  .overlay-badge .ob-icon { font-size:1.6rem; flex-shrink:0; }
+  .overlay-badge .ob-text strong { display:block; font-size:.88rem; color:var(--white); font-family:'Sora',sans-serif; font-weight:700; }
+  .overlay-badge .ob-text span { font-size:.75rem; color:rgba(255,255,255,.6); }
+
+  /* ── MID CTA BANNER ── */
+  .mid-cta {
+    position:relative; padding:80px 24px; overflow:hidden;
+    background:var(--navy); text-align:center;
+  }
+  .mid-cta-bg {
+    position:absolute; inset:0;
+    background:linear-gradient(135deg,#060e1a 0%,#0d1b2e 50%,#101020 100%);
+  }
+  .mid-cta-pattern {
+    position:absolute; inset:0;
+    background-image:repeating-linear-gradient(45deg,rgba(42,125,225,.04) 0px,rgba(42,125,225,.04) 1px,transparent 1px,transparent 50px);
+  }
+  .mid-cta .container { position:relative; z-index:2; }
+  .mid-cta h2 { font-size:clamp(1.6rem,3.5vw,2.6rem); color:var(--white); line-height:1.2; letter-spacing:-.5px; margin-bottom:16px; max-width:820px; margin-left:auto; margin-right:auto; }
+  .mid-cta p { color:rgba(255,255,255,.68); font-size:1rem; max-width:560px; margin:0 auto 28px; line-height:1.7; }
+
+  /* ── FAQ ── */
+  .faq-list { max-width:820px; margin:0 auto; }
+  .faq-item { border-bottom:1px solid rgba(10,22,40,0.08); }
+  .faq-question {
+    width:100%; text-align:left; background:none; border:none; cursor:pointer;
+    padding:22px 8px; display:flex; justify-content:space-between; align-items:center;
+    font-family:'Sora',sans-serif; font-size:1rem; font-weight:700; color:var(--navy);
+  }
+  .faq-question .chevron { font-size:.9rem; transition:transform .25s; color:var(--accent); flex-shrink:0; }
+  .faq-item.open .chevron { transform:rotate(180deg); }
+  .faq-answer { max-height:0; overflow:hidden; transition:max-height .35s ease; }
+  .faq-answer p { padding:0 8px 22px; color:var(--text-mid); line-height:1.78; font-size:.93rem; text-align:center; }
+
+  @media(max-width:900px){
+    .split-layout { grid-template-columns:1fr; gap:32px; }
+    .split-layout.reverse { direction:ltr; }
+  }
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<!-- HERO -->
+<div class="ind-hero">
+  <div class="ind-hero-bg"></div>
+  <div class="ind-hero-overlay"></div>
+  <div class="container">
+    <div class="ind-hero-breadcrumb">INDUSTRIES <span>●</span> MANUFACTURING</div>
+    <h1>IT Support for Manufacturing</h1>
+  </div>
+</div>
+
+<!-- INTRO SPLIT -->
+<div class="content-section alt">
+  <div class="split-layout reveal">
+    <div class="content-text">
+      <p>The manufacturing industry in the U.S. is on the rise — you may have felt that growth already. As your operations increase, you need IT management services that can grow alongside you and the entire industry. DTCloudOn has the expert IT services to keep your lines in high gear and give you an edge over your competitors.</p>
+      <p>From assisting with automated procedures to enhancing your operations to designing networks that let you communicate from the design room to the manufacturing floor, we'll put you on the fast track to exceptional IT management without your business missing a beat.</p>
+      <a class="inline-link" href="../contact.html">Get specialized manufacturing IT support →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">🏭</div>
+      <div class="overlay-badge">
+        <div class="ob-icon">⚙️</div>
+        <div class="ob-text">
+          <strong>Design Room to Factory Floor</strong>
+          <span>IT that keeps your lines in high gear</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RUNNING FROM DAY ONE -->
+<div class="content-section">
+  <div class="split-layout reverse reveal">
+    <div class="content-text">
+      <div class="section-label">IT Solutions for Manufacturing</div>
+      <h2>Managed IT services for manufacturing keep you running from day one</h2>
+      <p>You don't need to stop or even slow down your daily operations to account for IT issues. DTCloudOn keeps your IT infrastructure running at its best 24/7.</p>
+      <ul>
+        <li><span class="li-dot"></span><span><a href="../services/managed-services.html">Managed IT services</a> provide constant monitoring and support, so your IT is always on track.</span></li>
+        <li><span class="li-dot"></span><span><a href="../services/it-guidance.html">IT consulting services</a> put top IT talent at your disposal so you can focus on manufacturing operations.</span></li>
+        <li><span class="li-dot"></span><span><a href="../services/network.html">Networking support</a> keeps your entire organization connected from the factory to the boardroom.</span></li>
+        <li><span class="li-dot"></span><span><a href="../services/it-procurement.html">IT procurement services</a> help you acquire the technology you need to consistently improve operations.</span></li>
+      </ul>
+      <a class="btn-primary" href="../services/managed-services.html" style="display:inline-block;margin-top:8px;">View Our Full List of IT Services →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">🔧</div>
+    </div>
+  </div>
+</div>
+
+<!-- START TO FINISH -->
+<div class="content-section alt">
+  <div class="split-layout reveal">
+    <div class="content-text">
+      <div class="section-label">End-to-End Support</div>
+      <h2>Manufacturing IT support from start to finish</h2>
+      <p>With DTCloudOn, you'll have complete, managed IT services to propel your business to the next level. From the moment you get in touch with us, we'll start building your custom plan, tailor-made for your business.</p>
+      <p>It's all part of the DTCloudOn difference — IT management designed around how your operation actually runs, with room to grow as you do.</p>
+      <a class="inline-link" href="../contact.html">Start building your IT plan →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">📋</div>
+      <div class="overlay-badge">
+        <div class="ob-icon">🤝</div>
+        <div class="ob-text">
+          <strong>Custom, Tailor-Made Plans</strong>
+          <span>Built around your operation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MID-PAGE CTA -->
+<div class="mid-cta">
+  <div class="mid-cta-bg"></div>
+  <div class="mid-cta-pattern"></div>
+  <div class="container">
+    <h2>Keep your production lines running with IT services for manufacturing</h2>
+    <p>Contact DTCloudOn to see how we can strengthen and protect your manufacturing IT infrastructure today.</p>
+    <a class="btn-primary" href="../contact.html">Contact Us →</a>
+  </div>
+</div>
+
+<!-- FAQs -->
+<div class="content-section alt">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <h2 class="section-title">FAQs</h2>
+    </div>
+    <div class="faq-list reveal">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What are IT solutions for the manufacturing industry?
+          <span class="chevron">▼</span>
+        </button>
+        <div class="faq-answer"><p>IT solutions for the manufacturing industry focus on supporting production environments through reliable networks, secure systems, and performance-driven infrastructure. These solutions help manufacturers manage automation, protect operational data, and keep operations running without disruption.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do IT solutions support manufacturing plants and multiple facilities?
+          <span class="chevron">▼</span>
+        </button>
+        <div class="faq-answer"><p>IT solutions connect factories, warehouses, and offices through centralized networks and cloud systems. This allows production data, design files, and operational systems to stay synchronized across locations, whether teams are on the shop floor or at corporate sites.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Why is uptime so important in manufacturing IT environments?
+          <span class="chevron">▼</span>
+        </button>
+        <div class="faq-answer"><p>Downtime can halt production lines and disrupt supply chains. Managed IT services use 24/7 monitoring and proactive maintenance to detect issues early and resolve them before they impact manufacturing operations.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can IT services support automation and smart manufacturing systems?
+          <span class="chevron">▼</span>
+        </button>
+        <div class="faq-answer"><p>Yes. IT solutions are designed to integrate with automated equipment, control systems, and data platforms that drive modern manufacturing. This ensures stable performance, secure connectivity, and reliable data flow across operational technologies.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How does cybersecurity protect manufacturing operations?
+          <span class="chevron">▼</span>
+        </button>
+        <div class="faq-answer"><p>Manufacturing IT environments are protected through network segmentation, access controls, and continuous monitoring. These measures help secure production systems, intellectual property, and business data from cyber threats that could disrupt operations.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What role does IT procurement play for manufacturers?
+          <span class="chevron">▼</span>
+        </button>
+        <div class="faq-answer"><p>IT procurement services help manufacturers source and deploy reliable hardware, networking equipment, and systems suited for industrial environments. This ensures technology investments align with performance needs and long-term operational goals.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do IT solutions scale as manufacturing operations grow?
+          <span class="chevron">▼</span>
+        </button>
+        <div class="faq-answer"><p>IT infrastructures are built to expand as production capacity increases or new facilities open. Systems, networks, and support services can be extended without major disruption to existing operations.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do IT solutions allow manufacturers to focus on production?
+          <span class="chevron">▼</span>
+        </button>
+        <div class="faq-answer"><p>By outsourcing IT management, manufacturers can concentrate on process efficiency, quality control, and output, while IT specialists handle system performance, security, and ongoing support across facilities.</p></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div class="container">
+    <h2>Ready to Put Your Manufacturing IT in High Gear?</h2>
+    <p>Talk to a DTCloudOn specialist who understands manufacturing — from automation and the factory floor to uptime and cybersecurity.</p>
+    <a class="btn-white" href="../contact.html">Request a Free Consultation →</a>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="../nav.js"></script>
+<script src="../utils.js"></script>
+<script>renderNav('industries', '../'); renderFooter(2);</script>
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-answer');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-answer').style.maxHeight = '0';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
