@@ -80,7 +80,7 @@
     background: var(--off-white);
     position: relative; display:flex; align-items:center; justify-content:center;
   }
-  .visual-panel img { width:100%;height:100%;object-fit:cover;display:block; }
+  .visual-panel img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
   .visual-panel .panel-icon { position:absolute; font-size:5rem; opacity:.12; }
 
   /* visual with overlay badge */
@@ -159,6 +159,7 @@
     </div>
     <div class="visual-panel">
       <div class="panel-icon">🧾</div>
+      <img src="../images/accounting-team.png" alt="Accounting team reviewing financial analysis" onerror="this.style.display='none'">
       <div class="overlay-badge">
         <div class="ob-icon">💼</div>
         <div class="ob-text">
@@ -187,6 +188,7 @@
     </div>
     <div class="visual-panel">
       <div class="panel-icon">📊</div>
+      <img src="../images/accounting-analyst.png" alt="Accountant working with financial reports" onerror="this.style.display='none'">
     </div>
   </div>
 </div>
@@ -208,6 +210,7 @@
     </div>
     <div class="visual-panel">
       <div class="panel-icon">⚖️</div>
+      <img src="../images/accounting-advisor.png" alt="Financial advisor meeting with a client" onerror="this.style.display='none'">
       <div class="overlay-badge">
         <div class="ob-icon">🏛️</div>
         <div class="ob-text">
@@ -236,6 +239,7 @@
     </div>
     <div class="visual-panel">
       <div class="panel-icon">🔐</div>
+      <img src="../images/accounting-advisor.png" alt="Secure handling of client financial documents" onerror="this.style.display='none'">
     </div>
   </div>
 </div>
@@ -258,6 +262,7 @@
     </div>
     <div class="visual-panel">
       <div class="panel-icon">🎧</div>
+      <img src="../images/accounting-team.png" alt="IT experts supporting an accounting team" onerror="this.style.display='none'">
       <div class="overlay-badge">
         <div class="ob-icon">💡</div>
         <div class="ob-text">
