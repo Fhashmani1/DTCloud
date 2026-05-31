@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Services for Non-Profits — DTCloudOn</title>
+<meta name="description" content="DTCloudOn provides managed IT services for non-profit organizations — donor data protection, cloud services, cybersecurity, IT procurement, and 24/7 monitoring so you can focus on your mission.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* ── HERO ── */
+  .ind-hero {
+    position: relative; min-height: 52vh;
+    display: flex; align-items: flex-end;
+    background: var(--navy); overflow: hidden; padding: 80px 24px 60px;
+  }
+  .ind-hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('../images/nonprofit-team.png');
+    background-size: cover; background-position: center;
+    filter: brightness(0.3) saturate(1.05);
+  }
+  .ind-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(10,22,40,0.82) 40%, rgba(10,22,40,0.38) 100%);
+  }
+  .ind-hero .container { position: relative; z-index: 2; }
+  .ind-hero-breadcrumb {
+    display: flex; align-items: center; gap: 10px;
+    font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: rgba(255,255,255,.55); margin-bottom: 20px;
+  }
+  .ind-hero-breadcrumb span { color: var(--accent); }
+  .ind-hero h1 {
+    color: var(--white);
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    line-height: 1.1; letter-spacing: -1px; max-width: 680px;
+  }
+
+  /* ── CONTENT SECTIONS ── */
+  .content-section { padding: 80px 24px; }
+  .content-section.alt { background: var(--off-white); }
+
+  .split-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: center;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .split-layout.reverse { direction: rtl; }
+  .split-layout.reverse > * { direction: ltr; }
+
+  .content-text h2 { font-size: clamp(1.5rem,2.6vw,2.2rem); color: var(--navy); margin-bottom: 16px; letter-spacing:-.5px; line-height:1.25; }
+  .content-text p { color: var(--text-mid); line-height: 1.78; margin-bottom: 14px; }
+  .content-text ul { list-style: none; margin: 16px 0 20px; display: flex; flex-direction: column; gap: 10px; }
+  .content-text li { font-size:.92rem; color:var(--text-mid); display:flex; gap:12px; align-items:flex-start; line-height:1.55; }
+  .content-text li .li-dot { width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0;margin-top:5px; }
+  .content-text li a { color:var(--sky); text-decoration:underline; }
+  .content-text .inline-link {
+    color:var(--sky); font-size:.9rem; font-weight:600;
+    display:inline-flex; align-items:center; gap:6px;
+    margin-top:8px; transition:gap .2s; text-decoration:none;
+  }
+  .content-text .inline-link:hover { gap:10px; }
+
+  .visual-panel {
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 12px 48px rgba(10,22,40,.14);
+    aspect-ratio: 4/3;
+    background: var(--off-white);
+    position: relative; display:flex; align-items:center; justify-content:center;
+  }
+  .visual-panel .panel-icon { font-size:5rem; opacity:.12; }
+  .visual-panel .overlay-badge {
+    position:absolute; bottom:20px; left:20px; right:20px;
+    background:rgba(10,22,40,.85); backdrop-filter:blur(8px);
+    border-radius:12px; padding:14px 18px;
+    display:flex; align-items:center; gap:12px;
+    border:1px solid rgba(255,255,255,.1);
+  }
+  .overlay-badge .ob-icon { font-size:1.6rem; flex-shrink:0; }
+  .overlay-badge .ob-text strong { display:block; font-size:.88rem; color:var(--white); font-family:'Sora',sans-serif; font-weight:700; }
+  .overlay-badge .ob-text span { font-size:.75rem; color:rgba(255,255,255,.6); }
+
+  /* ── MID CTA BANNER ── */
+  .mid-cta {
+    position:relative; padding:80px 24px; overflow:hidden;
+    background:var(--navy); text-align:center;
+  }
+  .mid-cta-bg {
+    position:absolute; inset:0;
+    background:linear-gradient(135deg,#060e1a 0%,#0d1b2e 50%,#101020 100%);
+  }
+  .mid-cta-pattern {
+    position:absolute; inset:0;
+    background-image:repeating-linear-gradient(45deg,rgba(42,125,225,.04) 0px,rgba(42,125,225,.04) 1px,transparent 1px,transparent 50px);
+  }
+  .mid-cta .container { position:relative; z-index:2; }
+  .mid-cta h2 { font-size:clamp(1.6rem,3.5vw,2.6rem); color:var(--white); line-height:1.2; letter-spacing:-.5px; margin-bottom:16px; max-width:820px; margin-left:auto; margin-right:auto; }
+  .mid-cta p { color:rgba(255,255,255,.68); font-size:1rem; max-width:560px; margin:0 auto 28px; line-height:1.7; }
+
+  /* ── FAQ ── */
+  .faq-list { max-width:820px; margin:0 auto; }
+  .faq-item { border-bottom:1px solid rgba(10,22,40,0.08); }
+  .faq-question {
+    width:100%; text-align:left; background:none; border:none; cursor:pointer;
+    padding:22px 8px; display:flex; justify-content:space-between; align-items:center;
+    font-family:'Sora',sans-serif; font-size:1rem; font-weight:700; color:var(--navy);
+  }
+  .faq-question .chevron { font-size:.9rem; transition:transform .25s; color:var(--accent); flex-shrink:0; }
+  .faq-item.open .chevron { transform:rotate(180deg); }
+  .faq-answer { max-height:0; overflow:hidden; transition:max-height .35s ease; }
+  .faq-answer p { padding:0 8px 22px; color:var(--text-mid); line-height:1.78; font-size:.93rem; text-align:center; }
+
+  @media(max-width:900px){
+    .split-layout { grid-template-columns:1fr; gap:32px; }
+    .split-layout.reverse { direction:ltr; }
+  }
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<!-- HERO -->
+<div class="ind-hero">
+  <div class="ind-hero-bg"></div>
+  <div class="ind-hero-overlay"></div>
+  <div class="container">
+    <div class="ind-hero-breadcrumb">INDUSTRIES <span>●</span> NON-PROFIT</div>
+    <h1>IT Services for Non-Profits</h1>
+  </div>
+</div>
+
+<!-- INTRO SPLIT -->
+<div class="content-section alt">
+  <div class="split-layout reveal">
+    <div class="content-text">
+      <p>Connecting your donors, your volunteers, and the causes your non-profit organization serves requires complex technology. Managing that technology shouldn't take you or your staff away from your core mission. Let DTCloudOn help you serve your community and connect your members, all while effectively meeting your goals.</p>
+      <p>We'll work as your partner, managing your entire IT infrastructure and taking the pressure off your internal team. For any size organization, we'll evaluate your IT needs and develop a plan that centers around your work, simplifies your operations, and provides ongoing support when and where you need it most.</p>
+      <a class="inline-link" href="../contact.html">Get specialized non-profit IT support →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">🤝</div>
+      <div class="overlay-badge">
+        <div class="ob-icon">💙</div>
+        <div class="ob-text">
+          <strong>Mission-Focused IT</strong>
+          <span>So your team stays on the cause</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ACHIEVING YOUR MISSION -->
+<div class="content-section">
+  <div class="split-layout reverse reveal">
+    <div class="content-text">
+      <div class="section-label">IT Solutions for Non-Profits</div>
+      <h2>Achieving your mission with our IT solutions for non-profits</h2>
+      <p>To help you stay focused on your cause or charitable operation, we offer complete IT services, including 24/7 monitoring, offering peace of mind that your IT needs will always be met.</p>
+      <ul>
+        <li><span class="li-dot"></span><span><a href="../services/it-procurement.html">IT procurement services</a> help you acquire all the technology you need to operate effectively.</span></li>
+        <li><span class="li-dot"></span><span><a href="../services/managed-services.html">Managed IT services</a> take the guesswork out of managing your IT infrastructure.</span></li>
+        <li><span class="li-dot"></span><span><a href="../services/cybersecurity.html">Cybersecurity solutions</a> protect crucial donor data and enhance your organization's operations.</span></li>
+        <li><span class="li-dot"></span><span><a href="../services/cloud.html">Cloud services</a> let you access information from anywhere, without wasting funds on expensive servers.</span></li>
+      </ul>
+      <a class="btn-primary" href="../services/managed-services.html" style="display:inline-block;margin-top:8px;">View Our Full List of IT Services →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">🎯</div>
+    </div>
+  </div>
+</div>
+
+<!-- PARTNERS WHEN YOU NEED US -->
+<div class="content-section alt">
+  <div class="split-layout reveal">
+    <div class="content-text">
+      <div class="section-label">Ongoing Partnership</div>
+      <h2>Partners when you need us</h2>
+      <p>When you reach out to DTCloudOn, we'll assess your needs and build a plan that meets your goals for the present and the future. We'll be by your side as your needs change, helping you navigate diverse IT solutions as your organization grows.</p>
+      <p>It's all part of the ongoing partnership DTCloudOn is known for — technology support that adapts as your mission and your community do.</p>
+      <a class="inline-link" href="../contact.html">Start building your IT plan →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">🌱</div>
+      <div class="overlay-badge">
+        <div class="ob-icon">📈</div>
+        <div class="ob-text">
+          <strong>Plans That Grow With You</strong>
+          <span>Support for present and future goals</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MID-PAGE CTA -->
+<div class="mid-cta">
+  <div class="mid-cta-bg"></div>
+  <div class="mid-cta-pattern"></div>
+  <div class="container">
+    <h2>Stay focused on your mission with IT services for non-profits</h2>
+    <p>Contact DTCloudOn to see how we can manage and protect your non-profit's IT infrastructure today.</p>
+    <a class="btn-primary" href="../contact.html">Contact Us →</a>
+  </div>
+</div>
+
+<!-- FAQs -->
+<div class="content-section alt">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <h2 class="section-title">FAQs</h2>
+    </div>
+    <div class="faq-list reveal">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What are IT services for non-profit organizations?
+          <span class="chevron">▼</span>
+        </button>
+        <div class="faq-answer"><p>IT services for non-profit organizations focus on managing and securing technology that supports donor engagement, volunteer coordination, and program delivery. These services help non-profits operate efficiently while keeping technology aligned with their mission.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do IT services help non-profits with limited budgets?
+          <span class="chevron">▼</span>
+        </button>
+        <div class="faq-answer"><p>IT services are designed to be scalable and cost-aware, allowing non-profits to access enterprise-level support without the expense of a full internal IT team. Cloud solutions and managed services help reduce infrastructure and maintenance costs.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How is donor and member data protected?
+          <span class="chevron">▼</span>
+        </button>
+        <div class="faq-answer"><p>Cybersecurity services protect donor and member data through secure access controls, monitoring, and data protection practices. This helps maintain trust and safeguards sensitive personal and financial information from cyber threats.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can IT services support remote and community-based teams?
+          <span class="chevron">▼</span>
+        </button>
+        <div class="faq-answer"><p>Yes. Cloud services and secure connectivity allow staff and volunteers to access systems from different locations, supporting remote work, field operations, and community outreach while maintaining centralized oversight.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What role do managed IT services play for non-profits?
+          <span class="chevron">▼</span>
+        </button>
+        <div class="faq-answer"><p>Managed IT services provide continuous monitoring and support, reducing downtime and technical disruptions. This allows non-profit staff to focus on programs and outreach rather than troubleshooting technology issues.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do IT services scale as a non-profit grows?
+          <span class="chevron">▼</span>
+        </button>
+        <div class="faq-answer"><p>IT plans are built to grow with the organization, supporting new programs, users, and locations without major system changes. This ensures technology remains aligned with evolving operational needs.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do IT services include technology procurement and setup?
+          <span class="chevron">▼</span>
+        </button>
+        <div class="faq-answer"><p>Yes. IT procurement services help identify, source, and deploy hardware and software suited to non-profit operations, ensuring technology investments are practical, reliable, and mission-focused.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do IT services help non-profits stay focused on their mission?
+          <span class="chevron">▼</span>
+        </button>
+        <div class="faq-answer"><p>By outsourcing IT management and support, non-profits can dedicate more time and resources to serving their communities, while IT professionals handle infrastructure, security, and ongoing system performance.</p></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div class="container">
+    <h2>Ready to Put Your IT to Work for Your Mission?</h2>
+    <p>Talk to a DTCloudOn specialist who understands non-profits — from donor-data protection to cost-aware, mission-focused technology.</p>
+    <a class="btn-white" href="../contact.html">Request a Free Consultation →</a>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="../nav.js"></script>
+<script src="../utils.js"></script>
+<script>renderNav('industries', '../'); renderFooter(2);</script>
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-answer');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-answer').style.maxHeight = '0';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
