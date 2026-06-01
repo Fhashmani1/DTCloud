@@ -87,15 +87,20 @@
   .content-text li::before { content:'✓'; color:var(--sky); font-weight:700; flex-shrink:0; margin-top:1px; }
 
   .visual-panel {
-    background: var(--navy-mid); border-radius: 20px;
-    overflow: hidden; aspect-ratio: 4/3;
-    position: relative; display: flex;
-    align-items: center; justify-content: center;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    position: relative;
+    box-shadow: 0 12px 48px rgba(10,22,40,.14);
+    background: var(--navy-mid);
   }
-  .visual-panel img { width:100%;height:100%;object-fit:cover;opacity:0.75;display:block; }
-  .visual-panel .panel-icon { position:absolute; font-size:5rem; opacity:0.15; }
+  .visual-panel img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+    display: block;
+  }
 
-  /* ── "WE WON'T LEAVE YOU HANGING" BANNER ── */
+  /* ── PROMISE BANNER ── */
   .promise-banner {
     background: var(--off-white);
     padding: 72px 24px;
@@ -110,7 +115,7 @@
     margin: 0 auto 32px; line-height: 1.75; font-size: 1.05rem;
   }
 
-  /* ── SUPPORT TYPES GRID (replaces carousel) ── */
+  /* ── SUPPORT TYPES GRID ── */
   .support-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -256,8 +261,7 @@
       </ul>
     </div>
     <div class="visual-panel">
-      <div class="panel-icon">🖥️</div>
-      <img src="../images/datacenter-2.png" alt="IT Support" onerror="this.style.display='none'">
+      <img src="../images/it-support-team-1.png" alt="DTCloudOn IT support team working at helpdesk stations with dual monitors and headsets" loading="lazy">
     </div>
   </div>
 </div>
@@ -378,9 +382,8 @@
       </ul>
       <a class="btn-primary" href="../contact.html" style="margin-top:8px;">Get IT Support →</a>
     </div>
-    <div class="visual-panel" style="background:var(--navy-mid);">
-      <div class="panel-icon">🤝</div>
-      <img src="../images/datacenter-3.png" alt="IT Support Team" onerror="this.style.display='none'">
+    <div class="visual-panel">
+      <img src="../images/it-support-team-2.png" alt="DTCloudOn IT support specialists collaborating at workstations with server room in background" loading="lazy">
     </div>
   </div>
 </div>
