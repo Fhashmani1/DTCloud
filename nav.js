@@ -6,9 +6,9 @@ function renderNav(activePage, basePath) {
   basePath = basePath || '';
   const nav = `
   <div class="topbar">
-    <div class="location">📍 Serving Businesses Nationwide &amp; Globally</div>
+    <div class="location">📍 Serving business across Texas</div>
     <div>
-      <span>📞 <a href="tel:+18005550000">(800) 555-0000</a></span>
+      <span>📞 <a href="tel:+13467582593">(346) 758-2593</a></span>
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <span>✉ <a href="mailto:info@dtcloudon.com">info@dtcloudon.com</a></span>
     </div>
