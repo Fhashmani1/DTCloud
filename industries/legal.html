@@ -18,7 +18,7 @@
   .ind-hero-bg {
     position: absolute; inset: 0;
     background-image: url('../images/law-courthouse.png');
-    background-size: cover; background-position: center;
+    background-size: cover; background-position: center top;
     filter: brightness(0.3) saturate(1.05);
   }
   .ind-hero-overlay {
@@ -63,21 +63,26 @@
   }
   .content-text .inline-link:hover { gap:10px; }
 
+  /* ── IMAGE PANEL ── */
   .visual-panel {
     border-radius: 20px; overflow: hidden;
     box-shadow: 0 12px 48px rgba(10,22,40,.14);
     aspect-ratio: 4/3;
-    background: var(--off-white);
-    position: relative; display:flex; align-items:center; justify-content:center;
+    position: relative;
+    background: #0a1628;
   }
-  .visual-panel img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
-  .visual-panel .panel-icon { font-size:5rem; opacity:.12; }
+  .visual-panel img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center center;
+    display: block;
+  }
   .visual-panel .overlay-badge {
     position:absolute; bottom:20px; left:20px; right:20px;
     background:rgba(10,22,40,.85); backdrop-filter:blur(8px);
     border-radius:12px; padding:14px 18px;
     display:flex; align-items:center; gap:12px;
     border:1px solid rgba(255,255,255,.1);
+    z-index: 2;
   }
   .overlay-badge .ob-icon { font-size:1.6rem; flex-shrink:0; }
   .overlay-badge .ob-text strong { display:block; font-size:.88rem; color:var(--white); font-family:'Sora',sans-serif; font-weight:700; }
@@ -132,7 +137,7 @@
   </div>
 </div>
 
-<!-- INTRO SPLIT -->
+<!-- INTRO SPLIT — attorney-1: attorney reviewing documents at desk -->
 <div class="content-section alt">
   <div class="split-layout reveal">
     <div class="content-text">
@@ -141,8 +146,7 @@
       <a class="inline-link" href="../contact.html">Get specialized law firm IT support →</a>
     </div>
     <div class="visual-panel">
-      <div class="panel-icon">⚖️</div>
-      <img src="../images/law-attorney-1.png" alt="Attorney reviewing legal documents in a law office" onerror="this.style.display='none'">
+      <img src="../images/law-attorney-1.png" alt="Attorney reviewing legal documents in a law office">
       <div class="overlay-badge">
         <div class="ob-icon">🔒</div>
         <div class="ob-text">
@@ -154,7 +158,7 @@
   </div>
 </div>
 
-<!-- MAKING THE CASE -->
+<!-- MAKING THE CASE — attorney-2: lawyer working on brief at desk -->
 <div class="content-section">
   <div class="split-layout reverse reveal">
     <div class="content-text">
@@ -170,13 +174,12 @@
       <a class="btn-primary" href="../services/managed-services.html" style="display:inline-block;margin-top:8px;">View Our Full List of IT Services →</a>
     </div>
     <div class="visual-panel">
-      <div class="panel-icon">💼</div>
-      <img src="../images/law-attorney-2.png" alt="Lawyer working on a legal brief at a desk" onerror="this.style.display='none'">
+      <img src="../images/law-attorney-2.png" alt="Lawyer working on a legal brief at a desk with law books">
     </div>
   </div>
 </div>
 
-<!-- SMALL AND LARGE -->
+<!-- SMALL AND LARGE — courthouse: classical columns -->
 <div class="content-section alt">
   <div class="split-layout reveal">
     <div class="content-text">
@@ -187,8 +190,7 @@
       <a class="inline-link" href="../contact.html">Build your law firm IT plan →</a>
     </div>
     <div class="visual-panel">
-      <div class="panel-icon">🏛️</div>
-      <img src="../images/law-courthouse.png" alt="Courthouse exterior with classical columns" onerror="this.style.display='none'">
+      <img src="../images/law-courthouse.png" alt="Courthouse exterior with classical columns against blue sky">
       <div class="overlay-badge">
         <div class="ob-icon">📈</div>
         <div class="ob-text">
