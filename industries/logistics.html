@@ -63,20 +63,26 @@
   }
   .content-text .inline-link:hover { gap:10px; }
 
+  /* ── IMAGE PANEL ── */
   .visual-panel {
     border-radius: 20px; overflow: hidden;
     box-shadow: 0 12px 48px rgba(10,22,40,.14);
     aspect-ratio: 4/3;
-    background: var(--off-white);
-    position: relative; display:flex; align-items:center; justify-content:center;
+    background: #0a1628;
+    position: relative;
   }
-  .visual-panel .panel-icon { font-size:5rem; opacity:.12; }
+  .visual-panel img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center center;
+    display: block;
+  }
   .visual-panel .overlay-badge {
     position:absolute; bottom:20px; left:20px; right:20px;
     background:rgba(10,22,40,.85); backdrop-filter:blur(8px);
     border-radius:12px; padding:14px 18px;
     display:flex; align-items:center; gap:12px;
     border:1px solid rgba(255,255,255,.1);
+    z-index: 2;
   }
   .overlay-badge .ob-icon { font-size:1.6rem; flex-shrink:0; }
   .overlay-badge .ob-text strong { display:block; font-size:.88rem; color:var(--white); font-family:'Sora',sans-serif; font-weight:700; }
@@ -131,7 +137,7 @@
   </div>
 </div>
 
-<!-- KEEP OPERATIONS MOVING -->
+<!-- SECTION 1: Keep operations moving — warehouse IT tech with logistics network screens -->
 <div class="content-section alt">
   <div class="split-layout reveal">
     <div class="content-text">
@@ -142,7 +148,7 @@
       <a class="inline-link" href="../contact.html">Get specialized logistics IT support →</a>
     </div>
     <div class="visual-panel">
-      <div class="panel-icon">🚚</div>
+      <img src="../images/logistics-warehouse-network.png" alt="IT technician managing logistics network status in an active warehouse">
       <div class="overlay-badge">
         <div class="ob-icon">📦</div>
         <div class="ob-text">
@@ -154,7 +160,7 @@
   </div>
 </div>
 
-<!-- ALL-IN-ONE IT MANAGEMENT -->
+<!-- SECTION 2: All-in-one IT management — engineers at port with trucks & containers -->
 <div class="content-section">
   <div class="split-layout reverse reveal">
     <div class="content-text">
@@ -170,12 +176,12 @@
       <a class="btn-primary" href="../services/managed-services.html" style="display:inline-block;margin-top:8px;">View Our Full List of IT Services →</a>
     </div>
     <div class="visual-panel">
-      <div class="panel-icon">☁️</div>
+      <img src="../images/logistics-port-setup.png" alt="Network engineers configuring fleet tracking and logistics systems at a shipping port">
     </div>
   </div>
 </div>
 
-<!-- SUPPLY CHAIN COMPLIANCE -->
+<!-- SECTION 3: Supply chain compliance — team with blueprints at dusk, trucks visible -->
 <div class="content-section alt">
   <div class="split-layout reveal">
     <div class="content-text">
@@ -186,7 +192,7 @@
       <a class="inline-link" href="../services/compliance.html">Meet your compliance requirements →</a>
     </div>
     <div class="visual-panel">
-      <div class="panel-icon">🔐</div>
+      <img src="../images/logistics-compliance-team.png" alt="Logistics IT team reviewing supply chain network plans with fleet visible outside">
       <div class="overlay-badge">
         <div class="ob-icon">🛰️</div>
         <div class="ob-text">
