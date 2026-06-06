@@ -63,14 +63,18 @@
   }
   .content-text .inline-link:hover { gap:10px; }
 
+  /* ── IMAGE PANEL (replaces visual-panel) ── */
   .visual-panel {
     border-radius: 20px; overflow: hidden;
     box-shadow: 0 12px 48px rgba(10,22,40,.14);
     aspect-ratio: 4/3;
     background: var(--off-white);
-    position: relative; display:flex; align-items:center; justify-content:center;
+    position: relative;
   }
-  .visual-panel .panel-icon { font-size:5rem; opacity:.12; }
+  .visual-panel img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
   .visual-panel .overlay-badge {
     position:absolute; bottom:20px; left:20px; right:20px;
     background:rgba(10,22,40,.85); backdrop-filter:blur(8px);
@@ -131,7 +135,7 @@
   </div>
 </div>
 
-<!-- INTRO SPLIT -->
+<!-- INTRO SPLIT — Image 1: hospital corridor with staff -->
 <div class="content-section alt">
   <div class="split-layout reveal">
     <div class="content-text">
@@ -140,7 +144,7 @@
       <a class="inline-link" href="../contact.html">Get specialized healthcare IT support →</a>
     </div>
     <div class="visual-panel">
-      <div class="panel-icon">🏥</div>
+      <img src="../images/healthcare-hospital-corridor.png" alt="Healthcare professionals reviewing patient data on hospital monitors" style="object-position: center 40%;">
       <div class="overlay-badge">
         <div class="ob-icon">🩺</div>
         <div class="ob-text">
@@ -152,7 +156,7 @@
   </div>
 </div>
 
-<!-- SOLUTIONS / SERVICES -->
+<!-- SOLUTIONS / SERVICES — Image 2: healthcare IT command center -->
 <div class="content-section">
   <div class="split-layout reverse reveal">
     <div class="content-text">
@@ -170,12 +174,12 @@
       <a class="btn-primary" href="../services/managed-services.html" style="display:inline-block;margin-top:16px;">View Our Full List of IT Services →</a>
     </div>
     <div class="visual-panel">
-      <div class="panel-icon">🩺</div>
+      <img src="../images/healthcare-it-command.png" alt="Healthcare IT team reviewing secure data dashboards and health records" style="object-position: center 40%;">
     </div>
   </div>
 </div>
 
-<!-- HIPAA-COMPLIANT IT -->
+<!-- HIPAA-COMPLIANT IT — Image 3: data scientist analyzing medical scans -->
 <div class="content-section alt">
   <div class="split-layout reveal">
     <div class="content-text">
@@ -186,7 +190,7 @@
       <a class="inline-link" href="../services/compliance.html">Additional reading: HIPAA-compliant IT services →</a>
     </div>
     <div class="visual-panel">
-      <div class="panel-icon">🔐</div>
+      <img src="../images/healthcare-data-analyst.png" alt="Data scientist analyzing patient health trends and medical imaging data" style="object-position: center 35%;">
       <div class="overlay-badge">
         <div class="ob-icon">📋</div>
         <div class="ob-text">
@@ -198,7 +202,7 @@
   </div>
 </div>
 
-<!-- BENEFITS OF A HEALTHCARE MSP -->
+<!-- BENEFITS OF A HEALTHCARE MSP — Image 4: researcher at health data workstation -->
 <div class="content-section">
   <div class="split-layout reverse reveal">
     <div class="content-text">
@@ -215,7 +219,7 @@
       <a class="inline-link" href="../contact.html">Talk to a healthcare IT specialist →</a>
     </div>
     <div class="visual-panel">
-      <div class="panel-icon">🤝</div>
+      <img src="../images/healthcare-data-researcher.png" alt="Healthcare researcher analyzing medical data and brain scans at workstation" style="object-position: center 30%;">
     </div>
   </div>
 </div>
