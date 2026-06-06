@@ -63,7 +63,7 @@ function renderNav(activePage, basePath) {
             <a href="${basePath}industries/legal.html">Legal</a>
             <a href="${basePath}industries/logistics.html">Logistics</a>
             <a href="${basePath}industries/manufacturing.html">Manufacturing</a>
-            <a href="${basePath}industries/nonprofit.html">Non-Profit</a>
+            <a href="${basePath}industries/non-profit.html">Non-Profit</a>
             <a href="${basePath}industries/professional-services.html">Professional Services</a>
             <a href="${basePath}industries/real-estate.html">Real Estate</a>
             <a href="${basePath}industries/retail.html">Retail</a>
