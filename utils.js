@@ -1,6 +1,6 @@
 // ── SHARED FOOTER RENDERER ──
 function renderFooter(depth) {
-  const p = depth === 1 ? '../' : depth === 2 ? '../../' : '';
+  const p = depth === 1 ? '../' : depth === 2 ? '../' : '';
   document.getElementById('footer-placeholder').innerHTML = `
   <footer>
     <div class="footer-grid">
