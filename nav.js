@@ -71,6 +71,8 @@ function renderNav(activePage, basePath) {
         </li>
 
         <li><a href="${basePath}about.html" class="${activePage==='about'?'active':''}">About</a></li>
+                <li><a href="${basePath}locations.html" class="${activePage==='locations'?'active':''}">Locations</a></li>
+
         <li><a href="${basePath}contact.html" class="nav-cta">Contact Us</a></li>
       </ul>
 
@@ -96,6 +98,8 @@ function renderNav(activePage, basePath) {
       <a href="${basePath}industries/finance.html" class="mobile-sub">Finance</a>
       <a href="${basePath}industries.html" class="mobile-sub">All Industries →</a>
       <a href="${basePath}about.html">About</a>
+            <a href="${basePath}locations.html">Locations</a>
+
       <a href="${basePath}contact.html" style="color:var(--accent);font-weight:700;">Contact Us</a>
     </div>
   </nav>`;
