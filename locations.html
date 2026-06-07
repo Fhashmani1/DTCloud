@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Locations We Serve — DTCloudOn</title>
+<meta name="description" content="DTCloudOn provides managed IT services across Texas — Houston, San Antonio, Austin, Dallas, Fort Worth, and more. Contact us to schedule an engineer consultation in your city.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+
+  /* ── PAGE HERO ── */
+  .loc-hero {
+    position: relative;
+    background: var(--navy);
+    padding: 100px 24px 80px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .loc-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(42,125,225,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42,125,225,0.06) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  .loc-hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(42,125,225,0.12) 0%, transparent 70%);
+  }
+  .loc-hero .container { position: relative; z-index: 2; }
+  .loc-hero .section-label { justify-content: center; display: flex; color: var(--sky-light); margin-bottom: 16px; }
+  .loc-hero h1 {
+    color: var(--white);
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    line-height: 1.1; letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+  .loc-hero p {
+    color: rgba(255,255,255,0.65);
+    max-width: 560px; margin: 0 auto;
+    line-height: 1.75; font-size: 1rem;
+  }
+
+  /* ── MAIN OFFICE CARD ── */
+  .main-office-section {
+    background: var(--off-white);
+    padding: 64px 24px;
+  }
+  .main-office-card {
+    max-width: 1100px; margin: 0 auto;
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(10,22,40,0.10);
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    border: 1px solid var(--border);
+  }
+  .main-office-info {
+    padding: 48px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .main-office-info .office-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(42,125,225,0.1);
+    border: 1px solid rgba(42,125,225,0.25);
+    color: var(--sky);
+    padding: 6px 14px; border-radius: 50px;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 20px; width: fit-content;
+  }
+  .main-office-info h2 {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    color: var(--navy); margin-bottom: 24px; letter-spacing: -0.5px;
+  }
+  .office-detail {
+    display: flex; gap: 14px; align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  .office-detail-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: var(--navy); color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .office-detail-text h5 {
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1px; color: var(--gray); margin-bottom: 3px;
+  }
+  .office-detail-text p {
+    font-size: 0.9rem; color: var(--text-mid); line-height: 1.5;
+  }
+  .main-office-map {
+    position: relative; min-height: 380px;
+  }
+  .main-office-map iframe {
+    width: 100%; height: 100%; border: none; display: block;
+    min-height: 380px;
+  }
+
+  /* ── CITIES SECTION ── */
+  .cities-section {
+    padding: 80px 24px;
+    background: var(--white);
+  }
+  .cities-section .section-header {
+    text-align: center; margin-bottom: 56px;
+  }
+  .cities-section .section-header h2 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--navy); letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .cities-section .section-header p {
+    color: var(--text-mid); max-width: 520px;
+    margin: 0 auto; line-height: 1.7;
+  }
+
+  /* ── CITY GRID ── */
+  .city-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 28px;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .city-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 20px rgba(10,22,40,0.07);
+    transition: transform 0.25s, box-shadow 0.25s;
+    background: var(--white);
+  }
+  .city-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(10,22,40,0.13);
+  }
+  .city-map {
+    height: 180px; overflow: hidden; position: relative;
+    background: #e8edf2;
+  }
+  .city-map iframe {
+    width: 100%; height: 100%; border: none; display: block;
+    pointer-events: none;
+  }
+  .city-info {
+    padding: 20px 22px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .city-info-left { display: flex; align-items: center; gap: 12px; }
+  .city-pin {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .city-name {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700; font-size: 0.95rem;
+    color: var(--navy); display: block;
+  }
+  .city-state {
+    font-size: 0.78rem; color: var(--gray); font-weight: 500;
+  }
+  .city-tag {
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.8px; color: var(--sky);
+    background: rgba(42,125,225,0.08);
+    border: 1px solid rgba(42,125,225,0.2);
+    padding: 4px 10px; border-radius: 50px;
+  }
+
+  /* ── NOT LISTED CTA ── */
+  .not-listed-section {
+    background: var(--off-white);
+    padding: 64px 24px;
+  }
+  .not-listed-card {
+    max-width: 760px; margin: 0 auto;
+    background: var(--navy);
+    border-radius: 20px;
+    padding: 52px 48px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .not-listed-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      45deg, rgba(42,125,225,0.05) 0px, rgba(42,125,225,0.05) 1px,
+      transparent 1px, transparent 40px
+    );
+  }
+  .not-listed-card .content { position: relative; z-index: 2; }
+  .not-listed-card .map-icon {
+    font-size: 3rem; margin-bottom: 20px; display: block;
+  }
+  .not-listed-card h3 {
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    color: var(--white); margin-bottom: 14px; letter-spacing: -0.3px;
+  }
+  .not-listed-card p {
+    color: rgba(255,255,255,0.65);
+    line-height: 1.78; margin-bottom: 28px;
+    font-size: 0.95rem; max-width: 520px; margin-left: auto; margin-right: auto;
+  }
+  .not-listed-card .btn-group {
+    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+  }
+
+  @media(max-width: 900px) {
+    .main-office-card { grid-template-columns: 1fr; }
+    .main-office-map { min-height: 260px; }
+    .main-office-map iframe { min-height: 260px; }
+    .not-listed-card { padding: 36px 24px; }
+    .city-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+  }
+  @media(max-width: 600px) {
+    .city-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<!-- HERO -->
+<div class="loc-hero">
+  <div class="container">
+    <div class="section-label">📍 Where We Work</div>
+    <h1>Serving Businesses Across Texas</h1>
+    <p>From our Houston headquarters, DTCloudOn engineers serve organizations across the Lone Star State — on-site consultations, remote monitoring, and 24/7 support wherever you are.</p>
+  </div>
+</div>
+
+<!-- MAIN OFFICE -->
+<div class="main-office-section">
+  <div class="main-office-card reveal">
+    <div class="main-office-info">
+      <div class="office-badge">🏢 Main Office</div>
+      <h2>DTCloudOn Headquarters</h2>
+      <div class="office-detail">
+        <div class="office-detail-icon">📍</div>
+        <div class="office-detail-text">
+          <h5>Address</h5>
+          <p>1311 W Sam Houston Pkwy N<br>Houston, Texas 77043</p>
+        </div>
+      </div>
+      <div class="office-detail">
+        <div class="office-detail-icon">📞</div>
+        <div class="office-detail-text">
+          <h5>Phone</h5>
+          <p>(346) 758-2593</p>
+        </div>
+      </div>
+      <div class="office-detail">
+        <div class="office-detail-icon">✉️</div>
+        <div class="office-detail-text">
+          <h5>Email</h5>
+          <p>info@dtcloudon.com</p>
+        </div>
+      </div>
+      <div class="office-detail">
+        <div class="office-detail-icon">🕐</div>
+        <div class="office-detail-text">
+          <h5>Business Hours</h5>
+          <p>Mon–Fri: 8AM – 6PM CST<br>Emergency: 24/7 SOC Support</p>
+        </div>
+      </div>
+      <a class="btn-primary" href="contact.html" style="margin-top:8px; display:inline-block;">Schedule a Consultation →</a>
+    </div>
+    <div class="main-office-map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3463.8!2d-95.5541!3d29.7874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c3d69f79c6b7%3A0x1!2s1311+W+Sam+Houston+Pkwy+N%2C+Houston%2C+TX+77043!5e0!3m2!1sen!2sus!4v1"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="DTCloudOn Main Office — Houston, TX">
+      </iframe>
+    </div>
+  </div>
+</div>
+
+<!-- CITIES WE SERVE -->
+<div class="cities-section">
+  <div class="section-header reveal">
+    <div class="section-label">Service Area</div>
+    <h2>Cities We Serve</h2>
+    <p>Our engineers travel across Texas to deliver on-site IT support, network installations, and consultations to businesses in these cities and beyond.</p>
+  </div>
+
+  <div class="city-grid reveal">
+
+    <div class="city-card">
+      <div class="city-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3463!2d-98.4936!3d29.4241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865c58af04d00eaf%3A0x856e13b10a016bc!2sSan+Antonio%2C+TX!5e0!3m2!1sen!2sus!4v1" loading="lazy" title="San Antonio TX"></iframe>
+      </div>
+      <div class="city-info">
+        <div class="city-info-left">
+          <div class="city-pin">🌮</div>
+          <div><span class="city-name">San Antonio</span><span class="city-state">Texas</span></div>
+        </div>
+        <span class="city-tag">Served</span>
+      </div>
+    </div>
+
+    <div class="city-card">
+      <div class="city-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3447!2d-97.7431!3d30.2672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b502b896062b%3A0x1!2sAustin%2C+TX!5e0!3m2!1sen!2sus!4v1" loading="lazy" title="Austin TX"></iframe>
+      </div>
+      <div class="city-info">
+        <div class="city-info-left">
+          <div class="city-pin">🎸</div>
+          <div><span class="city-name">Austin</span><span class="city-state">Texas</span></div>
+        </div>
+        <span class="city-tag">Served</span>
+      </div>
+    </div>
+
+    <div class="city-card">
+      <div class="city-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3355!2d-96.7970!3d32.7767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e991853258699%3A0x1!2sDallas%2C+TX!5e0!3m2!1sen!2sus!4v1" loading="lazy" title="Dallas TX"></iframe>
+      </div>
+      <div class="city-info">
+        <div class="city-info-left">
+          <div class="city-pin">🏙️</div>
+          <div><span class="city-name">Dallas</span><span class="city-state">Texas</span></div>
+        </div>
+        <span class="city-tag">Served</span>
+      </div>
+    </div>
+
+    <div class="city-card">
+      <div class="city-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3354!2d-97.3208!3d32.7555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e6861e4985a6b%3A0x1!2sFort+Worth%2C+TX!5e0!3m2!1sen!2sus!4v1" loading="lazy" title="Fort Worth TX"></iframe>
+      </div>
+      <div class="city-info">
+        <div class="city-info-left">
+          <div class="city-pin">🤠</div>
+          <div><span class="city-name">Fort Worth</span><span class="city-state">Texas</span></div>
+        </div>
+        <span class="city-tag">Served</span>
+      </div>
+    </div>
+
+    <div class="city-card">
+      <div class="city-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3376!2d-97.1467!3d31.5493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864f83b23f3985cd%3A0x1!2sWaco%2C+TX!5e0!3m2!1sen!2sus!4v1" loading="lazy" title="Waco TX"></iframe>
+      </div>
+      <div class="city-info">
+        <div class="city-info-left">
+          <div class="city-pin">🌾</div>
+          <div><span class="city-name">Waco</span><span class="city-state">Texas</span></div>
+        </div>
+        <span class="city-tag">Served</span>
+      </div>
+    </div>
+
+    <div class="city-card">
+      <div class="city-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3345!2d-96.6989!3d33.0198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c1f7d9b7fcc23%3A0x1!2sPlano%2C+TX!5e0!3m2!1sen!2sus!4v1" loading="lazy" title="Plano TX"></iframe>
+      </div>
+      <div class="city-info">
+        <div class="city-info-left">
+          <div class="city-pin">🏢</div>
+          <div><span class="city-name">Plano</span><span class="city-state">Texas</span></div>
+        </div>
+        <span class="city-tag">Served</span>
+      </div>
+    </div>
+
+    <div class="city-card">
+      <div class="city-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3386!2d-106.4850!3d31.7619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e75d9b2bd89c87%3A0x1!2sEl+Paso%2C+TX!5e0!3m2!1sen!2sus!4v1" loading="lazy" title="El Paso TX"></iframe>
+      </div>
+      <div class="city-info">
+        <div class="city-info-left">
+          <div class="city-pin">🏜️</div>
+          <div><span class="city-name">El Paso</span><span class="city-state">Texas</span></div>
+        </div>
+        <span class="city-tag">Served</span>
+      </div>
+    </div>
+
+    <div class="city-card">
+      <div class="city-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3356!2d-97.1281!3d32.7357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e5f1e4a1c1c1b%3A0x1!2sArlington%2C+TX!5e0!3m2!1sen!2sus!4v1" loading="lazy" title="Arlington TX"></iframe>
+      </div>
+      <div class="city-info">
+        <div class="city-info-left">
+          <div class="city-pin">⚾</div>
+          <div><span class="city-name">Arlington</span><span class="city-state">Texas</span></div>
+        </div>
+        <span class="city-tag">Served</span>
+      </div>
+    </div>
+
+    <div class="city-card">
+      <div class="city-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3480!2d-97.3964!3d27.8006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x866803ddb26a0d11%3A0x1!2sCorpus+Christi%2C+TX!5e0!3m2!1sen!2sus!4v1" loading="lazy" title="Corpus Christi TX"></iframe>
+      </div>
+      <div class="city-info">
+        <div class="city-info-left">
+          <div class="city-pin">🌊</div>
+          <div><span class="city-name">Corpus Christi</span><span class="city-state">Texas</span></div>
+        </div>
+        <span class="city-tag">Served</span>
+      </div>
+    </div>
+
+    <div class="city-card">
+      <div class="city-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3524!2d-99.5075!3d27.5064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x866131dfebcbe391%3A0x1!2sLaredo%2C+TX!5e0!3m2!1sen!2sus!4v1" loading="lazy" title="Laredo TX"></iframe>
+      </div>
+      <div class="city-info">
+        <div class="city-info-left">
+          <div class="city-pin">🌵</div>
+          <div><span class="city-name">Laredo</span><span class="city-state">Texas</span></div>
+        </div>
+        <span class="city-tag">Served</span>
+      </div>
+    </div>
+
+    <div class="city-card">
+      <div class="city-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3289!2d-101.8552!3d33.5779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86fe12f03ab39e3f%3A0x1!2sLubbock%2C+TX!5e0!3m2!1sen!2sus!4v1" loading="lazy" title="Lubbock TX"></iframe>
+      </div>
+      <div class="city-info">
+        <div class="city-info-left">
+          <div class="city-pin">🎓</div>
+          <div><span class="city-name">Lubbock</span><span class="city-state">Texas</span></div>
+        </div>
+        <span class="city-tag">Served</span>
+      </div>
+    </div>
+
+    <div class="city-card">
+      <div class="city-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3356!2d-96.9389!3d32.8140!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e9e60af5d3d0f%3A0x1!2sIrving%2C+TX!5e0!3m2!1sen!2sus!4v1" loading="lazy" title="Irving TX"></iframe>
+      </div>
+      <div class="city-info">
+        <div class="city-info-left">
+          <div class="city-pin">✈️</div>
+          <div><span class="city-name">Irving</span><span class="city-state">Texas</span></div>
+        </div>
+        <span class="city-tag">Served</span>
+      </div>
+    </div>
+
+    <div class="city-card">
+      <div class="city-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3263!2d-101.8313!3d35.2220!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x870148d4b245cf03%3A0x1!2sAmarillo%2C+TX!5e0!3m2!1sen!2sus!4v1" loading="lazy" title="Amarillo TX"></iframe>
+      </div>
+      <div class="city-info">
+        <div class="city-info-left">
+          <div class="city-pin">🌬️</div>
+          <div><span class="city-name">Amarillo</span><span class="city-state">Texas</span></div>
+        </div>
+        <span class="city-tag">Served</span>
+      </div>
+    </div>
+
+    <div class="city-card">
+      <div class="city-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3341!2d-96.6397!3d33.1972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c0be4b1bc62f1%3A0x1!2sMcKinney%2C+TX!5e0!3m2!1sen!2sus!4v1" loading="lazy" title="McKinney TX"></iframe>
+      </div>
+      <div class="city-info">
+        <div class="city-info-left">
+          <div class="city-pin">🏘️</div>
+          <div><span class="city-name">McKinney</span><span class="city-state">Texas</span></div>
+        </div>
+        <span class="city-tag">Served</span>
+      </div>
+    </div>
+
+    <div class="city-card">
+      <div class="city-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3339!2d-96.8236!3d33.1507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c3e34b67d3fcb%3A0x1!2sFrisco%2C+TX!5e0!3m2!1sen!2sus!4v1" loading="lazy" title="Frisco TX"></iframe>
+      </div>
+      <div class="city-info">
+        <div class="city-info-left">
+          <div class="city-pin">🌟</div>
+          <div><span class="city-name">Frisco</span><span class="city-state">Texas</span></div>
+        </div>
+        <span class="city-tag">Served</span>
+      </div>
+    </div>
+
+    <div class="city-card">
+      <div class="city-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597!2d-97.4975!3d25.9017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x866fa276e8f43d79%3A0x1!2sBrownsville%2C+TX!5e0!3m2!1sen!2sus!4v1" loading="lazy" title="Brownsville TX"></iframe>
+      </div>
+      <div class="city-info">
+        <div class="city-info-left">
+          <div class="city-pin">🌴</div>
+          <div><span class="city-name">Brownsville</span><span class="city-state">Texas</span></div>
+        </div>
+        <span class="city-tag">Served</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- NOT LISTED CTA -->
+<div class="not-listed-section">
+  <div class="not-listed-card reveal">
+    <div class="content">
+      <span class="map-icon">🗺️</span>
+      <h3>Don't See Your City Listed?</h3>
+      <p>We serve businesses across all of Texas and are always expanding our reach. If your city isn't listed above, don't worry — reach out to us and we'll schedule a date and time to send one of our engineers to your location for a free consultation.</p>
+      <div class="btn-group">
+        <a class="btn-primary" href="contact.html">Contact Us to Schedule →</a>
+        <a class="btn-outline" href="tel:+13467582593" style="color:var(--white);border-color:rgba(255,255,255,0.3);">📞 (346) 758-2593</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div class="container">
+    <h2>Ready to Bring Enterprise IT to Your Texas Business?</h2>
+    <p>Talk to a DTCloudOn specialist — no commitment, no pressure. Just answers tailored to your location and needs.</p>
+    <a class="btn-white" href="contact.html">Request a Free Consultation →</a>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="nav.js"></script>
+<script src="utils.js"></script>
+<script>renderNav('locations'); renderFooter(0);</script>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
