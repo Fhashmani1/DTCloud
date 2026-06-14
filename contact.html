@@ -7,6 +7,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  const EMAILJS_PUBLIC_KEY  = 'tgeFkMWjHgJKG16f8';
+  const EMAILJS_SERVICE_ID  = 'service_wxx3b5w';
+  const EMAILJS_TEMPLATE_ID = 'template_h698vej';
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+</script>
+
 <style>
   .contact-page-hero {
     background: var(--navy-mid);
@@ -46,6 +56,7 @@
   .services-checklist li span { color:var(--sky-light); }
   .contact-form-card h2 { font-size:1.6rem; color:var(--navy); margin-bottom:6px; }
   .contact-form-card > p { color:var(--text-mid); font-size:0.9rem; margin-bottom:32px; }
+  .form-submit:disabled { opacity:0.7; cursor:not-allowed; }
   @media(max-width:900px){
     .contact-grid { grid-template-columns:1fr; }
     .contact-outer { margin-top: 0; padding-top: 32px; }
@@ -159,7 +170,7 @@
             <select id="referral"><option value="">Select...</option><option>Google Search</option><option>LinkedIn</option><option>Referral / Word of Mouth</option><option>Social Media</option><option>Industry Event</option><option>Other</option></select>
           </div>
         </div>
-        <button class="form-submit" onclick="submitForm()">Submit My Requirements →</button>
+        <button class="form-submit" id="submit-btn" onclick="submitForm()">Submit My Requirements →</button>
         <p style="font-size:0.78rem;color:var(--gray);margin-top:12px;text-align:center;">🔒 Your information is encrypted and will never be sold or shared with third parties.</p>
       </div>
 
@@ -177,5 +188,69 @@
 <script src="nav.js"></script>
 <script src="utils.js"></script>
 <script>renderNav('contact'); renderFooter(0);</script>
+
+<script>
+function submitForm() {
+  const fname        = document.getElementById('fname').value.trim();
+  const lname        = document.getElementById('lname').value.trim();
+  const email        = document.getElementById('email').value.trim();
+  const phone        = document.getElementById('phone').value.trim();
+  const company      = document.getElementById('company').value.trim();
+  const size         = document.getElementById('size').value;
+  const industry     = document.getElementById('industry').value;
+  const requirements = document.getElementById('requirements').value.trim();
+  const contactPref  = document.getElementById('contact-pref').value;
+  const referral     = document.getElementById('referral').value;
+
+  const checked  = document.querySelectorAll('.checkbox-item input:checked');
+  const services = Array.from(checked).map(cb => cb.nextElementSibling.textContent.trim()).join(', ') || 'None selected';
+
+  if (!fname || !lname || !email || !company || !requirements) {
+    alert('Please fill in all required fields marked with *');
+    return;
+  }
+
+  const btn = document.getElementById('submit-btn');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  const templateParams = {
+    first_name   : fname,
+    last_name    : lname,
+    reply_to     : email,
+    phone        : phone || 'Not provided',
+    company      : company,
+    company_size : size  || 'Not specified',
+    industry     : industry || 'Not specified',
+    services     : services,
+    requirements : requirements,
+    contact_pref : contactPref,
+    referral     : referral || 'Not specified'
+  };
+
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+    .then(function() {
+      document.getElementById('contact-form-body').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    })
+    .catch(function(error) {
+      console.error('EmailJS error:', error);
+      alert('Something went wrong. Please email us directly at info@dtcloudon.com or call (346) 758-2593.');
+      btn.textContent = 'Submit My Requirements →';
+      btn.disabled = false;
+    });
+}
+
+function resetForm() {
+  document.getElementById('contact-form-body').style.display = 'block';
+  document.getElementById('success-msg').style.display = 'none';
+  document.getElementById('submit-btn').textContent = 'Submit My Requirements →';
+  document.getElementById('submit-btn').disabled = false;
+  ['fname','lname','email','phone','company','requirements'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.querySelectorAll('.checkbox-item input').forEach(cb => cb.checked = false);
+}
+</script>
 </body>
 </html>
