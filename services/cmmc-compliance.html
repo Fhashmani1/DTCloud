@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMMC Compliance Services — DTCloudOn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* ── CMMC HERO ── */
+  .cmmc-hero {
+    position: relative;
+    min-height: 62vh;
+    display: flex;
+    align-items: center;
+    background: var(--navy);
+    overflow: hidden;
+    padding: 100px 24px 80px;
+  }
+  .cmmc-hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('../images/CMMC2.png');
+    background-size: cover; background-position: center;
+    filter: brightness(0.2) saturate(1.2) hue-rotate(200deg);
+  }
+  .cmmc-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(10,22,40,0.95) 0%, rgba(14,42,90,0.55) 55%, rgba(10,22,40,0.88) 100%);
+  }
+  .cmmc-hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(42,125,225,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42,125,225,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .cmmc-hero .container { position: relative; z-index: 2; text-align: center; }
+  .cmmc-hero .section-label { color: var(--sky-light); justify-content: center; display: flex; }
+  .cmmc-hero h1 {
+    color: var(--white);
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    max-width: 820px; margin: 16px auto 20px;
+    line-height: 1.1; letter-spacing: -1px;
+  }
+  .cmmc-hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(42,125,225,0.12); border: 1px solid rgba(42,125,225,0.3);
+    color: var(--sky-light); font-size: 0.82rem; font-weight: 600;
+    padding: 7px 16px; border-radius: 50px; margin-bottom: 22px;
+  }
+  .cmmc-hero p {
+    color: rgba(255,255,255,0.72);
+    max-width: 640px; margin: 0 auto 30px;
+    font-size: 1.1rem; line-height: 1.75;
+  }
+  .cmmc-hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── STATS BAR ── */
+  .stats-bar { background: var(--accent); padding: 28px 24px; }
+  .stats-row {
+    max-width: 1050px; margin: 0 auto;
+    display: flex; justify-content: space-around; flex-wrap: wrap; gap: 24px;
+  }
+  .stats-bar .stat { text-align: center; color: var(--white); }
+  .stats-bar .stat-num { font-family:'Sora',sans-serif; font-size:2rem; font-weight:800; display:block; }
+  .stats-bar .stat-label { font-size:0.82rem; opacity:0.9; }
+
+  /* ── READINESS BANNER ── */
+  .assessment-banner {
+    background: var(--off-white);
+    padding: 72px 24px;
+    text-align: center;
+  }
+  .assessment-banner h2 {
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    color: var(--navy); max-width: 800px;
+    margin: 0 auto 20px; line-height: 1.2;
+  }
+  .assessment-banner p {
+    color: var(--text-mid); max-width: 640px;
+    margin: 0 auto 28px; line-height: 1.75; font-size: 1.05rem;
+  }
+  .assessment-checks {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 16px 40px; margin-bottom: 36px;
+  }
+  .assessment-checks li {
+    list-style: none;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.95rem; color: var(--text-dark); font-weight: 500;
+  }
+  .assessment-checks li::before { content: '✓'; color: var(--sky); font-weight: 800; font-size: 1.1rem; }
+
+  /* ── CONTENT SECTIONS ── */
+  .content-section { padding: 80px 24px; }
+  .content-section.alt { background: var(--off-white); }
+  .content-section.dark { background: var(--navy); }
+
+  .split-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: center;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .split-layout.reverse { direction: rtl; }
+  .split-layout.reverse > * { direction: ltr; }
+
+  .content-text h2 { font-size: clamp(1.6rem,2.5vw,2.2rem); color: var(--navy); margin-bottom: 16px; letter-spacing:-0.5px; }
+  .content-text p { color: var(--text-mid); line-height: 1.78; margin-bottom: 16px; }
+  .content-text ul { list-style: none; margin: 20px 0; }
+  .content-text li {
+    padding: 10px 0; border-bottom: 1px solid rgba(10,22,40,0.07);
+    font-size: 0.92rem; color: var(--text-mid);
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .content-text li::before { content:'✓'; color:var(--sky); font-weight:700; flex-shrink:0; margin-top:1px; }
+  .content-text .inline-link {
+    color: var(--sky); font-size: 0.9rem; font-weight: 600;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 8px; transition: gap 0.2s;
+  }
+  .content-text .inline-link:hover { gap: 10px; }
+
+  /* ── VISUAL PANEL ── */
+  .visual-panel {
+    background: var(--navy-mid); border-radius: 20px;
+    overflow: hidden; aspect-ratio: 4/3;
+    position: relative; display: flex;
+    align-items: center; justify-content: center;
+  }
+  .visual-panel img { width:100%;height:100%;object-fit:cover;opacity:0.75;display:block; }
+  .visual-panel .panel-icon { position:absolute; font-size:5rem; opacity:0.15; }
+
+  /* Dashboard mockup panel */
+  .dashboard-panel {
+    background: var(--navy);
+    border-radius: 20px;
+    padding: 28px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .dashboard-panel h4 {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.78rem; text-align: center;
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;
+  }
+  .dash-metric {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .dash-bar { height: 6px; border-radius: 3px; margin-top: 6px; }
+  .dash-metric-inner { flex: 1; }
+  .dash-metric-inner .label { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
+  .uptime-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(22,163,74,0.15); color: #4ade80;
+    border: 1px solid rgba(22,163,74,0.3);
+    padding: 4px 12px; border-radius: 50px;
+    font-size: 0.82rem; font-weight: 700; margin-bottom: 20px;
+  }
+  .uptime-badge::before { content:'▲'; font-size: 0.65rem; }
+
+  /* ── CMMC SERVICES GRID ── */
+  .cmmc-services-section { padding: 80px 24px; background: var(--off-white); }
+  .cmmc-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .cmmc-service-item {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px 24px;
+    border: 1px solid rgba(10,22,40,0.07);
+    display: flex; gap: 16px; align-items: flex-start;
+    transition: all 0.25s;
+  }
+  .cmmc-service-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(10,22,40,0.1);
+    border-color: rgba(42,125,225,0.2);
+  }
+  .cmmc-service-item .item-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(42,125,225,0.12), rgba(42,125,225,0.04));
+    border: 1px solid rgba(42,125,225,0.15);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  .cmmc-service-item h3 { font-size: 0.95rem; color: var(--navy); margin-bottom: 6px; font-weight: 700; }
+  .cmmc-service-item p { font-size: 0.83rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── PHASE TIMELINE GRID ── */
+  .threat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .threat-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 28px 20px;
+    text-align: center;
+  }
+  .threat-card .t-num {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.7rem; font-weight: 800;
+    color: var(--sky-light); display: block; margin-bottom: 8px;
+  }
+  .threat-card p { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
+
+  /* ── PROCESS STEPS ── */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .step-card {
+    background: var(--white); border-radius: 16px;
+    padding: 32px 24px; border: 1px solid rgba(10,22,40,0.08);
+    transition: all 0.3s;
+  }
+  .step-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,22,40,0.1); }
+  .step-num {
+    width: 40px; height: 40px; background: var(--accent); color: var(--white);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: 'Sora',sans-serif; font-weight: 800; font-size: 1rem; margin-bottom: 16px;
+  }
+  .step-card h3 { font-size: 1rem; color: var(--navy); margin-bottom: 10px; }
+  .step-card p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── RPO CALLOUT ── */
+  .rpo-callout {
+    max-width: 1000px; margin: 0 auto; text-align: center;
+    background: var(--white); border: 1px solid rgba(10,22,40,0.08);
+    border-radius: 18px; padding: 40px 32px;
+  }
+  .rpo-callout .badge-icon {
+    width: 52px; height: 52px; margin: 0 auto 16px;
+    background: linear-gradient(135deg, rgba(42,125,225,0.14), rgba(42,125,225,0.05));
+    border: 1px solid rgba(42,125,225,0.2); border-radius: 14px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+  }
+  .rpo-callout h3 { color: var(--navy); font-size: 1.15rem; margin-bottom: 10px; }
+  .rpo-callout p { color: var(--text-mid); font-size: 0.95rem; line-height: 1.75; max-width: 680px; margin: 0 auto; }
+
+  /* ── FAQ ── */
+  .faq-section { padding: 80px 24px; }
+  .faq-list { max-width: 860px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid rgba(10,22,40,0.08); padding: 26px 0; }
+  .faq-item h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 10px; }
+  .faq-item p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.75; }
+
+  @media(max-width:900px){
+    .split-layout { grid-template-columns:1fr; gap:32px; }
+    .split-layout.reverse { direction:ltr; }
+    .stats-row { justify-content:center; }
+    .assessment-checks { flex-direction: column; align-items: flex-start; max-width: 320px; margin: 0 auto 36px; }
+  }
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="container" style="max-width:1300px;margin:0 auto;">
+    <a href="../index.html">Home</a>
+    <span>›</span>
+    <a href="#">IT Services</a>
+    <span>›</span>
+    CMMC Compliance
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="cmmc-hero">
+  <div class="cmmc-hero-bg"></div>
+  <div class="cmmc-hero-overlay"></div>
+  <div class="cmmc-hero-grid"></div>
+  <div class="container">
+    <div class="section-label">CMMC COMPLIANCE</div>
+    <h1>Achieve CMMC Compliance. Win Defense Contracts.</h1>
+    <div class="cmmc-hero-badge">🛡️ Guidance backed by a Cyber-AB Registered Practitioner Organization (RPO)</div>
+    <p>If your business touches Federal Contract Information or Controlled Unclassified Information for the DoD, CMMC 2.0 is now a condition of contract award — not a future concern. DTCloudOn guides you from gap assessment through certification.</p>
+    <div class="cmmc-hero-btns">
+      <a class="btn-primary" href="../contact.html">Request a CMMC Readiness Call →</a>
+      <a class="btn-outline" href="../contact.html">Speak with a CMMC advisor &rsaquo;</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">3</span><span class="stat-label">CMMC maturity levels — Foundational, Advanced, Expert</span></div>
+    <div class="stat"><span class="stat-num">110</span><span class="stat-label">NIST SP 800-171 controls required at Level 2</span></div>
+    <div class="stat"><span class="stat-num">Nov 10, 2026</span><span class="stat-label">Phase 2 begins — C3PAO certification required</span></div>
+    <div class="stat"><span class="stat-num">Cyber-AB</span><span class="stat-label">RPO-backed compliance guidance</span></div>
+  </div>
+</div>
+
+<!-- READINESS BANNER -->
+<div class="assessment-banner">
+  <h2>Know Exactly Where You Stand Before an Assessor Does</h2>
+  <p>Our CMMC Gap Assessment measures your current environment against the practices required for your target certification level — so you find the gaps before a C3PAO does.</p>
+  <ul class="assessment-checks">
+    <li>Pinpoint control gaps against NIST SP 800-171</li>
+    <li>Get a prioritized POA&amp;M remediation roadmap</li>
+    <li>Build the System Security Plan (SSP) your assessor expects</li>
+    <li>Walk into your C3PAO assessment ready, not guessing</li>
+  </ul>
+  <a class="btn-primary" href="../contact.html">Request a Free CMMC Gap Assessment →</a>
+</div>
+
+<!-- WHAT IS CMMC -->
+<div class="content-section">
+  <div class="split-layout reveal">
+    <div class="content-text">
+      <div class="section-label">Understanding CMMC</div>
+      <h2>What CMMC Requires, Level by Level</h2>
+      <p>The Cybersecurity Maturity Model Certification (CMMC) is the Department of Defense's framework for verifying that contractors and subcontractors in the Defense Industrial Base protect Federal Contract Information (FCI) and Controlled Unclassified Information (CUI). It's no longer a planning exercise — the DFARS rule tying CMMC to contract award took effect on November 10, 2025.</p>
+      <p>Enforcement is phasing in over several years: today, many contracts still allow self-assessment, but that changes on November 10, 2026, when a passed Level 2 C3PAO certification becomes the standard requirement for contracts involving CUI. Waiting until a solicitation requires it is a real risk — assessment slots are already booking out months in advance.</p>
+      <ul>
+        <li>Level 1 – Foundational: 17 basic practices, FCI only, annual self-assessment</li>
+        <li>Level 2 – Advanced: 110 NIST SP 800-171 practices, CUI, self-assessment or C3PAO certification depending on the contract</li>
+        <li>Level 3 – Expert: adds NIST SP 800-172 practices, government-led DIBCAC assessment</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Find out which level applies to you →</a>
+    </div>
+    <div class="visual-panel">
+      <div class="panel-icon">🏛️</div>
+      <img src="../images/CMMC1.png" alt="CMMC Compliance" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES GRID -->
+<div class="cmmc-services-section">
+  <div class="container">
+    <div class="section-label">Our CMMC Compliance Services</div>
+    <h2 class="section-title">Everything Needed to Get — and Stay — Certified</h2>
+    <p class="section-sub">From your first gap assessment to your annual SPRS affirmation, DTCloudOn covers the full CMMC lifecycle.</p>
+    <div class="cmmc-services-grid reveal">
+      <div class="cmmc-service-item">
+        <div class="item-icon">🔍</div>
+        <div><h3>CMMC Gap Assessment</h3><p>Evaluate your environment against NIST SP 800-171 and your target CMMC level, and get a prioritized roadmap to close the gaps.</p></div>
+      </div>
+      <div class="cmmc-service-item">
+        <div class="item-icon">🗂️</div>
+        <div><h3>POA&amp;M Remediation</h3><p>Implement the technical controls, policies, and documented procedures your Plan of Action and Milestones calls for.</p></div>
+      </div>
+      <div class="cmmc-service-item">
+        <div class="item-icon">📋</div>
+        <div><h3>System Security Plan (SSP)</h3><p>Build and maintain the SSP, policies, and evidence artifacts your assessor will expect to see.</p></div>
+      </div>
+      <div class="cmmc-service-item">
+        <div class="item-icon">🧪</div>
+        <div><h3>C3PAO Pre-Assessment</h3><p>A mock audit that mirrors the official Level 2 assessment, so surprises show up on our watch, not the assessor's.</p></div>
+      </div>
+      <div class="cmmc-service-item">
+        <div class="item-icon">🔑</div>
+        <div><h3>Access Control &amp; MFA</h3><p>Role-based access, least privilege, and multi-factor authentication across every system that touches CUI.</p></div>
+      </div>
+      <div class="cmmc-service-item">
+        <div class="item-icon">🚨</div>
+        <div><h3>Incident Response Planning</h3><p>Documented IR plans, tested procedures, and breach playbooks that satisfy CMMC's IR domain requirements.</p></div>
+      </div>
+      <div class="cmmc-service-item">
+        <div class="item-icon">📊</div>
+        <div><h3>Continuous Monitoring &amp; SIEM</h3><p>Audit and accountability logging, alerting, and anomaly detection across systems that process CUI.</p></div>
+      </div>
+      <div class="cmmc-service-item">
+        <div class="item-icon">🔒</div>
+        <div><h3>CUI Data Protection</h3><p>Encryption at rest and in transit, media protection controls, and restricted use of portable media.</p></div>
+      </div>
+      <div class="cmmc-service-item">
+        <div class="item-icon">🔗</div>
+        <div><h3>Subcontractor Flow-Down</h3><p>Assess and track the compliance posture of subcontractors and vendors who touch your CUI.</p></div>
+      </div>
+      <div class="cmmc-service-item">
+        <div class="item-icon">🎓</div>
+        <div><h3>Security Awareness Training</h3><p>Role-based training on CUI handling, phishing, and incident reporting to close human-factor gaps.</p></div>
+      </div>
+      <div class="cmmc-service-item">
+        <div class="item-icon">☁️</div>
+        <div><h3>Microsoft 365 GCC High Alignment</h3><p>Migrate and configure GCC High environments — including Purview and DLP — for CUI-compliant cloud operations.</p></div>
+      </div>
+      <div class="cmmc-service-item">
+        <div class="item-icon">✅</div>
+        <div><h3>Annual Affirmation &amp; SPRS Reporting</h3><p>Keep your compliance status current in the Supplier Performance Risk System year over year.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE TIMELINE: DARK SECTION -->
+<div class="content-section dark">
+  <div class="container">
+    <div class="section-label" style="color:var(--sky-light); text-align:center;">The Phase 2 Countdown</div>
+    <h2 class="section-title" style="color:var(--white); text-align:center; margin-bottom:16px;">The Clock Is Already Running</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.65); text-align:center; max-width:700px; margin:0 auto 48px;">CMMC enforcement is rolling out in phases, and each one raises the bar on what's required to win a contract.</p>
+    <div class="threat-grid reveal">
+      <div class="threat-card"><span class="t-num">Nov 10, 2025</span><p>Phase 1 began — CMMC became a real condition of contract award, not a future requirement</p></div>
+      <div class="threat-card"><span class="t-num">Nov 10, 2026</span><p>Phase 2 begins — a passed Level 2 C3PAO certification becomes standard for contracts involving CUI</p></div>
+      <div class="threat-card"><span class="t-num">6–12 months</span><p>Typical time contractors need to become assessment-ready starting from scratch</p></div>
+      <div class="threat-card"><span class="t-num">Booking Out</span><p>C3PAO assessment slots are filling up as the Phase 2 deadline approaches — waiting narrows your options</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div class="content-section alt">
+  <div class="container">
+    <div class="section-label">Our Process</div>
+    <h2 class="section-title">Your Path to CMMC Certification</h2>
+    <p class="section-sub">A structured roadmap from your first gap assessment to a passed certification — and staying compliant after.</p>
+    <div class="steps-grid reveal">
+      <div class="step-card"><div class="step-num">1</div><h3>Gap Assessment</h3><p>We evaluate your environment against NIST SP 800-171 and your target CMMC level, and document every gap.</p></div>
+      <div class="step-card"><div class="step-num">2</div><h3>POA&amp;M Remediation</h3><p>We implement the technical controls and policies your Plan of Action and Milestones requires, and refine your documentation.</p></div>
+      <div class="step-card"><div class="step-num">3</div><h3>C3PAO Pre-Assessment</h3><p>A mock audit mirroring the official process, designed to surface any remaining gaps before certification day.</p></div>
+      <div class="step-card"><div class="step-num">4</div><h3>Official Assessment</h3><p>Your certified C3PAO — or DIBCAC for Level 3 — conducts the official assessment against your target level.</p></div>
+      <div class="step-card"><div class="step-num">5</div><h3>SPRS Affirmation</h3><p>We help you submit and maintain your certification status in the Supplier Performance Risk System.</p></div>
+      <div class="step-card"><div class="step-num">6</div><h3>Ongoing Compliance</h3><p>Continuous monitoring, annual affirmations, and control reviews keep you compliant as your environment evolves.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHO THIS IS FOR -->
+<div class="content-section">
+  <div class="split-layout reverse reveal">
+    <div class="content-text">
+      <div class="section-label">Who We Work With</div>
+      <h2>Built for the Defense Industrial Base</h2>
+      <p>Whether you're a prime contractor, a subcontractor several tiers down, or a manufacturer handling CUI for the first time, the compliance bar is the same — and the deadline doesn't care which tier you sit in.</p>
+      <ul>
+        <li>Primes and subcontractors handling CUI or FCI on DoD contracts</li>
+        <li>Manufacturers with ERP/MES systems in scope for CMMC Level 2</li>
+        <li>IT and cloud service providers supporting CUI environments</li>
+        <li>Small and mid-sized DIB companies without an in-house compliance team</li>
+      </ul>
+      <a class="inline-link" href="../contact.html">Tell us about your contract requirements →</a>
+    </div>
+    <div class="dashboard-panel">
+      <h4>CMMC Readiness Snapshot</h4>
+      <div class="uptime-badge">On Track for Phase 2</div>
+      <div class="dash-metric">
+        <div class="dash-metric-inner">
+          <div class="label">NIST 800-171 Controls Implemented</div>
+          <div class="dash-bar" style="background:linear-gradient(90deg,var(--sky),var(--sky-light));width:78%;"></div>
+        </div>
+      </div>
+      <div class="dash-metric">
+        <div class="dash-metric-inner">
+          <div class="label">SSP Documentation Complete</div>
+          <div class="dash-bar" style="background:linear-gradient(90deg,#4ade80,#22c55e);width:90%;"></div>
+        </div>
+      </div>
+      <div class="dash-metric">
+        <div class="dash-metric-inner">
+          <div class="label">POA&amp;M Items Closed</div>
+          <div class="dash-bar" style="background:linear-gradient(90deg,var(--accent),#f97316);width:65%;"></div>
+        </div>
+      </div>
+      <div class="dash-metric">
+        <div class="dash-metric-inner">
+          <div class="label">Staff Security-Awareness Trained</div>
+          <div class="dash-bar" style="background:linear-gradient(90deg,var(--sky),var(--sky-light));width:95%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RPO CALLOUT -->
+<div class="content-section alt">
+  <div class="rpo-callout reveal">
+    <div class="badge-icon">🤝</div>
+    <h3>Backed by a Registered Practitioner Organization</h3>
+    <p>DTCloudOn's CMMC guidance is supported by a partnership with a Cyber-AB Registered Practitioner Organization (RPO) — so your roadmap is grounded in current Cyber-AB standards, not just general IT best practice.</p>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="container">
+    <div class="section-label" style="justify-content:center;display:flex;">FAQ</div>
+    <h2 class="section-title" style="text-align:center;">CMMC Compliance Questions, Answered</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <h3>What is CMMC, and why does it matter now?</h3>
+        <p>CMMC is the DoD's framework for verifying that contractors protect Federal Contract Information and Controlled Unclassified Information. Since November 10, 2025, it has been tied directly to contract award through the DFARS rule — meaning a missing certification can now cost you the bid, not just invite a future audit.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Which CMMC level applies to my business?</h3>
+        <p>It depends on what data you handle. Level 1 covers Federal Contract Information with a lighter, self-assessed set of 17 practices. Level 2 covers Controlled Unclassified Information and requires all 110 NIST SP 800-171 practices, with a growing number of contracts requiring third-party C3PAO certification. Level 3 adds practices for the most sensitive programs, assessed directly by the government.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do I need a C3PAO assessment, or can I self-assess?</h3>
+        <p>Today, many Level 2 contracts still allow self-assessment. That changes on November 10, 2026, when Phase 2 makes a passed C3PAO certification the standard requirement for contracts involving CUI. If your pipeline includes CUI work, it's worth assuming certification will be required.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What does a CMMC gap assessment involve?</h3>
+        <p>We evaluate your current controls, policies, and documentation against the 110 practices required at Level 2 (or the relevant practice set for your target level), then hand you a prioritized Plan of Action and Milestones that shows exactly what to fix first.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How long does certification take?</h3>
+        <p>It varies by starting point, but most organizations need six to twelve months to close control gaps and build required documentation — and assessment slots with certified C3PAOs are booking further out as the Phase 2 deadline approaches. Starting early protects your timeline.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How does DTCloudOn help with the whole process?</h3>
+        <p>We handle gap assessment, remediation, documentation, and pre-assessment prep, backed by RPO partnership for guidance grounded in current Cyber-AB standards — so you walk into your official assessment prepared instead of guessing.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div class="container">
+    <h2>Phase 2 Starts November 10, 2026.</h2>
+    <p>Don't wait for a solicitation to tell you you're not ready. Get a free CMMC gap assessment and know exactly where you stand.</p>
+    <a class="btn-white" href="../contact.html">Request a Free CMMC Gap Assessment →</a>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="../nav.js"></script>
+<script src="../utils.js"></script>
+<script>renderNav('services', '../'); renderFooter(1);</script>
+</body>
+</html>
