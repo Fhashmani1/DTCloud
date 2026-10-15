@@ -37,6 +37,9 @@
     <loc>https://dtcloudon.com/services/it-guidance.html</loc>
   </url>
   <url>
+    <loc>https://dtcloudon.com/services/it-procurement.html</loc>
+  </url>
+  <url>
     <loc>https://dtcloudon.com/services/it-support.html</loc>
   </url>
   <url>
@@ -67,58 +70,60 @@
   </url>
 
   <!-- INDUSTRIES -->
-
   <url>
-  <loc>https://dtcloudon.com/industries/architects.html</loc>
-</url>
-  <url>
-    <loc>https://dtcloudon.com/industries/healthcare.html</loc>
-  </url>
-
-    <url>
-    <loc>https://dtcloudon.com/industries/franchises.html</loc>
+    <loc>https://dtcloudon.com/industries/accounting.html</loc>
+    <lastmod>2026-10-15</lastmod>
   </url>
   <url>
-    <loc>https://dtcloudon.com/industries/legal.html</loc>
-  </url>
-  <url>
-    <loc>https://dtcloudon.com/industries/finance.html</loc>
-  </url>
-  <url>
-    <loc>https://dtcloudon.com/industries/government.html</loc>
-  </url>
-  <url>
-    <loc>https://dtcloudon.com/industries/education.html</loc>
+    <loc>https://dtcloudon.com/industries/architects.html</loc>
   </url>
   <url>
     <loc>https://dtcloudon.com/industries/construction.html</loc>
   </url>
   <url>
-    <loc>https://dtcloudon.com/industries/manufacturing.html</loc>
-  </url>
-  <url>
-    <loc>https://dtcloudon.com/industries/retail.html</loc>
-  </url>
-  <url>
-    <loc>https://dtcloudon.com/industries/logistics.html</loc>
-  </url>
-  <url>
-    <loc>https://dtcloudon.com/industries/non-profit.html</loc>
-  </url>
-  <url>
-    <loc>https://dtcloudon.com/industries/hospitality.html</loc>
+    <loc>https://dtcloudon.com/industries/education.html</loc>
   </url>
   <url>
     <loc>https://dtcloudon.com/industries/engineering.html</loc>
   </url>
   <url>
-    <loc>https://dtcloudon.com/industries/real-estate.html</loc>
+    <loc>https://dtcloudon.com/industries/finance.html</loc>
   </url>
   <url>
-    <loc>https://dtcloudon.com/industries/accounting.html</loc>
+    <loc>https://dtcloudon.com/industries/franchises.html</loc>
+  </url>
+  <url>
+    <loc>https://dtcloudon.com/industries/government.html</loc>
+  </url>
+  <url>
+    <loc>https://dtcloudon.com/industries/healthcare.html</loc>
+  </url>
+  <url>
+    <loc>https://dtcloudon.com/industries/hospitality.html</loc>
   </url>
   <url>
     <loc>https://dtcloudon.com/industries/insurance.html</loc>
+  </url>
+  <url>
+    <loc>https://dtcloudon.com/industries/legal.html</loc>
+  </url>
+  <url>
+    <loc>https://dtcloudon.com/industries/logistics.html</loc>
+  </url>
+  <url>
+    <loc>https://dtcloudon.com/industries/manufacturing.html</loc>
+  </url>
+  <url>
+    <loc>https://dtcloudon.com/industries/non-profit.html</loc>
+  </url>
+  <url>
+    <loc>https://dtcloudon.com/industries/professional-services.html</loc>
+  </url>
+  <url>
+    <loc>https://dtcloudon.com/industries/real-estate.html</loc>
+  </url>
+  <url>
+    <loc>https://dtcloudon.com/industries/retail.html</loc>
   </url>
 
 </urlset>
