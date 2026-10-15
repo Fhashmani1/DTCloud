@@ -3,7 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Productivity Applications — DTCloudOn</title>
+<title>Microsoft 365 &amp; Google Workspace Services | DTCloudOn</title>
+<meta name="description" content="Microsoft 365 and Google Workspace setup, licensing, migration, security and training for U.S. businesses. DTCloudOn deploys and supports Teams, SharePoint, OneDrive, Intune and Entra ID.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://dtcloudon.com/services/productivity.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DTCloudOn">
+<meta property="og:title" content="Microsoft 365 &amp; Google Workspace Services | DTCloudOn">
+<meta property="og:description" content="Productivity application deployment, licensing, migration, security and user training for Microsoft 365 and Google Workspace.">
+<meta property="og:url" content="https://dtcloudon.com/services/productivity.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Microsoft 365 &amp; Google Workspace Services | DTCloudOn">
+<meta name="twitter:description" content="Microsoft 365 and Google Workspace deployment, migration, security and training from DTCloudOn.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://dtcloudon.com/services/productivity.html#service",
+  "name": "Productivity Application Services for Microsoft 365 and Google Workspace",
+  "serviceType": "Microsoft 365 and Google Workspace Deployment, Migration and Management",
+  "description": "Productivity application services for organizations throughout the United States, including Microsoft 365 and Google Workspace licensing, deployment, email and file migration, Microsoft Teams, SharePoint and OneDrive configuration, Entra ID identity and access management, Intune device management and user training.",
+  "url": "https://dtcloudon.com/services/productivity.html",
+  "provider": {
+    "@type": "Organization",
+    "@id": "https://dtcloudon.com/#business",
+    "name": "DTCloudOn",
+    "url": "https://dtcloudon.com/"
+  },
+  "areaServed": {"@type": "Country", "name": "United States"},
+  "audience": {"@type": "BusinessAudience", "audienceType": "Businesses and Organizations"}
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
@@ -40,12 +70,12 @@
   .prod-hero h1 {
     color: var(--white);
     font-size: clamp(2.4rem, 5vw, 3.8rem);
-    max-width: 760px; margin: 16px auto 20px;
+    max-width: 820px; margin: 16px auto 20px;
     line-height: 1.1; letter-spacing: -1px;
   }
   .prod-hero p {
     color: rgba(255,255,255,0.72);
-    max-width: 600px; margin: 0 auto 36px;
+    max-width: 640px; margin: 0 auto 36px;
     font-size: 1.1rem; line-height: 1.75;
   }
   .prod-hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
@@ -76,6 +106,7 @@
   .content-text h2 { font-size: clamp(1.6rem,2.8vw,2.4rem); color: var(--navy); margin-bottom: 16px; letter-spacing:-0.5px; line-height:1.2; }
   .content-text.dark-text h2 { color: var(--white); }
   .content-text p { color: var(--text-mid); line-height: 1.78; margin-bottom: 16px; }
+  .content-text p a { color: var(--sky); }
   .content-text.dark-text p { color: rgba(255,255,255,0.7); }
   .content-text ul { list-style: none; margin: 20px 0; }
   .content-text li {
@@ -85,12 +116,13 @@
   }
   .content-text.dark-text li { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.08); }
   .content-text li::before { content:'✓'; color:var(--sky); font-weight:700; flex-shrink:0; margin-top:1px; }
-  .content-text .inline-link {
+  .content-text .inline-link, .platform-card .inline-link {
     color: var(--sky); font-size: 0.9rem; font-weight: 600;
     text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
     margin-top: 8px; transition: gap 0.2s;
   }
-  .content-text .inline-link:hover { gap: 10px; }
+  .content-text .inline-link:hover, .platform-card .inline-link:hover { gap: 10px; }
+  .app-row-desc a, .better-banner p a { color: var(--sky); text-decoration: underline; }
 
   .visual-panel {
     background: var(--navy-mid); border-radius: 20px;
@@ -154,7 +186,7 @@
     border: 1px solid rgba(10,22,40,0.06);
   }
 
-  /* ── BENEFITS GRID (replaces carousel) ── */
+  /* ── BENEFITS GRID ── */
   .benefits-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -287,9 +319,9 @@
 <!-- BREADCRUMB -->
 <div class="breadcrumb">
   <div class="container" style="max-width:1300px;margin:0 auto;">
-    <a href="../index.html">Home</a>
+    <a href="../">Home</a>
     <span>›</span>
-    <a href="#">IT Services</a>
+    <span>IT Services</span>
     <span>›</span>
     Productivity Applications
   </div>
@@ -302,8 +334,8 @@
   <div class="prod-hero-grid"></div>
   <div class="container">
     <div class="section-label">PRODUCTIVITY APPLICATIONS</div>
-    <h1>Making the Work World Productive</h1>
-    <p>Empower your team with the tools they need to work smarter, not harder — from anywhere, on any device, at any time.</p>
+    <h1>Microsoft 365 &amp; Google Workspace Services for Businesses</h1>
+    <p>Give your team the tools to work smarter — from anywhere, on any device. DTCloudOn helps businesses across the United States license, deploy, migrate, secure, and support the productivity apps they rely on every day.</p>
     <div class="prod-hero-btns">
       <a class="btn-primary" href="../contact.html">Request Productivity Applications →</a>
       <a class="btn-outline" href="../contact.html">Speak with a productivity applications expert &rsaquo;</a>
@@ -314,37 +346,37 @@
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stats-row">
-    <div class="stat"><span class="stat-num">25%</span><span class="stat-label">Average productivity increase with M365</span></div>
+    <div class="stat"><span class="stat-num">M365</span><span class="stat-label">Microsoft 365 deployment &amp; support</span></div>
+    <div class="stat"><span class="stat-num">Workspace</span><span class="stat-label">Google Workspace management</span></div>
     <div class="stat"><span class="stat-num">Any Device</span><span class="stat-label">Cloud-based access anywhere</span></div>
-    <div class="stat"><span class="stat-num">M365 &amp; GW</span><span class="stat-label">Certified partner for both platforms</span></div>
-    <div class="stat"><span class="stat-num">Zero Downtime</span><span class="stat-label">Migration approach</span></div>
+    <div class="stat"><span class="stat-num">U.S.</span><span class="stat-label">Nationwide service coverage</span></div>
   </div>
 </div>
 
 <!-- BETTER WAY BANNER -->
 <div class="better-banner">
   <h2>A Better Way to Get Work Done</h2>
-  <p>When employees struggle with remote access and fumble with file collaboration, engagement often plummets. DTCloudOn facilitates critical projects by getting the latest workforce productivity apps installed, configured, and optimized for your team.</p>
+  <p>When employees struggle with remote access and file collaboration, engagement suffers. DTCloudOn gets modern productivity apps installed, configured, and optimized for your team — and connected to your <a href="cloud.html">cloud environment</a>.</p>
   <a class="btn-primary" href="../contact.html">Explore Options →</a>
 </div>
 
 <!-- PLATFORM CARDS: M365 + Google Workspace -->
 <div class="content-section">
   <div class="container">
-    <div class="section-label">Our Platform Partners</div>
-    <h2 class="section-title">The World's Leading Productivity Suites</h2>
-    <p class="section-sub">DTCloudOn is a certified partner for both Microsoft 365 and Google Workspace — we help you choose, deploy, and manage the right platform for your business.</p>
+    <div class="section-label">Platforms We Support</div>
+    <h2 class="section-title">Leading Business Productivity Suites</h2>
+    <p class="section-sub">DTCloudOn works with both Microsoft 365 and Google Workspace — helping you choose, deploy, and manage the right platform for your business.</p>
     <div class="platforms-grid reveal">
       <div class="platform-card">
         <div class="platform-logo">🟦</div>
         <div class="platform-name">Microsoft 365</div>
-        <p>The most popular productivity suite in the world, Microsoft 365 includes key apps like Outlook, Teams, Word, Excel, and PowerPoint. DTCloudOn handles licensing, workflow automation, device management, and cybersecurity for every app in the Microsoft 365 ecosystem.</p>
-        <div class="app-icons">
+        <p>One of the most widely used productivity suites for business, Microsoft 365 includes Outlook, Teams, Word, Excel, PowerPoint, SharePoint, and OneDrive. DTCloudOn handles licensing, configuration, workflow automation, device management, and security across the Microsoft 365 ecosystem.</p>
+        <div class="app-icons" aria-hidden="true">
           <div class="app-icon">📧</div>
           <div class="app-icon">☁️</div>
           <div class="app-icon">📝</div>
           <div class="app-icon">📊</div>
-          <div class="app-icon">📊</div>
+          <div class="app-icon">📽️</div>
           <div class="app-icon">📓</div>
           <div class="app-icon">👥</div>
           <div class="app-icon">🗂️</div>
@@ -354,8 +386,8 @@
       <div class="platform-card">
         <div class="platform-logo">🔴</div>
         <div class="platform-name">Google Workspace</div>
-        <p>Want everything in one place? Google Workspace makes it possible with Gmail, Calendar, Drive, Docs, Sheets, Meet, and more. DTCloudOn keeps your business connected and secure with these popular cloud-native apps.</p>
-        <div class="app-icons">
+        <p>Want everything in one place? Google Workspace brings together Gmail, Calendar, Drive, Docs, Sheets, Meet, and more. DTCloudOn helps keep your business connected and secure with these cloud-native apps.</p>
+        <div class="app-icons" aria-hidden="true">
           <div class="app-icon">📧</div>
           <div class="app-icon">📅</div>
           <div class="app-icon">💾</div>
@@ -371,32 +403,32 @@
   </div>
 </div>
 
-<!-- BENEFITS GRID (replaces carousel) -->
+<!-- BENEFITS GRID -->
 <div class="content-section alt">
   <div class="container">
     <div class="section-label">Why Productivity Apps Matter</div>
     <h2 class="section-title">The Business Benefits of Modern Productivity Tools</h2>
-    <p class="section-sub">The right productivity stack doesn't just save time — it fundamentally changes how your team works together.</p>
+    <p class="section-sub">The right productivity stack doesn't just save time — it changes how your team works together.</p>
     <div class="benefits-grid reveal">
       <div class="benefit-item">
         <h3>⚡ Cost-Effective Solutions</h3>
-        <p>DTCloudOn streamlines installation, maintenance, and licensing of productivity apps — helping clients save on recurring costs, consolidate IT spending, and strategize for long-term success.</p>
+        <p>DTCloudOn streamlines installation, maintenance, and licensing of productivity apps — helping clients avoid unused licenses, consolidate IT spending, and plan for the long term.</p>
       </div>
       <div class="benefit-item">
         <h3>📈 Increased Efficiency</h3>
-        <p>Productivity apps like Microsoft 365 and Google Workspace provide critical collaboration and communication platforms to keep day-to-day work running smoothly — reducing friction and time lost.</p>
+        <p>Microsoft 365 and Google Workspace provide collaboration and communication platforms that keep day-to-day work running smoothly — reducing friction and time lost.</p>
       </div>
       <div class="benefit-item">
         <h3>🔄 Version Control</h3>
-        <p>Automated features built into productivity apps reduce errors in real-time and track changes made to files — ensuring updates are made to the right documents and that users can revert to past versions.</p>
+        <p>Built-in version history tracks changes to files, so updates go to the right documents and users can restore earlier versions when needed.</p>
       </div>
       <div class="benefit-item">
         <h3>🌐 Workplace Flexibility</h3>
-        <p>With more and more employees working remote or hybrid schedules, productivity apps provide access to the right information — anytime, anywhere, and from any device.</p>
+        <p>With more employees working remote or hybrid schedules, productivity apps give authorized users access to the right information from approved devices, wherever they work.</p>
       </div>
       <div class="benefit-item">
         <h3>🔒 Business Security</h3>
-        <p>Productivity apps facilitate collaboration while also safeguarding company data with credential security, device protocols, and user onboarding — keeping your data where it belongs.</p>
+        <p>Properly configured productivity apps protect company data with identity controls, device policies, and secure user onboarding — keeping your data where it belongs.</p>
       </div>
       <div class="benefit-item">
         <h3>🤝 Better Collaboration</h3>
@@ -411,27 +443,27 @@
   <div class="container">
     <div class="section-label">What We Manage</div>
     <h2 class="section-title">Applications We Deploy &amp; Support</h2>
-    <p class="section-sub">DTCloudOn handles the full lifecycle of your productivity apps — from licensing and deployment to ongoing support and user training.</p>
+    <p class="section-sub">DTCloudOn supports the full lifecycle of your productivity apps — from licensing and deployment to ongoing support and user training.</p>
     <div class="app-list reveal">
       <div class="app-row">
         <div class="app-row-icon">🖥️</div>
-        <div class="app-row-name">MS365 / Google Apps</div>
-        <div class="app-row-desc">DTCloudOn helps businesses implement and optimize popular productivity apps like Microsoft Office 365 and Google Suite — including installation, ongoing license management, and device provisioning.</div>
+        <div class="app-row-name">Microsoft 365 / Google Workspace</div>
+        <div class="app-row-desc">We help businesses implement and optimize Microsoft 365 and Google Workspace — including setup, ongoing license management, and device provisioning. Need licenses? See our <a href="it-procurement.html">IT procurement services</a>.</div>
       </div>
       <div class="app-row">
         <div class="app-row-icon">📧</div>
-        <div class="app-row-name">Email</div>
-        <div class="app-row-desc">Cloud-based email accessible on laptops, desktops, and mobile phones is a must for today's businesses. DTCloudOn helps companies implement and manage specialized email tools across all devices.</div>
+        <div class="app-row-name">Business Email</div>
+        <div class="app-row-desc">Cloud-based email accessible on laptops, desktops, and mobile phones is a must for today's businesses. DTCloudOn helps companies implement and manage email across devices, with <a href="cybersecurity.html">email security</a> options.</div>
       </div>
       <div class="app-row">
         <div class="app-row-icon">👥</div>
         <div class="app-row-name">Microsoft Teams</div>
-        <div class="app-row-desc">Full Teams deployment, configuration, and governance — channels, meetings, calling, and integration with your other Microsoft 365 apps for seamless collaboration.</div>
+        <div class="app-row-desc">Teams deployment, configuration, and governance — channels, meetings, calling, and integration with your other Microsoft 365 apps.</div>
       </div>
       <div class="app-row">
         <div class="app-row-icon">📁</div>
         <div class="app-row-name">SharePoint &amp; OneDrive</div>
-        <div class="app-row-desc">Document management, intranet setup, and file sharing infrastructure — built and secured so your team can find, share, and collaborate on content without friction.</div>
+        <div class="app-row-desc">Document management, intranet setup, and file sharing — configured and secured so your team can find, share, and collaborate on content easily.</div>
       </div>
       <div class="app-row">
         <div class="app-row-icon">🔐</div>
@@ -441,45 +473,46 @@
       <div class="app-row">
         <div class="app-row-icon">⚙️</div>
         <div class="app-row-name">Microsoft Intune / MDM</div>
-        <div class="app-row-desc">Mobile device management for corporate and BYOD devices — enforcing security policies and ensuring your apps are deployed and updated consistently across your fleet.</div>
+        <div class="app-row-desc">Mobile device management for corporate and BYOD devices — enforcing security policies and keeping apps deployed and updated consistently across your devices.</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- MIGRATION + CLOUD + TRAINING -->
+<!-- MIGRATION -->
 <div class="content-section alt">
   <div class="split-layout reveal">
     <div class="content-text">
       <div class="section-label">Migration Services</div>
-      <h2>Migration Services</h2>
-      <p>Migrating data between productivity apps isn't easy. DTCloudOn sets you up for success, minimizing disruptions and ensuring seamless operations during the transition.</p>
+      <h2>Microsoft 365 &amp; Google Workspace Migration</h2>
+      <p>Migrating data between productivity platforms isn't easy. DTCloudOn plans each migration carefully to minimize disruption and keep your business running during the transition.</p>
       <ul>
         <li>Email and calendar migration (Gmail ↔ Outlook)</li>
         <li>File migration to SharePoint, OneDrive, or Google Drive</li>
         <li>On-premises to cloud migration planning and execution</li>
         <li>Tenant-to-tenant Microsoft 365 migrations</li>
-        <li>Zero-downtime migration approach</li>
+        <li>Cutover planning to minimize downtime</li>
       </ul>
-      <a class="inline-link" href="../contact.html">Move your information securely →</a>
+      <a class="inline-link" href="cloud.html">Explore cloud migration services →</a>
     </div>
     <div class="visual-panel">
       <div class="panel-icon">🔀</div>
-      <img src="../images/datacenter-2.png" alt="Migration Services" onerror="this.style.display='none'">
+      <img src="../images/datacenter-2.png" alt="Data center infrastructure supporting Microsoft 365 and Google Workspace migrations" onerror="this.style.display='none'">
     </div>
   </div>
 </div>
 
+<!-- CLOUD ACCESSIBILITY -->
 <div class="content-section">
   <div class="split-layout reverse reveal">
     <div class="content-text">
       <div class="section-label">Cloud Accessibility</div>
       <h2>Cloud Accessibility</h2>
-      <p>The best productivity apps are based in the cloud, giving employees the access and flexibility they need to work anytime and anywhere — from any device, with full security controls in place.</p>
+      <p>Cloud-based productivity apps give employees the access and flexibility to work from approved devices wherever they are — with security controls in place.</p>
       <ul>
         <li>Work from any device — laptop, tablet, or mobile</li>
-        <li>Real-time sync across all platforms and locations</li>
-        <li>Secure remote access without VPN complexity</li>
+        <li>Real-time sync across devices and locations</li>
+        <li>Secure access to cloud apps without traditional VPN complexity</li>
         <li>Offline capability with automatic sync when reconnected</li>
         <li>Consistent experience across Windows, Mac, iOS, and Android</li>
       </ul>
@@ -487,40 +520,41 @@
     </div>
     <div class="visual-panel">
       <div class="panel-icon">☁️</div>
-      <img src="../images/datacenter-3.png" alt="Cloud Access" onerror="this.style.display='none'">
+      <img src="../images/datacenter-3.png" alt="Cloud infrastructure providing anywhere access to productivity apps" onerror="this.style.display='none'">
     </div>
   </div>
 </div>
 
+<!-- TRAINING -->
 <div class="content-section alt">
   <div class="split-layout reveal">
     <div class="content-text">
       <div class="section-label">Training &amp; Guidance</div>
       <h2>Training and Guidance</h2>
-      <p>DTCloudOn doesn't just install productivity apps and then leave you hanging. Instead, we provide ongoing education and support to navigate upgrades, interface changes, and licensing updates.</p>
-      <p>Our training programs are designed for real users — practical, role-based, and delivered in the format that works best for your team.</p>
+      <p>DTCloudOn doesn't just install productivity apps and walk away. We provide ongoing education and support to help your team navigate upgrades, interface changes, and licensing updates.</p>
+      <p>Our training is designed for real users — practical, role-based, and delivered in the format that works best for your team.</p>
       <ul>
         <li>Role-based onboarding training for new users</li>
-        <li>Live virtual and on-site training sessions</li>
+        <li>Live virtual and onsite training sessions</li>
         <li>Self-service learning resources and documentation</li>
-        <li>Upgrade guidance when new features are released</li>
-        <li>Ongoing helpdesk support for app questions</li>
+        <li>Guidance when new features are released</li>
+        <li>Ongoing help desk support for app questions</li>
       </ul>
-      <a class="inline-link" href="../contact.html">Educate your staff →</a>
+      <a class="inline-link" href="it-support.html">Explore IT support services →</a>
     </div>
     <div class="visual-panel">
       <div class="panel-icon">🎓</div>
-      <img src="../images/datacenter-1.png" alt="Training" onerror="this.style.display='none'">
+      <img src="../images/datacenter-1.png" alt="Server room supporting business productivity applications" onerror="this.style.display='none'">
     </div>
   </div>
 </div>
 
-<!-- SECTOR-SPECIFIC COMPLIANCE -->
+<!-- INDUSTRIES -->
 <div class="content-section dark">
   <div class="container">
-    <div class="section-label" style="color:var(--sky-light);text-align:center;">Industry Compliance</div>
-    <h2 class="section-title" style="color:var(--white);text-align:center;margin-bottom:12px;">Sector-Specific Compliance Approaches</h2>
-    <p style="color:rgba(255,255,255,0.6);text-align:center;max-width:620px;margin:0 auto 48px;line-height:1.7;">Technological solutions must be designed with consideration for the distinct requirements of each industry.</p>
+    <div class="section-label" style="color:var(--sky-light);text-align:center;">Industries Served</div>
+    <h2 class="section-title" style="color:var(--white);text-align:center;margin-bottom:12px;">Productivity Solutions for Your Industry</h2>
+    <p style="color:rgba(255,255,255,0.6);text-align:center;max-width:620px;margin:0 auto 48px;line-height:1.7;">Productivity tools should be configured around the operational and regulatory requirements of each industry.</p>
     <div class="industries-compliance-grid reveal">
       <a class="ind-card" href="../industries/accounting.html"><div class="icon">📊</div><p>Accounting</p></a>
       <a class="ind-card" href="../industries/architects.html"><div class="icon">📐</div><p>Architects</p></a>
@@ -533,7 +567,12 @@
       <a class="ind-card" href="../industries/hospitality.html"><div class="icon">🏨</div><p>Hospitality</p></a>
       <a class="ind-card" href="../industries/insurance.html"><div class="icon">🔖</div><p>Insurance</p></a>
       <a class="ind-card" href="../industries/legal.html"><div class="icon">⚖️</div><p>Legal</p></a>
+      <a class="ind-card" href="../industries/logistics.html"><div class="icon">🚚</div><p>Logistics</p></a>
       <a class="ind-card" href="../industries/manufacturing.html"><div class="icon">🏭</div><p>Manufacturing</p></a>
+      <a class="ind-card" href="../industries/non-profit.html"><div class="icon">🤝</div><p>Non-Profit</p></a>
+      <a class="ind-card" href="../industries/professional-services.html"><div class="icon">💼</div><p>Professional Services</p></a>
+      <a class="ind-card" href="../industries/real-estate.html"><div class="icon">🏡</div><p>Real Estate</p></a>
+      <a class="ind-card" href="../industries/retail.html"><div class="icon">🛒</div><p>Retail</p></a>
     </div>
   </div>
 </div>
@@ -543,14 +582,14 @@
   <div class="container">
     <div style="text-align:center;margin-bottom:52px;">
       <h2 class="section-title">Apps Are Just the Start</h2>
-      <p class="section-sub" style="margin:0 auto;">Productivity applications can provide a huge boost by increasing collaboration and efficiency. Combining them with other IT services can yield even better results.</p>
+      <p class="section-sub" style="margin:0 auto;">Productivity applications boost collaboration and efficiency. Combining them with other IT services can deliver even better results.</p>
     </div>
     <div class="related-grid reveal">
       <a class="related-card" href="managed-services.html">
         <div class="r-icon">🖥️</div>
         <h3>Managed Services</h3>
         <p class="need">My business needs help with IT and security.</p>
-        <p>Keep your technology securely running at peak performance with proactive managed IT services.</p>
+        <p>Keep your technology running reliably with proactive monitoring and expert management.</p>
       </a>
       <a class="related-card" href="cybersecurity.html">
         <div class="r-icon">🔒</div>
@@ -562,25 +601,25 @@
         <div class="r-icon">💬</div>
         <h3>Unified Communications</h3>
         <p class="need">My team needs to collaborate and connect.</p>
-        <p>Seize new opportunities and foster collaboration with integrated voice, video, and messaging.</p>
+        <p>Foster collaboration with reliable voice, video, and messaging connectivity.</p>
       </a>
       <a class="related-card" href="cloud.html">
         <div class="r-icon">☁️</div>
         <h3>Cloud Services</h3>
         <p class="need">I want to migrate to the cloud.</p>
-        <p>Experience the cost savings, efficiencies, and anywhere-access that cloud infrastructure provides.</p>
+        <p>Plan, migrate, and manage secure cloud environments built around your applications and data.</p>
       </a>
       <a class="related-card" href="backup.html">
         <div class="r-icon">💾</div>
         <h3>Data Backup</h3>
         <p class="need">I need to securely back up my data.</p>
-        <p>Know that you can recover your data no matter what — with automated, tested backup and recovery.</p>
+        <p>Protect business data with layered backups, recovery planning, and restore testing.</p>
       </a>
       <a class="related-card" href="it-support.html">
         <div class="r-icon">🎧</div>
         <h3>IT Support</h3>
         <p class="need">I need faster IT support.</p>
-        <p>Rely on dependable IT support to resolve issues quickly and avoid disruptions to your productivity.</p>
+        <p>Rely on dependable IT support to resolve issues quickly and reduce disruptions to your productivity.</p>
       </a>
     </div>
   </div>
@@ -590,7 +629,7 @@
 <div class="cta-strip">
   <div class="container">
     <h2>Ready to Make Your Team More Productive?</h2>
-    <p>Let DTCloudOn deploy, secure, and optimize the productivity apps your business runs on — starting today.</p>
+    <p>Let DTCloudOn deploy, secure, and optimize the Microsoft 365 or Google Workspace environment your business runs on — for organizations throughout the United States.</p>
     <a class="btn-white" href="../contact.html">Request Productivity Applications →</a>
   </div>
 </div>
