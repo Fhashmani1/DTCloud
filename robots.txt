@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dtcloudon.com/sitemap.xml
