@@ -1,0 +1,36 @@
+# DTCloudOn
+
+> DTCloudOn (Sunrise Correlation LLC) is a managed IT services and cybersecurity provider for small and mid-sized businesses across the United States, serving clients in all 50 states both remotely and on-site.
+
+DTCloudOn provides managed IT support, cybersecurity, Microsoft 365 administration, network engineering, cloud services, IT procurement and IT consulting. Industry pages describe how these services apply to specific sectors.
+
+## Industries
+
+- [Managed IT Services for Accounting Firms](https://dtcloudon.com/industries/accounting.html): IT support and cybersecurity for CPA firms and tax preparers, including technical safeguards for the FTC Safeguards Rule (GLBA), IRS Publication 4557 and WISP implementation; supports QuickBooks, Sage and Drake Tax.
+
+## Services
+
+- [Managed IT Services](https://dtcloudon.com/services/managed-services.html): Monitoring, maintenance, help desk and day-to-day IT management.
+- [Cybersecurity](https://dtcloudon.com/services/cybersecurity.html): Endpoint protection, email security, MFA, encryption and security monitoring.
+- [Network Services](https://dtcloudon.com/services/network.html): Network design, engineering and support, including on-site structured cabling nationwide.
+- Access control systems: On-site installation and support of badge readers and door access control, nationwide.
+
+## On-site services (all 50 states)
+
+- On-site server installation and configuration: Rack-mounting, setup and configuration of physical servers, including operating systems, virtualization, storage and file servers.
+- On-site network equipment installation: Installation and configuration of switches, routers and firewalls.
+- Wireless network design and installation: Wireless site surveys and installation of Wi-Fi access points for full office coverage.
+- On-site structured network cabling: Installation, termination, labeling and testing of Ethernet cabling and network drops for workstations, printers and other office devices.
+- On-site access control systems: Installation and support of badge readers and door access control systems.
+- Security camera installation: Installation and configuration of IP security cameras and video recording systems.
+- VoIP phone system installation: Deployment of VoIP desk phones and business phone systems.
+- Server room and network rack build-outs: Rack installation, cable management, UPS battery backup and power for server rooms and network closets.
+- Workstation, printer and peripheral deployment: On-site setup of computers, printers, scanners and other office equipment.
+- Office moves and IT relocations: Planning, disconnection, transport coordination and reinstallation of IT equipment when an office moves or expands.
+- On-site troubleshooting and hardware repair: Technician visits to diagnose and fix hardware, network and connectivity problems that cannot be resolved remotely.
+- Network site surveys and assessments: On-site evaluation of existing network, cabling and equipment to plan upgrades and identify problems.
+- [IT Procurement](https://dtcloudon.com/services/it-procurement.html): Sourcing and installing business hardware and software.
+
+## Contact
+
+- [Contact DTCloudOn](https://dtcloudon.com/contact.html): Request a free consultation.
