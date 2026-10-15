@@ -3,8 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IT Service Packages — DTCloudOn</title>
-<meta name="description" content="Every DTCloudOn package is built with security as the foundation. Choose your level of support and add optional layers of protection for your business.">
+<title>Managed IT Service Packages &amp; Support Plans | DTCloudOn</title>
+<meta name="description" content="Compare DTCloudOn managed IT packages: Essentials, Standard and Enterprise support tiers built on RMM, patching, MDR and SOC monitoring, with optional backup, email security and compliance add-ons.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://dtcloudon.com/services/packages.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DTCloudOn">
+<meta property="og:title" content="Managed IT Service Packages &amp; Support Plans | DTCloudOn">
+<meta property="og:description" content="Security-first managed IT packages with three support tiers and optional add-ons for backup, email security, secure access, cloud and compliance.">
+<meta property="og:url" content="https://dtcloudon.com/services/packages.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Managed IT Service Packages &amp; Support Plans | DTCloudOn">
+<meta name="twitter:description" content="Essentials, Standard and Enterprise managed IT support tiers with a security foundation from DTCloudOn.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://dtcloudon.com/services/packages.html#service",
+  "name": "Managed IT Service Packages",
+  "serviceType": "Managed IT Services and Cybersecurity Packages",
+  "description": "Managed IT service packages for organizations throughout the United States, built on remote monitoring and management, IT documentation, lifecycle management, patching, next-generation antivirus, DNS filtering, managed detection and response, SOC monitoring, security awareness training and firewall and Wi-Fi management, with Essentials, Standard and Enterprise support tiers and optional add-on services.",
+  "url": "https://dtcloudon.com/services/packages.html",
+  "provider": {
+    "@type": "Organization",
+    "@id": "https://dtcloudon.com/#business",
+    "name": "DTCloudOn",
+    "url": "https://dtcloudon.com/"
+  },
+  "areaServed": {"@type": "Country", "name": "United States"},
+  "audience": {"@type": "BusinessAudience", "audienceType": "Businesses and Organizations"},
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Managed IT Support Tiers",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Essentials Managed IT Package", "description": "Security foundation with time-and-materials hourly remote and onsite support."}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Standard Managed IT Package", "description": "Security foundation with unlimited remote support and time-and-materials onsite support."}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Enterprise Managed IT Package", "description": "Security foundation with 24/7/365 live help desk and priority onsite support."}}
+    ]
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
@@ -24,7 +62,6 @@
     position: absolute; inset: 0;
     background: linear-gradient(135deg, #0a0a12 0%, #0d1020 50%, #10091a 100%);
   }
-  /* subtle shield icons pattern */
   .pkg-hero-pattern {
     position: absolute; inset: 0;
     opacity: 0.06;
@@ -62,9 +99,8 @@
   .pkg-hero p {
     color: rgba(255,255,255,0.62);
     font-size: 1rem; line-height: 1.75;
-    max-width: 500px; margin-bottom: 36px;
+    max-width: 540px; margin-bottom: 36px;
   }
-  /* lock icon illustration */
   .pkg-hero-visual {
     position: absolute; right: 8%; top: 50%; transform: translateY(-50%);
     display: flex; align-items: flex-end; gap: 8px;
@@ -119,6 +155,7 @@
     margin: 0 auto;
     line-height: 1.7;
   }
+  .gradient-band-title p a { color: var(--white); text-decoration: underline; }
 
   /* ── SECURITY FEATURES GRID ── */
   .security-grid {
@@ -150,6 +187,7 @@
   }
   .security-card h3 { font-size: .92rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
   .security-card p { font-size: .8rem; color: var(--text-mid); line-height: 1.6; }
+  .security-card p a { color: var(--sky); text-decoration: underline; }
 
   /* ── SUPPORT LEVELS ── */
   .content-section { padding: 80px 24px; }
@@ -208,6 +246,7 @@
   .pc-btn:hover { background: #c4281e; transform:translateY(-1px); }
   .pc-btn.outline { background:transparent; border:2px solid rgba(255,255,255,.4); color:var(--white); }
   .pc-btn.outline:hover { border-color:var(--white); background:rgba(255,255,255,.08); }
+  .tier-note { text-align:center; font-size:.82rem; color:var(--gray); max-width:640px; margin:28px auto 0; line-height:1.6; }
 
   /* ── EXTRA LAYER ── */
   .addon-grid {
@@ -219,6 +258,7 @@
   }
   .addon-item {
     display: flex; align-items: flex-start; gap: 16px;
+    text-decoration: none;
   }
   .addon-icon {
     width: 52px; height: 52px;
@@ -227,7 +267,10 @@
     display: flex; align-items: center; justify-content: center;
     font-size: 1.4rem; flex-shrink: 0;
     border: 1px solid rgba(255,255,255,0.2);
+    transition: background 0.2s;
   }
+  a.addon-item:hover .addon-icon { background: rgba(255,255,255,0.28); }
+  a.addon-item:hover h3 { text-decoration: underline; }
   .addon-text h3 { font-size: .92rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
   .addon-text p { font-size: .8rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
 
@@ -250,6 +293,7 @@
   .why-card .wc-icon { font-size: 1.8rem; margin-bottom: 12px; }
   .why-card h3 { font-size: .95rem; font-weight:700; color:var(--navy); margin-bottom:8px; }
   .why-card p { font-size:.84rem; color:var(--text-mid); line-height:1.65; }
+  .why-card p a { color: var(--sky); text-decoration: underline; }
 
   @media(max-width:900px){
     .security-grid { grid-template-columns: 1fr 1fr; }
@@ -269,9 +313,9 @@
 <!-- BREADCRUMB -->
 <div class="breadcrumb">
   <div class="container" style="max-width:1300px;margin:0 auto;">
-    <a href="../index.html">Home</a>
+    <a href="../">Home</a>
     <span>›</span>
-    <a href="#">IT Services</a>
+    <span>IT Services</span>
     <span>›</span>
     Packages
   </div>
@@ -282,12 +326,12 @@
   <div class="pkg-hero-bg"></div>
   <div class="pkg-hero-pattern"></div>
   <div class="container">
-    <div class="pkg-hero-label">IT Packages</div>
-    <h1>We built <span class="highlight">every package</span> with <strong>security</strong> as the foundation.</h1>
-    <p>Instead of adding protection later, our plans are designed with security at the core from day one.</p>
-    <a class="btn-primary" href="../contact.html">Upgrade your cybersecurity →</a>
+    <div class="pkg-hero-label">Managed IT Packages</div>
+    <h1>We built every <span class="highlight">managed IT package</span> with <strong>security</strong> as the foundation.</h1>
+    <p>Instead of adding protection later, our plans are designed with security at the core from day one. Choose a support tier, add optional services, and get IT that fits how your business works — for organizations across the United States.</p>
+    <a class="btn-primary" href="../contact.html">Find your package →</a>
   </div>
-  <div class="pkg-hero-visual">
+  <div class="pkg-hero-visual" aria-hidden="true">
     <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-end;">
       <div class="check-badge">✅</div>
       <div class="lock-body">🔐</div>
@@ -299,7 +343,7 @@
 <div class="gradient-band">
   <div class="gradient-band-title">
     <h2>Security comes <strong>standard.</strong></h2>
-    <p>Every plan starts with a powerful security foundation designed to keep your business protected, monitored, and running smoothly.</p>
+    <p>Every plan starts with a security foundation designed to keep your business protected, monitored, and running smoothly. Learn more about our <a href="managed-services.html">managed IT services</a>.</p>
   </div>
   <div class="security-grid reveal">
     <div class="security-card">
@@ -319,27 +363,27 @@
     </div>
     <div class="security-card">
       <div class="sc-icon">🔄</div>
-      <h3>Secure-Patching Update Oversight</h3>
+      <h3>Secure Patching &amp; Update Oversight</h3>
       <p>Keeps your systems updated and secure.</p>
     </div>
     <div class="security-card">
       <div class="sc-icon">🛡️</div>
-      <h3>Next-Gen AV</h3>
-      <p>Protects devices from viruses and malware.</p>
+      <h3>Next-Gen Antivirus</h3>
+      <p>Helps protect devices from viruses and malware.</p>
     </div>
     <div class="security-card">
       <div class="sc-icon">🌐</div>
       <h3>DNS Filtering</h3>
-      <p>Blocks access to harmful or risky websites.</p>
+      <p>Blocks access to known harmful or risky websites.</p>
     </div>
     <div class="security-card">
       <div class="sc-icon">🔍</div>
       <h3>Managed Detection &amp; Response (MDR)</h3>
-      <p>Detects and responds to threats in real time.</p>
+      <p>Detects and responds to threats. <a href="mdr.html">Learn about MDR</a>.</p>
     </div>
     <div class="security-card">
       <div class="sc-icon">🤖</div>
-      <h3>AI-Driven Threat Detection</h3>
+      <h3>Behavioral Threat Detection</h3>
       <p>Identifies unusual behavior and potential threats.</p>
     </div>
     <div class="security-card">
@@ -349,8 +393,8 @@
     </div>
     <div class="security-card">
       <div class="sc-icon">🚨</div>
-      <h3>Detection &amp; Alert-Driven Response Workflow</h3>
-      <p>Responds quickly to alerts.</p>
+      <h3>Alert-Driven Response Workflow</h3>
+      <p>Routes confirmed alerts for prompt response.</p>
     </div>
     <div class="security-card">
       <div class="sc-icon">🎓</div>
@@ -359,8 +403,8 @@
     </div>
     <div class="security-card">
       <div class="sc-icon">🔥</div>
-      <h3>Firewall &amp; WiFi Management</h3>
-      <p>Secures and manages your network and connectivity.</p>
+      <h3>Firewall &amp; Wi-Fi Management</h3>
+      <p>Secures and manages your <a href="network.html">network</a> and connectivity.</p>
     </div>
   </div>
 </div>
@@ -370,8 +414,8 @@
   <div class="container">
     <div style="text-align:center;margin-bottom:52px;">
       <div class="section-label">Support Tiers</div>
-      <h2 class="section-title">Choose <strong>your level</strong> of support.</h2>
-      <p class="section-sub" style="margin:0 auto;">Choose the support level that matches how hands-on you want your IT partner to be.</p>
+      <h2 class="section-title">Choose <strong>your level</strong> of IT support.</h2>
+      <p class="section-sub" style="margin:0 auto;">Every tier includes the security foundation above. Choose the support level that matches how hands-on you want your IT partner to be.</p>
     </div>
     <div class="pricing-grid reveal">
 
@@ -379,46 +423,47 @@
       <div class="pricing-card">
         <div class="pc-tier">Tier 1</div>
         <h3>Essentials</h3>
-        <div class="pc-desc">Time and materials hourly fee for remote support and on-site support.</div>
+        <div class="pc-desc">Time-and-materials hourly fee for remote and onsite support.</div>
         <div class="pc-rec-label">Recommended for:</div>
         <ul class="pc-rec-list">
           <li class="pc-rec-item">Small teams with simple IT environments</li>
           <li class="pc-rec-item">Businesses comfortable paying per issue</li>
-          <li class="pc-rec-item">Low compliance or security requirements</li>
+          <li class="pc-rec-item">Lower compliance or security requirements</li>
         </ul>
-        <a class="pc-btn" href="../contact.html">Request Package →</a>
+        <a class="pc-btn" href="../contact.html">Request Essentials →</a>
       </div>
 
       <!-- TIER 2: STANDARD (FEATURED) -->
       <div class="pricing-card featured">
-        <div class="pc-badge">Most Popular</div>
+        <div class="pc-badge">Recommended</div>
         <div class="pc-tier">Tier 2</div>
         <h3>Standard</h3>
-        <div class="pc-desc">Unlimited remote support. Time and Materials hourly fee for on-site support.</div>
+        <div class="pc-desc">Unlimited remote support. Time-and-materials hourly fee for onsite support.</div>
         <div class="pc-rec-label">Recommended for:</div>
         <ul class="pc-rec-list">
           <li class="pc-rec-item">Growing teams that need consistent support</li>
-          <li class="pc-rec-item">Businesses that want predictable IT costs</li>
+          <li class="pc-rec-item">Businesses that want more predictable IT costs</li>
           <li class="pc-rec-item">Moderate security and uptime expectations</li>
         </ul>
-        <a class="pc-btn outline" href="../contact.html">Request Package →</a>
+        <a class="pc-btn outline" href="../contact.html">Request Standard →</a>
       </div>
 
       <!-- TIER 3: ENTERPRISE -->
       <div class="pricing-card">
         <div class="pc-tier">Tier 3</div>
         <h3>Enterprise</h3>
-        <div class="pc-desc">Unlimited 24/7/365 live help desk + priority on-site support.</div>
+        <div class="pc-desc">Unlimited 24/7/365 live help desk plus priority onsite support.</div>
         <div class="pc-rec-label">Recommended for:</div>
         <ul class="pc-rec-list">
-          <li class="pc-rec-item">Teams that need immediate, always-on support</li>
-          <li class="pc-rec-item">Businesses with high security or compliance needs</li>
+          <li class="pc-rec-item">Teams that need always-available support</li>
+          <li class="pc-rec-item">Businesses with higher security or compliance needs</li>
           <li class="pc-rec-item">Operations that rely heavily on technology</li>
         </ul>
-        <a class="pc-btn" href="../contact.html">Request Package →</a>
+        <a class="pc-btn" href="../contact.html">Request Enterprise →</a>
       </div>
 
     </div>
+    <p class="tier-note">Final scope, pricing, and response targets for each tier are confirmed in your service agreement. Need help choosing? See how our <a href="it-support.html" style="color:var(--sky);">IT support and help desk</a> works.</p>
   </div>
 </div>
 
@@ -430,45 +475,45 @@
         Add an <strong style="font-style:italic;">extra layer</strong> of protection.
       </h2>
       <p style="color:rgba(255,255,255,0.72);font-size:1rem;max-width:560px;margin:0 auto;line-height:1.7;">
-        Optional services that expand your protection, security, and cloud capabilities.
+        Optional add-on services that expand your protection, security, and cloud capabilities.
       </p>
     </div>
     <div class="addon-grid reveal">
-      <div class="addon-item">
+      <a class="addon-item" href="backup.html">
         <div class="addon-icon">☁️</div>
         <div class="addon-text">
           <h3>Data Continuity</h3>
           <p>Cloud file backup with monthly restoration testing.</p>
         </div>
-      </div>
-      <div class="addon-item">
+      </a>
+      <a class="addon-item" href="cybersecurity.html">
         <div class="addon-icon">✉️</div>
         <div class="addon-text">
           <h3>Email Security</h3>
-          <p>Comprehensive Business Email Compromise protection.</p>
+          <p>Business email compromise (BEC) and phishing protection.</p>
         </div>
-      </div>
-      <div class="addon-item">
+      </a>
+      <a class="addon-item" href="network.html">
         <div class="addon-icon">🔑</div>
         <div class="addon-text">
           <h3>Secure Access</h3>
-          <p>Identity &amp; VPN Security Management.</p>
+          <p>Identity and VPN security management.</p>
         </div>
-      </div>
-      <div class="addon-item">
+      </a>
+      <a class="addon-item" href="cloud.html">
         <div class="addon-icon">🌍</div>
         <div class="addon-text">
           <h3>Cloud Resource Management</h3>
-          <p>MS365/Google procurement, Secure Cloud application management.</p>
+          <p>Microsoft 365 / Google Workspace procurement and secure cloud application management.</p>
         </div>
-      </div>
-      <div class="addon-item">
+      </a>
+      <a class="addon-item" href="compliance.html">
         <div class="addon-icon">📋</div>
         <div class="addon-text">
           <h3>Compliance</h3>
-          <p>Comprehensive cybersecurity program with training, policies, maturity assessments, and vulnerability management.</p>
+          <p>Cybersecurity program support with training, policies, maturity assessments, and vulnerability management.</p>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>
@@ -478,39 +523,39 @@
   <div class="container">
     <div style="text-align:center;margin-bottom:48px;">
       <div class="section-label">Why DTCloudOn</div>
-      <h2 class="section-title">Everything Your Business Needs, In One Package</h2>
-      <p class="section-sub" style="margin:0 auto;">Our packages are built around your business reality — not a one-size-fits-all checklist. Every plan is backed by certified experts, proven tools, and proactive management.</p>
+      <h2 class="section-title">Managed IT Packages Built Around Your Business</h2>
+      <p class="section-sub" style="margin:0 auto;">Our packages are built around how your business actually operates — not a one-size-fits-all checklist. Every plan is backed by experienced professionals, proven tools, and proactive management.</p>
     </div>
     <div class="why-grid reveal">
       <div class="why-card">
         <div class="wc-icon">🔐</div>
         <h3>Security-First Design</h3>
-        <p>Every package includes enterprise-grade security tools baked in from day one — not bolted on as an afterthought.</p>
+        <p>Every package includes business-grade security tools from day one — not bolted on as an afterthought.</p>
       </div>
       <div class="why-card">
         <div class="wc-icon">📈</div>
         <h3>Scales With Your Business</h3>
-        <p>Start with what you need today and upgrade seamlessly as your team grows, your compliance needs deepen, or your risk profile changes.</p>
+        <p>Start with what you need today and move up a tier as your team grows, your compliance needs deepen, or your risk profile changes.</p>
       </div>
       <div class="why-card">
         <div class="wc-icon">💰</div>
-        <h3>Predictable IT Costs</h3>
-        <p>No surprise invoices. Choose a tier that matches your budget and get a consistent, transparent monthly cost for IT services.</p>
+        <h3>Clear, Transparent Pricing</h3>
+        <p>Choose a tier that matches your budget, with clearly defined monthly services and hourly rates — so you know what to expect.</p>
       </div>
       <div class="why-card">
         <div class="wc-icon">🎧</div>
-        <h3>Expert Support, Always Available</h3>
-        <p>From remote troubleshooting to on-site visits, our certified technicians are available when you need them — at the speed your business demands.</p>
+        <h3>Expert Support When You Need It</h3>
+        <p>From remote troubleshooting to onsite visits, experienced technicians are available according to your support tier.</p>
       </div>
       <div class="why-card">
         <div class="wc-icon">⚙️</div>
         <h3>Proactive, Not Reactive</h3>
-        <p>We monitor, patch, and manage your systems continuously — catching problems before they become outages or breaches.</p>
+        <p>We monitor, patch, and manage your systems continuously — helping catch problems before they become outages or breaches.</p>
       </div>
       <div class="why-card">
         <div class="wc-icon">📋</div>
-        <h3>Compliance-Ready</h3>
-        <p>Packages are designed to support HIPAA, SOC 2, CMMC, and other regulatory frameworks — so your IT keeps you in good standing.</p>
+        <h3>Compliance Support</h3>
+        <p>Packages can be configured to support HIPAA, SOC 2, <a href="cmmc-compliance.html">CMMC</a>, and other framework requirements as part of your broader compliance program.</p>
       </div>
     </div>
   </div>
@@ -519,8 +564,8 @@
 <!-- CTA -->
 <div class="cta-strip">
   <div class="container">
-    <h2>Ready to Find Your Perfect IT Package?</h2>
-    <p>Talk to a DTCloudOn specialist — we'll match you with the right tier and any add-ons your business needs, no commitment required.</p>
+    <h2>Ready to Find the Right IT Package?</h2>
+    <p>Talk to DTCloudOn — we'll match you with the right support tier and any add-ons your business needs, with no commitment required.</p>
     <a class="btn-white" href="../contact.html">Request a Free Consultation →</a>
   </div>
 </div>
