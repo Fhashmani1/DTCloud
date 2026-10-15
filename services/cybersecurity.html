@@ -3,7 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cybersecurity Services — DTCloudOn</title>
+<title>Cybersecurity Services for Businesses | DTCloudOn</title>
+<meta name="description" content="Business cybersecurity services across the U.S.: security assessments, EDR, email security, firewall management, MFA, SIEM monitoring and compliance-aligned protection.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://dtcloudon.com/services/cybersecurity.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DTCloudOn">
+<meta property="og:title" content="Cybersecurity Services for Businesses | DTCloudOn">
+<meta property="og:description" content="Layered cybersecurity for U.S. businesses: assessments, endpoint protection, email security, identity and access management, monitoring and security awareness training.">
+<meta property="og:url" content="https://dtcloudon.com/services/cybersecurity.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cybersecurity Services for Businesses | DTCloudOn">
+<meta name="twitter:description" content="Security assessments, endpoint and email protection, MFA, monitoring and compliance-aligned cybersecurity from DTCloudOn.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://dtcloudon.com/services/cybersecurity.html#service",
+  "name": "Cybersecurity Services for Businesses",
+  "serviceType": "Managed Cybersecurity and Security Consulting",
+  "description": "Cybersecurity services for organizations throughout the United States, including security assessments, virtual CISO services, endpoint detection and response, email security, firewall management, identity and access management, SIEM monitoring, security awareness training and compliance-aligned security programs.",
+  "url": "https://dtcloudon.com/services/cybersecurity.html",
+  "provider": {
+    "@type": "Organization",
+    "@id": "https://dtcloudon.com/#business",
+    "name": "DTCloudOn",
+    "url": "https://dtcloudon.com/"
+  },
+  "areaServed": {"@type": "Country", "name": "United States"},
+  "audience": {"@type": "BusinessAudience", "audienceType": "Businesses and Organizations"}
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
@@ -45,7 +75,7 @@
   }
   .cyber-hero p {
     color: rgba(255,255,255,0.72);
-    max-width: 600px; margin: 0 auto 36px;
+    max-width: 640px; margin: 0 auto 36px;
     font-size: 1.1rem; line-height: 1.75;
   }
   .cyber-hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
@@ -114,6 +144,13 @@
   }
   .content-text.dark-text li { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.08); }
   .content-text li::before { content:'✓'; color:var(--sky); font-weight:700; flex-shrink:0; margin-top:1px; }
+  .content-text .inline-link {
+    color: var(--sky); font-size: 0.9rem; font-weight: 600;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 8px; transition: gap 0.2s;
+  }
+  .content-text .inline-link:hover { gap: 10px; }
+  .cyber-service-item p a { color: var(--sky); text-decoration: underline; }
 
   /* ── VISUAL PANEL (shared) ── */
   .visual-panel {
@@ -173,7 +210,7 @@
   .cyber-service-item h3 { font-size: 0.95rem; color: var(--navy); margin-bottom: 6px; font-weight: 700; }
   .cyber-service-item p { font-size: 0.83rem; color: var(--text-mid); line-height: 1.6; }
 
-  /* ── THREAT STATS GRID ── */
+  /* ── THREAT GRID ── */
   .threat-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -189,7 +226,7 @@
   }
   .threat-card .t-num {
     font-family: 'Sora', sans-serif;
-    font-size: 2rem; font-weight: 800;
+    font-size: 1.5rem; font-weight: 800;
     color: var(--sky-light); display: block; margin-bottom: 8px;
   }
   .threat-card p { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
@@ -228,9 +265,9 @@
 <!-- BREADCRUMB -->
 <div class="breadcrumb">
   <div class="container" style="max-width:1300px;margin:0 auto;">
-    <a href="../index.html">Home</a>
+    <a href="../">Home</a>
     <span>›</span>
-    <a href="#">IT Services</a>
+    <span>IT Services</span>
     <span>›</span>
     Cybersecurity
   </div>
@@ -243,8 +280,8 @@
   <div class="cyber-hero-grid"></div>
   <div class="container">
     <div class="section-label">CYBERSECURITY</div>
-    <h1>Secure Your Business</h1>
-    <p>Stand strong against the growing wave of cyber threats with proven cybersecurity technology and expertise tailored for businesses of all sizes.</p>
+    <h1>Cybersecurity Services for Businesses</h1>
+    <p>Protect your business from ransomware, phishing, and credential theft with layered cybersecurity tailored to your environment and compliance needs. DTCloudOn supports organizations across the United States with remote services and onsite assistance when a project requires it.</p>
     <div class="cyber-hero-btns">
       <a class="btn-primary" href="../contact.html">Request Cybersecurity Services →</a>
       <a class="btn-outline" href="../contact.html">Speak with a cybersecurity expert &rsaquo;</a>
@@ -255,21 +292,21 @@
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stats-row">
-    <div class="stat"><span class="stat-num">60%</span><span class="stat-label">of SMBs close within 6 months of a breach</span></div>
-    <div class="stat"><span class="stat-num">$4.9M</span><span class="stat-label">Average cost of a data breach (2024)</span></div>
-    <div class="stat"><span class="stat-num">300%</span><span class="stat-label">Increase in cyberattacks since 2020</span></div>
-    <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">DTCloudOn threat monitoring</span></div>
+    <div class="stat"><span class="stat-num">EDR</span><span class="stat-label">Endpoint detection &amp; response</span></div>
+    <div class="stat"><span class="stat-num">MFA</span><span class="stat-label">Identity and access protection</span></div>
+    <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Monitoring options available</span></div>
+    <div class="stat"><span class="stat-num">U.S.</span><span class="stat-label">Nationwide service coverage</span></div>
   </div>
 </div>
 
 <!-- ASSESSMENT BANNER -->
 <div class="assessment-banner">
-  <h2>Protection At Every Level With The DTCloudOn Cybersecurity Assessment</h2>
-  <p>Cyber threats are evolving — are your defenses keeping up? Our Cybersecurity Assessment helps you identify vulnerabilities, assess risks, and strengthen your IT security before an attack happens.</p>
+  <h2>Protection at Every Level with the DTCloudOn Cybersecurity Assessment</h2>
+  <p>Cyber threats keep evolving — are your defenses keeping up? Our Cybersecurity Assessment helps you identify vulnerabilities, assess risks, and prioritize improvements to your IT security before an incident occurs.</p>
   <ul class="assessment-checks">
     <li>Pinpoint weaknesses in your current security posture</li>
     <li>Get expert recommendations tailored to your business</li>
-    <li>Stay ahead of cybercriminals with proactive protection</li>
+    <li>Strengthen defenses with proactive protection</li>
     <li>Receive a prioritized remediation roadmap</li>
   </ul>
   <a class="btn-primary" href="../contact.html">Request a Free Assessment →</a>
@@ -281,10 +318,10 @@
     <div class="content-text">
       <div class="section-label">Comprehensive Coverage</div>
       <h2>Multi-Layered Cybersecurity Defense</h2>
-      <p>A single security tool is never enough. DTCloudOn builds a layered defense strategy that protects every entry point — from endpoints and email to cloud infrastructure and user behavior.</p>
-      <p>We tailor our cybersecurity stack to your environment, industry, and compliance requirements — so you're never paying for protection you don't need or missing coverage you do.</p>
+      <p>A single security tool is rarely enough. DTCloudOn helps build a layered defense strategy that addresses common entry points — from endpoints and email to cloud infrastructure and user behavior.</p>
+      <p>We tailor the security stack to your environment, industry, and compliance requirements, so you invest in the protection you need without paying for coverage you don't.</p>
       <ul>
-        <li>Endpoint detection &amp; response (EDR) across all devices</li>
+        <li>Endpoint detection &amp; response (EDR) across managed devices</li>
         <li>Email security with anti-phishing and spam filtering</li>
         <li>Firewall management and perimeter defense</li>
         <li>Zero-trust network access (ZTNA) architecture</li>
@@ -292,9 +329,10 @@
         <li>Identity &amp; access management (IAM / MFA)</li>
         <li>Security awareness training for your team</li>
       </ul>
+      <a class="inline-link" href="mdr.html">Explore managed detection &amp; response →</a>
     </div>
     <div class="video-panel">
-      <video autoplay muted loop playsinline>
+      <video autoplay muted loop playsinline aria-hidden="true">
         <source src="../videos/cyber-video-1.mp4" type="video/mp4">
       </video>
     </div>
@@ -305,56 +343,56 @@
 <div class="cyber-services-section">
   <div class="container">
     <div class="section-label">Our Cybersecurity Solutions</div>
-    <h2 class="section-title">Everything You Need to Stay Secure</h2>
-    <p class="section-sub">From preventing attacks to recovering from them — here's what DTCloudOn delivers as part of your cybersecurity program.</p>
+    <h2 class="section-title">Cybersecurity Solutions to Protect Your Business</h2>
+    <p class="section-sub">From preventing attacks to recovering from them — these services can be combined into a cybersecurity program that fits your business.</p>
     <div class="cyber-services-grid reveal">
       <div class="cyber-service-item">
         <div class="item-icon">🛡️</div>
-        <div><h3>Virtual CISO Services</h3><p>Assessments, security planning, policy development, and ongoing guidance from a dedicated security executive — without the full-time cost.</p></div>
+        <div><h3>Virtual CISO Services</h3><p>Assessments, security planning, policy development, and ongoing guidance from an experienced security advisor — without the cost of a full-time executive.</p></div>
       </div>
       <div class="cyber-service-item">
         <div class="item-icon">🔍</div>
-        <div><h3>Vulnerability Assessments &amp; Pen Testing</h3><p>Identify and prioritize security gaps before attackers find them. Regular testing keeps your defenses sharp and your risk posture clear.</p></div>
+        <div><h3>Vulnerability Assessments &amp; Pen Testing</h3><p>Identify and prioritize security gaps before attackers find them. Regular testing keeps your risk posture clear.</p></div>
       </div>
       <div class="cyber-service-item">
         <div class="item-icon">💻</div>
-        <div><h3>Endpoint Detection &amp; Response (EDR)</h3><p>Enhanced threat detection and removal across every endpoint — laptops, desktops, servers, and mobile devices — with real-time response.</p></div>
+        <div><h3>Endpoint Detection &amp; Response (EDR)</h3><p>Threat detection and response across laptops, desktops, servers, and supported mobile devices.</p></div>
       </div>
       <div class="cyber-service-item">
         <div class="item-icon">📊</div>
-        <div><h3>Security Information &amp; Event Management (SIEM)</h3><p>Centralized log collection, correlation, and alerting. Our analysts monitor your SIEM 24/7 so you never miss a critical security event.</p></div>
+        <div><h3>Security Information &amp; Event Management (SIEM)</h3><p>Centralized log collection, correlation, and alerting, with 24/7 monitoring options so critical security events get timely attention.</p></div>
       </div>
       <div class="cyber-service-item">
         <div class="item-icon">☁️</div>
-        <div><h3>Cloud Security Gateways</h3><p>Protect mobile devices, laptops, and cloud applications with secure web gateways and cloud access security broker (CASB) solutions.</p></div>
+        <div><h3>Cloud Security Gateways</h3><p>Protect users, devices, and cloud applications with secure web gateways and cloud access security broker (CASB) solutions.</p></div>
       </div>
       <div class="cyber-service-item">
         <div class="item-icon">🔥</div>
-        <div><h3>Firewall Solutions</h3><p>Next-generation firewall deployment, management, and monitoring to prevent unauthorized access and block malicious traffic at the perimeter.</p></div>
+        <div><h3>Firewall Solutions</h3><p>Next-generation firewall deployment, management, and monitoring to help prevent unauthorized access and block malicious traffic.</p></div>
       </div>
       <div class="cyber-service-item">
         <div class="item-icon">📧</div>
-        <div><h3>Email Security &amp; Anti-Phishing</h3><p>Block phishing, business email compromise (BEC), ransomware delivery, and spam before it ever reaches your users' inboxes.</p></div>
+        <div><h3>Email Security &amp; Anti-Phishing</h3><p>Filter phishing, business email compromise (BEC) attempts, malicious attachments, and spam before they reach users' inboxes.</p></div>
       </div>
       <div class="cyber-service-item">
         <div class="item-icon">🌐</div>
-        <div><h3>Deep Packet Inspection &amp; Traffic Analysis</h3><p>Inspect encrypted and unencrypted traffic for hidden threats, data exfiltration attempts, and policy violations across your network.</p></div>
+        <div><h3>Deep Packet Inspection &amp; Traffic Analysis</h3><p>Inspect network traffic for hidden threats, data exfiltration attempts, and policy violations, including encrypted traffic where configured.</p></div>
       </div>
       <div class="cyber-service-item">
         <div class="item-icon">🎓</div>
-        <div><h3>Security Awareness Training</h3><p>Transform your employees from your biggest vulnerability into your strongest defense with simulated phishing and ongoing security education.</p></div>
+        <div><h3>Security Awareness Training</h3><p>Turn employees into an active line of defense with simulated phishing and ongoing security education.</p></div>
       </div>
       <div class="cyber-service-item">
         <div class="item-icon">🌑</div>
-        <div><h3>Dark Web Monitoring</h3><p>Continuously scan dark web forums and marketplaces for your organization's credentials, data, and sensitive information — and alert you instantly.</p></div>
+        <div><h3>Dark Web Monitoring</h3><p>Monitor dark web sources for exposed organizational credentials and sensitive data, with alerts when matches are found.</p></div>
       </div>
       <div class="cyber-service-item">
         <div class="item-icon">🔑</div>
-        <div><h3>Identity &amp; Access Management</h3><p>Enforce multi-factor authentication (MFA), single sign-on (SSO), and least-privilege access policies to limit exposure from compromised credentials.</p></div>
+        <div><h3>Identity &amp; Access Management</h3><p>Enforce multi-factor authentication (MFA), single sign-on (SSO), and least-privilege access to limit exposure from compromised credentials.</p></div>
       </div>
       <div class="cyber-service-item">
         <div class="item-icon">📋</div>
-        <div><h3>Compliance-Aligned Security</h3><p>HIPAA, PCI-DSS, SOC 2, CMMC, and NIST framework alignment built into your security program — not bolted on at audit time.</p></div>
+        <div><h3>Compliance-Aligned Security</h3><p>Security programs aligned with applicable HIPAA, PCI DSS, SOC 2, <a href="cmmc-compliance.html">CMMC</a>, and NIST requirements — built in from the start, not bolted on at audit time.</p></div>
       </div>
     </div>
   </div>
@@ -364,12 +402,12 @@
 <div class="content-section dark">
   <div class="container">
     <div class="section-label" style="color:var(--sky-light); text-align:center;">The Threat Landscape</div>
-    <h2 class="section-title" style="color:var(--white); text-align:center; margin-bottom:48px;">The Cyber Threat Reality for Businesses Today</h2>
+    <h2 class="section-title" style="color:var(--white); text-align:center; margin-bottom:48px;">Common Cyber Threats Facing Businesses Today</h2>
     <div class="threat-grid reveal">
-      <div class="threat-card"><span class="t-num">1 in 3</span><p>Small businesses experience a cyberattack every year — most without knowing until it's too late</p></div>
-      <div class="threat-card"><span class="t-num">94%</span><p>Of malware is delivered via email — making inbox security your first line of defense</p></div>
-      <div class="threat-card"><span class="t-num">280 days</span><p>Average time to identify and contain a data breach without proactive security monitoring</p></div>
-      <div class="threat-card"><span class="t-num">$150K+</span><p>Average ransom demand for small business ransomware attacks in 2024</p></div>
+      <div class="threat-card"><span class="t-num">Phishing</span><p>Deceptive emails and messages remain one of the most common ways attackers gain an initial foothold</p></div>
+      <div class="threat-card"><span class="t-num">Ransomware</span><p>Attacks that encrypt or steal data can halt operations — making prevention and tested <a href="backup.html" style="color:var(--sky-light);">backups</a> essential</p></div>
+      <div class="threat-card"><span class="t-num">Stolen Credentials</span><p>Compromised passwords give attackers legitimate-looking access, which MFA and monitoring help limit</p></div>
+      <div class="threat-card"><span class="t-num">Email Fraud</span><p>Business email compromise targets payments and sensitive data by impersonating trusted contacts</p></div>
     </div>
   </div>
 </div>
@@ -379,14 +417,14 @@
   <div class="container">
     <div class="section-label">Our Process</div>
     <h2 class="section-title">How DTCloudOn Secures Your Business</h2>
-    <p class="section-sub">A structured, proven approach — from understanding your current risk to maintaining your defenses over time.</p>
+    <p class="section-sub">A structured approach — from understanding your current risk to maintaining your defenses over time.</p>
     <div class="steps-grid reveal">
-      <div class="step-card"><div class="step-num">1</div><h3>Security Assessment</h3><p>We evaluate your current security posture, identify gaps, and map your assets — giving you a clear picture of your risk before we spend a dollar.</p></div>
+      <div class="step-card"><div class="step-num">1</div><h3>Security Assessment</h3><p>We evaluate your current security posture, identify gaps, and map your assets — giving you a clear picture of your risk before you invest.</p></div>
       <div class="step-card"><div class="step-num">2</div><h3>Strategy &amp; Roadmap</h3><p>Based on the assessment, we build a prioritized security roadmap aligned to your business goals, budget, and compliance requirements.</p></div>
-      <div class="step-card"><div class="step-num">3</div><h3>Tool Deployment</h3><p>We deploy and configure the right security tools for your environment — EDR, SIEM, firewall, email security — without disrupting operations.</p></div>
-      <div class="step-card"><div class="step-num">4</div><h3>User Training</h3><p>We train your team to recognize and report threats. Human error causes 85% of breaches — we close that gap with engaging, ongoing education.</p></div>
-      <div class="step-card"><div class="step-num">5</div><h3>24/7 Monitoring</h3><p>Our SOC monitors your environment continuously, investigating alerts and responding to threats before they become incidents.</p></div>
-      <div class="step-card"><div class="step-num">6</div><h3>Ongoing Optimization</h3><p>Quarterly reviews, updated threat intelligence, and continuous tuning keep your defenses ahead of the evolving threat landscape.</p></div>
+      <div class="step-card"><div class="step-num">3</div><h3>Tool Deployment</h3><p>We deploy and configure suitable security tools for your environment — EDR, SIEM, firewall, email security — with planning to minimize disruption.</p></div>
+      <div class="step-card"><div class="step-num">4</div><h3>User Training</h3><p>We train your team to recognize and report threats. Human error plays a role in many breaches, so ongoing education helps close that gap.</p></div>
+      <div class="step-card"><div class="step-num">5</div><h3>Monitoring &amp; Response</h3><p>Monitoring services watch your environment, investigate alerts, and support response to help stop threats before they become major incidents.</p></div>
+      <div class="step-card"><div class="step-num">6</div><h3>Ongoing Optimization</h3><p>Periodic reviews, updated threat intelligence, and continuous tuning help keep your defenses current as threats evolve.</p></div>
     </div>
   </div>
 </div>
@@ -397,19 +435,19 @@
     <div class="content-text">
       <div class="section-label">Industry Expertise</div>
       <h2>Cybersecurity Built for Your Industry's Compliance Requirements</h2>
-      <p>Different industries face different threats and regulatory requirements. DTCloudOn brings deep knowledge of the compliance frameworks that govern your sector — so our security programs are built to satisfy your auditors, not just your IT team.</p>
+      <p>Different industries face different threats and regulatory requirements. DTCloudOn helps align security programs with the frameworks that apply to your sector, so technical safeguards support your compliance obligations.</p>
       <ul>
         <li>Healthcare: HIPAA Security Rule, HITECH, PHI protection</li>
-        <li>Finance: SOC 2, PCI-DSS, GLBA compliance</li>
-        <li>Government / Defense: CMMC, FISMA, FedRAMP alignment</li>
-        <li>Legal: Client confidentiality, data sovereignty requirements</li>
+        <li>Finance: SOC 2, PCI DSS, GLBA safeguards</li>
+        <li>Government / Defense: CMMC, NIST SP 800-171, FISMA alignment</li>
+        <li>Legal: Client confidentiality and data handling requirements</li>
         <li>Education: FERPA, CIPA, student data protection</li>
-        <li>Retail: PCI-DSS for card processing environments</li>
+        <li>Retail: PCI DSS for card processing environments</li>
       </ul>
       <a class="btn-primary" href="../contact.html" style="margin-top:8px;">Discuss Your Compliance Needs →</a>
     </div>
     <div class="video-panel">
-      <video autoplay muted loop playsinline>
+      <video autoplay muted loop playsinline aria-hidden="true">
         <source src="../videos/cyber-video-2.mp4" type="video/mp4">
       </video>
     </div>
@@ -420,7 +458,7 @@
 <div class="cta-strip">
   <div class="container">
     <h2>Don't Wait for a Breach to Take Action.</h2>
-    <p>Get a free cybersecurity assessment from DTCloudOn — we'll show you exactly where you're exposed and how to fix it.</p>
+    <p>Get a free cybersecurity assessment from DTCloudOn — we'll show you where you're exposed and how to prioritize fixes.</p>
     <a class="btn-white" href="../contact.html">Request a Free Security Assessment →</a>
   </div>
 </div>
