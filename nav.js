@@ -6,7 +6,7 @@ function renderNav(activePage, basePath) {
   basePath = basePath || '';
   const nav = `
   <div class="topbar">
-    <div class="location">📍 Serving business across Texas</div>
+    <div class="location">📍 Serving businesses nationwide</div>
     <div>
       <span>📞 <a href="tel:+13467582593">(346) 758-2593</a></span>
       &nbsp;&nbsp;|&nbsp;&nbsp;
