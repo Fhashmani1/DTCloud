@@ -7,6 +7,7 @@ DTCloudOn provides managed IT support, cybersecurity, Microsoft 365 administrati
 ## Industries
 
 - [Managed IT Services for Accounting Firms](https://dtcloudon.com/industries/accounting.html): IT support and cybersecurity for CPA firms and tax preparers, including technical safeguards for the FTC Safeguards Rule (GLBA), IRS Publication 4557 and WISP implementation; supports QuickBooks, Sage and Drake Tax.
+- [IT Support for Architecture Firms](https://dtcloudon.com/industries/architects.html): Remote and on-site IT for architects and design studios nationwide, including CAD/BIM workstation deployment (AutoCAD, Revit, Rhino, SketchUp), file servers and NAS, plotter and wide-format printer setup, high-speed networks, cloud collaboration and cybersecurity.
 
 ## Services
 
@@ -14,6 +15,7 @@ DTCloudOn provides managed IT support, cybersecurity, Microsoft 365 administrati
 - [Cybersecurity](https://dtcloudon.com/services/cybersecurity.html): Endpoint protection, email security, MFA, encryption and security monitoring.
 - [Network Services](https://dtcloudon.com/services/network.html): Network design, engineering and support, including on-site structured cabling nationwide.
 - Access control systems: On-site installation and support of badge readers and door access control, nationwide.
+- [IT Procurement](https://dtcloudon.com/services/it-procurement.html): Sourcing and installing business hardware and software.
 
 ## On-site services (all 50 states)
 
@@ -29,7 +31,6 @@ DTCloudOn provides managed IT support, cybersecurity, Microsoft 365 administrati
 - Office moves and IT relocations: Planning, disconnection, transport coordination and reinstallation of IT equipment when an office moves or expands.
 - On-site troubleshooting and hardware repair: Technician visits to diagnose and fix hardware, network and connectivity problems that cannot be resolved remotely.
 - Network site surveys and assessments: On-site evaluation of existing network, cabling and equipment to plan upgrades and identify problems.
-- [IT Procurement](https://dtcloudon.com/services/it-procurement.html): Sourcing and installing business hardware and software.
 
 ## Contact
 
