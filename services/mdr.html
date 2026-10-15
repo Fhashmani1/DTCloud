@@ -3,7 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Managed Detection & Response (MDR) — DTCloudOn</title>
+<title>Managed Detection &amp; Response (MDR) Services | DTCloudOn</title>
+<meta name="description" content="Managed detection and response (MDR) for U.S. businesses: 24/7 SOC-backed threat monitoring, EDR, threat hunting, containment and incident response guidance from DTCloudOn.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://dtcloudon.com/services/mdr.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DTCloudOn">
+<meta property="og:title" content="Managed Detection &amp; Response (MDR) Services | DTCloudOn">
+<meta property="og:description" content="Continuous threat monitoring, analyst-verified alerts, threat hunting and incident containment for businesses nationwide.">
+<meta property="og:url" content="https://dtcloudon.com/services/mdr.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Managed Detection &amp; Response (MDR) Services | DTCloudOn">
+<meta name="twitter:description" content="24/7 SOC-backed threat detection, containment and response guidance from DTCloudOn.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://dtcloudon.com/services/mdr.html#service",
+  "name": "Managed Detection and Response (MDR) Services",
+  "serviceType": "Managed Detection and Response",
+  "description": "Managed detection and response services for organizations throughout the United States, including 24/7 security operations center monitoring, endpoint detection and response, SIEM management, threat hunting, threat containment, incident investigation and security reporting.",
+  "url": "https://dtcloudon.com/services/mdr.html",
+  "provider": {
+    "@type": "Organization",
+    "@id": "https://dtcloudon.com/#business",
+    "name": "DTCloudOn",
+    "url": "https://dtcloudon.com/"
+  },
+  "areaServed": {"@type": "Country", "name": "United States"},
+  "audience": {"@type": "BusinessAudience", "audienceType": "Businesses and Organizations"}
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
@@ -100,6 +130,7 @@
   }
   .content-text .reading-link:hover { background: rgba(42,125,225,0.18); }
   .content-text .reading-link span { font-size: 1rem; }
+  .content-text.dark-text .reading-link { color: var(--sky-light); }
 
   .visual-panel {
     background: var(--navy-mid);
@@ -173,8 +204,7 @@
     .split-layout { grid-template-columns: 1fr; gap: 32px; }
     .split-layout.reverse { direction: ltr; }
     .stats-row { justify-content: center; }
-    .comp-header, .comp-row { grid-template-columns: 1fr 1fr; }
-    .comp-header div:first-child, .comp-row div:first-child { display: none; }
+    .comp-header div, .comp-row div { padding: 12px 10px; font-size: 0.78rem; }
   }
 </style>
 </head>
@@ -184,9 +214,9 @@
 <!-- BREADCRUMB -->
 <div class="breadcrumb">
   <div class="container" style="max-width:1300px;margin:0 auto;">
-    <a href="../index.html">Home</a>
+    <a href="../">Home</a>
     <span>›</span>
-    <a href="#">IT Services</a>
+    <span>IT Services</span>
     <span>›</span>
     Managed Detection &amp; Response
   </div>
@@ -198,9 +228,9 @@
   <div class="mdr-hero-overlay"></div>
   <div class="mdr-hero-grid"></div>
   <div class="container">
-    <div class="section-label">MANAGED SERVICES</div>
+    <div class="section-label">MANAGED DETECTION &amp; RESPONSE</div>
     <h1>Managed Detection and<br>Response (MDR) Services</h1>
-    <p>DTCloudOn provides comprehensive MDR services that deliver 24/7 expert monitoring, rapid threat detection, and immediate incident response to protect your business from ransomware, data breaches, and advanced cyber attacks.</p>
+    <p>DTCloudOn's MDR services combine continuous threat monitoring, analyst-verified detection, and coordinated incident response to help protect your business from ransomware, data breaches, and advanced cyberattacks. Available to organizations across the United States.</p>
     <div class="mdr-hero-btns">
       <a class="btn-primary" href="../contact.html">Request a Meeting →</a>
       <a class="btn-outline" href="../contact.html">Speak with us about MDR services &rsaquo;</a>
@@ -211,10 +241,10 @@
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stats-row">
-    <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Expert SOC Monitoring</span></div>
-    <div class="stat"><span class="stat-num">&lt;15 min</span><span class="stat-label">Mean Time to Respond</span></div>
-    <div class="stat"><span class="stat-num">99.9%</span><span class="stat-label">Threat Detection Rate</span></div>
-    <div class="stat"><span class="stat-num">100%</span><span class="stat-label">SMB-Accessible Pricing</span></div>
+    <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">SOC-backed threat monitoring</span></div>
+    <div class="stat"><span class="stat-num">EDR</span><span class="stat-label">Endpoint detection &amp; response</span></div>
+    <div class="stat"><span class="stat-num">Hunt</span><span class="stat-label">Proactive threat hunting</span></div>
+    <div class="stat"><span class="stat-num">U.S.</span><span class="stat-label">Nationwide service coverage</span></div>
   </div>
 </div>
 
@@ -224,20 +254,20 @@
     <div class="content-text">
       <div class="section-label">How It Works</div>
       <h2>How DTCloudOn MDR Services Protect Your Business</h2>
-      <p>Our MDR services combine cutting-edge technology with human expertise to monitor your systems continuously. When threats emerge, our certified cybersecurity experts respond within minutes, not hours.</p>
-      <p>We integrate seamlessly with your existing IT infrastructure while providing the advanced protection typically available only to large enterprises.</p>
+      <p>MDR combines detection technology with human expertise to monitor your systems continuously. When a threat is detected, security analysts investigate and coordinate a response quickly to limit the damage.</p>
+      <p>MDR works alongside your existing IT infrastructure and brings small and mid-sized businesses the kind of security operations capability once available mainly to large enterprises.</p>
       <ul>
-        <li>24/7 Security Operations Center (SOC) staffed by certified analysts</li>
-        <li>AI-powered threat detection combined with human investigation</li>
-        <li>Automated containment to stop threats before they spread</li>
-        <li>Forensic analysis and root cause investigation after incidents</li>
-        <li>Monthly executive security reports and risk scoring</li>
+        <li>24/7 monitoring by security operations center (SOC) analysts</li>
+        <li>Automated threat detection combined with human investigation</li>
+        <li>Containment actions to help stop threats from spreading</li>
+        <li>Root cause investigation after confirmed incidents</li>
+        <li>Regular security reports with risk insights</li>
       </ul>
-      <a class="reading-link" href="../contact.html"><span>📖</span> Additional reading: MDR for Healthcare</a>
+      <a class="reading-link" href="../industries/healthcare.html"><span>📖</span> Related: IT and security for healthcare</a>
     </div>
     <div class="visual-panel">
       <div class="panel-icon">🛡️</div>
-      <img src="../images/datacenter-2.png" alt="Security Operations Center" onerror="this.style.display='none'">
+      <img src="../images/datacenter-2.png" alt="Data center infrastructure monitored by a security operations center" onerror="this.style.display='none'">
     </div>
   </div>
 </div>
@@ -248,20 +278,20 @@
     <div class="content-text">
       <div class="section-label">Why MDR vs. Traditional Security</div>
       <h2>What Makes MDR Different from Traditional Security</h2>
-      <p>Traditional antivirus software and basic firewalls only catch known threats. Modern cybercriminals use sophisticated techniques that easily bypass these outdated defenses.</p>
-      <p>MDR benefits are proactive threat hunting, behavioral analysis, and real-time response capabilities that traditional security tools cannot match.</p>
-      <p>Our approach goes beyond simple monitoring. We actively hunt for threats hiding in your network, analyze suspicious behavior patterns, and respond immediately when attacks occur.</p>
+      <p>Traditional antivirus software and basic firewalls are designed mainly to stop known threats. Modern attackers often use techniques — stolen credentials, fileless malware, legitimate admin tools — that can slip past those defenses.</p>
+      <p>Managed detection and response adds proactive threat hunting, behavioral analysis, and real-time response to fill those gaps.</p>
+      <p>Rather than waiting for alerts, analysts look for signs of threats hiding in your environment, investigate suspicious behavior, and act when an attack is confirmed.</p>
       <ul>
-        <li>Proactive threat hunting — not reactive alert management</li>
-        <li>Behavioral analytics detect zero-day and fileless attacks</li>
-        <li>Human analysts verify alerts — no false positive fatigue</li>
-        <li>Transforms your security posture from reactive to proactive</li>
+        <li>Proactive threat hunting — not just reactive alert management</li>
+        <li>Behavioral analytics help detect unknown and fileless attacks</li>
+        <li>Human analysts review alerts to reduce false-positive noise</li>
+        <li>Shifts your security posture from reactive to proactive</li>
       </ul>
-      <a class="reading-link" href="../contact.html"><span>📖</span> Additional reading: What is managed detection and response?</a>
+      <a class="reading-link" href="cybersecurity.html"><span>📖</span> Related: Explore our cybersecurity services</a>
     </div>
     <div class="visual-panel" style="background:var(--navy);">
       <div class="panel-icon">⚠️</div>
-      <img src="../images/datacenter-3.png" alt="Cybersecurity Threat Detection" onerror="this.style.display='none'">
+      <img src="../images/datacenter-3.png" alt="Network infrastructure protected by managed threat detection" onerror="this.style.display='none'">
     </div>
   </div>
 </div>
@@ -270,20 +300,20 @@
 <div class="content-section">
   <div class="container">
     <div class="section-label" style="text-align:center;">Side-by-Side Comparison</div>
-    <h2 class="section-title" style="text-align:center;">MDR vs. Traditional Security</h2>
+    <h2 class="section-title" style="text-align:center;">MDR vs. Traditional Antivirus and Firewalls</h2>
     <div class="comparison-table reveal">
       <div class="comp-header">
         <div>Capability</div>
         <div>Traditional Antivirus / Firewall</div>
         <div class="highlight">DTCloudOn MDR ✓</div>
       </div>
-      <div class="comp-row"><div>24/7 Human Monitoring</div><div class="no">✗ None</div><div class="yes highlight-cell">✓ Dedicated SOC</div></div>
-      <div class="comp-row"><div>Threat Hunting</div><div class="no">✗ Reactive only</div><div class="yes highlight-cell">✓ Proactive daily</div></div>
-      <div class="comp-row"><div>Zero-Day Detection</div><div class="no">✗ Known threats only</div><div class="yes highlight-cell">✓ Behavioral AI</div></div>
+      <div class="comp-row"><div>24/7 Human Monitoring</div><div class="no">✗ None</div><div class="yes highlight-cell">✓ SOC analysts</div></div>
+      <div class="comp-row"><div>Threat Hunting</div><div class="no">✗ Reactive only</div><div class="yes highlight-cell">✓ Proactive</div></div>
+      <div class="comp-row"><div>Unknown Threat Detection</div><div class="no">✗ Mostly known threats</div><div class="yes highlight-cell">✓ Behavioral detection</div></div>
       <div class="comp-row"><div>Incident Response</div><div class="no">✗ Alert only</div><div class="yes highlight-cell">✓ Active containment</div></div>
-      <div class="comp-row"><div>Forensic Investigation</div><div class="no">✗ Not included</div><div class="yes highlight-cell">✓ Full root cause</div></div>
-      <div class="comp-row"><div>Compliance Reporting</div><div class="no">✗ Limited logs</div><div class="yes highlight-cell">✓ Monthly reports</div></div>
-      <div class="comp-row"><div>Mean Time to Respond</div><div>Hours to Days</div><div class="yes highlight-cell">&lt;15 Minutes</div></div>
+      <div class="comp-row"><div>Incident Investigation</div><div class="no">✗ Not included</div><div class="yes highlight-cell">✓ Root cause analysis</div></div>
+      <div class="comp-row"><div>Security Reporting</div><div class="no">✗ Limited logs</div><div class="yes highlight-cell">✓ Regular reports</div></div>
+      <div class="comp-row"><div>Remediation Guidance</div><div class="no">✗ Not included</div><div class="yes highlight-cell">✓ Included</div></div>
     </div>
   </div>
 </div>
@@ -293,14 +323,14 @@
   <div class="container">
     <div class="section-label">Our Process</div>
     <h2 class="section-title">How Our MDR Service Works</h2>
-    <p class="section-sub">From onboarding to ongoing protection — here's exactly what you can expect when you partner with DTCloudOn for MDR.</p>
+    <p class="section-sub">From onboarding to ongoing protection — here's what you can expect when you partner with DTCloudOn for MDR.</p>
     <div class="steps-grid reveal">
-      <div class="step-card"><div class="step-num">1</div><h3>Discovery &amp; Onboarding</h3><p>We assess your environment, map your assets, and deploy our monitoring sensors — typically within 48 hours with zero disruption.</p></div>
-      <div class="step-card"><div class="step-num">2</div><h3>Baseline &amp; Tuning</h3><p>Our analysts establish a behavioral baseline for your environment and tune detection rules to minimize noise and false positives.</p></div>
-      <div class="step-card"><div class="step-num">3</div><h3>Continuous Monitoring</h3><p>Your environment is monitored 24/7/365 by our SOC team. Every alert is investigated by a human analyst — not just an automated tool.</p></div>
-      <div class="step-card"><div class="step-num">4</div><h3>Threat Response</h3><p>When a real threat is confirmed, we contain it immediately — isolating affected systems, blocking attackers, and notifying your team.</p></div>
-      <div class="step-card"><div class="step-num">5</div><h3>Forensics &amp; Recovery</h3><p>We investigate the root cause, identify how the attacker got in, and guide remediation to prevent recurrence.</p></div>
-      <div class="step-card"><div class="step-num">6</div><h3>Reporting &amp; Improvement</h3><p>Monthly executive reports with threat summaries, risk scores, and actionable recommendations to continuously improve your posture.</p></div>
+      <div class="step-card"><div class="step-num">1</div><h3>Discovery &amp; Onboarding</h3><p>We assess your environment, map your assets, and deploy monitoring agents on a schedule planned to minimize disruption.</p></div>
+      <div class="step-card"><div class="step-num">2</div><h3>Baseline &amp; Tuning</h3><p>Analysts establish a behavioral baseline for your environment and tune detection rules to reduce noise and false positives.</p></div>
+      <div class="step-card"><div class="step-num">3</div><h3>Continuous Monitoring</h3><p>Your environment is monitored around the clock, with significant alerts reviewed by human analysts — not left to automated tools alone.</p></div>
+      <div class="step-card"><div class="step-num">4</div><h3>Threat Response</h3><p>When a real threat is confirmed, response actions begin — isolating affected systems, blocking malicious activity, and notifying your team.</p></div>
+      <div class="step-card"><div class="step-num">5</div><h3>Investigation &amp; Recovery</h3><p>We investigate the root cause, identify how the attacker got in, and guide remediation to help prevent recurrence.</p></div>
+      <div class="step-card"><div class="step-num">6</div><h3>Reporting &amp; Improvement</h3><p>Regular reports with threat summaries and actionable recommendations help you keep improving your security posture.</p></div>
     </div>
   </div>
 </div>
@@ -311,21 +341,22 @@
     <div class="content-text dark-text">
       <div class="section-label" style="color:var(--sky-light);">What's Included</div>
       <h2>Everything You Need. Nothing You Don't.</h2>
-      <p>Our MDR packages are designed to give you complete coverage without the complexity of managing multiple vendors or tools.</p>
+      <p>MDR plans are built around your environment, giving you broad coverage without the complexity of managing multiple security vendors and tools yourself.</p>
       <ul>
         <li>SIEM (Security Information &amp; Event Management) — managed for you</li>
-        <li>EDR (Endpoint Detection &amp; Response) deployment &amp; management</li>
+        <li>EDR (Endpoint Detection &amp; Response) deployment and management</li>
         <li>Network traffic analysis and anomaly detection</li>
-        <li>Cloud workload monitoring (AWS, Azure, GCP)</li>
-        <li>Threat intelligence feeds — updated continuously</li>
-        <li>Incident response retainer — included, not billed separately</li>
-        <li>Compliance-ready logging for HIPAA, PCI-DSS, SOC 2, CMMC</li>
-        <li>Dedicated security analyst — your named point of contact</li>
+        <li>Cloud workload monitoring options (AWS, Azure, GCP)</li>
+        <li>Continuously updated threat intelligence</li>
+        <li>Incident response support as defined in your service agreement</li>
+        <li>Logging that supports HIPAA, PCI DSS, SOC 2, and <a href="cmmc-compliance.html" style="color:var(--sky-light);">CMMC</a> requirements</li>
+        <li>A consistent point of contact for security questions</li>
       </ul>
+      <a class="reading-link" href="managed-services.html"><span>🖥️</span> Pair MDR with managed IT services</a>
     </div>
     <div class="visual-panel">
       <div class="panel-icon">🔐</div>
-      <img src="../images/datacenter-1.png" alt="Security Services" onerror="this.style.display='none'">
+      <img src="../images/datacenter-1.png" alt="Server room protected by managed detection and response services" onerror="this.style.display='none'">
     </div>
   </div>
 </div>
@@ -334,7 +365,7 @@
 <div class="cta-strip">
   <div class="container">
     <h2>Ready to Stop Threats Before They Stop You?</h2>
-    <p>Talk to a DTCloudOn MDR specialist today — free assessment, no commitment required.</p>
+    <p>Talk to DTCloudOn about managed detection and response for organizations throughout the United States — free assessment, no commitment required.</p>
     <a class="btn-white" href="../contact.html">Request a Free MDR Assessment →</a>
   </div>
 </div>
