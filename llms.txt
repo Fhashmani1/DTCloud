@@ -8,6 +8,7 @@ DTCloudOn provides managed IT support, cybersecurity, Microsoft 365 administrati
 
 - [Managed IT Services for Accounting Firms](https://dtcloudon.com/industries/accounting.html): IT support and cybersecurity for CPA firms and tax preparers, including technical safeguards for the FTC Safeguards Rule (GLBA), IRS Publication 4557 and WISP implementation; supports QuickBooks, Sage and Drake Tax.
 - [IT Support for Architecture Firms](https://dtcloudon.com/industries/architects.html): Remote and on-site IT for architects and design studios nationwide, including CAD/BIM workstation deployment (AutoCAD, Revit, Rhino, SketchUp), file servers and NAS, plotter and wide-format printer setup, high-speed networks, cloud collaboration and cybersecurity.
+- [Managed IT for Construction Companies](https://dtcloudon.com/industries/construction.html): Remote and on-site IT for general contractors and subcontractors nationwide, including job-site trailer setup, cellular and satellite job-site internet, outdoor Wi-Fi and wireless bridges, job-site security cameras, mobilization and demobilization, mobile device management, payment fraud protection and CMMC readiness for defense contractors.
 
 ## Services
 
